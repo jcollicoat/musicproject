@@ -1,2 +1,18 @@
 @import "./normalize.scss";
 @import "./variables.scss";
+
+// Typography
+
+// Figtree font
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap");
+
+// Global styles
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "FigTree", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: calc(1rem / 16 * 13);
+}
