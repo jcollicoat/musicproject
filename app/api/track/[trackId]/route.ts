@@ -1,5 +1,8 @@
 import { getAccessToken } from "@/library/auth/helpers";
-import { createErrorResponse } from "@/library/api/helpers";
+import {
+    createErrorResponse,
+    createIdApiEndpoint,
+} from "@/library/api/helpers";
 import { SpotifyTrack } from "@/library/spotify/tracks/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
@@ -10,8 +13,8 @@ const spotifyEndpoint = "https://api.spotify.com/v1/tracks/";
 export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
-        const trackEndpoint = request.nextUrl.pathname.replace(
-            /^(.*[\\\/])/,
+        const trackEndpoint = createIdApiEndpoint(
+            request.nextUrl.pathname,
             spotifyEndpoint
         );
         const spotifyTrack = await axios.get<SpotifyTrack>(trackEndpoint, {
