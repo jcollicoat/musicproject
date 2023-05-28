@@ -21,13 +21,13 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@/*": ["app/*"],
             "@components/*": ["app/components/*"],
             "@api/*": ["app/library/api/*"],
             "@auth/*": ["app/library/auth/*"],
             "@data/*": ["app/library/data/*"],
             "@spotify/*": ["app/library/spotify/*"],
-            "@styles/*": ["app/styles/*"]
+            "@styles/*": ["app/styles/*"],
+            "@/*": ["app/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
