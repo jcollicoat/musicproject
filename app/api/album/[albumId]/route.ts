@@ -6,7 +6,7 @@ import {
 import { SpotifyAlbum } from "@/library/spotify/albums/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { buildSpotifyAlbum } from "@/library/albums/builders";
+import { buildSpotifyAlbum } from "@/library/data/albums/builders";
 
 const spotifyEndpoint = "https://api.spotify.com/v1/albums/";
 

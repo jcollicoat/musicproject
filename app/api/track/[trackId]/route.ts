@@ -6,7 +6,7 @@ import {
 import { SpotifyTrack } from "@/library/spotify/tracks/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { buildSpotifyTrack } from "@/library/tracks/builders";
+import { buildSpotifyTrack } from "@/library/data/tracks/builders";
 
 const spotifyEndpoint = "https://api.spotify.com/v1/tracks/";
 

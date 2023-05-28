@@ -1,5 +1,5 @@
 import { SpotifyTrack } from "@/library/spotify/tracks/types";
-import { Track } from "@/library/tracks/types";
+import { Track } from "@/library/data/tracks/types";
 
 const buildAlbumArtists = (
     artists: SpotifyTrack["album"]["artists"]
