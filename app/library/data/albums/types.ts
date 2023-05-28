@@ -1,3 +1,4 @@
+import { Track } from "@data/tracks/types";
 import { SpotifyImage } from "@spotify/types";
 
 interface AlbumArtist {
@@ -5,13 +6,8 @@ interface AlbumArtist {
     name: string;
 }
 
-interface AlbumTrackArtist {
-    id: string;
-    name: string;
-}
-
 interface AlbumTrack {
-    artists: AlbumTrackArtist[];
+    artists: Track["artists"];
     durationMs: number;
     explicit: boolean;
     id: string;

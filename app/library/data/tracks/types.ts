@@ -1,11 +1,8 @@
-interface TrackAlbumArtist {
-    id: string;
-    name: string;
-}
+import { Album } from "@data/albums/types";
 
 interface TrackAlbum {
     albumType: string;
-    artists: TrackAlbumArtist[];
+    artists: Album["artists"];
     id: string;
     name: string;
     totalTracks: number;
