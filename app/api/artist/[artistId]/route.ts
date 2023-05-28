@@ -6,6 +6,7 @@ import {
 import { SpotifyArtist } from "@/library/spotify/artists/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
+import { buildSpotifyArtist } from "@/library/artists/builders";
 
 const spotifyEndpoint = "https://api.spotify.com/v1/artists/";
 
@@ -21,7 +22,7 @@ export async function GET(request: NextRequest) {
                 Authorization: accessToken,
             },
         });
-        return NextResponse.json(spotifyArtist.data);
+        return NextResponse.json(buildSpotifyArtist(spotifyArtist.data));
     } catch (error) {
         return createErrorResponse(error, request);
     }
