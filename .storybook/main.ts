@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
+
 const config: StorybookConfig = {
     stories: [
         "../app/**/*.mdx",
@@ -19,4 +20,5 @@ const config: StorybookConfig = {
         autodocs: "tag",
     },
 };
+
 export default config;
