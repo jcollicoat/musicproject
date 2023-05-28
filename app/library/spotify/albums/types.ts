@@ -3,8 +3,8 @@ import {
     SpotifyImage,
     SpotifyObject,
 } from "@/library/spotify/types";
-import { SpotifyArtist } from "@/library/spotify/artists/types";
-import { SpotifyTrack } from "@/library/spotify/tracks/types";
+import { SpotifyArtist } from "@spotify/artists/types";
+import { SpotifyTrack } from "@spotify/tracks/types";
 
 type SpotifyAlbumArtist = Omit<
     SpotifyArtist,

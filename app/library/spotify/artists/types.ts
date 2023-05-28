@@ -1,8 +1,4 @@
-import {
-    SpotifyFollowers,
-    SpotifyImage,
-    SpotifyObject,
-} from "@/library/spotify/types";
+import { SpotifyFollowers, SpotifyImage, SpotifyObject } from "@spotify/types";
 
 export interface SpotifyArtist {
     external_urls: SpotifyObject;

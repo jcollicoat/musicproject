@@ -1,4 +1,4 @@
-import { SpotifyImage } from "@/library/spotify/types";
+import { SpotifyImage } from "@spotify/types";
 
 export interface Artist {
     followers: number;

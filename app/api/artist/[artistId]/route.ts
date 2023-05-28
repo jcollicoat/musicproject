@@ -1,12 +1,9 @@
-import { getAccessToken } from "@/library/auth/helpers";
-import {
-    createErrorResponse,
-    createIdApiEndpoint,
-} from "@/library/api/helpers";
-import { SpotifyArtist } from "@/library/spotify/artists/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { buildSpotifyArtist } from "@/library/data/artists/builders";
+import { createErrorResponse, createIdApiEndpoint } from "@api/helpers";
+import { getAccessToken } from "@auth/helpers";
+import { buildSpotifyArtist } from "@data/artists/builders";
+import { SpotifyArtist } from "@spotify/artists/types";
 
 const spotifyEndpoint = "https://api.spotify.com/v1/artists/";
 
