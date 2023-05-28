@@ -1,5 +1,5 @@
 import { getAccessToken } from "@/library/auth/helpers";
-import { createErrorResponse } from "@/library/generic/helpers";
+import { createErrorResponse } from "@/library/api/helpers";
 import { SpotifyTrack } from "@/library/spotify/tracks/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
@@ -20,7 +20,6 @@ export async function GET(request: NextRequest) {
         });
         return NextResponse.json(spotifyTrack.data);
     } catch (error) {
-        const { status, message } = createErrorResponse(error);
-        return new Response(message, { status: status });
+        return createErrorResponse(error, request);
     }
 }
