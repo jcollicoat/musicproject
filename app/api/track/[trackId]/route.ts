@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
         const trackEndpoint = request.nextUrl.pathname.replace(
-            "/api/album/",
+            "/api/track/",
             spotifyEndpoint
         );
         const spotifyTrack = await axios.get<SpotifyTrack>(trackEndpoint, {
