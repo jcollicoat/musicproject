@@ -6,6 +6,7 @@ import {
 import { SpotifyAlbum } from "@/library/spotify/albums/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
+import { buildSpotifyAlbum } from "@/library/albums/builders";
 
 const spotifyEndpoint = "https://api.spotify.com/v1/albums/";
 
@@ -21,7 +22,7 @@ export async function GET(request: NextRequest) {
                 Authorization: accessToken,
             },
         });
-        return NextResponse.json(spotifyAlbum.data);
+        return NextResponse.json(buildSpotifyAlbum(spotifyAlbum.data));
     } catch (error) {
         return createErrorResponse(error, request);
     }
