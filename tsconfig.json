@@ -21,11 +21,11 @@
         ],
         "baseUrl": ".",
         "paths": {
+            "@spotify/*": ["app/library/api/spotify/*"],
             "@components/*": ["app/components/*"],
             "@api/*": ["app/library/api/*"],
             "@auth/*": ["app/library/auth/*"],
             "@data/*": ["app/library/data/*"],
-            "@spotify/*": ["app/library/api/spotify/*"],
             "@styles/*": ["app/styles/*"],
             "@/*": ["app/*"]
         }

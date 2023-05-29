@@ -1,25 +1,17 @@
-import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
-import { createErrorResponse, createIdApiEndpoint } from '@api/helpers';
+import { createErrorResponse, getIdFromRoute } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
 import { buildSpotifyArtist } from '@data/artists/builders';
-import { SpotifyArtist } from '@spotify/artists/types';
-
-const spotifyEndpoint = 'https://api.spotify.com/v1/artists/';
+import { getSpotifyArtist } from '@spotify/artists/api';
 
 export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
-        const artistEndpoint = createIdApiEndpoint(
-            request.nextUrl.pathname,
-            spotifyEndpoint
+        const artistId = getIdFromRoute(request.nextUrl.pathname);
+        const artist = buildSpotifyArtist(
+            await getSpotifyArtist(artistId, accessToken)
         );
-        const spotifyArtist = await axios.get<SpotifyArtist>(artistEndpoint, {
-            headers: {
-                Authorization: accessToken,
-            },
-        });
-        return NextResponse.json(buildSpotifyArtist(spotifyArtist.data));
+        return NextResponse.json(artist);
     } catch (error) {
         return createErrorResponse(error, request);
     }
