@@ -1,19 +1,13 @@
 import { Track } from '@data/tracks/types';
 import { SpotifyTrack } from '@spotify/tracks/types';
 
-const buildAlbumArtists = (
-    artists: SpotifyTrack['album']['artists']
-): Track['album']['artists'] => {
-    return artists.map((artist) => ({
-        id: artist.id,
-        name: artist.name,
-    }));
-};
-
 const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => {
     return {
         albumType: album.album_type,
-        artists: buildAlbumArtists(album.artists),
+        artists: album.artists.map((artist) => ({
+            id: artist.id,
+            name: artist.name,
+        })),
         id: album.id,
         name: album.name,
         totalTracks: album.total_tracks,
