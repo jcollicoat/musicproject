@@ -1,4 +1,6 @@
+import { buildSpotifyAudioFeatures } from '@data/audiofeatures/builders';
 import { Track } from '@data/tracks/types';
+import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { SpotifyTrack } from '@spotify/tracks/types';
 
 const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => {
@@ -21,17 +23,22 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
     }));
 };
 
-export const buildSpotifyTrack = (track: SpotifyTrack): Track => {
+export const buildSpotifyTrack = (
+    track: SpotifyTrack,
+    audioFeatures?: SpotifyAudioFeatures
+): Track => {
     const { duration_ms, explicit, id, name, popularity, preview_url } = track;
 
     return {
         album: buildAlbum(track.album),
         artists: buildArtists(track.artists),
         durationMs: duration_ms,
-        explicit: explicit,
-        id: id,
-        name: name,
-        popularity: popularity,
+        explicit,
+        id,
+        name,
+        popularity,
         previewUrl: preview_url,
+        audioFeatures:
+            audioFeatures && buildSpotifyAudioFeatures(audioFeatures),
     };
 };
