@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const ENV = process.env.NODE_ENV;
 
-export const createErrorResponse = (
+export const errorResponse = (
     error: unknown,
     request?: NextRequest
 ): NextResponse => {
