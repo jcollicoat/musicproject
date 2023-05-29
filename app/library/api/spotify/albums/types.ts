@@ -1,10 +1,6 @@
-import {
-    SpotifyCopyright,
-    SpotifyImage,
-    SpotifyObject,
-} from '@/library/spotify/types';
 import { SpotifyArtist } from '@spotify/artists/types';
 import { SpotifyTrack } from '@spotify/tracks/types';
+import { SpotifyCopyright, SpotifyImage, SpotifyObject } from '@spotify/types';
 
 type SpotifyAlbumArtist = Omit<
     SpotifyArtist,

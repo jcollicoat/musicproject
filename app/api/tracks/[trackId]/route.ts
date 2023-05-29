@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createErrorResponse, getIdFromRoute } from '@api/helpers';
-import { getSpotifyTrack } from '@api/spotify/api';
+import { getSpotifyTrack } from '@api/spotify/tracks/api';
 import { getAccessToken } from '@auth/helpers';
 import { buildSpotifyTrack } from '@data/tracks/builders';
 

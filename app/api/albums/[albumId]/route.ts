@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
 import { createErrorResponse, createIdApiEndpoint } from '@api/helpers';
+import { SpotifyAlbum } from '@api/spotify/albums/types';
 import { getAccessToken } from '@auth/helpers';
 import { buildSpotifyAlbum } from '@data/albums/builders';
-import { SpotifyAlbum } from '@spotify/albums/types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/albums/';
 
