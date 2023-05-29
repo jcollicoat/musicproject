@@ -1,4 +1,4 @@
-import { SpotifyAlbum } from '@api/spotify/albums/types';
+import { SpotifyAlbum } from '@spotify/albums/types';
 import { SpotifyArtist } from '@spotify/artists/types';
 import { SpotifyObject } from '@spotify/types';
 

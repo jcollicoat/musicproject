@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createErrorResponse, getIdFromRoute } from '@api/helpers';
-import { getSpotifyTrack } from '@api/spotify/tracks/api';
 import { getAccessToken } from '@auth/helpers';
 import { buildSpotifyTrack } from '@data/tracks/builders';
+import { getSpotifyTrack } from '@spotify/tracks/api';
 
 export async function GET(request: NextRequest) {
     try {
