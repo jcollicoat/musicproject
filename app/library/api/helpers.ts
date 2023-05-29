@@ -22,6 +22,3 @@ export const createErrorResponse = (
 
 export const getIdFromRoute = (route: string) =>
     route.replace(/^(.*[\\/])/, '');
-
-export const createIdApiEndpoint = (base: string, api: string) =>
-    base.replace(/^(.*[\\/])/, api);
