@@ -9,6 +9,7 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:import/errors",
         "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended",
         "plugin:storybook/recommended"
     ],
     "ignorePatterns": ["/*.js"],
@@ -23,7 +24,8 @@
         "@typescript-eslint",
         "import",
         "jsx-a11y",
-        "promise"
+        "promise",
+        "prettier"
     ],
     "rules": {
         "eqeqeq": ["error"],
@@ -45,7 +47,6 @@
                 }
             }
         ],
-        "indent": ["error", 4],
         "jsx-a11y/anchor-is-valid": [
             "error",
             {
@@ -56,8 +57,10 @@
         ],
         "jsx-a11y/no-noninteractive-tabindex": "error",
         "no-implicit-coercion": ["error"],
+        "no-multi-spaces": "error",
         "no-nested-ternary": "warn",
         "no-throw-literal": "error",
+        "no-trailing-spaces": "error",
         "no-use-before-define": "error",
         "no-useless-catch": "error",
         "prefer-promise-reject-errors": [
