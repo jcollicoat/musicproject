@@ -8,8 +8,10 @@ export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
         const trackId = getIdFromRoute(request.nextUrl.pathname);
-        const track = await getSpotifyTrack(trackId, accessToken);
-        return NextResponse.json(buildSpotifyTrack(track));
+        const track = buildSpotifyTrack(
+            await getSpotifyTrack(trackId, accessToken)
+        );
+        return NextResponse.json(track);
     } catch (error) {
         return createErrorResponse(error, request);
     }
