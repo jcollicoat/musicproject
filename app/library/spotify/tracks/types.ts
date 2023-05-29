@@ -1,15 +1,15 @@
-import { SpotifyObject } from "@spotify/types";
-import { SpotifyAlbum } from "@spotify/albums/types";
-import { SpotifyArtist } from "@spotify/artists/types";
+import { SpotifyAlbum } from '@spotify/albums/types';
+import { SpotifyArtist } from '@spotify/artists/types';
+import { SpotifyObject } from '@spotify/types';
 
 type SpotifyTrackAlbum = Omit<
     SpotifyAlbum,
-    "copyrights" | "external_ids" | "genres" | "label" | "popularity" | "tracks"
+    'copyrights' | 'external_ids' | 'genres' | 'label' | 'popularity' | 'tracks'
 >;
 
 type SpotifyTrackArtist = Omit<
     SpotifyArtist,
-    "followers" | "genres" | "images" | "popularity"
+    'followers' | 'genres' | 'images' | 'popularity'
 >;
 
 export interface SpotifyTrack {

@@ -9,7 +9,6 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:import/errors",
         "plugin:jsx-a11y/recommended",
-        "plugin:prettier/recommended",
         "plugin:storybook/recommended"
     ],
     "ignorePatterns": ["/*.js"],
@@ -24,8 +23,7 @@
         "@typescript-eslint",
         "import",
         "jsx-a11y",
-        "promise",
-        "prettier"
+        "promise"
     ],
     "rules": {
         "eqeqeq": ["error"],
@@ -47,6 +45,7 @@
                 }
             }
         ],
+        "indent": ["error", 4],
         "jsx-a11y/anchor-is-valid": [
             "error",
             {

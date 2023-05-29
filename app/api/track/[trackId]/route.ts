@@ -1,11 +1,11 @@
-import axios from "axios";
-import { NextRequest, NextResponse } from "next/server";
-import { getAccessToken } from "@auth/helpers";
-import { createErrorResponse, createIdApiEndpoint } from "@api/helpers";
-import { buildSpotifyTrack } from "@data/tracks/builders";
-import { SpotifyTrack } from "@spotify/tracks/types";
+import axios from 'axios';
+import { NextRequest, NextResponse } from 'next/server';
+import { createErrorResponse, createIdApiEndpoint } from '@api/helpers';
+import { getAccessToken } from '@auth/helpers';
+import { buildSpotifyTrack } from '@data/tracks/builders';
+import { SpotifyTrack } from '@spotify/tracks/types';
 
-const spotifyEndpoint = "https://api.spotify.com/v1/tracks/";
+const spotifyEndpoint = 'https://api.spotify.com/v1/tracks/';
 
 export async function GET(request: NextRequest) {
     try {

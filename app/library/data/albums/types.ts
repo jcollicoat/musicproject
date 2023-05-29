@@ -1,5 +1,5 @@
-import { Track } from "@data/tracks/types";
-import { SpotifyImage } from "@spotify/types";
+import { Track } from '@data/tracks/types';
+import { SpotifyImage } from '@spotify/types';
 
 interface AlbumArtist {
     id: string;
@@ -7,7 +7,7 @@ interface AlbumArtist {
 }
 
 interface AlbumTrack {
-    artists: Track["artists"];
+    artists: Track['artists'];
     durationMs: number;
     explicit: boolean;
     id: string;

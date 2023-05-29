@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import Link from "next/link";
-import { FC } from "react";
-import styles from "./Button.module.scss";
+import classNames from 'classnames';
+import Link from 'next/link';
+import { FC } from 'react';
+import styles from './Button.module.scss';
 
-type ButtonStyles = "cta" | "primary" | "secondary" | "tertiary";
+type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary';
 
 interface BaseProps {
     ariaLabel: string;
@@ -26,7 +26,7 @@ type Props = PropsForButton | PropsForLink;
 export const Button: FC<Props> = ({
     ariaLabel,
     text,
-    style = "primary",
+    style = 'primary',
     onClick,
     link,
 }) => {
@@ -43,7 +43,7 @@ export const Button: FC<Props> = ({
         );
     }
 
-    return link.startsWith("https://") ? (
+    return link.startsWith('https://') ? (
         <a
             aria-label={ariaLabel}
             className={classNames(styles.button, styles[style])}

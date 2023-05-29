@@ -1,5 +1,5 @@
-"use client";
-import { Button } from "@components/Button/Button";
+'use client';
+import { Button } from '@components/Button/Button';
 
 export default function Home() {
     return (
@@ -8,7 +8,7 @@ export default function Home() {
                 <Button
                     ariaLabel="Button"
                     text="Button"
-                    onClick={() => alert("Button clicked!")}
+                    onClick={() => alert('Button clicked!')}
                 />
             </div>
         </main>

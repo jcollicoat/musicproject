@@ -1,16 +1,16 @@
-import { Track } from "@data/tracks/types";
-import { SpotifyTrack } from "@spotify/tracks/types";
+import { Track } from '@data/tracks/types';
+import { SpotifyTrack } from '@spotify/tracks/types';
 
 const buildAlbumArtists = (
-    artists: SpotifyTrack["album"]["artists"]
-): Track["album"]["artists"] => {
+    artists: SpotifyTrack['album']['artists']
+): Track['album']['artists'] => {
     return artists.map((artist) => ({
         id: artist.id,
         name: artist.name,
     }));
 };
 
-const buildAlbum = (album: SpotifyTrack["album"]): Track["album"] => {
+const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => {
     return {
         albumType: album.album_type,
         artists: buildAlbumArtists(album.artists),
@@ -20,7 +20,7 @@ const buildAlbum = (album: SpotifyTrack["album"]): Track["album"] => {
     };
 };
 
-const buildArtists = (artists: SpotifyTrack["artists"]): Track["artists"] => {
+const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
     return artists.map((artist) => ({
         id: artist.id,
         name: artist.name,

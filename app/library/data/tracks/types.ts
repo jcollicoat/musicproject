@@ -1,8 +1,8 @@
-import { Album } from "@data/albums/types";
+import { Album } from '@data/albums/types';
 
 interface TrackAlbum {
     albumType: string;
-    artists: Album["artists"];
+    artists: Album['artists'];
     id: string;
     name: string;
     totalTracks: number;

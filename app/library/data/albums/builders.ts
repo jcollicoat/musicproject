@@ -1,14 +1,14 @@
-import { Album } from "@data/albums/types";
-import { SpotifyAlbum } from "@spotify/albums/types";
+import { Album } from '@data/albums/types';
+import { SpotifyAlbum } from '@spotify/albums/types';
 
-const buildArtists = (artists: SpotifyAlbum["artists"]): Album["artists"] => {
+const buildArtists = (artists: SpotifyAlbum['artists']): Album['artists'] => {
     return artists.map((artist) => ({
         id: artist.id,
         name: artist.name,
     }));
 };
 
-const buildTracks = (tracks: SpotifyAlbum["tracks"]): Album["tracks"] => {
+const buildTracks = (tracks: SpotifyAlbum['tracks']): Album['tracks'] => {
     return tracks.items.map((track) => ({
         artists: track.artists.map((artist) => ({
             id: artist.id,
@@ -33,7 +33,6 @@ export const buildSpotifyAlbum = (album: SpotifyAlbum): Album => {
         popularity,
         release_date,
         release_date_precision,
-        total_tracks,
     } = album;
 
     return {
@@ -46,7 +45,7 @@ export const buildSpotifyAlbum = (album: SpotifyAlbum): Album => {
         name: name,
         popularity: popularity,
         releaseDate: release_date,
-        releaseDatePrecision: release_date,
+        releaseDatePrecision: release_date_precision,
         tracks: buildTracks(album.tracks),
     };
 };
