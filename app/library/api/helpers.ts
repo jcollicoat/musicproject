@@ -20,5 +20,8 @@ export const createErrorResponse = (
     return NextResponse.json('Internal server error', { status: 500 });
 };
 
+export const getIdFromRoute = (route: string) =>
+    route.replace(/^(.*[\\/])/, '');
+
 export const createIdApiEndpoint = (base: string, api: string) =>
     base.replace(/^(.*[\\/])/, api);
