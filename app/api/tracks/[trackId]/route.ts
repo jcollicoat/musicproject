@@ -6,7 +6,7 @@ import {
 } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
 import { buildSpotifyTrack } from '@data/tracks/builders';
-import { getSpotifyAudiofeatures } from '@spotify/audiofeatures/api';
+import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { getSpotifyTrack } from '@spotify/tracks/api';
 import { SpotifyTrack } from '@spotify/tracks/types';
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
         let trackFallback;
 
         if (audioFeatures) {
-            const getAudioFeatures = getSpotifyAudiofeatures(
+            const getAudioFeatures = getSpotifyAudioFeatures(
                 trackId,
                 accessToken
             );
