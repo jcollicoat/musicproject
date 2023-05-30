@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { errorResponse, getIdFromRoute } from '@api/helpers';
+import {
+    errorResponse,
+    getIdFromRoute,
+    handleRequestWithOptional,
+} from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
 import { buildSpotifyTrack } from '@data/tracks/builders';
 import { getSpotifyAudiofeatures } from '@spotify/audiofeatures/api';
+import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { getSpotifyTrack } from '@spotify/tracks/api';
+import { SpotifyTrack } from '@spotify/tracks/types';
 
 export async function GET(request: NextRequest) {
     try {
@@ -18,19 +24,15 @@ export async function GET(request: NextRequest) {
                 trackId,
                 accessToken
             );
-            const [track, audioFeatures] = await Promise.allSettled([
-                getTrack,
-                getAudioFeatures,
-            ]);
+            const [track, audioFeatures] = await handleRequestWithOptional<
+                SpotifyTrack,
+                SpotifyAudioFeatures
+            >(getTrack, getAudioFeatures);
+            trackFallback = track;
 
-            if (track.status === 'rejected') {
-                return errorResponse(track.reason, request);
-            }
-            trackFallback = track.value;
-
-            if (audioFeatures.status === 'fulfilled') {
+            if (audioFeatures) {
                 return NextResponse.json(
-                    buildSpotifyTrack(track.value, audioFeatures.value)
+                    buildSpotifyTrack(track, audioFeatures)
                 );
             }
 
