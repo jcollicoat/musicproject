@@ -1,16 +1,4 @@
-type MusicalKeys =
-    | 'C'
-    | 'C#'
-    | 'D'
-    | 'D#'
-    | 'E'
-    | 'F'
-    | 'F#'
-    | 'G'
-    | 'G#'
-    | 'A'
-    | 'A#'
-    | 'B';
+import { MusicalKey } from '@data/types';
 
 export interface AudioFeatures {
     acousticness: number;
@@ -18,7 +6,7 @@ export interface AudioFeatures {
     energy: number;
     id: string;
     instrumentalness: number;
-    key: MusicalKeys;
+    key: MusicalKey;
     liveness: number;
     loudness: number;
     mode: 'Major' | 'Minor';
