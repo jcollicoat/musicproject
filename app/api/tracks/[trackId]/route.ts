@@ -1,45 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {
-    errorResponse,
-    getIdFromRoute,
-    handleRequestWithOptional,
-} from '@api/helpers';
+import { errorResponse, getIdFromRoute, getParamFromRoute } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
-import { buildSpotifyTrack } from '@data/tracks/builders';
-import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
-import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
-import { getSpotifyTrack } from '@spotify/tracks/api';
-import { SpotifyTrack } from '@spotify/tracks/types';
+import { tracks } from '@spotify/tracks/api';
 
 export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
-        const trackId = getIdFromRoute(request.nextUrl.pathname);
-        const audioFeatures = request.nextUrl.searchParams.get('audioFeatures');
-        const getTrack = getSpotifyTrack(trackId, accessToken);
-        let trackFallback;
+        const trackId = getIdFromRoute(request.nextUrl);
+        const audioFeatures = getParamFromRoute(
+            request.nextUrl,
+            'audioFeatures'
+        );
+        const audioAnalysis = getParamFromRoute(
+            request.nextUrl,
+            'audioAnalysis'
+        );
 
-        if (audioFeatures) {
-            const getAudioFeatures = getSpotifyAudioFeatures(
-                trackId,
-                accessToken
-            );
-            const [track, audioFeatures] = await handleRequestWithOptional<
-                SpotifyTrack,
-                SpotifyAudioFeatures
-            >(getTrack, getAudioFeatures);
-            trackFallback = track;
-
-            if (audioFeatures) {
-                return NextResponse.json(
-                    buildSpotifyTrack(track, audioFeatures)
-                );
-            }
-
-            console.warn(`Failed fetching audio features for track ${trackId}`);
-        }
-
-        const track = buildSpotifyTrack(trackFallback ?? (await getTrack));
+        const track = await tracks.get(
+            trackId,
+            accessToken,
+            audioFeatures,
+            audioAnalysis
+        );
         return NextResponse.json(track);
     } catch (error) {
         return errorResponse(error, request);

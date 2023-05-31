@@ -1,4 +1,5 @@
 import { Album } from '@data/albums/types';
+import { AudioAnalysis } from '@data/audioanalysis/types';
 import { AudioFeatures } from '@data/audiofeatures/types';
 
 interface TrackAlbum {
@@ -24,4 +25,5 @@ export interface Track {
     popularity: number;
     previewUrl: string;
     audioFeatures?: AudioFeatures;
+    audioAnalysis?: AudioAnalysis;
 }

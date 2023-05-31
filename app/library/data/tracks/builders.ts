@@ -1,5 +1,7 @@
+import { buildSpotifyAudioAnalysis } from '@data/audioanalysis/builders';
 import { buildSpotifyAudioFeatures } from '@data/audiofeatures/builders';
 import { Track } from '@data/tracks/types';
+import { SpotifyAudioAnalysis } from '@spotify/audioanalysis/types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { SpotifyTrack } from '@spotify/tracks/types';
 
@@ -25,7 +27,8 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
 
 export const buildSpotifyTrack = (
     track: SpotifyTrack,
-    audioFeatures?: SpotifyAudioFeatures
+    audioFeatures?: SpotifyAudioFeatures,
+    audioAnalysis?: SpotifyAudioAnalysis
 ): Track => {
     const { duration_ms, explicit, id, name, popularity, preview_url } = track;
 
@@ -40,5 +43,7 @@ export const buildSpotifyTrack = (
         previewUrl: preview_url,
         audioFeatures:
             audioFeatures && buildSpotifyAudioFeatures(audioFeatures),
+        audioAnalysis:
+            audioAnalysis && buildSpotifyAudioAnalysis(audioAnalysis),
     };
 };
