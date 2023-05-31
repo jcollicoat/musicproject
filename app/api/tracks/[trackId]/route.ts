@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
             'audioAnalysis'
         );
 
-        const track = await tracks.get(
+        const track = await tracks.id(
             trackId,
             accessToken,
             audioFeatures,

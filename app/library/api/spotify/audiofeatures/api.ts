@@ -5,15 +5,32 @@ const spotifyEndpoint = 'https://api.spotify.com/v1/audio-features/';
 
 export const getSpotifyAudioFeatures = async (
     trackId: string,
-    accessToken: string
+    accessToken: string,
+    optional?: boolean
 ) => {
-    const audioFeatures = await axios.get<SpotifyAudioFeatures>(
-        spotifyEndpoint + trackId,
-        {
-            headers: {
-                Authorization: accessToken,
-            },
+    if (optional) {
+        try {
+            const audioFeatures = await axios.get<SpotifyAudioFeatures>(
+                spotifyEndpoint + trackId,
+                {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                }
+            );
+            return audioFeatures.data;
+        } catch (error) {
+            console.warn(error);
         }
-    );
-    return audioFeatures.data;
+    } else {
+        const audioFeatures = await axios.get<SpotifyAudioFeatures>(
+            spotifyEndpoint + 'trackId',
+            {
+                headers: {
+                    Authorization: accessToken,
+                },
+            }
+        );
+        return audioFeatures.data;
+    }
 };
