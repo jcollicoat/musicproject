@@ -1,22 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { errorResponse, getIdFromRoute, getParamFromRoute } from '@api/helpers';
+import {
+    errorResponse,
+    getIdFromRoute,
+    getParamsFromRoute,
+} from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
-import { tracks } from '@spotify/tracks/api';
+import { spotify } from '@spotify/api';
 
 export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
         const trackId = getIdFromRoute(request.nextUrl);
-        const audioFeatures = getParamFromRoute(
+        const [audioFeatures, audioAnalysis] = getParamsFromRoute(
             request.nextUrl,
-            'audioFeatures'
-        );
-        const audioAnalysis = getParamFromRoute(
-            request.nextUrl,
-            'audioAnalysis'
+            ['audioFeatures', 'audioAnalysis']
         );
 
-        const track = await tracks.id(
+        const track = await spotify.tracks.id(
             trackId,
             accessToken,
             audioFeatures,

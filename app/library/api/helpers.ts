@@ -20,3 +20,6 @@ export const getIdFromRoute = (url: NextURL) =>
 
 export const getParamFromRoute = (url: NextURL, param: string) =>
     Boolean(url.searchParams.get(param));
+
+export const getParamsFromRoute = (url: NextURL, params: string[]) =>
+    params.map((param) => Boolean(url.searchParams.get(param)));
