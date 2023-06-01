@@ -2,7 +2,7 @@ import axios from 'axios';
 import { buildSpotifyTrack } from '@data/tracks/builders';
 import { getSpotifyAudioAnalysis } from '@spotify/audioanalysis/api';
 import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
-import { SpotifyTrack } from '@spotify/tracks/types';
+import { SpotifyTrack } from '@spotify/tracks.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/tracks/';
 

@@ -3,7 +3,7 @@ import { buildSpotifyAudioFeatures } from '@data/audiofeatures/builders';
 import { Track } from '@data/tracks/types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis/types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
-import { SpotifyTrack } from '@spotify/tracks/types';
+import { SpotifyTrack } from '@spotify/tracks.types';
 
 const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => {
     return {

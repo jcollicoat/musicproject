@@ -1,4 +1,4 @@
-import { tracks } from './tracks/api';
+import { tracks } from './tracks';
 
 const spotify = { tracks };
 
