@@ -5,7 +5,7 @@ import {
     getParamsFromRoute,
 } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
-import { spotify } from '@spotify/api';
+import { music } from '@music/api';
 
 export async function GET(request: NextRequest) {
     try {
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
             ['audioFeatures', 'audioAnalysis']
         );
 
-        const track = await spotify.tracks.id(
+        const track = await music.tracks.id(
             trackId,
             accessToken,
             audioFeatures,

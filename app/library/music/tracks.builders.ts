@@ -1,6 +1,6 @@
 import { buildSpotifyAudioAnalysis } from '@/library/music/audioanalysis/builders';
 import { buildSpotifyAudioFeatures } from '@/library/music/audiofeatures/builders';
-import { Track } from '@/library/music/tracks/types';
+import { Track } from '@music/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis/types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { SpotifyTrack } from '@spotify/tracks.types';

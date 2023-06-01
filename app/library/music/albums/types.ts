@@ -1,4 +1,4 @@
-import { Track } from '@/library/music/tracks/types';
+import { Track } from '@music/tracks.types';
 import { SpotifyImage } from '@spotify/types';
 
 interface AlbumArtist {
