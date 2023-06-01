@@ -1,4 +1,4 @@
-import { Artist } from '@data/artists/types';
+import { Artist } from '@/library/music/artists/types';
 import { SpotifyArtist } from '@spotify/artists/types';
 
 export const buildSpotifyArtist = (artist: SpotifyArtist): Artist => {

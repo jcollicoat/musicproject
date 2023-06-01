@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { buildSpotifyAlbum } from '@/library/music/albums/builders';
 import { errorResponse, getIdFromRoute } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
-import { buildSpotifyAlbum } from '@data/albums/builders';
 import { getSpotifyAlbum } from '@spotify/albums/api';
 
 export async function GET(request: NextRequest) {

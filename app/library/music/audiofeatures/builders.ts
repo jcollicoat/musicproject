@@ -1,4 +1,4 @@
-import { mapKey } from '@data/helpers';
+import { mapKey } from '@/library/music/helpers';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { AudioFeatures } from './types';
 

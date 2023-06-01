@@ -24,7 +24,7 @@
             "@components/*": ["app/components/*"],
             "@api/*": ["app/library/api/*"],
             "@auth/*": ["app/library/auth/*"],
-            "@data/*": ["app/library/data/*"],
+            "@music/*": ["app/library/music/*"],
             "@spotify/*": ["app/library/spotify/*"],
             "@styles/*": ["app/styles/*"],
             "@/*": ["app/*"]

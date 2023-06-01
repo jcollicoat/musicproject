@@ -1,6 +1,6 @@
-import { Album } from '@data/albums/types';
-import { AudioAnalysis } from '@data/audioanalysis/types';
-import { AudioFeatures } from '@data/audiofeatures/types';
+import { Album } from '@/library/music/albums/types';
+import { AudioAnalysis } from '@/library/music/audioanalysis/types';
+import { AudioFeatures } from '@/library/music/audiofeatures/types';
 
 interface TrackAlbum {
     albumType: string;

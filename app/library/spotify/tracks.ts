@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { buildSpotifyTrack } from '@data/tracks/builders';
+import { buildSpotifyTrack } from '@/library/music/tracks/builders';
 import { getSpotifyAudioAnalysis } from '@spotify/audioanalysis/api';
 import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
 import { SpotifyTrack } from '@spotify/tracks.types';

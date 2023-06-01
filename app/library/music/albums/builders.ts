@@ -1,4 +1,4 @@
-import { Album } from '@data/albums/types';
+import { Album } from '@/library/music/albums/types';
 import { SpotifyAlbum } from '@spotify/albums/types';
 
 const buildArtists = (artists: SpotifyAlbum['artists']): Album['artists'] => {

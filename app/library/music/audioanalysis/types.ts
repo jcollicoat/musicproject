@@ -1,4 +1,4 @@
-import { MusicalKey } from '@data/types';
+import { MusicalKey } from '@/library/music/types';
 
 interface Interval {
     duration: number;

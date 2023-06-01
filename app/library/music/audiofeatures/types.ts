@@ -1,4 +1,4 @@
-import { MusicalKey } from '@data/types';
+import { MusicalKey } from '@/library/music/types';
 
 export interface AudioFeatures {
     acousticness: number;
