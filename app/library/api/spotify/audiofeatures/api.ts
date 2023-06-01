@@ -8,23 +8,9 @@ export const getSpotifyAudioFeatures = async (
     accessToken: string,
     optional?: boolean
 ) => {
-    if (optional) {
-        try {
-            const audioFeatures = await axios.get<SpotifyAudioFeatures>(
-                spotifyEndpoint + trackId,
-                {
-                    headers: {
-                        Authorization: accessToken,
-                    },
-                }
-            );
-            return audioFeatures.data;
-        } catch (error) {
-            console.warn(error);
-        }
-    } else {
+    try {
         const audioFeatures = await axios.get<SpotifyAudioFeatures>(
-            spotifyEndpoint + 'trackId',
+            spotifyEndpoint + trackId,
             {
                 headers: {
                     Authorization: accessToken,
@@ -32,5 +18,12 @@ export const getSpotifyAudioFeatures = async (
             }
         );
         return audioFeatures.data;
+    } catch (error) {
+        if (optional) {
+            console.warn(error);
+            return undefined;
+        }
+
+        throw error;
     }
 };

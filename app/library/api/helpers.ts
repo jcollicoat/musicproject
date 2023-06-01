@@ -1,23 +1,13 @@
 import { NextURL } from 'next/dist/server/web/next-url';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const ENV = process.env.NODE_ENV;
 
 // Errors
 
-export const errorResponse = (
-    error: unknown,
-    request?: NextRequest
-): NextResponse => {
+export const errorResponse = (error: unknown): NextResponse => {
     if (ENV === 'development') {
         return NextResponse.json(error);
-    }
-
-    if (request) {
-        return NextResponse.json(
-            `Unhandled error occured in endpoint: ${request.nextUrl.pathname}`,
-            { status: 500 }
-        );
     }
 
     return NextResponse.json('Internal server error', { status: 500 });

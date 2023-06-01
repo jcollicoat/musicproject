@@ -29,19 +29,31 @@ const id = async (
     let audioFeatures;
     let audioAnalysis;
 
-    if (hasAudioFeatures || hasAudioAnalysis) {
+    if (hasAudioFeatures && hasAudioAnalysis) {
         const addons = await Promise.allSettled([
-            hasAudioFeatures
-                ? await getSpotifyAudioFeatures(trackId, accessToken, true)
-                : undefined,
-            hasAudioAnalysis
-                ? await getSpotifyAudioAnalysis(trackId, accessToken, true)
-                : undefined,
+            await getSpotifyAudioFeatures(trackId, accessToken, true),
+            await getSpotifyAudioAnalysis(trackId, accessToken, true),
         ]);
 
         if (isFulfilled(addons[0])) audioFeatures = addons[0].value;
         if (isFulfilled(addons[1])) audioAnalysis = addons[1].value;
+
+        return buildSpotifyTrack(track, audioFeatures, audioAnalysis);
     }
+
+    if (hasAudioFeatures)
+        audioFeatures = await getSpotifyAudioFeatures(
+            trackId,
+            accessToken,
+            true
+        );
+
+    if (hasAudioAnalysis)
+        audioAnalysis = await getSpotifyAudioAnalysis(
+            trackId,
+            'accessToken',
+            true
+        );
 
     return buildSpotifyTrack(track, audioFeatures, audioAnalysis);
 };

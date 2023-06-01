@@ -24,6 +24,6 @@ export async function GET(request: NextRequest) {
         );
         return NextResponse.json(track);
     } catch (error) {
-        return errorResponse(error, request);
+        return errorResponse(error);
     }
 }

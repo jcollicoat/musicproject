@@ -8,21 +8,7 @@ export const getSpotifyAudioAnalysis = async (
     accessToken: string,
     optional?: boolean
 ) => {
-    if (optional) {
-        try {
-            const audioAnalysis = await axios.get<SpotifyAudioAnalysis>(
-                spotifyEndpoint + trackId,
-                {
-                    headers: {
-                        Authorization: accessToken,
-                    },
-                }
-            );
-            return audioAnalysis.data;
-        } catch (error) {
-            console.warn(error);
-        }
-    } else {
+    try {
         const audioAnalysis = await axios.get<SpotifyAudioAnalysis>(
             spotifyEndpoint + trackId,
             {
@@ -32,5 +18,12 @@ export const getSpotifyAudioAnalysis = async (
             }
         );
         return audioAnalysis.data;
+    } catch (error) {
+        if (optional) {
+            console.warn(error);
+            return undefined;
+        }
+
+        throw error;
     }
 };
