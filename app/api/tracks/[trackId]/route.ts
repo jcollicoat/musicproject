@@ -5,7 +5,7 @@ import {
     getParamsFromRoute,
 } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
-import { music } from '@music/api';
+import { music } from '@music/_api';
 
 export async function GET(request: NextRequest) {
     try {

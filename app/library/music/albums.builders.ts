@@ -22,7 +22,7 @@ const buildTracks = (tracks: SpotifyAlbum['tracks']): Album['tracks'] => {
     }));
 };
 
-export const buildSpotifyAlbum = (album: SpotifyAlbum): Album => {
+export const buildAlbum = (album: SpotifyAlbum): Album => {
     const {
         album_type,
         genres,

@@ -1,4 +1,4 @@
-import { spotify } from '@spotify/api';
+import { spotify } from '@spotify/_api';
 import { getSpotifyAudioAnalysis } from '@spotify/audioanalysis/api';
 import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
 import { buildTrack } from './tracks.builders';
