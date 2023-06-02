@@ -1,9 +1,9 @@
-import { buildSpotifyAudioAnalysis } from '@/library/music/audioanalysis/builders';
 import { buildSpotifyAudioFeatures } from '@/library/music/audiofeatures/builders';
 import { Track } from '@music/tracks.types';
-import { SpotifyAudioAnalysis } from '@spotify/audioanalysis/types';
+import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
 import { SpotifyTrack } from '@spotify/tracks.types';
+import { buildAudioAnalysis } from './audioanalysis.builders';
 
 const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => {
     return {
@@ -43,7 +43,6 @@ export const buildTrack = (
         previewUrl: preview_url,
         audioFeatures:
             audioFeatures && buildSpotifyAudioFeatures(audioFeatures),
-        audioAnalysis:
-            audioAnalysis && buildSpotifyAudioAnalysis(audioAnalysis),
+        audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
     };
 };

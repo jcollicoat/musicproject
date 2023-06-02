@@ -1,8 +1,8 @@
 import { mapKey } from '@/library/music/helpers';
-import { SpotifyAudioAnalysis } from '@spotify/audioanalysis/types';
-import { AudioAnalysis } from './types';
+import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
+import { AudioAnalysis } from './audioanalysis.types';
 
-export const buildSpotifyAudioAnalysis = (
+export const buildAudioAnalysis = (
     audioAnalysis: SpotifyAudioAnalysis
 ): AudioAnalysis => {
     return {
