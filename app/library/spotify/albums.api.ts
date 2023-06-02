@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyAlbum } from '@spotify/albums/types';
+import { SpotifyAlbum } from '@spotify/albums.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/albums/';
 

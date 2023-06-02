@@ -1,4 +1,4 @@
-import { Album } from '@/library/music/albums/types';
+import { Album } from '@music/albums/albums.types';
 import { AudioAnalysis } from '@/library/music/audioanalysis/types';
 import { AudioFeatures } from '@/library/music/audiofeatures/types';
 
