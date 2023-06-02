@@ -1,7 +1,7 @@
-import { Artist } from '@/library/music/artists/types';
-import { SpotifyArtist } from '@spotify/artists/types';
+import { Artist } from '@music/artists.types';
+import { SpotifyArtist } from '@spotify/artists.types';
 
-export const buildSpotifyArtist = (artist: SpotifyArtist): Artist => {
+export const buildArtist = (artist: SpotifyArtist): Artist => {
     const { genres, id, images, name, popularity } = artist;
 
     return {

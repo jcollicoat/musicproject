@@ -1,6 +1,6 @@
 import { SpotifyAlbum } from '@spotify/albums.types';
-import { SpotifyArtist } from '@spotify/artists/types';
 import { SpotifyObject } from '@spotify/types';
+import { SpotifyArtist } from './artists.types';
 
 type SpotifyTrackAlbum = Omit<
     SpotifyAlbum,

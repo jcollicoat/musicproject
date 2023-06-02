@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { SpotifyArtist } from '@spotify/artists/types';
+import { SpotifyArtist } from './artists.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/artists/';
 
-export const getSpotifyArtist = async (
+export const id = async (
     artistId: string,
     accessToken: string
 ): Promise<SpotifyArtist> => {
@@ -14,3 +14,7 @@ export const getSpotifyArtist = async (
     });
     return artist.data;
 };
+
+const artists = { id };
+
+export { artists };
