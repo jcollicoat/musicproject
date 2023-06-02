@@ -25,7 +25,7 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
     }));
 };
 
-export const buildSpotifyTrack = (
+export const buildTrack = (
     track: SpotifyTrack,
     audioFeatures?: SpotifyAudioFeatures,
     audioAnalysis?: SpotifyAudioAnalysis

@@ -1,7 +1,7 @@
 import { spotify } from '@spotify/api';
 import { getSpotifyAudioAnalysis } from '@spotify/audioanalysis/api';
 import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
-import { buildSpotifyTrack } from './tracks.builders';
+import { buildTrack } from './tracks.builders';
 
 const id = async (
     trackId: string,
@@ -27,7 +27,7 @@ const id = async (
             true
         );
 
-    return buildSpotifyTrack(track, audioFeatures, audioAnalysis);
+    return buildTrack(track, audioFeatures, audioAnalysis);
 };
 
 const tracks = { id };
