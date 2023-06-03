@@ -1,5 +1,5 @@
+import { SpotifyObject } from '@spotify/types';
 import { SpotifyTrack } from './tracks.types';
-import { SpotifyObject } from './types';
 
 interface RecentlyPlayedTrack {
     track: SpotifyTrack;

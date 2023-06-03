@@ -6,10 +6,10 @@ import {
     Track,
     RecentlyPlayed,
 } from '@music/types/tracks.types';
-import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
-import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
-import { SpotifyRecentlyPlayed } from '@spotify/player.types';
-import { SpotifyTrack } from '@spotify/tracks.types';
+import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
+import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
+import { SpotifyRecentlyPlayed } from '@spotify/types/player.types';
+import { SpotifyTrack } from '@spotify/types/tracks.types';
 
 const buildAudioAnalysis = (
     audioAnalysis: SpotifyAudioAnalysis

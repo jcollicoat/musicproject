@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyRecentlyPlayed } from './player.types';
+import { SpotifyRecentlyPlayed } from '@spotify/types/player.types';
 
 const recentlyPlayedEndpoint =
     'https://api.spotify.com/v1/me/player/recently-played';

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyTrack, SpotifyTracks } from '@spotify/tracks.types';
+import { SpotifyTrack, SpotifyTracks } from '@spotify/types/tracks.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/tracks';
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyArtist } from './artists.types';
+import { SpotifyArtist } from '@spotify/types/artists.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/artists/';
 

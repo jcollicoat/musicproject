@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
     SpotifyAudioFeatures,
     SpotifyAudioFeaturesList,
-} from '@spotify/audiofeatures.types';
+} from '@spotify/types/audiofeatures.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/audio-features';
 

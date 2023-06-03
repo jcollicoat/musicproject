@@ -1,5 +1,5 @@
 import { Artist } from '@music/types/artists.types';
-import { SpotifyArtist } from '@spotify/artists.types';
+import { SpotifyArtist } from '@spotify/types/artists.types';
 
 const buildArtist = (artist: SpotifyArtist): Artist => ({
     followers: artist.followers.total,

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
+import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
 
 const spotifyEndpoint = 'https://api.spotify.com/v1/audio-analysis/';
 
