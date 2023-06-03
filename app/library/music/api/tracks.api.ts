@@ -14,20 +14,20 @@ const audioFeatures = async (trackId: string, accessToken: string) => {
 const id = async (
     trackId: string,
     accessToken: string,
-    hasAudioAnalysis: boolean,
-    hasAudioFeatures: boolean
+    hasAudioFeatures: boolean,
+    hasAudioAnalysis: boolean
 ) => {
     const track = await spotify.tracks.id(trackId, accessToken);
-    let audioAnalysis;
+
     let audioFeatures;
-
-    if (hasAudioAnalysis)
-        audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
-
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.id(trackId, accessToken);
 
-    return builders.tracks.buildTrack(track, audioAnalysis, audioFeatures);
+    let audioAnalysis;
+    if (hasAudioAnalysis)
+        audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
+
+    return builders.tracks.buildTrack(track, audioFeatures, audioAnalysis);
 };
 
 const ids = async (
@@ -36,17 +36,28 @@ const ids = async (
     hasAudioFeatures: boolean
 ) => {
     const tracks = await spotify.tracks.ids(trackIds, accessToken);
-    let audioFeatures;
 
+    let audioFeatures;
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.ids(trackIds, accessToken);
 
     return builders.tracks.buildTracks(tracks, audioFeatures);
 };
 
-const recentlyPlayed = async (accessToken: string) => {
+const recentlyPlayed = async (
+    accessToken: string,
+    hasAudioFeatures: boolean
+) => {
     const recentlyPlayed = await spotify.player.recentlyPlayed(accessToken);
-    return builders.tracks.buildRecentlyPlayed(recentlyPlayed);
+
+    let audioFeatures;
+    if (hasAudioFeatures)
+        audioFeatures = await spotify.audioFeatures.ids(
+            recentlyPlayed.items.map((item) => item.track.id),
+            accessToken
+        );
+
+    return builders.tracks.buildRecentlyPlayed(recentlyPlayed, audioFeatures);
 };
 
 const tracks = { audioAnalysis, audioFeatures, id, ids, recentlyPlayed };

@@ -93,8 +93,9 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
 
 const buildTrack = (
     track: SpotifyTrack,
+    audioFeatures?: SpotifyAudioFeatures,
     audioAnalysis?: SpotifyAudioAnalysis,
-    audioFeatures?: SpotifyAudioFeatures
+    context?: Track['context']
 ): Track => {
     const { duration_ms, explicit, id, name, popularity, preview_url } = track;
 
@@ -109,6 +110,7 @@ const buildTrack = (
         previewUrl: preview_url,
         audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
         audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
+        context: context,
     };
 };
 
@@ -121,16 +123,28 @@ const buildTracks = (
             (item) => item.id === track.id
         );
 
-        return buildTrack(track, undefined, audioFeatures);
+        return buildTrack(track, audioFeatures);
     });
 };
 
 const buildRecentlyPlayed = (
-    recentlyPlayed: SpotifyRecentlyPlayed
+    recentlyPlayed: SpotifyRecentlyPlayed,
+    audioFeaturesList?: SpotifyAudioFeatures[]
 ): RecentlyPlayed => {
     return {
         next: recentlyPlayed.next,
-        tracks: recentlyPlayed.items.map((item) => buildTrack(item.track)),
+        tracks: recentlyPlayed.items.map((rp) => {
+            const audioFeatures = audioFeaturesList?.find(
+                (item) => item.id === rp.track.id
+            );
+            const context: Track['context'] = {
+                id: rp.context.href,
+                type: rp.context.type,
+                playedAt: rp.played_at,
+            };
+
+            return buildTrack(rp.track, audioFeatures, undefined, context);
+        }),
     };
 };
 
