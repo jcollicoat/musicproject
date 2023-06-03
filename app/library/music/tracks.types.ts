@@ -1,6 +1,27 @@
 import { Album } from './albums.types';
-import { AudioAnalysis } from './audioanalysis.types';
 import { AudioFeatures } from './audiofeatures.types';
+import { MusicalKey } from './types';
+
+interface Interval {
+    duration: number;
+    start: number;
+}
+
+interface Section extends Interval {
+    key: MusicalKey;
+    loudness: number;
+    mode: 'Major' | 'Minor';
+    tempo: number;
+    timeSignature: number;
+}
+
+export interface AudioAnalysis {
+    bars: Interval[];
+    beats: Interval[];
+    endOfFadeIn: number;
+    sections: Section[];
+    startOfFadeOut: number;
+}
 
 interface TrackAlbum {
     albumType: string;
