@@ -92,8 +92,8 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
 
 const buildTrack = (
     track: SpotifyTrack,
-    audioFeatures?: SpotifyAudioFeatures,
-    audioAnalysis?: SpotifyAudioAnalysis
+    audioAnalysis?: SpotifyAudioAnalysis,
+    audioFeatures?: SpotifyAudioFeatures
 ): Track => {
     const { duration_ms, explicit, id, name, popularity, preview_url } = track;
 
@@ -106,9 +106,22 @@ const buildTrack = (
         name,
         popularity,
         previewUrl: preview_url,
-        audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
         audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
+        audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
     };
+};
+
+const buildTracks = (
+    tracks: SpotifyTrack[],
+    audioFeaturesList?: SpotifyAudioFeatures[]
+): Track[] => {
+    return tracks.map((track) => {
+        const audioFeatures = audioFeaturesList?.find(
+            (item) => item.id === track.id
+        );
+
+        return buildTrack(track, undefined, audioFeatures);
+    });
 };
 
 const buildRecentlyPlayed = (
@@ -124,6 +137,7 @@ const tracks = {
     buildAudioAnalysis,
     buildAudioFeatures,
     buildTrack,
+    buildTracks,
     buildRecentlyPlayed,
 };
 export { tracks };

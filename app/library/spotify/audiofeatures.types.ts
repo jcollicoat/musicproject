@@ -18,3 +18,7 @@ export interface SpotifyAudioFeatures {
     uri: string;
     valence: number;
 }
+
+export interface SpotifyAudioFeaturesList {
+    audio_features: SpotifyAudioFeatures[];
+}

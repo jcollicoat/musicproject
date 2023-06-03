@@ -14,25 +14,34 @@ const audioFeatures = async (trackId: string, accessToken: string) => {
 const id = async (
     trackId: string,
     accessToken: string,
-    hasAudioFeatures: boolean,
-    hasAudioAnalysis: boolean
+    hasAudioAnalysis: boolean,
+    hasAudioFeatures: boolean
 ) => {
     const track = await spotify.tracks.id(trackId, accessToken);
-    let audioFeatures;
     let audioAnalysis;
-
-    if (hasAudioFeatures)
-        audioFeatures = await spotify.audioFeatures.id(trackId, accessToken);
+    let audioFeatures;
 
     if (hasAudioAnalysis)
         audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
 
-    return builders.tracks.buildTrack(track, audioFeatures, audioAnalysis);
+    if (hasAudioFeatures)
+        audioFeatures = await spotify.audioFeatures.id(trackId, accessToken);
+
+    return builders.tracks.buildTrack(track, audioAnalysis, audioFeatures);
 };
 
-const ids = async (trackIds: string[], accessToken: string) => {
+const ids = async (
+    trackIds: string[],
+    accessToken: string,
+    hasAudioFeatures: boolean
+) => {
     const tracks = await spotify.tracks.ids(trackIds, accessToken);
-    return tracks.map((track) => builders.tracks.buildTrack(track));
+    let audioFeatures;
+
+    if (hasAudioFeatures)
+        audioFeatures = await spotify.audioFeatures.ids(trackIds, accessToken);
+
+    return builders.tracks.buildTracks(tracks, audioFeatures);
 };
 
 const recentlyPlayed = async (accessToken: string) => {
