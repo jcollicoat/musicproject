@@ -1,5 +1,5 @@
+import { buildArtist } from '@music/builders/artists.builders';
 import { spotify } from '@spotify/_api';
-import { buildArtist } from './artists.builders';
 
 const id = async (artistId: string, accessToken: string) => {
     const artist = await spotify.artists.id(artistId, accessToken);

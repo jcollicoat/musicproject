@@ -1,5 +1,5 @@
+import { MusicalKey } from '@music/types';
 import { Album } from './albums.types';
-import { MusicalKey } from './types';
 
 interface Interval {
     duration: number;

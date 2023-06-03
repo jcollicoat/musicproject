@@ -1,5 +1,5 @@
+import { Album } from '@music/types/albums.types';
 import { SpotifyAlbum } from '@spotify/albums.types';
-import { Album } from './albums.types';
 
 const buildArtists = (artists: SpotifyAlbum['artists']): Album['artists'] => {
     return artists.map((artist) => ({

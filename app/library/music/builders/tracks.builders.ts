@@ -1,14 +1,14 @@
+import { mapKey } from '@music/helpers';
 import {
     AudioAnalysis,
     AudioFeatures,
-    RecentlyPlayed,
     Track,
-} from '@music/tracks.types';
+    RecentlyPlayed,
+} from '@music/types/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
 import { SpotifyRecentlyPlayed } from '@spotify/player.types';
 import { SpotifyTrack } from '@spotify/tracks.types';
-import { mapKey } from './helpers';
 
 export const buildAudioAnalysis = (
     audioAnalysis: SpotifyAudioAnalysis

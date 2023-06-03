@@ -1,10 +1,10 @@
-import { spotify } from '@spotify/_api';
 import {
     buildAudioAnalysis,
     buildAudioFeatures,
-    buildRecentlyPlayed,
     buildTrack,
-} from './tracks.builders';
+    buildRecentlyPlayed,
+} from '@music/builders/tracks.builders';
+import { spotify } from '@spotify/_api';
 
 const audioAnalysis = async (trackId: string, accessToken: string) => {
     const audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);

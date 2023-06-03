@@ -1,5 +1,5 @@
-import { Track } from '@music/tracks.types';
 import { SpotifyImage } from '@spotify/types';
+import { Track } from './tracks.types';
 
 interface AlbumArtist {
     id: string;
