@@ -1,5 +1,4 @@
 import { spotify } from '@spotify/_api';
-import { getSpotifyAudioFeatures } from '@spotify/audiofeatures/api';
 import { buildTrack } from './tracks.builders';
 
 const id = async (
@@ -13,11 +12,7 @@ const id = async (
     let audioAnalysis;
 
     if (hasAudioFeatures)
-        audioFeatures = await getSpotifyAudioFeatures(
-            trackId,
-            accessToken,
-            true
-        );
+        audioFeatures = await spotify.audioFeatures.id(trackId, accessToken);
 
     if (hasAudioAnalysis)
         audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);

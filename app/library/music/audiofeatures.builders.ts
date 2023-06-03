@@ -1,8 +1,8 @@
 import { mapKey } from '@/library/music/helpers';
-import { SpotifyAudioFeatures } from '@spotify/audiofeatures/types';
-import { AudioFeatures } from './types';
+import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
+import { AudioFeatures } from './audiofeatures.types';
 
-export const buildSpotifyAudioFeatures = (
+export const buildAudioFeatures = (
     audioFeatures: SpotifyAudioFeatures
 ): AudioFeatures => {
     const {
