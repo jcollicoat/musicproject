@@ -15,6 +15,8 @@ export const errorResponse = (error: unknown): NextResponse => {
 
 // Utilities
 
+export const getUrlSlug = (url: string) => url.replace(/^(.*[\\/])/, '');
+
 export const getParamFromRoute = (url: NextURL, param: string) =>
     Boolean(url.searchParams.get(param));
 

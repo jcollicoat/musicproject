@@ -1,3 +1,4 @@
+import { getUrlSlug } from '@api/helpers';
 import {
     AudioAnalysis,
     MusicalKeys,
@@ -122,7 +123,7 @@ const buildRecentlyPlayed = (
             (item) => item.id === rp.track.id
         );
         const context: Track['context'] = {
-            id: rp.context.href,
+            id: getUrlSlug(rp.context.href),
             type: rp.context.type,
             playedAt: rp.played_at,
         };
