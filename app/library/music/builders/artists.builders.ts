@@ -1,7 +1,7 @@
 import { Artist } from '@music/types/artists.types';
 import { SpotifyArtist } from '@spotify/artists.types';
 
-export const buildArtist = (artist: SpotifyArtist): Artist => {
+const buildArtist = (artist: SpotifyArtist): Artist => {
     const { genres, id, images, name, popularity } = artist;
 
     return {
@@ -13,3 +13,6 @@ export const buildArtist = (artist: SpotifyArtist): Artist => {
         popularity: popularity,
     };
 };
+
+const artists = { buildArtist };
+export { artists };

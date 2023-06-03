@@ -10,7 +10,7 @@ import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
 import { SpotifyRecentlyPlayed } from '@spotify/player.types';
 import { SpotifyTrack } from '@spotify/tracks.types';
 
-export const buildAudioAnalysis = (
+const buildAudioAnalysis = (
     audioAnalysis: SpotifyAudioAnalysis
 ): AudioAnalysis => {
     return {
@@ -36,7 +36,7 @@ export const buildAudioAnalysis = (
     };
 };
 
-export const buildAudioFeatures = (
+const buildAudioFeatures = (
     audioFeatures: SpotifyAudioFeatures
 ): AudioFeatures => {
     const {
@@ -90,7 +90,7 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
     }));
 };
 
-export const buildTrack = (
+const buildTrack = (
     track: SpotifyTrack,
     audioFeatures?: SpotifyAudioFeatures,
     audioAnalysis?: SpotifyAudioAnalysis
@@ -111,7 +111,7 @@ export const buildTrack = (
     };
 };
 
-export const buildRecentlyPlayed = (
+const buildRecentlyPlayed = (
     recentlyPlayed: SpotifyRecentlyPlayed
 ): RecentlyPlayed => {
     return {
@@ -119,3 +119,11 @@ export const buildRecentlyPlayed = (
         tracks: recentlyPlayed.items.map((item) => buildTrack(item.track)),
     };
 };
+
+const tracks = {
+    buildAudioAnalysis,
+    buildAudioFeatures,
+    buildTrack,
+    buildRecentlyPlayed,
+};
+export { tracks };

@@ -1,19 +1,14 @@
-import {
-    buildAudioAnalysis,
-    buildAudioFeatures,
-    buildTrack,
-    buildRecentlyPlayed,
-} from '@music/builders/tracks.builders';
+import { builders } from '@music/builders';
 import { spotify } from '@spotify/_api';
 
 const audioAnalysis = async (trackId: string, accessToken: string) => {
     const audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
-    return buildAudioAnalysis(audioAnalysis);
+    return builders.tracks.buildAudioAnalysis(audioAnalysis);
 };
 
 const audioFeatures = async (trackId: string, accessToken: string) => {
     const audioFeatures = await spotify.audioFeatures.id(trackId, accessToken);
-    return buildAudioFeatures(audioFeatures);
+    return builders.tracks.buildAudioFeatures(audioFeatures);
 };
 
 const id = async (
@@ -32,17 +27,17 @@ const id = async (
     if (hasAudioAnalysis)
         audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
 
-    return buildTrack(track, audioFeatures, audioAnalysis);
+    return builders.tracks.buildTrack(track, audioFeatures, audioAnalysis);
 };
 
 const ids = async (trackIds: string[], accessToken: string) => {
     const tracks = await spotify.tracks.ids(trackIds, accessToken);
-    return tracks.map((track) => buildTrack(track));
+    return tracks.map((track) => builders.tracks.buildTrack(track));
 };
 
 const recentlyPlayed = async (accessToken: string) => {
     const recentlyPlayed = await spotify.player.recentlyPlayed(accessToken);
-    return buildRecentlyPlayed(recentlyPlayed);
+    return builders.tracks.buildRecentlyPlayed(recentlyPlayed);
 };
 
 const tracks = { audioAnalysis, audioFeatures, id, ids, recentlyPlayed };
