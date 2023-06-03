@@ -1,10 +1,10 @@
 import {
     AudioAnalysis,
+    MusicalKeys,
+    MusicalModes,
     AudioFeatures,
     Track,
     RecentlyPlayed,
-    MusicalKeys,
-    MusicalModes,
 } from '@music/types/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
@@ -13,140 +13,110 @@ import { SpotifyTrack } from '@spotify/tracks.types';
 
 const buildAudioAnalysis = (
     audioAnalysis: SpotifyAudioAnalysis
-): AudioAnalysis => {
-    return {
-        bars: audioAnalysis.bars.map((bar) => ({
-            duration: bar.duration,
-            start: bar.start,
-        })),
-        beats: audioAnalysis.beats.map((beat) => ({
-            duration: beat.duration,
-            start: beat.start,
-        })),
-        sections: audioAnalysis.sections.map((section) => ({
-            duration: section.duration,
-            start: section.start,
-            key: MusicalKeys[section.key],
-            loudness: section.loudness,
-            mode: MusicalModes[section.mode],
-            tempo: section.tempo,
-            timeSignature: section.time_signature,
-        })),
-        endOfFadeIn: audioAnalysis.track.end_of_fade_in,
-        startOfFadeOut: audioAnalysis.track.start_of_fade_out,
-    };
-};
+): AudioAnalysis => ({
+    bars: audioAnalysis.bars.map((bar) => ({
+        duration: bar.duration,
+        start: bar.start,
+    })),
+    beats: audioAnalysis.beats.map((beat) => ({
+        duration: beat.duration,
+        start: beat.start,
+    })),
+    sections: audioAnalysis.sections.map((section) => ({
+        duration: section.duration,
+        start: section.start,
+        key: MusicalKeys[section.key],
+        loudness: section.loudness,
+        mode: MusicalModes[section.mode],
+        tempo: section.tempo,
+        timeSignature: section.time_signature,
+    })),
+    endOfFadeIn: audioAnalysis.track.end_of_fade_in,
+    startOfFadeOut: audioAnalysis.track.start_of_fade_out,
+});
 
 const buildAudioFeatures = (
     audioFeatures: SpotifyAudioFeatures
-): AudioFeatures => {
-    const {
-        acousticness,
-        danceability,
-        energy,
-        id,
-        instrumentalness,
-        liveness,
-        loudness,
-        speechiness,
-        tempo,
-        time_signature,
-        valence,
-    } = audioFeatures;
+): AudioFeatures => ({
+    acousticness: audioFeatures.acousticness,
+    danceability: audioFeatures.danceability,
+    energy: audioFeatures.energy,
+    id: audioFeatures.id,
+    instrumentalness: audioFeatures.instrumentalness,
+    key: MusicalKeys[audioFeatures.key],
+    liveness: audioFeatures.liveness,
+    loudness: audioFeatures.loudness,
+    mode: MusicalModes[audioFeatures.mode],
+    speechiness: audioFeatures.speechiness,
+    tempo: audioFeatures.tempo,
+    timeSignature: audioFeatures.time_signature,
+    valence: audioFeatures.valence,
+});
 
-    return {
-        acousticness,
-        danceability,
-        energy,
-        id,
-        instrumentalness,
-        key: MusicalKeys[audioFeatures.key],
-        liveness,
-        loudness,
-        mode: MusicalModes[audioFeatures.mode],
-        speechiness,
-        tempo,
-        timeSignature: time_signature,
-        valence,
-    };
-};
+const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => ({
+    albumType: album.album_type,
+    artists: album.artists.map((artist) => ({
+        id: artist.id,
+        name: artist.name,
+    })),
+    id: album.id,
+    name: album.name,
+    totalTracks: album.total_tracks,
+});
 
-const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => {
-    return {
-        albumType: album.album_type,
-        artists: album.artists.map((artist) => ({
-            id: artist.id,
-            name: artist.name,
-        })),
-        id: album.id,
-        name: album.name,
-        totalTracks: album.total_tracks,
-    };
-};
-
-const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] => {
-    return artists.map((artist) => ({
+const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] =>
+    artists.map((artist) => ({
         id: artist.id,
         name: artist.name,
     }));
-};
 
 const buildTrack = (
     track: SpotifyTrack,
     audioFeatures?: SpotifyAudioFeatures,
     audioAnalysis?: SpotifyAudioAnalysis,
     context?: Track['context']
-): Track => {
-    const { duration_ms, explicit, id, name, popularity, preview_url } = track;
-
-    return {
-        album: buildAlbum(track.album),
-        artists: buildArtists(track.artists),
-        durationMs: duration_ms,
-        explicit,
-        id,
-        name,
-        popularity,
-        previewUrl: preview_url,
-        audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
-        audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
-        context: context,
-    };
-};
+): Track => ({
+    album: buildAlbum(track.album),
+    artists: buildArtists(track.artists),
+    durationMs: track.duration_ms,
+    explicit: track.explicit,
+    id: track.id,
+    name: track.name,
+    popularity: track.popularity,
+    previewUrl: track.preview_url,
+    audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
+    audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
+    context: context,
+});
 
 const buildTracks = (
     tracks: SpotifyTrack[],
     audioFeaturesList?: SpotifyAudioFeatures[]
-): Track[] => {
-    return tracks.map((track) => {
+): Track[] =>
+    tracks.map((track) => {
         const audioFeatures = audioFeaturesList?.find(
             (item) => item.id === track.id
         );
-
         return buildTrack(track, audioFeatures);
     });
-};
 
 const buildRecentlyPlayed = (
     recentlyPlayed: SpotifyRecentlyPlayed,
     audioFeaturesList?: SpotifyAudioFeatures[]
-): RecentlyPlayed => {
-    return {
-        next: recentlyPlayed.next,
-        tracks: recentlyPlayed.items.map((rp) => {
-            const audioFeatures = audioFeaturesList?.find(
-                (item) => item.id === rp.track.id
-            );
-            const context: Track['context'] = {
-                id: rp.context.href,
-                type: rp.context.type,
-                playedAt: rp.played_at,
-            };
-
-            return buildTrack(rp.track, audioFeatures, undefined, context);
-        }),
-    };
-};
+): RecentlyPlayed => ({
+    next: recentlyPlayed.next,
+    tracks: recentlyPlayed.items.map((rp) => {
+        const audioFeatures = audioFeaturesList?.find(
+            (item) => item.id === rp.track.id
+        );
+        const context: Track['context'] = {
+            id: rp.context.href,
+            type: rp.context.type,
+            playedAt: rp.played_at,
+        };
+        return buildTrack(rp.track, audioFeatures, undefined, context);
+    }),
+});
 
 const tracks = {
     buildAudioAnalysis,

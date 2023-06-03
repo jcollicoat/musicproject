@@ -1,15 +1,14 @@
 import { Album } from '@music/types/albums.types';
 import { SpotifyAlbum } from '@spotify/albums.types';
 
-const buildArtists = (artists: SpotifyAlbum['artists']): Album['artists'] => {
-    return artists.map((artist) => ({
+const buildArtists = (artists: SpotifyAlbum['artists']): Album['artists'] =>
+    artists.map((artist) => ({
         id: artist.id,
         name: artist.name,
     }));
-};
 
-const buildTracks = (tracks: SpotifyAlbum['tracks']): Album['tracks'] => {
-    return tracks.items.map((track) => ({
+const buildTracks = (tracks: SpotifyAlbum['tracks']): Album['tracks'] =>
+    tracks.items.map((track) => ({
         artists: track.artists.map((artist) => ({
             id: artist.id,
             name: artist.name,
@@ -20,35 +19,20 @@ const buildTracks = (tracks: SpotifyAlbum['tracks']): Album['tracks'] => {
         name: track.name,
         previewUrl: track.preview_url,
     }));
-};
 
-const buildAlbum = (album: SpotifyAlbum): Album => {
-    const {
-        album_type,
-        genres,
-        id,
-        images,
-        label,
-        name,
-        popularity,
-        release_date,
-        release_date_precision,
-    } = album;
-
-    return {
-        albumType: album_type,
-        artists: buildArtists(album.artists),
-        genres: genres,
-        id: id,
-        images: images,
-        label: label,
-        name: name,
-        popularity: popularity,
-        releaseDate: release_date,
-        releaseDatePrecision: release_date_precision,
-        tracks: buildTracks(album.tracks),
-    };
-};
+const buildAlbum = (album: SpotifyAlbum): Album => ({
+    albumType: album.album_type,
+    artists: buildArtists(album.artists),
+    genres: album.genres,
+    id: album.id,
+    images: album.images,
+    label: album.label,
+    name: album.name,
+    popularity: album.popularity,
+    releaseDate: album.release_date,
+    releaseDatePrecision: album.release_date_precision,
+    tracks: buildTracks(album.tracks),
+});
 
 const albums = { buildAlbum };
 export { albums };

@@ -85,8 +85,8 @@ export interface Track {
     name: string;
     popularity: number;
     previewUrl: string;
-    audioFeatures?: AudioFeatures;
     audioAnalysis?: AudioAnalysis;
+    audioFeatures?: AudioFeatures;
     context?: TrackContext;
 }
 
