@@ -31,3 +31,7 @@ export interface SpotifyTrack {
     type: string;
     uri: string;
 }
+
+export interface SpotifyTracks {
+    tracks: SpotifyTrack[];
+}

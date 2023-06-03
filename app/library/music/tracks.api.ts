@@ -20,11 +20,16 @@ const id = async (
     return buildTrack(track, audioFeatures, audioAnalysis);
 };
 
+const ids = async (trackIds: string[], accessToken: string) => {
+    const tracks = await spotify.tracks.ids(trackIds, accessToken);
+    return tracks.map((track) => buildTrack(track));
+};
+
 const recentlyPlayed = async (accessToken: string) => {
     const recentlyPlayed = await spotify.player.recentlyPlayed(accessToken);
     return buildRecentlyPlayed(recentlyPlayed);
 };
 
-const tracks = { id, recentlyPlayed };
+const tracks = { id, ids, recentlyPlayed };
 
 export { tracks };
