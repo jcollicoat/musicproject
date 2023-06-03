@@ -72,40 +72,52 @@ const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] =>
 
 const buildTrack = (
     track: SpotifyTrack,
-    audioFeatures?: SpotifyAudioFeatures,
-    audioAnalysis?: SpotifyAudioAnalysis,
-    context?: Track['context']
-): Track => ({
-    album: buildAlbum(track.album),
-    artists: buildArtists(track.artists),
-    durationMs: track.duration_ms,
-    explicit: track.explicit,
-    id: track.id,
-    name: track.name,
-    popularity: track.popularity,
-    previewUrl: track.preview_url,
-    audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
-    audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
-    context: context,
-});
+    isSaved: boolean,
+    extras?: {
+        audioFeatures?: SpotifyAudioFeatures;
+        audioAnalysis?: SpotifyAudioAnalysis;
+        context?: Track['context'];
+    }
+): Track => {
+    return {
+        album: buildAlbum(track.album),
+        artists: buildArtists(track.artists),
+        durationMs: track.duration_ms,
+        explicit: track.explicit,
+        id: track.id,
+        name: track.name,
+        popularity: track.popularity,
+        previewUrl: track.preview_url,
+        saved: isSaved,
+        audioFeatures:
+            extras?.audioFeatures && buildAudioFeatures(extras.audioFeatures),
+        audioAnalysis:
+            extras?.audioAnalysis && buildAudioAnalysis(extras.audioAnalysis),
+        context: extras?.context,
+    };
+};
 
 const buildTracks = (
     tracks: SpotifyTrack[],
+    isSavedList: boolean[],
     audioFeaturesList?: SpotifyAudioFeatures[]
 ): Track[] =>
-    tracks.map((track) => {
+    tracks.map((track, index) => {
+        const isSaved = isSavedList[index];
         const audioFeatures = audioFeaturesList?.find(
             (item) => item.id === track.id
         );
-        return buildTrack(track, audioFeatures);
+        return buildTrack(track, isSaved, { audioFeatures });
     });
 
 const buildRecentlyPlayed = (
     recentlyPlayed: SpotifyRecentlyPlayed,
+    isSavedList: boolean[],
     audioFeaturesList?: SpotifyAudioFeatures[]
 ): RecentlyPlayed => ({
     next: recentlyPlayed.next,
-    tracks: recentlyPlayed.items.map((rp) => {
+    tracks: recentlyPlayed.items.map((rp, index) => {
+        const isSaved = isSavedList[index];
         const audioFeatures = audioFeaturesList?.find(
             (item) => item.id === rp.track.id
         );
@@ -114,7 +126,10 @@ const buildRecentlyPlayed = (
             type: rp.context.type,
             playedAt: rp.played_at,
         };
-        return buildTrack(rp.track, audioFeatures, undefined, context);
+        return buildTrack(rp.track, isSaved, {
+            audioFeatures,
+            context,
+        });
     }),
 });
 

@@ -18,6 +18,7 @@ const id = async (
     hasAudioAnalysis: boolean
 ) => {
     const track = await spotify.tracks.id(trackId, accessToken);
+    const [isSaved] = await spotify.user.checkSaved([trackId], accessToken);
 
     let audioFeatures;
     if (hasAudioFeatures)
@@ -27,7 +28,10 @@ const id = async (
     if (hasAudioAnalysis)
         audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
 
-    return builders.tracks.buildTrack(track, audioFeatures, audioAnalysis);
+    return builders.tracks.buildTrack(track, isSaved, {
+        audioFeatures,
+        audioAnalysis,
+    });
 };
 
 const ids = async (
@@ -36,12 +40,13 @@ const ids = async (
     hasAudioFeatures: boolean
 ) => {
     const tracks = await spotify.tracks.ids(trackIds, accessToken);
+    const isSavedList = await spotify.user.checkSaved(trackIds, accessToken);
 
     let audioFeatures;
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.ids(trackIds, accessToken);
 
-    return builders.tracks.buildTracks(tracks, audioFeatures);
+    return builders.tracks.buildTracks(tracks, isSavedList, audioFeatures);
 };
 
 const recentlyPlayed = async (
@@ -49,15 +54,18 @@ const recentlyPlayed = async (
     hasAudioFeatures: boolean
 ) => {
     const recentlyPlayed = await spotify.player.recentlyPlayed(accessToken);
+    const trackIds = recentlyPlayed.items.map((item) => item.track.id);
+    const isSavedList = await spotify.user.checkSaved(trackIds, accessToken);
 
     let audioFeatures;
     if (hasAudioFeatures)
-        audioFeatures = await spotify.audioFeatures.ids(
-            recentlyPlayed.items.map((item) => item.track.id),
-            accessToken
-        );
+        audioFeatures = await spotify.audioFeatures.ids(trackIds, accessToken);
 
-    return builders.tracks.buildRecentlyPlayed(recentlyPlayed, audioFeatures);
+    return builders.tracks.buildRecentlyPlayed(
+        recentlyPlayed,
+        isSavedList,
+        audioFeatures
+    );
 };
 
 const tracks = { audioAnalysis, audioFeatures, id, ids, recentlyPlayed };
