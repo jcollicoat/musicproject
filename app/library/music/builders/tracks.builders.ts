@@ -1,9 +1,10 @@
-import { mapKey } from '@music/helpers';
 import {
     AudioAnalysis,
     AudioFeatures,
     Track,
     RecentlyPlayed,
+    MusicalKeys,
+    MusicalModes,
 } from '@music/types/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
@@ -25,9 +26,9 @@ const buildAudioAnalysis = (
         sections: audioAnalysis.sections.map((section) => ({
             duration: section.duration,
             start: section.start,
-            key: mapKey(section.key),
+            key: MusicalKeys[section.key],
             loudness: section.loudness,
-            mode: section.mode === 0 ? 'Minor' : 'Major',
+            mode: MusicalModes[section.mode],
             tempo: section.tempo,
             timeSignature: section.time_signature,
         })),
@@ -59,10 +60,10 @@ const buildAudioFeatures = (
         energy,
         id,
         instrumentalness,
-        key: mapKey(audioFeatures.key),
+        key: MusicalKeys[audioFeatures.key],
         liveness,
         loudness,
-        mode: audioFeatures.mode === 0 ? 'Minor' : 'Major',
+        mode: MusicalModes[audioFeatures.mode],
         speechiness,
         tempo,
         timeSignature: time_signature,

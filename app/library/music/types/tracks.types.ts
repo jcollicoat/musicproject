@@ -1,5 +1,24 @@
-import { MusicalKey } from '@music/types';
 import { Album } from './albums.types';
+
+export enum MusicalKeys {
+    'C',
+    'C#',
+    'D',
+    'D#',
+    'E',
+    'F',
+    'F#',
+    'G',
+    'G#',
+    'A',
+    'A#',
+    'B',
+}
+
+export enum MusicalModes {
+    'Minor',
+    'Major',
+}
 
 interface Interval {
     duration: number;
@@ -7,9 +26,9 @@ interface Interval {
 }
 
 interface Section extends Interval {
-    key: MusicalKey;
+    key: string;
     loudness: number;
-    mode: 'Major' | 'Minor';
+    mode: string;
     tempo: number;
     timeSignature: number;
 }
@@ -28,10 +47,10 @@ export interface AudioFeatures {
     energy: number;
     id: string;
     instrumentalness: number;
-    key: MusicalKey;
+    key: string;
     liveness: number;
     loudness: number;
-    mode: 'Major' | 'Minor';
+    mode: string;
     speechiness: number;
     tempo: number;
     timeSignature: number;
