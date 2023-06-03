@@ -15,6 +15,12 @@ interface TrackArtist {
     name: string;
 }
 
+interface TrackContext {
+    id: string;
+    type: string;
+    playedAt?: string;
+}
+
 export interface Track {
     album: TrackAlbum;
     artists: TrackArtist[];
@@ -26,4 +32,10 @@ export interface Track {
     previewUrl: string;
     audioFeatures?: AudioFeatures;
     audioAnalysis?: AudioAnalysis;
+    context?: TrackContext;
+}
+
+export interface RecentlyPlayed {
+    tracks: Track[];
+    next: string;
 }

@@ -1,6 +1,7 @@
-import { Track } from '@music/tracks.types';
+import { RecentlyPlayed, Track } from '@music/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
+import { SpotifyRecentlyPlayed } from '@spotify/player.types';
 import { SpotifyTrack } from '@spotify/tracks.types';
 import { buildAudioAnalysis } from './audioanalysis.builders';
 import { buildAudioFeatures } from './audiofeatures.builders';
@@ -43,5 +44,14 @@ export const buildTrack = (
         previewUrl: preview_url,
         audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
         audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
+    };
+};
+
+export const buildRecentlyPlayed = (
+    recentlyPlayed: SpotifyRecentlyPlayed
+): RecentlyPlayed => {
+    return {
+        next: recentlyPlayed.next,
+        tracks: recentlyPlayed.items.map((item) => buildTrack(item.track)),
     };
 };

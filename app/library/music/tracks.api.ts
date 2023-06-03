@@ -1,5 +1,5 @@
 import { spotify } from '@spotify/_api';
-import { buildTrack } from './tracks.builders';
+import { buildRecentlyPlayed, buildTrack } from './tracks.builders';
 
 const id = async (
     trackId: string,
@@ -20,6 +20,11 @@ const id = async (
     return buildTrack(track, audioFeatures, audioAnalysis);
 };
 
-const tracks = { id };
+const recentlyPlayed = async (accessToken: string) => {
+    const recentlyPlayed = await spotify.player.recentlyPlayed(accessToken);
+    return buildRecentlyPlayed(recentlyPlayed);
+};
+
+const tracks = { id, recentlyPlayed };
 
 export { tracks };
