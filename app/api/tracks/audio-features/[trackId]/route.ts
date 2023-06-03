@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
         const accessToken = getAccessToken(request);
         const trackId = getIdFromRoute(request.nextUrl);
 
-        const audioFeatures = await music.audioFeatures.id(
+        const audioFeatures = await music.tracks.audioFeatures(
             trackId,
             accessToken
         );

@@ -1,9 +1,13 @@
-import { AudioAnalysis, RecentlyPlayed, Track } from '@music/tracks.types';
+import {
+    AudioAnalysis,
+    AudioFeatures,
+    RecentlyPlayed,
+    Track,
+} from '@music/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/audiofeatures.types';
 import { SpotifyRecentlyPlayed } from '@spotify/player.types';
 import { SpotifyTrack } from '@spotify/tracks.types';
-import { buildAudioFeatures } from './audiofeatures.builders';
 import { mapKey } from './helpers';
 
 export const buildAudioAnalysis = (
@@ -29,6 +33,40 @@ export const buildAudioAnalysis = (
         })),
         endOfFadeIn: audioAnalysis.track.end_of_fade_in,
         startOfFadeOut: audioAnalysis.track.start_of_fade_out,
+    };
+};
+
+export const buildAudioFeatures = (
+    audioFeatures: SpotifyAudioFeatures
+): AudioFeatures => {
+    const {
+        acousticness,
+        danceability,
+        energy,
+        id,
+        instrumentalness,
+        liveness,
+        loudness,
+        speechiness,
+        tempo,
+        time_signature,
+        valence,
+    } = audioFeatures;
+
+    return {
+        acousticness,
+        danceability,
+        energy,
+        id,
+        instrumentalness,
+        key: mapKey(audioFeatures.key),
+        liveness,
+        loudness,
+        mode: audioFeatures.mode === 0 ? 'Minor' : 'Major',
+        speechiness,
+        tempo,
+        timeSignature: time_signature,
+        valence,
     };
 };
 

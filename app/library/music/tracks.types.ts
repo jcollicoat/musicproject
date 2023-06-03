@@ -1,5 +1,4 @@
 import { Album } from './albums.types';
-import { AudioFeatures } from './audiofeatures.types';
 import { MusicalKey } from './types';
 
 interface Interval {
@@ -21,6 +20,22 @@ export interface AudioAnalysis {
     endOfFadeIn: number;
     sections: Section[];
     startOfFadeOut: number;
+}
+
+export interface AudioFeatures {
+    acousticness: number;
+    danceability: number;
+    energy: number;
+    id: string;
+    instrumentalness: number;
+    key: MusicalKey;
+    liveness: number;
+    loudness: number;
+    mode: 'Major' | 'Minor';
+    speechiness: number;
+    tempo: number;
+    timeSignature: number;
+    valence: number;
 }
 
 interface TrackAlbum {

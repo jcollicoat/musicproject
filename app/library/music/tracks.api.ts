@@ -1,6 +1,7 @@
 import { spotify } from '@spotify/_api';
 import {
     buildAudioAnalysis,
+    buildAudioFeatures,
     buildRecentlyPlayed,
     buildTrack,
 } from './tracks.builders';
@@ -8,6 +9,11 @@ import {
 const audioAnalysis = async (trackId: string, accessToken: string) => {
     const audioAnalysis = await spotify.audioAnalysis.id(trackId, accessToken);
     return buildAudioAnalysis(audioAnalysis);
+};
+
+const audioFeatures = async (trackId: string, accessToken: string) => {
+    const audioFeatures = await spotify.audioFeatures.id(trackId, accessToken);
+    return buildAudioFeatures(audioFeatures);
 };
 
 const id = async (
@@ -39,6 +45,6 @@ const recentlyPlayed = async (accessToken: string) => {
     return buildRecentlyPlayed(recentlyPlayed);
 };
 
-const tracks = { audioAnalysis, id, ids, recentlyPlayed };
+const tracks = { audioAnalysis, audioFeatures, id, ids, recentlyPlayed };
 
 export { tracks };
