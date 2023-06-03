@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { errorResponse, getIdFromRoute } from '@api/helpers';
+import { errorResponse } from '@api/helpers';
 import { getAccessToken } from '@auth/helpers';
 import { music } from '@music/api';
 
-export async function GET(request: NextRequest) {
+export async function GET(
+    request: NextRequest,
+    { params }: { params: { artistId: string } }
+) {
     try {
         const accessToken = getAccessToken(request);
-        const artistId = getIdFromRoute(request.nextUrl);
+        const { artistId } = params;
 
         const artist = await music.artists.id(artistId, accessToken);
         return NextResponse.json(artist);
