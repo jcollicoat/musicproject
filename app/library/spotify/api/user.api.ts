@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { spotifyApi } from '@spotify/endpoints';
 
-const spotifyEndpoint = 'https://api.spotify.com/v1/me/tracks/contains';
+const endpoint = `${spotifyApi}/me`;
 
 const checkSaved = async (trackIds: string[], accessToken: string) => {
-    const result = await axios.get<boolean[]>(spotifyEndpoint, {
+    const result = await axios.get<boolean[]>(`${endpoint}/tracks/contains`, {
         headers: {
             Authorization: accessToken,
         },

@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { spotifyApi } from '@spotify/endpoints';
 import { SpotifyPlaylist } from '@spotify/types/playlists.types';
 
-const spotifyEndpoint = 'https://api.spotify.com/v1/playlists/';
+const endpoint = `${spotifyApi}/playlists`;
 
 const id = async (playlistId: string, accessToken: string) => {
     const playlist = await axios.get<SpotifyPlaylist>(
-        spotifyEndpoint + playlistId,
+        `${endpoint}/${playlistId}`,
         {
             headers: {
                 Authorization: accessToken,

@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { spotifyApi } from '@spotify/endpoints';
 import { SpotifyAlbum } from '@spotify/types/albums.types';
 
-const spotifyEndpoint = 'https://api.spotify.com/v1/albums/';
+const endpoint = `${spotifyApi}/albums`;
 
 const id = async (albumId: string, accessToken: string) => {
-    const album = await axios.get<SpotifyAlbum>(spotifyEndpoint + albumId, {
+    const album = await axios.get<SpotifyAlbum>(`${endpoint}/${albumId}`, {
         headers: {
             Authorization: accessToken,
         },
