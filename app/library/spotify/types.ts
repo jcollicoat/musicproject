@@ -14,4 +14,4 @@ export interface SpotifyImage {
     width: number | null;
 }
 
-export type SpotifyObject = Record<string, string>;
+export type SpotifyObject = Record<string, unknown>;

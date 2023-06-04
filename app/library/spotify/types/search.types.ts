@@ -1,26 +1,21 @@
-import { SpotifyAlbum } from './albums.types';
+import { SpotifyAlbumSimple } from './albums.types';
 import { SpotifyArtist } from './artists.types';
 import { SpotifyPlaylist } from './playlists.types';
 import { SpotifyTrack } from './tracks.types';
 
-interface SearchGroup<T> {
-    href: string;
+export interface SpotifySearchGroup<T> {
     items: T[];
+    href: string;
     limit: number;
-    next: string;
+    next: string | null;
     offset: number;
-    previous: string;
+    previous: string | null;
     total: number;
 }
 
-export type SpotifySearchAlbum = Omit<
-    SpotifyAlbum,
-    'external_ids' | 'genres' | 'label' | 'popularity' | 'tracks'
->;
-
 export interface SpotifySearch {
-    albums?: SearchGroup<SpotifySearchAlbum>;
-    artists?: SearchGroup<SpotifyArtist>;
-    tracks?: SearchGroup<SpotifyTrack>;
-    playlists?: SearchGroup<SpotifyPlaylist>;
+    albums?: SpotifySearchGroup<SpotifyAlbumSimple>;
+    artists?: SpotifySearchGroup<SpotifyArtist>;
+    tracks?: SpotifySearchGroup<SpotifyTrack>;
+    playlists?: SpotifySearchGroup<SpotifyPlaylist>;
 }

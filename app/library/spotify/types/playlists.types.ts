@@ -1,4 +1,5 @@
 import { SpotifyFollowers, SpotifyImage, SpotifyObject } from '@spotify/types';
+import { SpotifySearchGroup } from './search.types';
 import { SpotifyTrack } from './tracks.types';
 
 interface SpotifyPlaylistOwner {
@@ -11,11 +12,17 @@ interface SpotifyPlaylistOwner {
     display_name: string;
 }
 
-export interface SpotifyPlaylist {
+type Track = SpotifySearchGroup<{
+    added_at: string;
+    added_by: SpotifyPlaylistOwner;
+    is_local: boolean;
+    track: SpotifyTrack;
+}>;
+
+export interface SpotifyPlaylistSimple {
     collaborative: boolean;
     description: string;
     external_urls: SpotifyObject;
-    followers: SpotifyFollowers;
     href: string;
     id: string;
     images: SpotifyImage[];
@@ -23,20 +30,11 @@ export interface SpotifyPlaylist {
     owner: SpotifyPlaylistOwner;
     public: boolean;
     snapshot_id: string;
-    tracks: {
-        href: string;
-        limit: number;
-        next: string;
-        offset: number;
-        previous: string;
-        total: number;
-        items: {
-            added_at: string;
-            added_by: SpotifyPlaylistOwner;
-            is_local: boolean;
-            track: SpotifyTrack;
-        }[];
-    };
     type: string;
     uri: string;
+}
+
+export interface SpotifyPlaylist {
+    followers: SpotifyFollowers;
+    tracks: Track[];
 }
