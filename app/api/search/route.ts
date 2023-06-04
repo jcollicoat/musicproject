@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { errorResponse, getArrayRouteParam, getRouteParam } from '@api/helpers';
-// import { getAccessToken } from '@auth/helpers';
+import { getAccessToken } from '@auth/helpers';
+import { music } from '@music/api';
 
-// eslint-disable-next-line require-await
 export async function GET(request: NextRequest) {
     try {
-        // const accessToken = getAccessToken(request);
+        const accessToken = getAccessToken(request);
         const query = getRouteParam(request.nextUrl, 'query');
         const types = getArrayRouteParam(request.nextUrl, 'types');
 
-        return NextResponse.json({ query, types });
+        if (!query || !types) throw new Error('Invalid search config');
+
+        const search = await music.search(query, types, accessToken);
+        return NextResponse.json(search);
     } catch (error) {
         return errorResponse(error);
     }

@@ -1,12 +1,12 @@
-import { SpotifyAlbum } from './albums.types';
-import { SpotifyArtist } from './artists.types';
-import { SpotifyPlaylist } from './playlists.types';
-import { SpotifyTrack } from './tracks.types';
+import { Album } from './albums.types';
+import { Artist } from './artists.types';
+import { Playlist } from './playlists.types';
+import { Track } from './tracks.types';
 
-export interface SpotifySearch {
+export interface Search {
     albums?: {
         href: string;
-        items: SpotifyAlbum[];
+        items: Album[];
         limit: number;
         next: string;
         offset: number;
@@ -15,7 +15,7 @@ export interface SpotifySearch {
     };
     artists?: {
         href: string;
-        items: SpotifyArtist[];
+        items: Artist[];
         limit: number;
         next: string;
         offset: number;
@@ -24,7 +24,7 @@ export interface SpotifySearch {
     };
     tracks?: {
         href: string;
-        items: SpotifyTrack[];
+        items: Track[];
         limit: number;
         next: string;
         offset: number;
@@ -33,7 +33,7 @@ export interface SpotifySearch {
     };
     playlists?: {
         href: string;
-        items: SpotifyPlaylist[];
+        items: Playlist[];
         limit: number;
         next: string;
         offset: number;
