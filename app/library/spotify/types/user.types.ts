@@ -20,15 +20,19 @@ export interface SpotifyUser {
     uri: string;
 }
 
-export interface SpotifyFollowedArtists {
-    items: SpotifyArtist[];
-    next: string;
+interface PagedList<T> {
+    items: T[];
+    next: string | null;
     cursors: {
-        before: string;
-        after: string;
+        before?: string | null;
+        after: string | null;
     };
     limit: number;
     href: string;
+}
+
+export interface SpotifyFollowedArtists {
+    artists: PagedList<SpotifyArtist> & { total: number };
 }
 
 interface RecentlyPlayedTrack {
@@ -42,13 +46,4 @@ interface RecentlyPlayedTrack {
     };
 }
 
-export interface SpotifyRecentlyPlayed {
-    items: RecentlyPlayedTrack[];
-    next: string;
-    cursors: {
-        before: string;
-        after: string;
-    };
-    limit: number;
-    href: string;
-}
+export type SpotifyRecentlyPlayed = PagedList<RecentlyPlayedTrack>;
