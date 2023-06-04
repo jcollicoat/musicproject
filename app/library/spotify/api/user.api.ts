@@ -1,8 +1,18 @@
 import axios from 'axios';
 import { spotifyApi } from '@spotify/endpoints';
 import { SpotifyRecentlyPlayed } from '@spotify/types/player.types';
+import { SpotifyUser } from '@spotify/types/user.types';
 
 const endpoint = `${spotifyApi}/me`;
+
+const me = async (accessToken: string) => {
+    const user = await axios.get<SpotifyUser>(endpoint, {
+        headers: {
+            Authorization: accessToken,
+        },
+    });
+    return user.data;
+};
 
 const checkSaved = async (trackIds: string[], accessToken: string) => {
     const result = await axios.get<boolean[]>(`${endpoint}/tracks/contains`, {
@@ -28,5 +38,5 @@ const recentlyPlayed = async (accessToken: string) => {
     return recentlyPlayed.data;
 };
 
-const user = { tracks: { checkSaved, recentlyPlayed } };
+const user = { me, tracks: { checkSaved, recentlyPlayed } };
 export { user };
