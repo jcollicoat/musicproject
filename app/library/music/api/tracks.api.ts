@@ -18,7 +18,10 @@ const id = async (
     hasAudioAnalysis: boolean
 ) => {
     const track = await spotify.tracks.id(trackId, accessToken);
-    const [isSaved] = await spotify.user.checkSaved([trackId], accessToken);
+    const [isSaved] = await spotify.user.tracks.checkSaved(
+        [trackId],
+        accessToken
+    );
 
     let audioFeatures;
     if (hasAudioFeatures)
@@ -40,7 +43,10 @@ const ids = async (
     hasAudioFeatures: boolean
 ) => {
     const tracks = await spotify.tracks.ids(trackIds, accessToken);
-    const isSavedList = await spotify.user.checkSaved(trackIds, accessToken);
+    const isSavedList = await spotify.user.tracks.checkSaved(
+        trackIds,
+        accessToken
+    );
 
     let audioFeatures;
     if (hasAudioFeatures)
@@ -53,9 +59,14 @@ const recentlyPlayed = async (
     accessToken: string,
     hasAudioFeatures: boolean
 ) => {
-    const recentlyPlayed = await spotify.player.recentlyPlayed(accessToken);
+    const recentlyPlayed = await spotify.user.tracks.recentlyPlayed(
+        accessToken
+    );
     const trackIds = recentlyPlayed.items.map((item) => item.track.id);
-    const isSavedList = await spotify.user.checkSaved(trackIds, accessToken);
+    const isSavedList = await spotify.user.tracks.checkSaved(
+        trackIds,
+        accessToken
+    );
 
     let audioFeatures;
     if (hasAudioFeatures)
