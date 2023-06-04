@@ -1,21 +1,8 @@
-import axios from 'axios';
-import { spotifyApi } from '@spotify/endpoints';
+import { api } from '@spotify/requests';
 import { SpotifyArtist } from '@spotify/types/artists.types';
 
-const endpoint = `${spotifyApi}/artists`;
-
-export const id = async (
-    artistId: string,
-    accessToken: string
-): Promise<SpotifyArtist> => {
-    const artist = await axios.get<SpotifyArtist>(`${endpoint}/${artistId}`, {
-        headers: {
-            Authorization: accessToken,
-        },
-    });
-    return artist.data;
-};
+export const id = async (artistId: string, accessToken: string) =>
+    await api.get<SpotifyArtist>(`artists/${artistId}`, accessToken);
 
 const artists = { id };
-
 export { artists };

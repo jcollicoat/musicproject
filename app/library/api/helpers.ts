@@ -7,7 +7,8 @@ const ENV = process.env.NODE_ENV;
 
 export const errorResponse = (error: unknown): NextResponse => {
     if (ENV === 'development') {
-        return NextResponse.json(error);
+        console.log(error);
+        return NextResponse.json(JSON.stringify(error));
     }
 
     return NextResponse.json('Internal server error', { status: 500 });

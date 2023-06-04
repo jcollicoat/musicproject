@@ -5,5 +5,4 @@ const id = async (albumId: string, accessToken: string) =>
     await api.get<SpotifyAlbum>(`albums/${albumId}`, accessToken);
 
 const albums = { id };
-
 export { albums };

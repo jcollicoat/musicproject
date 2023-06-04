@@ -42,7 +42,7 @@ const ids = async (
     accessToken: string,
     hasAudioFeatures: boolean
 ) => {
-    const tracks = await spotify.tracks.ids(trackIds, accessToken);
+    const { tracks } = await spotify.tracks.ids(trackIds, accessToken);
     const isSavedList = await spotify.user.tracks.checkSaved(
         trackIds,
         accessToken
@@ -52,7 +52,11 @@ const ids = async (
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.ids(trackIds, accessToken);
 
-    return builders.tracks.buildTracks(tracks, isSavedList, audioFeatures);
+    return builders.tracks.buildTracks(
+        tracks,
+        isSavedList,
+        audioFeatures?.audio_features
+    );
 };
 
 const recentlyPlayed = async (
@@ -75,7 +79,7 @@ const recentlyPlayed = async (
     return builders.tracks.buildRecentlyPlayed(
         recentlyPlayed,
         isSavedList,
-        audioFeatures
+        audioFeatures?.audio_features
     );
 };
 
