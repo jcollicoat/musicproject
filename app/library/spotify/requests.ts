@@ -5,12 +5,15 @@ const get = async <T>(
     accessToken: string,
     params?: unknown
 ) => {
-    const response = await axios.get<T>(endpoint, {
-        headers: {
-            Authorization: accessToken,
-        },
-        params: params,
-    });
+    const response = await axios.get<T>(
+        `https://api.spotify.com/v1/${endpoint}`,
+        {
+            headers: {
+                Authorization: accessToken,
+            },
+            params: params,
+        }
+    );
     return response.data;
 };
 
