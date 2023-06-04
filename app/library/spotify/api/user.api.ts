@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { spotifyApi } from '@spotify/endpoints';
-import { SpotifyRecentlyPlayed } from '@spotify/types/player.types';
-import { SpotifyUser } from '@spotify/types/user.types';
+import {
+    SpotifyFollowedArtists,
+    SpotifyRecentlyPlayed,
+    SpotifyUser,
+} from '@spotify/types/user.types';
 
 const endpoint = `${spotifyApi}/me`;
 
@@ -12,6 +15,22 @@ const me = async (accessToken: string) => {
         },
     });
     return user.data;
+};
+
+const followedArtists = async (accessToken: string) => {
+    const artists = await axios.get<SpotifyFollowedArtists>(
+        `${endpoint}/following`,
+        {
+            headers: {
+                Authorization: accessToken,
+            },
+            params: {
+                type: 'artist',
+            },
+        }
+    );
+    console.log(artists);
+    return artists.data;
 };
 
 const checkSaved = async (trackIds: string[], accessToken: string) => {
@@ -38,5 +57,5 @@ const recentlyPlayed = async (accessToken: string) => {
     return recentlyPlayed.data;
 };
 
-const user = { me, tracks: { checkSaved, recentlyPlayed } };
+const user = { me, followedArtists, tracks: { checkSaved, recentlyPlayed } };
 export { user };

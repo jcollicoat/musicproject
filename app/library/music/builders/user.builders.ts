@@ -1,5 +1,5 @@
 import { User } from '@music/types/user.types';
-import { SpotifyUser } from '@spotify/types/user.types';
+import { SpotifyFollowedArtists, SpotifyUser } from '@spotify/types/user.types';
 
 const buildUser = (user: SpotifyUser): User => ({
     country: user.country,
@@ -12,5 +12,10 @@ const buildUser = (user: SpotifyUser): User => ({
     type: user.type,
 });
 
-const user = { buildUser };
+const buildFullUser = (
+    details: SpotifyUser,
+    followedArtists: SpotifyFollowedArtists
+) => ({ details, followedArtists });
+
+const user = { buildUser, buildFullUser };
 export { user };
