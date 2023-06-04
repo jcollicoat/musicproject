@@ -18,11 +18,20 @@ export const errorResponse = (error: unknown): NextResponse => {
 
 export const getUrlSlug = (url: string) => url.replace(/^(.*[\\/])/, '');
 
-export const getParamFromRoute = (url: NextURL, param: string) =>
+export const hasRouteParam = (url: NextURL, param: string) =>
     Boolean(url.searchParams.get(param));
 
-export const getArrayParamFromRoute = (url: NextURL, param: string) =>
+export const hasRouteParams = (url: NextURL, params: string[]) =>
+    params.map((param) => Boolean(url.searchParams.get(param)));
+
+export const getRouteParam = (url: NextURL, param: string) =>
+    url.searchParams.get(param);
+
+export const getRouteParams = (url: NextURL, params: string[]) =>
+    params.map((param) => getRouteParam(url, param));
+
+export const getArrayRouteParam = (url: NextURL, param: string) =>
     url.searchParams.get(param)?.split(',');
 
-export const getParamsFromRoute = (url: NextURL, params: string[]) =>
-    params.map((param) => Boolean(url.searchParams.get(param)));
+export const getArrayRouteParams = (url: NextURL, params: string[]) =>
+    params.map((param) => getArrayRouteParam(url, param));
