@@ -3,41 +3,24 @@ import { SpotifyArtist } from './artists.types';
 import { SpotifyPlaylist } from './playlists.types';
 import { SpotifyTrack } from './tracks.types';
 
+interface SearchGroup<T> {
+    href: string;
+    items: T[];
+    limit: number;
+    next: string;
+    offset: number;
+    previous: string;
+    total: number;
+}
+
+export type SpotifySearchAlbum = Omit<
+    SpotifyAlbum,
+    'external_ids' | 'genres' | 'label' | 'popularity' | 'tracks'
+>;
+
 export interface SpotifySearch {
-    albums?: {
-        href: string;
-        items: SpotifyAlbum[];
-        limit: number;
-        next: string;
-        offset: number;
-        previous: string;
-        total: number;
-    };
-    artists?: {
-        href: string;
-        items: SpotifyArtist[];
-        limit: number;
-        next: string;
-        offset: number;
-        previous: string;
-        total: number;
-    };
-    tracks?: {
-        href: string;
-        items: SpotifyTrack[];
-        limit: number;
-        next: string;
-        offset: number;
-        previous: string;
-        total: number;
-    };
-    playlists?: {
-        href: string;
-        items: SpotifyPlaylist[];
-        limit: number;
-        next: string;
-        offset: number;
-        previous: string;
-        total: number;
-    };
+    albums?: SearchGroup<SpotifySearchAlbum>;
+    artists?: SearchGroup<SpotifyArtist>;
+    tracks?: SearchGroup<SpotifyTrack>;
+    playlists?: SearchGroup<SpotifyPlaylist>;
 }
