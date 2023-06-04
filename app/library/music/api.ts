@@ -26,10 +26,12 @@ const playlists = {
     },
 };
 
-const search = async (query: string, types: string[], accessToken: string) => {
-    return builders.search.buildSearch(
-        await spotify.search(query, types, accessToken)
-    );
+const search = async (config: {
+    query: string;
+    types?: string[];
+    accessToken: string;
+}) => {
+    return builders.search.buildSearch(await spotify.search(config));
 };
 
 const user = {

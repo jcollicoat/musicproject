@@ -6,10 +6,7 @@ import { music } from '@music/api';
 export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
-        const trackIds = getArrayRouteParam(request.nextUrl, 'trackIds');
-        if (!trackIds) {
-            throw new Error('trackIds param required.');
-        }
+        const trackIds = getArrayRouteParam(request.nextUrl, 'trackIds', true);
 
         const hasAudioFeatures = hasRouteParam(
             request.nextUrl,
@@ -17,7 +14,7 @@ export async function GET(request: NextRequest) {
         );
 
         const tracks = await music.tracks.ids(
-            trackIds,
+            trackIds ?? [],
             accessToken,
             hasAudioFeatures
         );

@@ -6,12 +6,10 @@ import { music } from '@music/api';
 export async function GET(request: NextRequest) {
     try {
         const accessToken = getAccessToken(request);
-        const query = getRouteParam(request.nextUrl, 'query');
+        const query = getRouteParam(request.nextUrl, 'query', true) ?? '';
         const types = getArrayRouteParam(request.nextUrl, 'types');
 
-        if (!query || !types) throw new Error('Invalid search config');
-
-        const search = await music.search(query, types, accessToken);
+        const search = await music.search({ query, types, accessToken });
         return NextResponse.json(search);
     } catch (error) {
         return errorResponse(error);

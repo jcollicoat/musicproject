@@ -7,8 +7,11 @@ const ENV = process.env.NODE_ENV;
 
 export const errorResponse = (error: unknown): NextResponse => {
     if (ENV === 'development') {
-        console.log(error);
-        return NextResponse.json(JSON.stringify(error));
+        console.error(error);
+        if (error instanceof Error) {
+            return NextResponse.json(error.message);
+        }
+        return NextResponse.json(error);
     }
 
     return NextResponse.json('Internal server error', { status: 500 });
@@ -24,14 +27,28 @@ export const hasRouteParam = (url: NextURL, param: string) =>
 export const hasRouteParams = (url: NextURL, params: string[]) =>
     params.map((param) => Boolean(url.searchParams.get(param)));
 
-export const getRouteParam = (url: NextURL, param: string) =>
-    url.searchParams.get(param);
+export const getRouteParam = (
+    url: NextURL,
+    param: string,
+    required?: boolean
+) => {
+    if (!url.searchParams.get(param) && required)
+        throw new Error(`Parameter {${param}} required.`);
+    return url.searchParams.get(param);
+};
 
 export const getRouteParams = (url: NextURL, params: string[]) =>
     params.map((param) => getRouteParam(url, param));
 
-export const getArrayRouteParam = (url: NextURL, param: string) =>
-    url.searchParams.get(param)?.split(',');
+export const getArrayRouteParam = (
+    url: NextURL,
+    param: string,
+    required?: boolean
+) => {
+    if (!url.searchParams.get(param) && required)
+        throw new Error(`Parameter {${param}} required.`);
+    return url.searchParams.get(param)?.split(',');
+};
 
 export const getArrayRouteParams = (url: NextURL, params: string[]) =>
     params.map((param) => getArrayRouteParam(url, param));
