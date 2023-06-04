@@ -121,5 +121,4 @@ const spotify = {
     tracks,
     user,
 };
-
 export { spotify };

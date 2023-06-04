@@ -11,7 +11,7 @@ export async function GET(
         const accessToken = getAccessToken(request);
         const { albumId } = params;
 
-        const album = await music.albums.id(albumId, accessToken);
+        const album = await music.albums.get(albumId, accessToken);
         return NextResponse.json(album);
     } catch (error) {
         return errorResponse(error);

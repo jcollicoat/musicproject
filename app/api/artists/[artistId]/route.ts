@@ -11,7 +11,7 @@ export async function GET(
         const accessToken = getAccessToken(request);
         const { artistId } = params;
 
-        const artist = await music.artists.id(artistId, accessToken);
+        const artist = await music.artists.get(artistId, accessToken);
         return NextResponse.json(artist);
     } catch (error) {
         return errorResponse(error);

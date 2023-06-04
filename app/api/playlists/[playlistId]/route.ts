@@ -11,7 +11,7 @@ export async function GET(
         const accessToken = getAccessToken(request);
         const { playlistId } = params;
 
-        const playlist = await music.playlists.id(playlistId, accessToken);
+        const playlist = await music.playlists.get(playlistId, accessToken);
         return NextResponse.json(playlist);
     } catch (error) {
         return errorResponse(error);
