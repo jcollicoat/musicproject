@@ -33,7 +33,7 @@ export interface SpotifyFollowedArtists {
 
 interface RecentlyPlayedTrack {
     track: SpotifyTrack;
-    played_at: string; // ISO timestamp
+    played_at: string;
     context: {
         type: string;
         external_urls: SpotifyObject;
