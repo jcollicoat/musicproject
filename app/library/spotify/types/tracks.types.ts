@@ -1,15 +1,10 @@
 import { SpotifyObject } from '@spotify/types';
 import { SpotifyAlbumSimple } from '@spotify/types/albums.types';
-import { SpotifyArtist } from './artists.types';
-
-type SpotifyTrackArtist = Omit<
-    SpotifyArtist,
-    'followers' | 'genres' | 'images' | 'popularity'
->;
+import { SpotifyArtistSimple } from './artists.types';
 
 export interface SpotifyTrack {
     album: SpotifyAlbumSimple;
-    artists: SpotifyTrackArtist[];
+    artists: SpotifyArtistSimple[];
     available_markets: string[];
     disc_number: number;
     duration_ms: number;

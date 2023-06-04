@@ -4,20 +4,12 @@ import { SpotifyTrack } from './tracks.types';
 
 interface SpotifyPlaylistOwner {
     external_urls: SpotifyObject;
-    followers: SpotifyFollowers;
     href: string;
     id: string;
     type: string;
     uri: string;
     display_name: string;
 }
-
-type Track = SpotifySearchGroup<{
-    added_at: string;
-    added_by: SpotifyPlaylistOwner;
-    is_local: boolean;
-    track: SpotifyTrack;
-}>;
 
 export interface SpotifyPlaylistSimple {
     collaborative: boolean;
@@ -28,13 +20,30 @@ export interface SpotifyPlaylistSimple {
     images: SpotifyImage[];
     name: string;
     owner: SpotifyPlaylistOwner;
-    public: boolean;
+    primary_color: string | null;
+    public: boolean | null;
     snapshot_id: string;
+    tracks: {
+        href: string;
+        total: number;
+    };
     type: string;
     uri: string;
 }
 
-export interface SpotifyPlaylist {
+interface PlaylistTrack extends SpotifyTrack {
+    episode: boolean;
+    track: boolean;
+}
+
+export interface SpotifyPlaylist extends SpotifyPlaylistSimple {
     followers: SpotifyFollowers;
-    tracks: Track[];
+    tracks: SpotifySearchGroup<{
+        added_at: string;
+        added_by: Omit<SpotifyPlaylistOwner, 'display_name'>;
+        is_local: boolean;
+        primary_color: string | null;
+        track: PlaylistTrack;
+        video_thumbnail: SpotifyObject;
+    }>;
 }

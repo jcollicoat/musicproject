@@ -8,6 +8,33 @@ interface Meta {
     input_process: string;
 }
 
+interface Interval {
+    start: number;
+    duration: number;
+    confidence: number;
+}
+
+interface Section extends Interval {
+    loudness: number;
+    tempo: number;
+    tempo_confidence: number;
+    key: number;
+    key_confidence: number;
+    mode: number;
+    mode_confidence: number;
+    time_signature: number;
+    time_signature_confidence: number;
+}
+
+interface Segment extends Interval {
+    loudness_start: number;
+    loudness_max: number;
+    loudness_max_time: number;
+    loudness_end: number;
+    pitches: number[];
+    timbre: number[];
+}
+
 export interface SpotifyAudioAnalysis {
     meta: Meta;
     track: {
@@ -38,54 +65,9 @@ export interface SpotifyAudioAnalysis {
         rhythmstring: string;
         rhythm_version: number;
     };
-    bars: [
-        {
-            start: number;
-            duration: number;
-            confidence: number;
-        }
-    ];
-    beats: [
-        {
-            start: number;
-            duration: number;
-            confidence: number;
-        }
-    ];
-    sections: [
-        {
-            start: number;
-            duration: number;
-            confidence: number;
-            loudness: number;
-            tempo: number;
-            tempo_confidence: number;
-            key: number;
-            key_confidence: number;
-            mode: number;
-            mode_confidence: number;
-            time_signature: number;
-            time_signature_confidence: number;
-        }
-    ];
-    segments: [
-        {
-            start: number;
-            duration: number;
-            confidence: number;
-            loudness_start: number;
-            loudness_max: number;
-            loudness_max_time: number;
-            loudness_end: number;
-            pitches: number[];
-            timbre: number[];
-        }
-    ];
-    tatums: [
-        {
-            start: number;
-            duration: number;
-            confidence: number;
-        }
-    ];
+    bars: Interval[];
+    beats: Interval[];
+    sections: Section[];
+    segments: Segment[];
+    tatums: Interval[];
 }
