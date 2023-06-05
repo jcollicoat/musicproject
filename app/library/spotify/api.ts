@@ -8,7 +8,7 @@ import {
 } from './types/audiofeatures.types';
 import { SpotifyPlaylist } from './types/playlists.types';
 import { SpotifySearch } from './types/search.types';
-import { SpotifyTrack, SpotifyTracks } from './types/tracks.types';
+import { SpotifyTrack } from './types/tracks.types';
 import {
     SpotifyUser,
     SpotifyFollowedArtists,
@@ -81,9 +81,13 @@ const tracks = {
         return await api.get<SpotifyTrack>(`tracks/${trackId}`, accessToken);
     },
     getList: async (trackIds: string[], accessToken: string) => {
-        return await api.get<SpotifyTracks>('tracks', accessToken, {
-            ids: trackIds.join(','),
-        });
+        return await api.get<{ tracks: SpotifyTrack[] }>(
+            'tracks',
+            accessToken,
+            {
+                ids: trackIds.join(','),
+            }
+        );
     },
 };
 

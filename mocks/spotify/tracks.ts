@@ -1,4 +1,4 @@
-import { SpotifyTrack, SpotifyTracks } from '@spotify/types/tracks.types';
+import { SpotifyTrack } from '@spotify/types/tracks.types';
 
 export const Track: SpotifyTrack = {
     album: {
@@ -81,7 +81,7 @@ export const Track: SpotifyTrack = {
     uri: 'spotify:track:6pLId3BTsBZO9uec6j6fe6',
 };
 
-export const Tracks: SpotifyTracks = {
+export const Tracks: { tracks: SpotifyTrack[] } = {
     tracks: [
         {
             album: {
