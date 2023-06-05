@@ -1,6 +1,6 @@
 import { SpotifyAlbum } from './albums.types';
 import { SpotifyArtist } from './artists.types';
-import { SpotifyPlaylistSimple } from './playlists.types';
+import { SpotifyPlaylist } from './playlists.types';
 import { SpotifyTrack } from './tracks.types';
 
 export interface SpotifySearchGroup<T> {
@@ -17,5 +17,5 @@ export interface SpotifySearch {
     albums?: SpotifySearchGroup<SpotifyAlbum>;
     artists?: SpotifySearchGroup<SpotifyArtist>;
     tracks?: SpotifySearchGroup<SpotifyTrack>;
-    playlists?: SpotifySearchGroup<SpotifyPlaylistSimple>;
+    playlists?: SpotifySearchGroup<SpotifyPlaylist>;
 }

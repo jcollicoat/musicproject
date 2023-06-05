@@ -11,7 +11,7 @@ interface SpotifyPlaylistOwner {
     display_name: string;
 }
 
-export interface SpotifyPlaylistSimple {
+interface SpotifyPlaylistSimple {
     collaborative: boolean;
     description: string;
     external_urls: SpotifyObject;
@@ -37,7 +37,7 @@ interface PlaylistTrack extends SpotifyTrack {
 }
 
 export interface SpotifyPlaylist extends SpotifyPlaylistSimple {
-    followers: SpotifyFollowers;
+    followers?: SpotifyFollowers;
     tracks: SpotifySearchGroup<{
         added_at: string;
         added_by: Omit<SpotifyPlaylistOwner, 'display_name'>;

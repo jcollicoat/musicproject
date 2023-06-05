@@ -1,6 +1,6 @@
 import { SpotifyFollowers, SpotifyImage, SpotifyObject } from '@spotify/types';
 
-export interface SpotifyArtistSimple {
+interface SpotifyArtistSimple {
     external_urls: SpotifyObject;
     href: string;
     id: string;
@@ -10,8 +10,8 @@ export interface SpotifyArtistSimple {
 }
 
 export interface SpotifyArtist extends SpotifyArtistSimple {
-    followers: SpotifyFollowers;
-    genres: string[];
-    images: SpotifyImage[];
-    popularity: number;
+    followers?: SpotifyFollowers;
+    genres?: string[];
+    images?: SpotifyImage[];
+    popularity?: number;
 }

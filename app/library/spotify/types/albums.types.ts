@@ -1,16 +1,11 @@
 import { SpotifyCopyright, SpotifyImage, SpotifyObject } from '@spotify/types';
-import { SpotifyArtistSimple } from './artists.types';
+import { SpotifyArtist } from './artists.types';
 import { SpotifySearchGroup } from './search.types';
 import { SpotifyTrack } from './tracks.types';
 
-type SpotifyAlbumTrack = Omit<
-    SpotifyTrack,
-    'album' | 'external_ids' | 'popularity'
->;
-
 interface SpotifyAlbumSimple {
     album_type: string;
-    artists: SpotifyArtistSimple[];
+    artists: SpotifyArtist[];
     available_markets: string[];
     external_urls: SpotifyObject;
     href: string;
@@ -30,5 +25,5 @@ export interface SpotifyAlbum extends SpotifyAlbumSimple {
     genres?: string[];
     label?: string;
     popularity?: number;
-    tracks?: SpotifySearchGroup<SpotifyAlbumTrack>;
+    tracks?: SpotifySearchGroup<SpotifyTrack>;
 }

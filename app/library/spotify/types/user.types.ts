@@ -20,7 +20,7 @@ export interface SpotifyUser {
     uri: string;
 }
 
-interface PagedList<T> {
+export interface SpotifyPagedList<T> {
     items: T[];
     next: string | null;
     cursors: {
@@ -32,7 +32,7 @@ interface PagedList<T> {
 }
 
 export interface SpotifyFollowedArtists {
-    artists: PagedList<SpotifyArtist> & { total: number };
+    artists: SpotifyPagedList<SpotifyArtist> & { total: number };
 }
 
 interface RecentlyPlayedTrack {
@@ -46,4 +46,4 @@ interface RecentlyPlayedTrack {
     };
 }
 
-export type SpotifyRecentlyPlayed = PagedList<RecentlyPlayedTrack>;
+export type SpotifyRecentlyPlayed = SpotifyPagedList<RecentlyPlayedTrack>;

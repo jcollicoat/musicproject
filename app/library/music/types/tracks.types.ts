@@ -1,24 +1,6 @@
+import { SpotifyPagedList } from '@spotify/types/user.types';
 import { Album } from './albums.types';
-
-export enum MusicalKeys {
-    'C',
-    'C#',
-    'D',
-    'D#',
-    'E',
-    'F',
-    'F#',
-    'G',
-    'G#',
-    'A',
-    'A#',
-    'B',
-}
-
-export enum MusicalModes {
-    'Minor',
-    'Major',
-}
+import { Artist } from './artists.types';
 
 interface Interval {
     duration: number;
@@ -57,19 +39,6 @@ export interface AudioFeatures {
     valence: number;
 }
 
-interface TrackAlbum {
-    albumType: string;
-    artists: Album['artists'];
-    id: string;
-    name: string;
-    totalTracks: number;
-}
-
-interface TrackArtist {
-    id: string;
-    name: string;
-}
-
 interface TrackContext {
     id: string;
     type: string;
@@ -77,21 +46,18 @@ interface TrackContext {
 }
 
 export interface Track {
-    album: TrackAlbum;
-    artists: TrackArtist[];
+    artists: Artist[];
     durationMs: number;
     explicit: boolean;
     id: string;
     name: string;
-    popularity: number;
     previewUrl: string;
-    saved: boolean;
+    album?: Album;
+    popularity?: number;
+    saved?: boolean;
     audioAnalysis?: AudioAnalysis;
     audioFeatures?: AudioFeatures;
     context?: TrackContext;
 }
 
-export interface RecentlyPlayed {
-    tracks: Track[];
-    next: string;
-}
+export type RecentlyPlayed = SpotifyPagedList<Track>;
