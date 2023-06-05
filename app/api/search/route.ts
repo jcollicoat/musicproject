@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
         const query = getRouteParam(request.nextUrl, 'query', true) ?? '';
         const types = getArrayRouteParam(request.nextUrl, 'types');
 
-        const search = await music.search({ query, types, accessToken });
+        const search = await music.search({ query, types }, accessToken);
         return NextResponse.json(search);
     } catch (error) {
         return errorResponse(error);

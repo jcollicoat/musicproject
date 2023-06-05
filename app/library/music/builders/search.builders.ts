@@ -1,9 +1,12 @@
 import { builders } from '@music/builders';
 import { Album } from '@music/types/albums.types';
+import { Playlist } from '@music/types/playlists.types';
 import { Search } from '@music/types/search.types';
-import { SpotifySearch, SpotifySearchAlbum } from '@spotify/types/search.types';
+import { SpotifyAlbumSimple } from '@spotify/types/albums.types';
+import { SpotifyPlaylistSimple } from '@spotify/types/playlists.types';
+import { SpotifySearch } from '@spotify/types/search.types';
 
-const buildSearchAlbum = (album: SpotifySearchAlbum): Album => ({
+const buildSearchAlbum = (album: SpotifyAlbumSimple): Album => ({
     albumType: album.album_type,
     artists: album.artists.map((artist) => ({
         id: artist.id,
@@ -18,6 +21,19 @@ const buildSearchAlbum = (album: SpotifySearchAlbum): Album => ({
     releaseDate: album.release_date,
     releaseDatePrecision: album.release_date_precision,
     tracks: [],
+});
+
+const buildSearchPlaylist = (playlist: SpotifyPlaylistSimple): Playlist => ({
+    collaborative: playlist.collaborative,
+    description: playlist.description,
+    followers: 0,
+    id: playlist.id,
+    images: playlist.images,
+    name: playlist.name,
+    owner: { id: playlist.owner.id, name: playlist.owner.display_name },
+    public: playlist.public ?? true,
+    tracks: [],
+    type: playlist.type,
 });
 
 const buildSearch = (search: SpotifySearch): Search => {
@@ -41,7 +57,7 @@ const buildSearch = (search: SpotifySearch): Search => {
         playlists: search.playlists && {
             ...search.playlists,
             items: search.playlists.items.map((playlist) =>
-                builders.playlists.buildPlaylist(playlist)
+                buildSearchPlaylist(playlist)
             ),
         },
     };

@@ -63,12 +63,14 @@ const playlists = {
     },
 };
 
-const search = async (config: {
-    query: string;
-    types?: string[];
-    accessToken: string;
-}) => {
-    return await api.get<SpotifySearch>('search', config.accessToken, {
+const search = async (
+    config: {
+        query: string;
+        types?: string[];
+    },
+    accessToken: string
+) => {
+    return await api.get<SpotifySearch>('search', accessToken, {
         q: config.query,
         type: config.types?.join(',') ?? 'album,artist,track,playlist',
     });
