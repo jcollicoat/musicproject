@@ -26,5 +26,6 @@ export interface Album {
     popularity: number;
     releaseDate: string;
     releaseDatePrecision: string;
+    totalTracks: number;
     tracks: AlbumTrack[];
 }

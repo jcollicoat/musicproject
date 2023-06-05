@@ -1,4 +1,5 @@
 import { getUrlSlug } from '@api/helpers';
+import { builders } from '@music/builders';
 import {
     AudioAnalysis,
     MusicalKeys,
@@ -54,17 +55,6 @@ const buildAudioFeatures = (
     valence: audioFeatures.valence,
 });
 
-const buildAlbum = (album: SpotifyTrack['album']): Track['album'] => ({
-    albumType: album.album_type,
-    artists: album.artists.map((artist) => ({
-        id: artist.id,
-        name: artist.name,
-    })),
-    id: album.id,
-    name: album.name,
-    totalTracks: album.total_tracks,
-});
-
 const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] =>
     artists.map((artist) => ({
         id: artist.id,
@@ -81,7 +71,7 @@ const buildTrack = (
     }
 ): Track => {
     return {
-        album: buildAlbum(track.album),
+        album: builders.albums.buildAlbum(track.album),
         artists: buildArtists(track.artists),
         durationMs: track.duration_ms,
         explicit: track.explicit,

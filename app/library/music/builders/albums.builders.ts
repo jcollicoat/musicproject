@@ -1,5 +1,5 @@
 import { Album } from '@music/types/albums.types';
-import { SpotifyAlbum } from '@spotify/types/albums.types';
+import { SpotifyAlbum, SpotifyAlbumSimple } from '@spotify/types/albums.types';
 
 const buildArtists = (artists: SpotifyAlbum['artists']): Album['artists'] =>
     artists.map((artist) => ({
@@ -20,19 +20,45 @@ const buildTracks = (tracks: SpotifyAlbum['tracks']): Album['tracks'] =>
         previewUrl: track.preview_url,
     }));
 
-const buildAlbum = (album: SpotifyAlbum): Album => ({
-    albumType: album.album_type,
-    artists: buildArtists(album.artists),
-    genres: album.genres,
-    id: album.id,
-    images: album.images,
-    label: album.label,
-    name: album.name,
-    popularity: album.popularity,
-    releaseDate: album.release_date,
-    releaseDatePrecision: album.release_date_precision,
-    tracks: buildTracks(album.tracks),
-});
+const isFull = (
+    album: SpotifyAlbum | SpotifyAlbumSimple
+): album is SpotifyAlbum => {
+    return Boolean((album as SpotifyAlbum).tracks);
+};
+
+const buildAlbum = (album: SpotifyAlbum | SpotifyAlbumSimple): Album => {
+    if (isFull(album)) {
+        return {
+            albumType: album.album_type,
+            artists: buildArtists(album.artists),
+            genres: album.genres,
+            id: album.id,
+            images: album.images,
+            label: album.label,
+            name: album.name,
+            popularity: album.popularity,
+            releaseDate: album.release_date,
+            releaseDatePrecision: album.release_date_precision,
+            totalTracks: album.total_tracks,
+            tracks: buildTracks(album.tracks),
+        };
+    }
+
+    return {
+        albumType: album.album_type,
+        artists: buildArtists(album.artists),
+        genres: [],
+        id: album.id,
+        images: album.images,
+        label: '',
+        name: album.name,
+        popularity: 0,
+        releaseDate: album.release_date,
+        releaseDatePrecision: album.release_date_precision,
+        totalTracks: album.total_tracks,
+        tracks: [],
+    };
+};
 
 const albums = { buildAlbum };
 export { albums };
