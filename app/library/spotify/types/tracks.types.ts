@@ -1,9 +1,9 @@
 import { SpotifyObject } from '@spotify/types';
-import { SpotifyAlbumSimple } from '@spotify/types/albums.types';
+import { SpotifyAlbum } from './albums.types';
 import { SpotifyArtistSimple } from './artists.types';
 
 export interface SpotifyTrack {
-    album: SpotifyAlbumSimple;
+    album: SpotifyAlbum;
     artists: SpotifyArtistSimple[];
     available_markets: string[];
     disc_number: number;

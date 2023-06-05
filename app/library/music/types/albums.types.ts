@@ -18,14 +18,14 @@ interface AlbumTrack {
 export interface Album {
     albumType: string;
     artists: AlbumArtist[];
-    genres: string[];
+    genres?: string[];
     id: string;
     images: SpotifyImage[];
-    label: string;
+    label?: string;
     name: string;
-    popularity: number;
+    popularity?: number;
     releaseDate: string;
     releaseDatePrecision: string;
     totalTracks: number;
-    tracks: AlbumTrack[];
+    tracks?: AlbumTrack[];
 }

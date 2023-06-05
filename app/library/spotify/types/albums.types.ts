@@ -8,7 +8,7 @@ type SpotifyAlbumTrack = Omit<
     'album' | 'external_ids' | 'popularity'
 >;
 
-export interface SpotifyAlbumSimple {
+interface SpotifyAlbumSimple {
     album_type: string;
     artists: SpotifyArtistSimple[];
     available_markets: string[];
@@ -25,10 +25,10 @@ export interface SpotifyAlbumSimple {
 }
 
 export interface SpotifyAlbum extends SpotifyAlbumSimple {
-    copyrights: SpotifyCopyright[];
-    external_ids: SpotifyObject;
-    genres: string[];
-    label: string;
-    popularity: number;
-    tracks: SpotifySearchGroup<SpotifyAlbumTrack>;
+    copyrights?: SpotifyCopyright[];
+    external_ids?: SpotifyObject;
+    genres?: string[];
+    label?: string;
+    popularity?: number;
+    tracks?: SpotifySearchGroup<SpotifyAlbumTrack>;
 }
