@@ -1,3 +1,6 @@
+import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
+import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
+import { SpotifyTrack } from '@spotify/types/tracks.types';
 import { SpotifyPagedList } from '@spotify/types/user.types';
 import { Album } from './albums.types';
 import { Artist } from './artists.types';
@@ -57,6 +60,14 @@ export interface Track {
     saved?: boolean;
     audioAnalysis?: AudioAnalysis;
     audioFeatures?: AudioFeatures;
+    context?: TrackContext;
+}
+
+export interface TrackDto {
+    track: SpotifyTrack;
+    isSaved?: boolean;
+    audioFeatures?: SpotifyAudioFeatures;
+    audioAnalysis?: SpotifyAudioAnalysis;
     context?: TrackContext;
 }
 

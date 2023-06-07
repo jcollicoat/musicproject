@@ -5,10 +5,10 @@ import {
     AudioFeatures,
     Track,
     RecentlyPlayed,
+    TrackDto,
 } from '@music/types/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
-import { SpotifyTrack } from '@spotify/types/tracks.types';
 import { SpotifyRecentlyPlayed } from '@spotify/types/user.types';
 
 enum MusicalKeys {
@@ -73,50 +73,31 @@ const buildAudioFeatures = (
     valence: audioFeatures.valence,
 });
 
-const buildArtists = (artists: SpotifyTrack['artists']): Track['artists'] =>
-    artists.map((artist) => ({
-        id: artist.id,
-        name: artist.name,
-    }));
-
-const buildTrack = (
-    track: SpotifyTrack,
-    isSaved?: boolean,
-    extras?: {
-        audioFeatures?: SpotifyAudioFeatures;
-        audioAnalysis?: SpotifyAudioAnalysis;
-        context?: Track['context'];
-    }
-): Track => {
+const buildTrack = (trackDto: TrackDto): Track => {
+    const { track, isSaved, audioFeatures, audioAnalysis, context } = trackDto;
     return {
-        album: track.album && builders.albums.buildAlbum(track.album),
-        artists: buildArtists(track.artists),
+        // Simple
+        artists: track.artists.map((artist) =>
+            builders.artists.buildArtist(artist)
+        ),
         durationMs: track.duration_ms,
         explicit: track.explicit,
         id: track.id,
         name: track.name,
-        popularity: track.popularity,
         previewUrl: track.preview_url,
+        // Full
+        album: track.album && builders.albums.buildAlbum(track.album),
+        popularity: track.popularity,
         saved: isSaved,
-        audioFeatures:
-            extras?.audioFeatures && buildAudioFeatures(extras.audioFeatures),
-        audioAnalysis:
-            extras?.audioAnalysis && buildAudioAnalysis(extras.audioAnalysis),
-        context: extras?.context,
+        audioFeatures: audioFeatures && buildAudioFeatures(audioFeatures),
+        audioAnalysis: audioAnalysis && buildAudioAnalysis(audioAnalysis),
+        context: context,
     };
 };
 
-const buildTracks = (
-    tracks: SpotifyTrack[],
-    isSavedList?: boolean[],
-    audioFeaturesList?: SpotifyAudioFeatures[]
-): Track[] =>
-    tracks.map((track, index) => {
-        const isSaved = isSavedList && isSavedList[index];
-        const audioFeatures = audioFeaturesList?.find(
-            (item) => item.id === track.id
-        );
-        return buildTrack(track, isSaved, { audioFeatures });
+const buildTracks = (trackDtos: TrackDto[]): Track[] =>
+    trackDtos.map((trackDto) => {
+        return buildTrack(trackDto);
     });
 
 const buildRecentlyPlayed = (
@@ -135,10 +116,7 @@ const buildRecentlyPlayed = (
             type: rp.context.type,
             playedAt: rp.played_at,
         };
-        return buildTrack(rp.track, isSaved, {
-            audioFeatures,
-            context,
-        });
+        return buildTrack({ track: rp.track, isSaved, audioFeatures, context });
     }),
 });
 

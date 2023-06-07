@@ -1,5 +1,7 @@
 import { builders } from '@music/builders';
 import { spotify } from '@spotify/api';
+import { SpotifyAudioFeaturesList } from '@spotify/types/audiofeatures.types';
+import { TrackDto } from './types/tracks.types';
 
 const audioAnalysis = async (trackId: string, accessToken: string) => {
     const audioAnalysis = await spotify.audioAnalysis.get(trackId, accessToken);
@@ -28,7 +30,9 @@ const id = async (
     if (hasAudioAnalysis)
         audioAnalysis = await spotify.audioAnalysis.get(trackId, accessToken);
 
-    return builders.tracks.buildTrack(track, isSaved, {
+    return builders.tracks.buildTrack({
+        track,
+        isSaved,
         audioFeatures,
         audioAnalysis,
     });
@@ -45,18 +49,24 @@ const ids = async (
         accessToken
     );
 
-    let audioFeatures;
+    let audioFeatures: SpotifyAudioFeaturesList;
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.getList(
             trackIds,
             accessToken
         );
 
-    return builders.tracks.buildTracks(
-        tracks,
-        isSavedList,
-        audioFeatures?.audio_features
-    );
+    const trackDtos: TrackDto[] = tracks.map((track, index) => {
+        return {
+            track: track,
+            isSaved: isSavedList[index],
+            audioFeatures: audioFeatures.audio_features.find(
+                (af) => af.id === track.id
+            ),
+        };
+    });
+
+    return builders.tracks.buildTracks(trackDtos);
 };
 
 const recentlyPlayed = async (
