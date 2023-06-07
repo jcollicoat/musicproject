@@ -28,9 +28,19 @@ interface PlaylistTrackContext {
 interface PlaylistTracksSimple {
     href: string;
     total: number;
+    items?: PlaylistTrackContext[];
 }
 
 type PlaylistTracks = SpotifySearchGroup<PlaylistTrackContext>;
+
+export const spotifyPlaylistHasTracks = (
+    tracks: PlaylistTracksSimple | PlaylistTracks
+): tracks is PlaylistTracks => {
+    if (tracks.items) {
+        return true;
+    }
+    return false;
+};
 
 interface SpotifyPlaylistSimple {
     collaborative: boolean;
@@ -51,5 +61,5 @@ interface SpotifyPlaylistSimple {
 
 export interface SpotifyPlaylist extends SpotifyPlaylistSimple {
     followers?: SpotifyFollowers;
-    tracks: PlaylistTracks;
+    tracks: PlaylistTracks | PlaylistTracksSimple;
 }
