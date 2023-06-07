@@ -20,6 +20,7 @@ const buildPlaylist = (playlist: SpotifyPlaylist): Playlist => ({
     totalTracks: playlist.tracks.total,
     type: playlist.type,
     // Full
+    followers: playlist.followers?.total,
     tracks: spotifyPlaylistHasTracks(playlist.tracks)
         ? builders.tracks.buildTracks(
               playlist.tracks.items.map((item) => ({
@@ -27,7 +28,6 @@ const buildPlaylist = (playlist: SpotifyPlaylist): Playlist => ({
               }))
           )
         : undefined,
-    followers: playlist.followers?.total,
 });
 
 const playlists = { buildPlaylist };
