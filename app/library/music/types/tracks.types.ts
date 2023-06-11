@@ -71,4 +71,20 @@ export interface TrackDto {
     context?: TrackContext;
 }
 
+export interface NowPlaying {
+    device: {
+        isActive: boolean;
+        isPrivate: boolean;
+        isRestricted: boolean;
+        name: string;
+        type: string;
+    };
+    repeat: 'track' | 'context' | false;
+    shuffle: boolean;
+    context: TrackContext;
+    progressMs: number;
+    isPlaying: boolean;
+    track: Track;
+}
+
 export type RecentlyPlayed = SpotifyPagedList<Track>;

@@ -1,5 +1,6 @@
 import {
     SpotifyFollowedArtists,
+    SpotifyPlaybackState,
     SpotifyRecentlyPlayed,
     SpotifyUser,
 } from '@spotify/types/user.types';
@@ -79,6 +80,140 @@ export const FollowedArtists: SpotifyFollowedArtists = {
         limit: 20,
         href: 'https://api.spotify.com/v1/me/following?type=artist&limit=20',
     },
+};
+
+export const PlaybackState: SpotifyPlaybackState = {
+    device: {
+        id: '58d2f7ec37833654bd4acba38da557668e7f600e',
+        is_active: true,
+        is_private_session: false,
+        is_restricted: false,
+        name: 'Joe’s Mac mini',
+        type: 'Computer',
+        volume_percent: 100,
+    },
+    shuffle_state: false,
+    repeat_state: 'off',
+    timestamp: 1686446726297,
+    context: {
+        external_urls: {
+            spotify: 'https://open.spotify.com/collection/tracks',
+        },
+        href: 'https://api.spotify.com/v1/me/tracks',
+        type: 'collection',
+        uri: 'spotify:user:jcollicoat:collection',
+    },
+    progress_ms: 4458,
+    item: {
+        album: {
+            album_type: 'single',
+            artists: [
+                {
+                    external_urls: {
+                        spotify:
+                            'https://open.spotify.com/artist/7keGfmQR4X5w0two1xKZ7d',
+                    },
+                    href: 'https://api.spotify.com/v1/artists/7keGfmQR4X5w0two1xKZ7d',
+                    id: '7keGfmQR4X5w0two1xKZ7d',
+                    name: 'Kungs',
+                    type: 'artist',
+                    uri: 'spotify:artist:7keGfmQR4X5w0two1xKZ7d',
+                },
+                {
+                    external_urls: {
+                        spotify:
+                            'https://open.spotify.com/artist/1GVbOnrND8b3eh2JZ4opw8',
+                    },
+                    href: 'https://api.spotify.com/v1/artists/1GVbOnrND8b3eh2JZ4opw8',
+                    id: '1GVbOnrND8b3eh2JZ4opw8',
+                    name: 'Carlita',
+                    type: 'artist',
+                    uri: 'spotify:artist:1GVbOnrND8b3eh2JZ4opw8',
+                },
+            ],
+            available_markets: ['AD', 'AE', 'AG'],
+            external_urls: {
+                spotify:
+                    'https://open.spotify.com/album/6MlLPpOvRWGdwQEtFasIP4',
+            },
+            href: 'https://api.spotify.com/v1/albums/6MlLPpOvRWGdwQEtFasIP4',
+            id: '6MlLPpOvRWGdwQEtFasIP4',
+            images: [
+                {
+                    height: 640,
+                    url: 'https://i.scdn.co/image/ab67616d0000b2734638cc018d453f6e199f1431',
+                    width: 640,
+                },
+                {
+                    height: 300,
+                    url: 'https://i.scdn.co/image/ab67616d00001e024638cc018d453f6e199f1431',
+                    width: 300,
+                },
+                {
+                    height: 64,
+                    url: 'https://i.scdn.co/image/ab67616d000048514638cc018d453f6e199f1431',
+                    width: 64,
+                },
+            ],
+            name: 'Shadows',
+            release_date: '2023-05-26',
+            release_date_precision: 'day',
+            total_tracks: 1,
+            type: 'album',
+            uri: 'spotify:album:6MlLPpOvRWGdwQEtFasIP4',
+        },
+        artists: [
+            {
+                external_urls: {
+                    spotify:
+                        'https://open.spotify.com/artist/7keGfmQR4X5w0two1xKZ7d',
+                },
+                href: 'https://api.spotify.com/v1/artists/7keGfmQR4X5w0two1xKZ7d',
+                id: '7keGfmQR4X5w0two1xKZ7d',
+                name: 'Kungs',
+                type: 'artist',
+                uri: 'spotify:artist:7keGfmQR4X5w0two1xKZ7d',
+            },
+            {
+                external_urls: {
+                    spotify:
+                        'https://open.spotify.com/artist/1GVbOnrND8b3eh2JZ4opw8',
+                },
+                href: 'https://api.spotify.com/v1/artists/1GVbOnrND8b3eh2JZ4opw8',
+                id: '1GVbOnrND8b3eh2JZ4opw8',
+                name: 'Carlita',
+                type: 'artist',
+                uri: 'spotify:artist:1GVbOnrND8b3eh2JZ4opw8',
+            },
+        ],
+        available_markets: ['AR', 'AU', 'AT'],
+        disc_number: 1,
+        duration_ms: 225518,
+        explicit: false,
+        external_ids: {
+            isrc: 'FR9W12319285',
+        },
+        external_urls: {
+            spotify: 'https://open.spotify.com/track/0Ni4MDtBVlLPXm5gkkAuO6',
+        },
+        href: 'https://api.spotify.com/v1/tracks/0Ni4MDtBVlLPXm5gkkAuO6',
+        id: '0Ni4MDtBVlLPXm5gkkAuO6',
+        is_local: false,
+        name: 'Shadows',
+        popularity: 65,
+        preview_url:
+            'https://p.scdn.co/mp3-preview/3dcb3db2751ac97eb737c8e77cb680865c3b0f80?cid=918fdfaf405e4320abbbdf7cc10fd935',
+        track_number: 1,
+        type: 'track',
+        uri: 'spotify:track:0Ni4MDtBVlLPXm5gkkAuO6',
+    },
+    currently_playing_type: 'track',
+    actions: {
+        disallows: {
+            resuming: true,
+        },
+    },
+    is_playing: true,
 };
 
 export const RecentlyPlayed: SpotifyRecentlyPlayed = {

@@ -13,6 +13,7 @@ import {
     SpotifyUser,
     SpotifyFollowedArtists,
     SpotifyRecentlyPlayed,
+    SpotifyPlaybackState,
 } from './types/user.types';
 
 const albums = {
@@ -111,6 +112,12 @@ const user = {
             return await api.get<boolean[]>('me/tracks/contains', accessToken, {
                 ids: trackIds.join(','),
             });
+        },
+        player: async (accessToken: string) => {
+            return await api.get<SpotifyPlaybackState>(
+                'me/player',
+                accessToken
+            );
         },
         recent: async (accessToken: string) => {
             return await api.get<SpotifyRecentlyPlayed>(

@@ -69,6 +69,11 @@ const ids = async (
     return builders.tracks.buildTracks(trackDtos);
 };
 
+const nowPlaying = async (accessToken: string) => {
+    const nowPlaying = await spotify.user.tracks.player(accessToken);
+    return builders.tracks.buildNowPlaying(nowPlaying);
+};
+
 const recentlyPlayed = async (
     accessToken: string,
     hasAudioFeatures: boolean
@@ -94,6 +99,13 @@ const recentlyPlayed = async (
     );
 };
 
-const tracks = { audioAnalysis, audioFeatures, id, ids, recentlyPlayed };
+const tracks = {
+    audioAnalysis,
+    audioFeatures,
+    id,
+    ids,
+    nowPlaying,
+    recentlyPlayed,
+};
 
 export { tracks };

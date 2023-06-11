@@ -6,10 +6,15 @@ import {
     Track,
     RecentlyPlayed,
     TrackDto,
+    NowPlaying,
 } from '@music/types/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
-import { SpotifyRecentlyPlayed } from '@spotify/types/user.types';
+import { SpotifyTrack } from '@spotify/types/tracks.types';
+import {
+    SpotifyPlaybackState,
+    SpotifyRecentlyPlayed,
+} from '@spotify/types/user.types';
 
 enum MusicalKeys {
     'C',
@@ -100,6 +105,28 @@ const buildTracks = (trackDtos: TrackDto[]): Track[] =>
         return buildTrack(trackDto);
     });
 
+const buildNowPlaying = (nowPlaying: SpotifyPlaybackState): NowPlaying => ({
+    device: {
+        isActive: nowPlaying.device.is_active,
+        isPrivate: nowPlaying.device.is_private_session,
+        isRestricted: nowPlaying.device.is_restricted,
+        name: nowPlaying.device.name,
+        type: nowPlaying.device.type,
+    },
+    repeat: nowPlaying.repeat_state === 'off' ? false : nowPlaying.repeat_state,
+    shuffle: nowPlaying.shuffle_state,
+    context: {
+        id: getUrlSlug(nowPlaying.context?.href ?? ''),
+        type: nowPlaying.context?.type ?? '',
+        playedAt: new Date(
+            nowPlaying.timestamp - (nowPlaying.progress_ms ?? 0)
+        ).toISOString(),
+    },
+    progressMs: nowPlaying.progress_ms ?? 0,
+    isPlaying: nowPlaying.is_playing,
+    track: buildTrack({ track: nowPlaying.item as SpotifyTrack }),
+});
+
 const buildRecentlyPlayed = (
     recentlyPlayed: SpotifyRecentlyPlayed,
     isSavedList: boolean[],
@@ -125,6 +152,7 @@ const tracks = {
     buildAudioFeatures,
     buildTrack,
     buildTracks,
+    buildNowPlaying,
     buildRecentlyPlayed,
 };
 export { tracks };
