@@ -3,14 +3,14 @@ import { Track } from './tracks.types';
 
 export interface Playlist {
     collaborative: boolean;
-    description: string;
     id: string;
     images: SpotifyImage[];
     name: string;
     owner: { id: string; name: string };
-    public: boolean;
     totalTracks: number;
     type: string;
+    description?: string;
     followers?: number;
+    public?: boolean;
     tracks?: Track[];
 }

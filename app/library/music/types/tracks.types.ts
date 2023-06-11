@@ -1,7 +1,7 @@
+import { ItemGroup } from '@music/types';
 import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
 import { SpotifyTrack } from '@spotify/types/tracks.types';
-import { SpotifyPagedList } from '@spotify/types/user.types';
 import { Album } from './albums.types';
 import { Artist } from './artists.types';
 
@@ -43,8 +43,8 @@ export interface AudioFeatures {
 }
 
 interface TrackContext {
-    id: string;
-    type: string;
+    id?: string;
+    type?: string;
     playedAt?: string;
 }
 
@@ -54,9 +54,9 @@ export interface Track {
     explicit: boolean;
     id: string;
     name: string;
-    previewUrl: string;
     album?: Album;
     popularity?: number;
+    previewUrl?: string;
     saved?: boolean;
     audioAnalysis?: AudioAnalysis;
     audioFeatures?: AudioFeatures;
@@ -84,7 +84,7 @@ export interface NowPlaying {
     context: TrackContext;
     progressMs: number;
     isPlaying: boolean;
-    track: Track;
+    track?: Track;
 }
 
 export type RecentlyPlayed = ItemGroup<Track>;

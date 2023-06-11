@@ -36,10 +36,7 @@ type PlaylistTracks = SpotifySearchGroup<PlaylistTrackContext>;
 export const spotifyPlaylistHasTracks = (
     tracks: PlaylistTracksSimple | PlaylistTracks
 ): tracks is PlaylistTracks => {
-    if (tracks.items) {
-        return true;
-    }
-    return false;
+    return tracks.items ? true : false;
 };
 
 interface SpotifyPlaylistSimple {

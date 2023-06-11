@@ -10,7 +10,6 @@ import {
 } from '@music/types/tracks.types';
 import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
 import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
-import { SpotifyTrack } from '@spotify/types/tracks.types';
 import {
     SpotifyPlaybackState,
     SpotifyRecentlyPlayed,
@@ -89,7 +88,8 @@ const buildTrack = (trackDto: TrackDto): Track => {
         explicit: track.explicit,
         id: track.id,
         name: track.name,
-        previewUrl: track.preview_url ?? '',
+        // Simple Nullable
+        previewUrl: track.preview_url ?? undefined,
         // Full
         album: track.album && builders.albums.buildAlbum(track.album),
         popularity: track.popularity,
@@ -116,15 +116,18 @@ const buildNowPlaying = (nowPlaying: SpotifyPlaybackState): NowPlaying => ({
     repeat: nowPlaying.repeat_state === 'off' ? false : nowPlaying.repeat_state,
     shuffle: nowPlaying.shuffle_state,
     context: {
-        id: getUrlSlug(nowPlaying.context?.href) ?? 'none',
-        type: nowPlaying.context?.type ?? 'none',
+        id: getUrlSlug(nowPlaying.context?.href) ?? undefined,
+        type: nowPlaying.context?.type ?? undefined,
         playedAt: new Date(
             nowPlaying.timestamp - (nowPlaying.progress_ms ?? 0)
         ).toISOString(),
     },
     progressMs: nowPlaying.progress_ms ?? 0,
     isPlaying: nowPlaying.is_playing,
-    track: buildTrack({ track: nowPlaying.item as SpotifyTrack }),
+    track:
+        nowPlaying.item !== null
+            ? buildTrack({ track: nowPlaying.item })
+            : undefined,
 });
 
 const buildRecentlyPlayed = (
@@ -132,15 +135,14 @@ const buildRecentlyPlayed = (
     isSavedList: boolean[],
     audioFeaturesList?: SpotifyAudioFeatures[]
 ): RecentlyPlayed => ({
-    ...recentlyPlayed,
     items: recentlyPlayed.items.map((rp, index) => {
         const isSaved = isSavedList[index];
         const audioFeatures = audioFeaturesList?.find(
             (item) => item.id === rp.track.id
         );
         const context: Track['context'] = {
-            id: getUrlSlug(rp.context?.href) ?? 'none',
-            type: rp.context?.type ?? 'none',
+            id: getUrlSlug(rp.context?.href) ?? undefined,
+            type: rp.context?.type ?? undefined,
             playedAt: rp.played_at,
         };
         return buildTrack({ track: rp.track, isSaved, audioFeatures, context });

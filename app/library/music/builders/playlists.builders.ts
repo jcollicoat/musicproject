@@ -8,17 +8,18 @@ import {
 const buildPlaylist = (playlist: SpotifyPlaylist): Playlist => ({
     // Simple
     collaborative: playlist.collaborative,
-    description: playlist.description ?? '',
     id: playlist.id,
     images: playlist.images,
     name: playlist.name,
     owner: {
         id: playlist.owner.id,
-        name: playlist.owner.display_name ?? 'User',
+        name: playlist.owner.display_name ?? 'Spotify User',
     },
-    public: Boolean(playlist.public),
     totalTracks: playlist.tracks.total,
     type: playlist.type,
+    // Simple Nullable
+    description: playlist.description ?? undefined,
+    public: playlist.public ?? undefined,
     // Full
     followers: playlist.followers?.total,
     tracks: spotifyPlaylistHasTracks(playlist.tracks)
