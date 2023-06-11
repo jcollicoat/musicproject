@@ -145,6 +145,9 @@ const buildRecentlyPlayed = (
         };
         return buildTrack({ track: rp.track, isSaved, audioFeatures, context });
     }),
+    limit: recentlyPlayed.limit,
+    next: recentlyPlayed.next ?? undefined,
+    previous: recentlyPlayed.cursors.before ?? undefined,
 });
 
 const tracks = {

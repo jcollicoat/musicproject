@@ -87,4 +87,4 @@ export interface NowPlaying {
     track: Track;
 }
 
-export type RecentlyPlayed = SpotifyPagedList<Track>;
+export type RecentlyPlayed = ItemGroup<Track>;
