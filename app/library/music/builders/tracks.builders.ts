@@ -89,7 +89,7 @@ const buildTrack = (trackDto: TrackDto): Track => {
         explicit: track.explicit,
         id: track.id,
         name: track.name,
-        previewUrl: track.preview_url,
+        previewUrl: track.preview_url ?? '',
         // Full
         album: track.album && builders.albums.buildAlbum(track.album),
         popularity: track.popularity,
@@ -116,8 +116,8 @@ const buildNowPlaying = (nowPlaying: SpotifyPlaybackState): NowPlaying => ({
     repeat: nowPlaying.repeat_state === 'off' ? false : nowPlaying.repeat_state,
     shuffle: nowPlaying.shuffle_state,
     context: {
-        id: getUrlSlug(nowPlaying.context?.href ?? ''),
-        type: nowPlaying.context?.type ?? '',
+        id: getUrlSlug(nowPlaying.context?.href) ?? 'none',
+        type: nowPlaying.context?.type ?? 'none',
         playedAt: new Date(
             nowPlaying.timestamp - (nowPlaying.progress_ms ?? 0)
         ).toISOString(),
@@ -139,8 +139,8 @@ const buildRecentlyPlayed = (
             (item) => item.id === rp.track.id
         );
         const context: Track['context'] = {
-            id: getUrlSlug(rp.context.href),
-            type: rp.context.type,
+            id: getUrlSlug(rp.context?.href) ?? 'none',
+            type: rp.context?.type ?? 'none',
             playedAt: rp.played_at,
         };
         return buildTrack({ track: rp.track, isSaved, audioFeatures, context });

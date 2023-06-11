@@ -7,7 +7,7 @@ const buildUser = (user: SpotifyUser): User => ({
     followers: user.followers.total,
     id: user.id,
     image: user.images[user.images.length - 1],
-    name: user.display_name,
+    name: user.display_name ?? 'User',
     product: user.product,
     type: user.type,
 });
