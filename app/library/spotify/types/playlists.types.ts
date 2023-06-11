@@ -8,7 +8,7 @@ interface PlaylistOwner {
     id: string;
     type: string;
     uri: string;
-    display_name: string;
+    display_name: string | null;
 }
 
 interface PlaylistTrack extends SpotifyTrack {
@@ -44,7 +44,7 @@ export const spotifyPlaylistHasTracks = (
 
 interface SpotifyPlaylistSimple {
     collaborative: boolean;
-    description: string;
+    description: string | null;
     external_urls: SpotifyObject;
     href: string;
     id: string;

@@ -4,7 +4,7 @@ import { SpotifyTrack } from './tracks.types';
 
 export interface SpotifyUser {
     country: string;
-    display_name: string;
+    display_name: string | null;
     email: string;
     explicit_content: {
         filter_enabled: boolean;
@@ -82,7 +82,7 @@ interface RecentlyPlayedTrack {
         external_urls: SpotifyObject;
         href: string;
         uri: string;
-    };
+    } | null;
 }
 
 export type SpotifyRecentlyPlayed = SpotifyPagedList<RecentlyPlayedTrack>;
