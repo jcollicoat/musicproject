@@ -1,4 +1,4 @@
-import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
+import { SpotifyAudioAnalysis } from '@spotify/types/tracks.types';
 
 export const AudioAnalysis: SpotifyAudioAnalysis = {
     meta: {

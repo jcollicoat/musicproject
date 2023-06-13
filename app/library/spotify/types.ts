@@ -15,3 +15,14 @@ export interface SpotifyImage {
 }
 
 export type SpotifyObject = Record<string, unknown>;
+
+export interface SpotifyPagedList<T> {
+    items: T[];
+    next: string | null;
+    cursors: {
+        before?: string | null;
+        after: string | null;
+    };
+    limit: number;
+    href: string;
+}

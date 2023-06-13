@@ -1,4 +1,4 @@
-import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
+import { SpotifyAudioFeatures } from '@spotify/types/tracks.types';
 
 export const AudioFeatures: SpotifyAudioFeatures = {
     danceability: 0.735,

@@ -1,9 +1,8 @@
 import {
-    SpotifyFollowedArtists,
     SpotifyPlaybackState,
     SpotifyRecentlyPlayed,
-    SpotifyUser,
-} from '@spotify/types/user.types';
+} from '@spotify/types/player.types';
+import { SpotifyFollowedArtists, SpotifyUser } from '@spotify/types/user.types';
 
 export const User: SpotifyUser = {
     country: 'NZ',

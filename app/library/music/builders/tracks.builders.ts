@@ -9,13 +9,13 @@ import {
     NowPlaying,
 } from '@music/types/tracks.types';
 import {
+    SpotifyPlaybackState,
+    SpotifyRecentlyPlayed,
+} from '@spotify/types/player.types';
+import {
     SpotifyAudioAnalysis,
     SpotifyAudioFeatures,
 } from '@spotify/types/tracks.types';
-import {
-    SpotifyPlaybackState,
-    SpotifyRecentlyPlayed,
-} from '@spotify/types/user.types';
 
 enum MusicalKeys {
     'C',

@@ -1,6 +1,10 @@
 import { api } from './requests';
 import { SpotifyAlbum } from './types/albums.types';
 import { SpotifyArtist } from './types/artists.types';
+import {
+    SpotifyPlaybackState,
+    SpotifyRecentlyPlayed,
+} from './types/player.types';
 import { SpotifyPlaylist } from './types/playlists.types';
 import { SpotifySearch } from './types/search.types';
 import {
@@ -8,12 +12,7 @@ import {
     SpotifyAudioFeatures,
     SpotifyTrack,
 } from './types/tracks.types';
-import {
-    SpotifyUser,
-    SpotifyFollowedArtists,
-    SpotifyRecentlyPlayed,
-    SpotifyPlaybackState,
-} from './types/user.types';
+import { SpotifyUser, SpotifyFollowedArtists } from './types/user.types';
 
 const albums = {
     get: async (albumId: string, accessToken: string) => {
