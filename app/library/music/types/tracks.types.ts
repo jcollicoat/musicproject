@@ -1,7 +1,9 @@
 import { ItemGroup } from '@music/types';
-import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
-import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
-import { SpotifyTrack } from '@spotify/types/tracks.types';
+import {
+    SpotifyAudioAnalysis,
+    SpotifyAudioFeatures,
+    SpotifyTrack,
+} from '@spotify/types/tracks.types';
 import { Album } from './albums.types';
 import { Artist } from './artists.types';
 

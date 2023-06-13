@@ -1,14 +1,13 @@
 import { api } from './requests';
 import { SpotifyAlbum } from './types/albums.types';
 import { SpotifyArtist } from './types/artists.types';
-import { SpotifyAudioAnalysis } from './types/audioanalysis.types';
-import {
-    SpotifyAudioFeatures,
-    SpotifyAudioFeaturesList,
-} from './types/audiofeatures.types';
 import { SpotifyPlaylist } from './types/playlists.types';
 import { SpotifySearch } from './types/search.types';
-import { SpotifyTrack } from './types/tracks.types';
+import {
+    SpotifyAudioAnalysis,
+    SpotifyAudioFeatures,
+    SpotifyTrack,
+} from './types/tracks.types';
 import {
     SpotifyUser,
     SpotifyFollowedArtists,
@@ -45,7 +44,7 @@ const audioFeatures = {
         );
     },
     getList: async (trackIds: string[], accessToken: string) => {
-        return await api.get<SpotifyAudioFeaturesList>(
+        return await api.get<{ audio_features: SpotifyAudioFeatures[] }>(
             'audio-features',
             accessToken,
             {

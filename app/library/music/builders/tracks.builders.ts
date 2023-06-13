@@ -8,8 +8,10 @@ import {
     TrackDto,
     NowPlaying,
 } from '@music/types/tracks.types';
-import { SpotifyAudioAnalysis } from '@spotify/types/audioanalysis.types';
-import { SpotifyAudioFeatures } from '@spotify/types/audiofeatures.types';
+import {
+    SpotifyAudioAnalysis,
+    SpotifyAudioFeatures,
+} from '@spotify/types/tracks.types';
 import {
     SpotifyPlaybackState,
     SpotifyRecentlyPlayed,

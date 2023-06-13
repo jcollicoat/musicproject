@@ -1,6 +1,6 @@
 import { builders } from '@music/builders';
 import { spotify } from '@spotify/api';
-import { SpotifyAudioFeaturesList } from '@spotify/types/audiofeatures.types';
+import { SpotifyAudioFeatures } from '@spotify/types/tracks.types';
 import { TrackDto } from './types/tracks.types';
 
 const audioAnalysis = async (trackId: string, accessToken: string) => {
@@ -49,7 +49,7 @@ const ids = async (
         accessToken
     );
 
-    let audioFeatures: SpotifyAudioFeaturesList;
+    let audioFeatures: { audio_features: SpotifyAudioFeatures[] };
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.getList(
             trackIds,
