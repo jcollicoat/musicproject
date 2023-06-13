@@ -1,9 +1,6 @@
 import { builders } from '@music/builders';
 import { Playlist } from '@music/types/playlists.types';
-import {
-    SpotifyPlaylist,
-    spotifyPlaylistHasTracks,
-} from '@spotify/types/playlists.types';
+import { SpotifyPlaylist, IsFullTracks } from '@spotify/types/playlists.types';
 
 const buildPlaylist = (playlist: SpotifyPlaylist): Playlist => ({
     // Simple
@@ -22,7 +19,7 @@ const buildPlaylist = (playlist: SpotifyPlaylist): Playlist => ({
     public: playlist.public ?? undefined,
     // Full
     followers: playlist.followers?.total,
-    tracks: spotifyPlaylistHasTracks(playlist.tracks)
+    tracks: IsFullTracks(playlist.tracks)
         ? builders.tracks.buildTracks(
               playlist.tracks.items.map((item) => ({
                   track: item.track,

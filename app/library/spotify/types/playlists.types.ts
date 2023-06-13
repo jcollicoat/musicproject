@@ -33,7 +33,7 @@ interface PlaylistTracksSimple {
 
 type PlaylistTracks = SpotifySearchGroup<PlaylistTrackContext>;
 
-export const spotifyPlaylistHasTracks = (
+export const IsFullTracks = (
     tracks: PlaylistTracksSimple | PlaylistTracks
 ): tracks is PlaylistTracks => {
     return tracks.items ? true : false;
