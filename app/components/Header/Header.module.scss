@@ -7,6 +7,25 @@
     gap: $space-xlarge;
     justify-content: space-between;
 
+    &.track {
+        gap: $space-medium;
+        justify-content: start;
+
+        .info {
+            h1 {
+                font-size: 2em;
+
+                @media (min-width: 480px) {
+                    font-size: 3em;
+                }
+            }
+        }
+    }
+
+    .image {
+        border-radius: 4px;
+    }
+
     .info {
         h1 {
             font-size: 2.5em;

@@ -42,7 +42,7 @@ body {
         Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: calc(1rem / 16 * 13);
-    padding: $padding;
+    padding: $padding !important;
 }
 
 header,
