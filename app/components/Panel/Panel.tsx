@@ -9,7 +9,7 @@ interface Props {
 export const Panel: FC<Props> = ({ children, position }) => {
     return (
         <section className={styles.panel} style={{ gridArea: position }}>
-            <div>{children}</div>
+            {children}
         </section>
     );
 };
