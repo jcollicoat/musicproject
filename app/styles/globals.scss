@@ -5,6 +5,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
 
+// Responsive Variables
+
+:root {
+    --padding: 8px;
+
+    @media (min-width: 480px) {
+        --padding: 12px;
+    }
+}
+
 // Global styles
 
 body {
@@ -14,4 +24,10 @@ body {
         Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: calc(1rem / 16 * 13);
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1800px;
+    padding: $padding;
 }
