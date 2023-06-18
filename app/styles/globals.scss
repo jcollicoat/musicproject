@@ -5,6 +5,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
 // Responsive Variables
 
 :root {
@@ -17,6 +31,10 @@
 
 // Global styles
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: $color-gray-bg;
     color: #ffffff;
@@ -24,10 +42,15 @@ body {
         Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: calc(1rem / 16 * 13);
+    padding: $padding;
 }
 
+header,
 main {
     margin: 0 auto;
     max-width: 1800px;
-    padding: $padding;
+}
+
+header {
+    margin-bottom: $padding;
 }

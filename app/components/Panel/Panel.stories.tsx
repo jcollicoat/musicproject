@@ -5,7 +5,6 @@ import { Panel } from './Panel';
 const meta: Meta<typeof Panel> = {
     title: 'Panel',
     component: Panel,
-    tags: ['autodocs'],
     argTypes: {
         children: {
             control: { type: 'radio' },
