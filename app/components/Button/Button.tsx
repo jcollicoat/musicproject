@@ -63,3 +63,17 @@ export const Button: FC<Props> = ({
         </Link>
     );
 };
+
+interface ButtonsProps {
+    buttons: Props[];
+}
+
+export const Buttons: FC<ButtonsProps> = ({ buttons }) => {
+    return (
+        <div className={styles.container}>
+            {buttons.map((props) => (
+                <Button key={props.text + props.ariaLabel} {...props} />
+            ))}
+        </div>
+    );
+};
