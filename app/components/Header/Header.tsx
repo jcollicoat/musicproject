@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
-import { Buttons } from '@components/Button/Button';
+import { ButtonContainer } from '@components/Button/Button';
 import { Panel } from '@components/Panel/Panel';
 import { Track } from '@music/types/tracks.types';
 import styles from './Header.module.scss';
@@ -18,7 +18,7 @@ const SimpleHeader: FC<SimpleHeaderProps> = ({ title, subtitle }) => {
                 <h1 className={styles.title}>{title}</h1>
                 {subtitle && <p>{subtitle}</p>}
             </div>
-            <Buttons
+            <ButtonContainer
                 buttons={[
                     {
                         ariaLabel: 'Explore music',

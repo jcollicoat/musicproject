@@ -64,11 +64,11 @@ export const Button: FC<Props> = ({
     );
 };
 
-interface ButtonsProps {
+interface ButtonContainerProps {
     buttons: Props[];
 }
 
-export const Buttons: FC<ButtonsProps> = ({ buttons }) => {
+export const ButtonContainer: FC<ButtonContainerProps> = ({ buttons }) => {
     return (
         <div className={styles.container}>
             {buttons.map((props) => (
