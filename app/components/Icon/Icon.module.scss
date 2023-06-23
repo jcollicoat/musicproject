@@ -1,0 +1,27 @@
+@import '@styles/variables.scss';
+
+.fallback {
+    path {
+        animation: $transition-slow pulse infinite alternate;
+        stroke-opacity: 1;
+
+        &:nth-child(3),
+        &:nth-child(4) {
+            animation-delay: $transition-speed;
+        }
+
+        &:nth-child(5),
+        &:nth-child(6) {
+            animation-delay: $transition-speed-slow;
+        }
+    }
+}
+
+@keyframes pulse {
+    from {
+        stroke-opacity: 0;
+    }
+    to {
+        stroke-opacity: 1;
+    }
+}

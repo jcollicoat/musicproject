@@ -57,8 +57,64 @@
     }
 }
 
+.menuwrapper {
+    display: inline-flex;
+    position: relative;
+
+    .trigger {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .menu {
+        background-color: $color-gray-7;
+        border: 3px solid $color-gray-7;
+        border-radius: 4px;
+        display: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: calc(100% + $padding);
+        transform: translateX(-50%);
+        width: clamp(180px, 240px, 50vw);
+
+        &.open {
+            display: block;
+        }
+
+        &.left {
+            transform: translateX(calc(-100% + 26px + $padding));
+        }
+
+        &.right {
+            transform: translateX($padding-negative);
+        }
+
+        li {
+            list-style-type: none;
+
+            .button {
+                border-radius: 0;
+                width: 100%;
+
+                &:first-child {
+                    border-radius: 4px 4px 0 0;
+                }
+                &:last-child {
+                    border-radius: 0 0 4px 4px;
+                }
+            }
+        }
+    }
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: $padding;
+
+    svg {
+        color: $color-gray-5;
+        fill: rgba($color-gray-5, 0.1);
+    }
 }
