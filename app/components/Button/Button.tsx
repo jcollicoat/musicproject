@@ -123,6 +123,7 @@ export const ButtonContainer: FC<ButtonContainerProps> = ({ buttons }) => {
             {buttons.map((props) => (
                 <Button key={props.text + props.ariaLabel} {...props} />
             ))}
+            <MenuButton side="left" />
         </div>
     );
 };
