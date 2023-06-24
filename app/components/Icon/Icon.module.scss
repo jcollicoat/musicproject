@@ -1,5 +1,15 @@
 @import '@styles/variables.scss';
 
+.container {
+    display: flex;
+    height: 24px;
+    width: 24px;
+
+    svg {
+        margin: auto;
+    }
+}
+
 .fallback {
     path {
         animation: $transition-slow pulse infinite alternate;

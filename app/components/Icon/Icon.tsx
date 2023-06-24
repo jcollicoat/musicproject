@@ -22,7 +22,7 @@ const Fallback: FC = () => (
     </svg>
 );
 
-type Icons = 'Menu';
+type Icons = 'Close' | 'Heart' | 'Menu';
 
 interface Props {
     icon: Icons;
@@ -33,7 +33,9 @@ export const Icon: FC<Props> = ({ icon }) => {
 
     return (
         <Suspense fallback={<Fallback />}>
-            <Icon />
+            <div className={styles.container}>
+                <Icon />
+            </div>
         </Suspense>
     );
 };

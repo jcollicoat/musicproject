@@ -79,11 +79,15 @@ const MenuButton: FC<MenuButtonProps> = ({ side }) => {
         <div className={styles.menuwrapper}>
             <button
                 aria-label="Menu"
-                className={classNames(styles.button, styles.trigger)}
+                className={classNames(
+                    styles.button,
+                    styles.trigger,
+                    isOpen && styles.open
+                )}
                 onClick={toggle}
                 type="button"
             >
-                <Icon icon="Menu" />
+                <Icon icon={isOpen ? 'Close' : 'Menu'} />
             </button>
             <menu
                 className={classNames(

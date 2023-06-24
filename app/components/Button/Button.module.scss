@@ -58,12 +58,22 @@
 }
 
 .menuwrapper {
+    $trigger-size: 26px;
+
     display: inline-flex;
     position: relative;
 
     .trigger {
         background-color: transparent;
+        color: $color-gray-5;
+        fill: rgba($color-gray-5, 0.1);
         padding: 0;
+        width: $trigger-size;
+
+        &:hover,
+        &.open {
+            color: $color-gray-4;
+        }
     }
 
     .menu {
@@ -75,20 +85,41 @@
         margin: 0;
         padding: 0;
         position: absolute;
-        top: calc(100% + $padding);
+        top: calc(100% + ($padding / 2));
         transform: translateX(-50%);
         width: clamp(180px, 240px, 50vw);
+        z-index: 100;
+
+        &:after {
+            background-color: $color-gray-7;
+            content: '';
+            height: 12px;
+            left: calc(50% + 7px);
+            position: absolute;
+            top: -6px;
+            transform: rotate(45deg);
+            width: 12px;
+            z-index: -1;
+        }
 
         &.open {
             display: block;
         }
 
         &.left {
-            transform: translateX(calc(-100% + 26px + $padding));
+            transform: translateX(calc(-100% + $trigger-size + $padding));
+
+            &:after {
+                left: calc(100% - 12px - ($trigger-size / 2 + 3px));
+            }
         }
 
         &.right {
             transform: translateX($padding-negative);
+
+            &:after {
+                left: calc($trigger-size / 2 + 3px);
+            }
         }
 
         li {
@@ -97,12 +128,17 @@
             .button {
                 border-radius: 0;
                 width: 100%;
+            }
 
-                &:first-child {
-                    border-radius: 4px 4px 0 0;
+            &:first-child {
+                .button {
+                    border-radius: 2px 2px 0 0;
                 }
-                &:last-child {
-                    border-radius: 0 0 4px 4px;
+            }
+
+            &:last-child {
+                .button {
+                    border-radius: 0 0 2px 2px;
                 }
             }
         }
@@ -113,9 +149,4 @@
     display: flex;
     flex-wrap: wrap;
     gap: $padding;
-
-    svg {
-        color: $color-gray-5;
-        fill: rgba($color-gray-5, 0.1);
-    }
 }

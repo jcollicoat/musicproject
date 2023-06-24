@@ -1,34 +1,5 @@
 @import '@styles/variables.scss';
 
-.wrapper {
-    .controls {
-        background-color: #000000;
-        border: 1px solid #000000;
-        border-radius: 8px 8px 0 0;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: $padding-negative;
-        padding: $padding;
-        padding-bottom: calc($padding * 2);
-
-        .info {
-            span {
-                font-weight: 500;
-            }
-
-            p {
-                color: $color-gray-6;
-                font-size: 0.85em;
-            }
-        }
-
-        button,
-        a {
-            font-size: 0.85em;
-        }
-    }
-}
-
 .header {
     align-items: center;
     display: flex;
@@ -67,6 +38,35 @@
                     font-size: 3em;
                 }
             }
+        }
+    }
+}
+
+.wrapper {
+    .controls {
+        background-color: #000000;
+        border: 1px solid $color-gray-8;
+        border-radius: 8px 8px 0 0;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $padding-negative;
+        padding: $padding;
+        padding-bottom: calc($padding * 2);
+
+        .info {
+            span {
+                font-weight: 500;
+            }
+
+            p {
+                color: $color-gray-6;
+                font-size: 0.85em;
+            }
+        }
+
+        button,
+        a {
+            font-size: 0.85em;
         }
     }
 }

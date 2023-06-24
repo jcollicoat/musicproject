@@ -82,7 +82,9 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                     )}
                     <div className={styles.info}>
                         <h1 className={styles.title}>{track.name}</h1>
-                        <p>{track.artists[0].name}</p>
+                        <p>
+                            {track.artists[0].name} • {track.album?.name}
+                        </p>
                     </div>
                 </div>
             </Panel>

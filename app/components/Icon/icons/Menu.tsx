@@ -4,8 +4,8 @@ const Menu: FC = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 14 14"
-        height="24"
-        width="24"
+        height="100%"
+        width="100%"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
