@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import { Icon } from '@components/Icon/Icon';
 import styles from './Button.module.scss';
 
-type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary';
+type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary' | 'inMenu';
 
 interface BaseProps {
     text: string;
@@ -22,9 +22,9 @@ interface PropsForLink extends BaseProps {
     onClick?: never;
 }
 
-type Props = PropsForButton | PropsForLink;
+type ButtonProps = PropsForButton | PropsForLink;
 
-export const Button: FC<Props> = ({
+export const Button: FC<ButtonProps> = ({
     text,
     ariaLabel,
     style = 'primary',
@@ -66,11 +66,12 @@ export const Button: FC<Props> = ({
 };
 
 interface MenuButtonProps {
+    buttons: ButtonProps[];
     side?: 'left' | 'right';
 }
 
-const MenuButton: FC<MenuButtonProps> = ({ side }) => {
-    const [isOpen, setIsOpen] = useState(false);
+const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
+    const [isOpen, setIsOpen] = useState(true);
     const toggle = () => {
         setIsOpen(!isOpen);
     };
@@ -87,7 +88,7 @@ const MenuButton: FC<MenuButtonProps> = ({ side }) => {
                 onClick={toggle}
                 type="button"
             >
-                <Icon icon={isOpen ? 'Close' : 'Menu'} />
+                <Icon icon="Menu" isAlternate={isOpen} />
             </button>
             <menu
                 className={classNames(
@@ -96,38 +97,33 @@ const MenuButton: FC<MenuButtonProps> = ({ side }) => {
                     side && styles[side]
                 )}
             >
-                <li>
-                    <Button
-                        ariaLabel="Menu item 1"
-                        text="Menu item 1"
-                        onClick={() => alert('Button clicked')}
-                        style="secondary"
-                    />
-                </li>
-                <li>
-                    <Button
-                        ariaLabel="Menu item 2"
-                        text="Menu item 2"
-                        onClick={() => alert('Button clicked')}
-                        style="secondary"
-                    />
-                </li>
+                {buttons.map((props) => (
+                    <li key={props.text}>
+                        <Button {...props} style="inMenu" />
+                    </li>
+                ))}
             </menu>
         </div>
     );
 };
 
 interface ButtonContainerProps {
-    buttons: Props[];
+    buttons?: ButtonProps[];
+    menuButtons?: MenuButtonProps[];
 }
 
-export const ButtonContainer: FC<ButtonContainerProps> = ({ buttons }) => {
+export const ButtonContainer: FC<ButtonContainerProps> = ({
+    buttons,
+    menuButtons,
+}) => {
     return (
         <div className={styles.container}>
-            {buttons.map((props) => (
-                <Button key={props.text + props.ariaLabel} {...props} />
+            {buttons?.map((props) => (
+                <Button key={props.text} {...props} />
             ))}
-            <MenuButton side="left" />
+            {menuButtons?.map((props) => (
+                <MenuButton key={props.buttons[0].text} {...props} />
+            ))}
         </div>
     );
 };

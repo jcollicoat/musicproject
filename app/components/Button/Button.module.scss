@@ -55,10 +55,23 @@
             color: $color-gray-2;
         }
     }
+
+    &.inMenu {
+        background-color: $color-gray-7;
+        border-radius: 0;
+        color: $color-gray-1;
+        width: 100%;
+
+        &:hover {
+            background-color: $color-gray-6;
+            box-shadow: 0px 4px 12px -4px rgba($color-gray-5, 0.25);
+        }
+    }
 }
 
 .menuwrapper {
     $trigger-size: 26px;
+    $menu-offset: calc(100% + $padding / 2);
 
     display: inline-flex;
     position: relative;
@@ -67,6 +80,7 @@
         background-color: transparent;
         color: $color-gray-5;
         fill: rgba($color-gray-5, 0.1);
+        height: $trigger-size;
         padding: 0;
         width: $trigger-size;
 
@@ -74,33 +88,43 @@
         &.open {
             color: $color-gray-4;
         }
+
+        &.open {
+            z-index: 101;
+
+            svg {
+                z-index: 2;
+            }
+
+            &:before {
+                background-color: $color-gray-8;
+                border-radius: 50% 50% 0 0;
+                content: '';
+                height: $menu-offset;
+                left: 0;
+                outline: 3px solid $color-gray-8;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 1;
+            }
+        }
     }
 
     .menu {
-        background-color: $color-gray-7;
-        border: 3px solid $color-gray-7;
+        background-color: $color-gray-8;
+        border: 3px solid $color-gray-8;
         border-radius: 4px;
         box-shadow: 0px 0px 12px #000000;
         display: none;
         margin: 0;
         padding: 0;
         position: absolute;
-        top: calc(100% + ($padding / 2));
+        top: $menu-offset;
         transform: translateX(-50%);
         width: clamp(180px, 240px, 50vw);
         z-index: 100;
-
-        &:after {
-            background-color: $color-gray-7;
-            content: '';
-            height: 12px;
-            left: calc(50% + 7px);
-            position: absolute;
-            top: -6px;
-            transform: rotate(45deg);
-            width: 12px;
-            z-index: -1;
-        }
 
         &.open {
             display: block;
@@ -108,27 +132,14 @@
 
         &.left {
             transform: translateX(calc(-100% + $trigger-size + $padding));
-
-            &:after {
-                left: calc(100% - 12px - ($trigger-size / 2 + 3px));
-            }
         }
 
         &.right {
             transform: translateX($padding-negative);
-
-            &:after {
-                left: calc($trigger-size / 2 + 3px);
-            }
         }
 
         li {
             list-style-type: none;
-
-            .button {
-                border-radius: 0;
-                width: 100%;
-            }
 
             &:first-child {
                 .button {

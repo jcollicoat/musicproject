@@ -67,6 +67,23 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                             style: 'cta',
                         },
                     ]}
+                    menuButtons={[
+                        {
+                            buttons: [
+                                {
+                                    ariaLabel: 'Explore music',
+                                    text: 'Explore music',
+                                    link: '/#',
+                                },
+                                {
+                                    ariaLabel: 'Login',
+                                    text: 'Login',
+                                    onClick: () => alert('Button clicked!'),
+                                },
+                            ],
+                            side: 'left',
+                        },
+                    ]}
                 />
             </div>
             <Panel element="header">
