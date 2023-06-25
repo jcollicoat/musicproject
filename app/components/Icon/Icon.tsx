@@ -26,15 +26,16 @@ type Icons = 'Close' | 'Heart' | 'Menu';
 
 interface Props {
     icon: Icons;
+    isAlternate?: boolean;
 }
 
-export const Icon: FC<Props> = ({ icon }) => {
+export const Icon: FC<Props> = ({ icon, isAlternate }) => {
     const Icon = lazy(() => import(`./icons/${icon}`));
 
     return (
         <Suspense fallback={<Fallback />}>
             <div className={styles.container}>
-                <Icon />
+                <Icon isAlternate={isAlternate} />
             </div>
         </Suspense>
     );
