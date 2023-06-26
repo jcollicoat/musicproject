@@ -57,6 +57,9 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                         {
                             ariaLabel: 'Explore music',
                             text: 'Explore music',
+                            iconEnd: {
+                                icon: 'Heart',
+                            },
                             link: '/#',
                             style: 'tertiary',
                         },
@@ -78,6 +81,9 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                                 {
                                     ariaLabel: 'Login',
                                     text: 'Login',
+                                    iconStart: {
+                                        icon: 'Heart',
+                                    },
                                     onClick: () => alert('Button clicked!'),
                                 },
                             ],

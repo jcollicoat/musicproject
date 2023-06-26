@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FC, useState } from 'react';
-import { Icon } from '@components/Icon/Icon';
+import { Icon, IconProps } from '@components/Icon/Icon';
 import styles from './Button.module.scss';
 
 type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary' | 'inMenu';
@@ -9,6 +9,8 @@ type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary' | 'inMenu';
 interface BaseProps {
     text: string;
     ariaLabel?: string;
+    iconEnd?: IconProps;
+    iconStart?: IconProps;
     style?: ButtonStyles;
 }
 
@@ -27,6 +29,8 @@ type ButtonProps = PropsForButton | PropsForLink;
 export const Button: FC<ButtonProps> = ({
     text,
     ariaLabel,
+    iconEnd,
+    iconStart,
     style = 'primary',
     onClick,
     link,
@@ -39,7 +43,11 @@ export const Button: FC<ButtonProps> = ({
                 onClick={onClick}
                 type="button"
             >
+                {iconStart && (
+                    <Icon {...iconStart} size={iconStart.size ?? '1rem'} />
+                )}
                 {text}
+                {iconEnd && <Icon {...iconEnd} size={iconEnd.size ?? '1rem'} />}
             </button>
         );
     }
@@ -52,7 +60,11 @@ export const Button: FC<ButtonProps> = ({
             rel="noopener noreferrer"
             target="_blank"
         >
+            {iconStart && (
+                <Icon {...iconStart} size={iconStart.size ?? '1rem'} />
+            )}
             {text}
+            {iconEnd && <Icon {...iconEnd} size={iconEnd.size ?? '1rem'} />}
         </a>
     ) : (
         <Link
@@ -60,7 +72,11 @@ export const Button: FC<ButtonProps> = ({
             className={classNames(styles.button, styles[style])}
             href={link}
         >
+            {iconStart && (
+                <Icon {...iconStart} size={iconStart.size ?? '1rem'} />
+            )}
             {text}
+            {iconEnd && <Icon {...iconEnd} size={iconEnd.size ?? '1rem'} />}
         </Link>
     );
 };
@@ -71,7 +87,7 @@ interface MenuButtonProps {
 }
 
 const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const toggle = () => {
         setIsOpen(!isOpen);
     };
@@ -88,7 +104,7 @@ const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
                 onClick={toggle}
                 type="button"
             >
-                <Icon icon="Menu" isAlternate={isOpen} />
+                <Icon icon="Menu" isAlternate={isOpen} size="24px" />
             </button>
             <menu
                 className={classNames(
