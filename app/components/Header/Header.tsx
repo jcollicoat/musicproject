@@ -57,8 +57,8 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                         {
                             ariaLabel: 'Explore music',
                             text: 'Explore music',
-                            iconEnd: {
-                                icon: 'Heart',
+                            iconStart: {
+                                icon: 'MusicNote',
                             },
                             link: '/#',
                             style: 'tertiary',
