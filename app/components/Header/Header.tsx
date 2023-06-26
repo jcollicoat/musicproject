@@ -44,7 +44,7 @@ interface TrackHeaderProps {
 
 const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
     return (
-        <div className={styles.wrapper}>
+        <header className={styles.wrapper}>
             <div className={styles.controls}>
                 <div className={styles.info}>
                     <span>Music Project</span>
@@ -53,7 +53,7 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                 <ButtonContainer
                     buttons={[
                         {
-                            text: 'Explore music',
+                            text: 'Explore',
                             iconStart: {
                                 icon: 'MusicNote',
                             },
@@ -62,6 +62,9 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                         },
                         {
                             text: 'Login',
+                            iconStart: {
+                                icon: 'User',
+                            },
                             onClick: () => alert('Button clicked!'),
                             style: 'cta',
                         },
@@ -71,12 +74,15 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                             buttons: [
                                 {
                                     text: 'Explore music',
+                                    iconStart: {
+                                        icon: 'MusicNote',
+                                    },
                                     link: '/#',
                                 },
                                 {
                                     text: 'Login',
                                     iconStart: {
-                                        icon: 'Heart',
+                                        icon: 'User',
                                     },
                                     onClick: () => alert('Button clicked!'),
                                 },
@@ -86,7 +92,7 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                     ]}
                 />
             </div>
-            <Panel element="header">
+            <Panel element="div">
                 <div className={classNames(styles.header, styles.track)}>
                     {track.album && (
                         <Image
@@ -105,7 +111,7 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                     </div>
                 </div>
             </Panel>
-        </div>
+        </header>
     );
 };
 

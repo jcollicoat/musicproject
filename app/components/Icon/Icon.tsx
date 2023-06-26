@@ -13,7 +13,7 @@ const Fallback: FC = () => (
     </g>
 );
 
-type Icons = 'Close' | 'Heart' | 'Menu' | 'MusicNote';
+type Icons = 'Close' | 'Heart' | 'Menu' | 'MusicNote' | 'User';
 
 export interface IconProps {
     icon: Icons;
