@@ -20,7 +20,6 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
     args: {
-        ariaLabel: 'Button',
         text: 'Button',
         onClick: () => alert('Button clicked!'),
     },

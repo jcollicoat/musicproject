@@ -6,11 +6,13 @@ import { Panel } from '@components/Panel/Panel';
 export default function Home() {
     return (
         <>
-            <Header />
+            <Header
+                title="Music Project"
+                subtitle="This is the music project."
+            />
             <main>
                 <Panel>
                     <Button
-                        ariaLabel="Button"
                         text="Button"
                         onClick={() => alert('Button clicked!')}
                     />

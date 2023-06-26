@@ -4,13 +4,27 @@ import { FC, useState } from 'react';
 import { Icon, IconProps } from '@components/Icon/Icon';
 import styles from './Button.module.scss';
 
+interface ContentProps {
+    text: string;
+    iconStart?: IconProps;
+    iconEnd?: IconProps;
+}
+
+const Content: FC<ContentProps> = ({ text, iconStart, iconEnd }) => (
+    <>
+        {iconStart && <Icon {...iconStart} />}
+        {text}
+        {iconEnd && <Icon {...iconEnd} />}
+    </>
+);
+
 type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary' | 'inMenu';
 
 interface BaseProps {
     text: string;
     ariaLabel?: string;
-    iconEnd?: IconProps;
     iconStart?: IconProps;
+    iconEnd?: IconProps;
     style?: ButtonStyles;
 }
 
@@ -29,8 +43,8 @@ type ButtonProps = PropsForButton | PropsForLink;
 export const Button: FC<ButtonProps> = ({
     text,
     ariaLabel,
-    iconEnd,
     iconStart,
+    iconEnd,
     style = 'primary',
     onClick,
     link,
@@ -43,16 +57,20 @@ export const Button: FC<ButtonProps> = ({
                 onClick={onClick}
                 type="button"
             >
-                {iconStart && (
-                    <Icon {...iconStart} size={iconStart.size ?? '1rem'} />
-                )}
-                {text}
-                {iconEnd && <Icon {...iconEnd} size={iconEnd.size ?? '1rem'} />}
+                <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />
             </button>
         );
     }
 
-    return link.startsWith('https://') ? (
+    return link.startsWith('/') || link.startsWith('#') ? (
+        <Link
+            aria-label={ariaLabel ?? text}
+            className={classNames(styles.button, styles[style])}
+            href={link}
+        >
+            <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />
+        </Link>
+    ) : (
         <a
             aria-label={ariaLabel ?? text}
             className={classNames(styles.button, styles[style])}
@@ -60,24 +78,8 @@ export const Button: FC<ButtonProps> = ({
             rel="noopener noreferrer"
             target="_blank"
         >
-            {iconStart && (
-                <Icon {...iconStart} size={iconStart.size ?? '1rem'} />
-            )}
-            {text}
-            {iconEnd && <Icon {...iconEnd} size={iconEnd.size ?? '1rem'} />}
+            <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />
         </a>
-    ) : (
-        <Link
-            aria-label={ariaLabel ?? text}
-            className={classNames(styles.button, styles[style])}
-            href={link}
-        >
-            {iconStart && (
-                <Icon {...iconStart} size={iconStart.size ?? '1rem'} />
-            )}
-            {text}
-            {iconEnd && <Icon {...iconEnd} size={iconEnd.size ?? '1rem'} />}
-        </Link>
     );
 };
 

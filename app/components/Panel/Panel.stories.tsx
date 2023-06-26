@@ -11,17 +11,12 @@ const meta: Meta<typeof Panel> = {
             options: ['Button', 'Secondary Button'],
             mapping: {
                 Button: (
-                    <Button
-                        onClick={() => alert('Clicked')}
-                        ariaLabel="Button"
-                        text="Button"
-                    />
+                    <Button text="Button" onClick={() => alert('Clicked')} />
                 ),
                 'Secondary Button': (
                     <Button
-                        onClick={() => alert('Clicked')}
-                        ariaLabel="Secondary Button"
                         text="Secondary Button"
+                        onClick={() => alert('Clicked')}
                         style="secondary"
                     />
                 ),

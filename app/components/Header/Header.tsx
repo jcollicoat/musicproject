@@ -22,13 +22,11 @@ const SimpleHeader: FC<SimpleHeaderProps> = ({ title, subtitle }) => {
                 <ButtonContainer
                     buttons={[
                         {
-                            ariaLabel: 'Explore music',
                             text: 'Explore music',
                             link: '/#',
                             style: 'tertiary',
                         },
                         {
-                            ariaLabel: 'Login',
                             text: 'Login',
                             onClick: () => alert('Button clicked!'),
                             style: 'cta',
@@ -55,7 +53,6 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                 <ButtonContainer
                     buttons={[
                         {
-                            ariaLabel: 'Explore music',
                             text: 'Explore music',
                             iconStart: {
                                 icon: 'MusicNote',
@@ -64,7 +61,6 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                             style: 'tertiary',
                         },
                         {
-                            ariaLabel: 'Login',
                             text: 'Login',
                             onClick: () => alert('Button clicked!'),
                             style: 'cta',
@@ -74,12 +70,10 @@ const TrackHeader: FC<TrackHeaderProps> = ({ track }) => {
                         {
                             buttons: [
                                 {
-                                    ariaLabel: 'Explore music',
                                     text: 'Explore music',
                                     link: '/#',
                                 },
                                 {
-                                    ariaLabel: 'Login',
                                     text: 'Login',
                                     iconStart: {
                                         icon: 'Heart',
