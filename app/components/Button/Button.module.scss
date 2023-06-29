@@ -135,7 +135,7 @@
         }
 
         &.right {
-            transform: translateX($padding-negative);
+            transform: translateX(neg($padding));
         }
 
         li {
