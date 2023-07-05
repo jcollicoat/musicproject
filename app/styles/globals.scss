@@ -59,3 +59,8 @@ main {
 header {
     margin-bottom: $padding;
 }
+
+#storybook-root {
+    height: 1200px;
+    position: relative;
+}
