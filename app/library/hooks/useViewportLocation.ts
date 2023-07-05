@@ -1,24 +1,37 @@
-import { Dispatch, SetStateAction, useLayoutEffect } from 'react';
-
-// interface Position {
-//     height?: number;
-//     width?: number;
-//     top?: number;
-//     right?: number;
-//     bottom?: number;
-//     left?: number;
-// }
+import { RefObject, useEffect, useState } from 'react';
 
 export const useViewportLocation = <T extends HTMLElement>(
-    element: T | null,
-    setter: Dispatch<SetStateAction<number>>
+    element: RefObject<T | null>
 ) => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const [rect, setRect] = useState<DOMRect>();
+    const [viewport, setViewort] = useState<{
+        width: number;
+        height: number;
+    }>();
 
-    useLayoutEffect(() => {
-        const rect = element?.getBoundingClientRect();
-        console.log(rect);
-        () => setter(rect?.height ?? 0);
-    }, [viewportWidth, viewportHeight, element, setter]);
+    useEffect(() => {
+        const rect = element.current?.getBoundingClientRect();
+        setRect(rect);
+        setViewort({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
+
+        const onScroll = () => {
+            const rect = element.current?.getBoundingClientRect();
+            setRect(rect);
+            setViewort({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('scroll', onScroll);
+
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, [element]);
+
+    return { rect, viewport };
 };

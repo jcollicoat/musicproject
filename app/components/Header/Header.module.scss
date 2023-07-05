@@ -54,8 +54,8 @@
             }
         }
 
-        div:not(.header) {
-            position: relative;
+        > div:not(.header) {
+            position: sticky;
             z-index: 2;
         }
     }

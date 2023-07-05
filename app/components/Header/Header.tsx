@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef } from 'react';
+import { useViewportLocation } from '@/library/hooks/useViewportLocation';
 import { ButtonContainer } from '@components/Button/Button';
 import { Track } from '@music/types/tracks.types';
 import styles from './Header.module.scss';
@@ -11,7 +12,6 @@ interface SimpleHeaderProps {
     hasPanel?: boolean;
     isFixed?: boolean;
     isSticky?: boolean;
-    setHeight?: (height: number) => void;
 }
 
 const SimpleHeader: FC<SimpleHeaderProps> = ({
@@ -20,15 +20,7 @@ const SimpleHeader: FC<SimpleHeaderProps> = ({
     hasPanel,
     isFixed,
     isSticky,
-    setHeight,
 }) => {
-    const headerRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        const rect = headerRef.current?.getBoundingClientRect();
-        console.log(rect);
-        setHeight && setHeight(rect?.height ?? 0);
-    }, [isSticky, setHeight]);
-
     const Heading = hasPanel ? 'span' : 'h1';
     return (
         <div
@@ -38,7 +30,6 @@ const SimpleHeader: FC<SimpleHeaderProps> = ({
                 isFixed && styles.fixed,
                 isSticky && styles.sticky
             )}
-            ref={headerRef}
         >
             <div className={styles.titles}>
                 <Heading className={styles.title}>{title}</Heading>
@@ -100,25 +91,24 @@ const TrackHeader: FC<TrackHeaderProps> = ({
     isSticky,
 }) => {
     const headerRef = useRef<HTMLDivElement>(null);
-    const [height, setHeight] = useState<DOMRect['height']>();
-    const set = (height: number) => setHeight(height);
-    useEffect(() => {
-        const rect = headerRef.current?.getBoundingClientRect();
-        console.log(rect);
-        set(rect?.height ?? 0);
-    }, [isSticky]);
-    console.log('height:', height);
+    const { rect } = useViewportLocation(headerRef);
+    console.log(rect);
+
     return (
         <header
             className={classNames(styles.wrapper, isSticky && styles.sticky)}
-            style={{ paddingTop: `${height}px` }}
+            ref={headerRef}
+            style={{
+                marginTop: isSticky
+                    ? rect?.height && rect.height - 30
+                    : undefined,
+            }}
         >
             <SimpleHeader
                 title={title}
                 subtitle={subtitle}
                 hasPanel
                 isFixed={isSticky}
-                setHeight={set}
             />
             <HeaderTrack track={track} />
         </header>
