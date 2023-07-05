@@ -90,7 +90,7 @@
         }
 
         &.open {
-            z-index: 101;
+            z-index: calc($z-overlay + 1);
 
             svg {
                 z-index: 2;
@@ -124,7 +124,7 @@
         top: $menu-offset;
         transform: translateX(-50%);
         width: clamp(180px, 240px, 50vw);
-        z-index: 100;
+        z-index: $z-overlay;
 
         &.open {
             display: block;

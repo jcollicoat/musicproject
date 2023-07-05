@@ -2,42 +2,61 @@
 
 .header {
     align-items: center;
+    background-color: #000000;
+    border: 1px solid $color-gray-8;
+    border-radius: 8px;
     display: flex;
-    flex-wrap: wrap;
-    gap: $space-xlarge;
+    font-size: 0.9em;
     justify-content: space-between;
+    margin-bottom: neg($padding);
+    padding: $padding;
 
-    .info {
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.25em;
+    &.panel {
+        padding-bottom: calc($padding * 2);
+    }
+
+    &.sticky {
+        position: sticky;
+        top: $padding;
+    }
+
+    .titles {
+        .title {
+            font-size: 1.25em;
+            font-weight: 600;
 
             @media (min-width: 480px) {
-                font-size: 3em;
+                font-size: 1.5em;
             }
         }
 
         p {
-            color: $color-gray-4;
+            color: $color-gray-6;
+            margin-top: 0.25em;
         }
     }
+}
 
-    &.track {
-        gap: $space-medium;
-        justify-content: start;
+.wrapper {
+    position: relative;
 
-        .image {
-            border-radius: 4px;
+    &.sticky {
+        position: sticky;
+        top: $padding;
+        z-index: $z-sticky;
+
+        .header {
+            &.fixed {
+                position: fixed;
+                top: $padding;
+                width: clamp(0px, calc(100% - $padding * 2), 1800px);
+                z-index: 1;
+            }
         }
 
-        .info {
-            h1 {
-                font-size: 2em;
-
-                @media (min-width: 480px) {
-                    font-size: 3em;
-                }
-            }
+        div:not(.header) {
+            position: relative;
+            z-index: 2;
         }
     }
 }

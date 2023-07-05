@@ -14,6 +14,11 @@ const meta: Meta<typeof Header> = {
                 Track: TrackMock,
             },
         },
+        hasPanel: {
+            table: {
+                disable: true,
+            },
+        },
     },
 };
 
@@ -24,6 +29,7 @@ type Story = StoryObj<typeof Header>;
 export const Primary: Story = {
     args: {
         title: 'Music Project',
-        subtitle: 'This is the music project.',
+        subtitle: '',
+        isSticky: false,
     },
 };
