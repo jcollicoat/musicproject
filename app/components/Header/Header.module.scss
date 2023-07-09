@@ -1,42 +1,5 @@
 @import '@styles/variables.scss';
 
-.header {
-    align-items: center;
-    background-color: #000000;
-    border: 1px solid $color-gray-8;
-    border-radius: 8px;
-    display: flex;
-    font-size: 0.9em;
-    justify-content: space-between;
-    margin-bottom: neg($padding);
-    padding: $padding;
-
-    &.panel {
-        padding-bottom: calc($padding * 2);
-    }
-
-    &.sticky {
-        position: sticky;
-        top: $padding;
-    }
-
-    .titles {
-        .title {
-            font-size: 1.25em;
-            font-weight: 600;
-
-            @media (min-width: 480px) {
-                font-size: 1.5em;
-            }
-        }
-
-        p {
-            color: $color-gray-6;
-            margin-top: 0.25em;
-        }
-    }
-}
-
 .wrapper {
     position: relative;
 
@@ -45,8 +8,28 @@
         top: $padding;
         z-index: $z-sticky;
 
-        .header {
-            &.fixed {
+        > div:not(.header) {
+            margin-top: neg($padding);
+            position: sticky;
+            z-index: 2;
+        }
+    }
+
+    .header {
+        align-items: center;
+        background-color: #000000;
+        border: 1px solid $color-gray-8;
+        border-radius: 8px;
+        display: flex;
+        font-size: 0.9em;
+        justify-content: space-between;
+        margin-bottom: neg($padding);
+        padding: $padding;
+
+        &.data {
+            padding-bottom: calc($padding * 2);
+
+            &.sticky {
                 position: fixed;
                 top: $padding;
                 width: clamp(0px, calc(100% - $padding * 2), 1800px);
@@ -54,9 +37,25 @@
             }
         }
 
-        > div:not(.header) {
+        &.sticky {
             position: sticky;
-            z-index: 2;
+            top: $padding;
+        }
+
+        .titles {
+            .title {
+                font-size: 1.25em;
+                font-weight: 600;
+
+                @media (min-width: 480px) {
+                    font-size: 1.5em;
+                }
+            }
+
+            p {
+                color: $color-gray-6;
+                margin-top: 0.25em;
+            }
         }
     }
 }

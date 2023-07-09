@@ -6,31 +6,20 @@ import { Track } from '@music/types/tracks.types';
 import styles from './Header.module.scss';
 import { HeaderTrack } from './HeaderComponents/HeaderTrack';
 
-interface SimpleHeaderProps {
+interface HeaderContentProps {
+    headingElement: 'h1' | 'span';
     title: string;
     subtitle?: string;
-    hasPanel?: boolean;
-    isFixed?: boolean;
-    isSticky?: boolean;
 }
 
-const SimpleHeader: FC<SimpleHeaderProps> = ({
+const HeaderContent: FC<HeaderContentProps> = ({
+    headingElement,
     title,
     subtitle,
-    hasPanel,
-    isFixed,
-    isSticky,
 }) => {
-    const Heading = hasPanel ? 'span' : 'h1';
+    const Heading = headingElement;
     return (
-        <div
-            className={classNames(
-                styles.header,
-                hasPanel && styles.panel,
-                isFixed && styles.fixed,
-                isSticky && styles.sticky
-            )}
-        >
+        <>
             <div className={styles.titles}>
                 <Heading className={styles.title}>{title}</Heading>
                 {subtitle && <p>{subtitle}</p>}
@@ -76,20 +65,16 @@ const SimpleHeader: FC<SimpleHeaderProps> = ({
                     },
                 ]}
             />
-        </div>
+        </>
     );
 };
 
-interface TrackHeaderProps extends SimpleHeaderProps {
-    track: Track;
+interface Props extends HeaderContentProps {
+    data?: Track;
+    isSticky?: boolean;
 }
 
-const TrackHeader: FC<TrackHeaderProps> = ({
-    title,
-    subtitle,
-    track,
-    isSticky,
-}) => {
+export const Header: FC<Props> = ({ title, subtitle, data, isSticky }) => {
     const headerRef = useRef<HTMLDivElement>(null);
     const { rect } = useViewportLocation(headerRef);
     console.log(rect);
@@ -97,37 +82,23 @@ const TrackHeader: FC<TrackHeaderProps> = ({
     return (
         <header
             className={classNames(styles.wrapper, isSticky && styles.sticky)}
-            ref={headerRef}
-            style={{
-                marginTop: isSticky
-                    ? rect?.height && rect.height - 30
-                    : undefined,
-            }}
+            style={{ marginTop: rect?.height }}
         >
-            <SimpleHeader
-                title={title}
-                subtitle={subtitle}
-                hasPanel
-                isFixed={isSticky}
-            />
-            <HeaderTrack track={track} />
+            <div
+                className={classNames(
+                    styles.header,
+                    data && styles.data,
+                    isSticky && styles.sticky
+                )}
+                ref={headerRef}
+            >
+                <HeaderContent
+                    headingElement={data ? 'span' : 'h1'}
+                    title={title}
+                    subtitle={subtitle}
+                />
+            </div>
+            {data && <HeaderTrack track={data} />}
         </header>
-    );
-};
-
-interface Props extends SimpleHeaderProps {
-    data?: Track;
-}
-
-export const Header: FC<Props> = ({ title, subtitle, data, isSticky }) => {
-    return data ? (
-        <TrackHeader
-            title={title}
-            subtitle={subtitle}
-            track={data}
-            isSticky={isSticky}
-        />
-    ) : (
-        <SimpleHeader title={title} subtitle={subtitle} isSticky={isSticky} />
     );
 };
