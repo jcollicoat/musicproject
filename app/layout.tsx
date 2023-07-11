@@ -1,3 +1,4 @@
+import { ClientAuthProvider } from '@components/ClientAuthProvider/ClientAuthProvider';
 import '@styles/globals.scss';
 
 export const metadata = {
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <ClientAuthProvider>{children}</ClientAuthProvider>
+            </body>
         </html>
     );
 }
