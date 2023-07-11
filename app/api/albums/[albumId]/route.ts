@@ -5,7 +5,7 @@ import { music } from '@music/api';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { albumId: string } }
+    { params }: { params: { albumId: string } },
 ) {
     try {
         const accessToken = getAccessToken(request);

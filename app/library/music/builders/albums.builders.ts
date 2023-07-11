@@ -6,7 +6,7 @@ const buildAlbum = (album: SpotifyAlbum): Album => ({
     // Simple
     albumType: album.album_type,
     artists: album.artists.map((artist) =>
-        builders.artists.buildArtist(artist)
+        builders.artists.buildArtist(artist),
     ),
     id: album.id,
     images: album.images,
@@ -23,7 +23,7 @@ const buildAlbum = (album: SpotifyAlbum): Album => ({
         builders.tracks.buildTracks(
             album.tracks.items.map((item) => ({
                 track: item,
-            }))
+            })),
         ),
 });
 

@@ -88,7 +88,7 @@ export const Header: FC<Props> = ({ title, subtitle, data, isSticky }) => {
                 className={classNames(
                     styles.header,
                     data && styles.data,
-                    isSticky && styles.sticky
+                    isSticky && styles.sticky,
                 )}
                 ref={headerRef}
             >

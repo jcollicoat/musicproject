@@ -38,7 +38,7 @@ enum MusicalModes {
 }
 
 const buildAudioAnalysis = (
-    audioAnalysis: SpotifyAudioAnalysis
+    audioAnalysis: SpotifyAudioAnalysis,
 ): AudioAnalysis => ({
     bars: audioAnalysis.bars.map((bar) => ({
         duration: bar.duration,
@@ -62,7 +62,7 @@ const buildAudioAnalysis = (
 });
 
 const buildAudioFeatures = (
-    audioFeatures: SpotifyAudioFeatures
+    audioFeatures: SpotifyAudioFeatures,
 ): AudioFeatures => ({
     acousticness: audioFeatures.acousticness,
     danceability: audioFeatures.danceability,
@@ -84,7 +84,7 @@ const buildTrack = (trackDto: TrackDto): Track => {
     return {
         // Simple
         artists: track.artists.map((artist) =>
-            builders.artists.buildArtist(artist)
+            builders.artists.buildArtist(artist),
         ),
         durationMs: track.duration_ms,
         explicit: track.explicit,
@@ -121,7 +121,7 @@ const buildNowPlaying = (nowPlaying: SpotifyPlaybackState): NowPlaying => ({
         id: getUrlSlug(nowPlaying.context?.href) ?? undefined,
         type: nowPlaying.context?.type ?? undefined,
         playedAt: new Date(
-            nowPlaying.timestamp - (nowPlaying.progress_ms ?? 0)
+            nowPlaying.timestamp - (nowPlaying.progress_ms ?? 0),
         ).toISOString(),
     },
     progressMs: nowPlaying.progress_ms ?? 0,
@@ -135,12 +135,12 @@ const buildNowPlaying = (nowPlaying: SpotifyPlaybackState): NowPlaying => ({
 const buildRecentlyPlayed = (
     recentlyPlayed: SpotifyRecentlyPlayed,
     isSavedList: boolean[],
-    audioFeaturesList?: SpotifyAudioFeatures[]
+    audioFeaturesList?: SpotifyAudioFeatures[],
 ): RecentlyPlayed => ({
     items: recentlyPlayed.items.map((rp, index) => {
         const isSaved = isSavedList[index];
         const audioFeatures = audioFeaturesList?.find(
-            (item) => item.id === rp.track.id
+            (item) => item.id === rp.track.id,
         );
         const context: Track['context'] = {
             id: getUrlSlug(rp.context?.href) ?? undefined,

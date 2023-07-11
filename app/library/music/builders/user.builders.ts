@@ -14,7 +14,7 @@ const buildUser = (user: SpotifyUser): User => ({
 
 const buildFullUser = (
     details: SpotifyUser,
-    followedArtists: SpotifyFollowedArtists
+    followedArtists: SpotifyFollowedArtists,
 ) => ({ details, followedArtists });
 
 const user = { buildUser, buildFullUser };

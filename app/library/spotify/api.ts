@@ -30,7 +30,7 @@ const audioAnalysis = {
     get: async (trackId: string, accessToken: string) => {
         return await api.get<SpotifyAudioAnalysis>(
             `audio-analysis/${trackId}`,
-            accessToken
+            accessToken,
         );
     },
 };
@@ -39,7 +39,7 @@ const audioFeatures = {
     get: async (trackId: string, accessToken: string) => {
         return await api.get<SpotifyAudioFeatures>(
             `audio-features/${trackId}`,
-            accessToken
+            accessToken,
         );
     },
     getList: async (trackIds: string[], accessToken: string) => {
@@ -48,7 +48,7 @@ const audioFeatures = {
             accessToken,
             {
                 ids: trackIds.join(','),
-            }
+            },
         );
     },
 };
@@ -57,7 +57,7 @@ const playlists = {
     get: async (playlistId: string, accessToken: string) => {
         return await api.get<SpotifyPlaylist>(
             `playlists/${playlistId}`,
-            accessToken
+            accessToken,
         );
     },
 };
@@ -67,7 +67,7 @@ const search = async (
         query: string;
         types?: string[];
     },
-    accessToken: string
+    accessToken: string,
 ) => {
     return await api.get<SpotifySearch>('search', accessToken, {
         q: config.query,
@@ -85,7 +85,7 @@ const tracks = {
             accessToken,
             {
                 ids: trackIds.join(','),
-            }
+            },
         );
     },
 };
@@ -101,7 +101,7 @@ const user = {
                 accessToken,
                 {
                     type: 'artist',
-                }
+                },
             );
         },
     },
@@ -114,13 +114,13 @@ const user = {
         player: async (accessToken: string) => {
             return await api.get<SpotifyPlaybackState>(
                 'me/player',
-                accessToken
+                accessToken,
             );
         },
         recent: async (accessToken: string) => {
             return await api.get<SpotifyRecentlyPlayed>(
                 'me/player/recently-played',
-                accessToken
+                accessToken,
             );
         },
     },

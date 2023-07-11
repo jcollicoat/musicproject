@@ -17,7 +17,7 @@ const id = async (
     trackId: string,
     accessToken: string,
     hasAudioFeatures: boolean,
-    hasAudioAnalysis: boolean
+    hasAudioAnalysis: boolean,
 ) => {
     const track = await spotify.tracks.get(trackId, accessToken);
     const [isSaved] = await spotify.user.tracks.isSaved([trackId], accessToken);
@@ -41,19 +41,19 @@ const id = async (
 const ids = async (
     trackIds: string[],
     accessToken: string,
-    hasAudioFeatures: boolean
+    hasAudioFeatures: boolean,
 ) => {
     const { tracks } = await spotify.tracks.getList(trackIds, accessToken);
     const isSavedList = await spotify.user.tracks.isSaved(
         trackIds,
-        accessToken
+        accessToken,
     );
 
     let audioFeatures: { audio_features: SpotifyAudioFeatures[] };
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.getList(
             trackIds,
-            accessToken
+            accessToken,
         );
 
     const trackDtos: TrackDto[] = tracks.map((track, index) => {
@@ -61,7 +61,7 @@ const ids = async (
             track: track,
             isSaved: isSavedList[index],
             audioFeatures: audioFeatures.audio_features.find(
-                (af) => af.id === track.id
+                (af) => af.id === track.id,
             ),
         };
     });
@@ -76,26 +76,26 @@ const nowPlaying = async (accessToken: string) => {
 
 const recentlyPlayed = async (
     accessToken: string,
-    hasAudioFeatures: boolean
+    hasAudioFeatures: boolean,
 ) => {
     const recentlyPlayed = await spotify.user.tracks.recent(accessToken);
     const trackIds = recentlyPlayed.items.map((item) => item.track.id);
     const isSavedList = await spotify.user.tracks.isSaved(
         trackIds,
-        accessToken
+        accessToken,
     );
 
     let audioFeatures;
     if (hasAudioFeatures)
         audioFeatures = await spotify.audioFeatures.getList(
             trackIds,
-            accessToken
+            accessToken,
         );
 
     return builders.tracks.buildRecentlyPlayed(
         recentlyPlayed,
         isSavedList,
-        audioFeatures?.audio_features
+        audioFeatures?.audio_features,
     );
 };
 

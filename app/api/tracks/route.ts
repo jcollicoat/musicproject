@@ -10,13 +10,13 @@ export async function GET(request: NextRequest) {
 
         const hasAudioFeatures = hasRouteParam(
             request.nextUrl,
-            'audioFeatures'
+            'audioFeatures',
         );
 
         const tracks = await music.tracks.ids(
             trackIds ?? [],
             accessToken,
-            hasAudioFeatures
+            hasAudioFeatures,
         );
         return NextResponse.json(tracks);
     } catch (error) {

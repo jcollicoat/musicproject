@@ -28,7 +28,7 @@ export const hasRouteParams = (url: NextURL, params: string[]) =>
 export const getRouteParam = (
     url: NextURL,
     param: string,
-    required?: boolean
+    required?: boolean,
 ) => {
     if (!url.searchParams.get(param) && required)
         throw new Error(`Parameter {${param}} required.`);
@@ -41,7 +41,7 @@ export const getRouteParams = (url: NextURL, params: string[]) =>
 export const getArrayRouteParam = (
     url: NextURL,
     param: string,
-    required?: boolean
+    required?: boolean,
 ) => {
     if (!url.searchParams.get(param) && required)
         throw new Error(`Parameter {${param}} required.`);

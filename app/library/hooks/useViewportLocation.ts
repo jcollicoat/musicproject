@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 
 export const useViewportLocation = <T extends HTMLElement>(
-    element: RefObject<T | null>
+    element: RefObject<T | null>,
 ) => {
     const [rect, setRect] = useState<DOMRect>();
     const [viewport, setViewort] = useState<{

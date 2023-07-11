@@ -5,7 +5,7 @@ import { builders } from './builders';
 const albums = {
     get: async (albumId: string, accessToken: string) => {
         return builders.albums.buildAlbum(
-            await spotify.albums.get(albumId, accessToken)
+            await spotify.albums.get(albumId, accessToken),
         );
     },
 };
@@ -13,7 +13,7 @@ const albums = {
 const artists = {
     get: async (artistId: string, accessToken: string) => {
         return builders.artists.buildArtist(
-            await spotify.artists.get(artistId, accessToken)
+            await spotify.artists.get(artistId, accessToken),
         );
     },
 };
@@ -21,7 +21,7 @@ const artists = {
 const playlists = {
     get: async (playlistId: string, accessToken: string) => {
         return builders.playlists.buildPlaylist(
-            await spotify.playlists.get(playlistId, accessToken)
+            await spotify.playlists.get(playlistId, accessToken),
         );
     },
 };
@@ -31,10 +31,10 @@ const search = async (
         query: string;
         types?: string[];
     },
-    accessToken: string
+    accessToken: string,
 ) => {
     return builders.search.buildSearch(
-        await spotify.search(config, accessToken)
+        await spotify.search(config, accessToken),
     );
 };
 
@@ -45,7 +45,7 @@ const user = {
     full: async (accessToken: string) => {
         return builders.user.buildFullUser(
             await spotify.user.get(accessToken),
-            await spotify.user.artists.followed(accessToken)
+            await spotify.user.artists.followed(accessToken),
         );
     },
 };

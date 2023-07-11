@@ -5,7 +5,7 @@ import { music } from '@music/api';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { trackId: string } }
+    { params }: { params: { trackId: string } },
 ) {
     try {
         const accessToken = getAccessToken(request);
@@ -13,7 +13,7 @@ export async function GET(
 
         const audioAnalysis = await music.tracks.audioAnalysis(
             trackId,
-            accessToken
+            accessToken,
         );
         return NextResponse.json(audioAnalysis);
     } catch (error) {

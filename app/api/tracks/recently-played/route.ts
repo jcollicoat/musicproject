@@ -8,12 +8,12 @@ export async function GET(request: NextRequest) {
         const accessToken = getAccessToken(request);
         const hasAudioFeatures = hasRouteParam(
             request.nextUrl,
-            'audioFeatures'
+            'audioFeatures',
         );
 
         const recentlyPlayed = await music.tracks.recentlyPlayed(
             accessToken,
-            hasAudioFeatures
+            hasAudioFeatures,
         );
         return NextResponse.json(recentlyPlayed);
     } catch (error) {

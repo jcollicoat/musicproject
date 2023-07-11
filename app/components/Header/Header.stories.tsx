@@ -14,11 +14,6 @@ const meta: Meta<typeof Header> = {
                 Track: TrackMock,
             },
         },
-        hasPanel: {
-            table: {
-                disable: true,
-            },
-        },
     },
 };
 

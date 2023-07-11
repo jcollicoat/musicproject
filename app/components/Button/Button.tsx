@@ -101,7 +101,7 @@ const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
                 className={classNames(
                     styles.button,
                     styles.trigger,
-                    isOpen && styles.open
+                    isOpen && styles.open,
                 )}
                 onClick={toggle}
                 type="button"
@@ -112,7 +112,7 @@ const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
                 className={classNames(
                     styles.menu,
                     isOpen && styles.open,
-                    side && styles[side]
+                    side && styles[side],
                 )}
             >
                 {buttons.map((props) => (
@@ -136,9 +136,7 @@ export const ButtonContainer: FC<ButtonContainerProps> = ({
 }) => {
     return (
         <div className={styles.container}>
-            {buttons?.map((props) => (
-                <Button key={props.text} {...props} />
-            ))}
+            {buttons?.map((props) => <Button key={props.text} {...props} />)}
             {menuButtons?.map((props) => (
                 <MenuButton key={props.buttons[0].text} {...props} />
             ))}

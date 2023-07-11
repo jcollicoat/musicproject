@@ -23,7 +23,7 @@ const buildPlaylist = (playlist: SpotifyPlaylist): Playlist => ({
         ? builders.tracks.buildTracks(
               playlist.tracks.items.map((item) => ({
                   track: item.track,
-              }))
+              })),
           )
         : undefined,
 });
