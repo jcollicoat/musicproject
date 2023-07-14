@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { errorResponse, getArrayRouteParam, getRouteParam } from '@api/helpers';
-import { getAccessToken } from '@auth/helpers';
+import {
+    errorResponse,
+    getAccessToken,
+    getArrayRouteParam,
+    getRouteParam,
+} from '@api/helpers';
 import { music } from '@music/api';
 
 export async function GET(request: NextRequest) {
