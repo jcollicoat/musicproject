@@ -1,23 +1,16 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { Button } from '@components/Button/Button';
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
-import { Track } from '@music/types/tracks.types';
+import { useTrack } from '@hooks/music/useTrack';
 
 export default function Page({
     params: { trackId },
 }: {
     params: { trackId: string };
 }) {
-    const { data: track } = useQuery({
-        queryKey: ['track', trackId],
-        queryFn: () => axios.get<Track>(`/api/tracks/${trackId}`),
-        staleTime: Infinity,
-    });
-    console.log(track?.data);
+    const track = useTrack(trackId);
 
     return (
         <>
@@ -25,7 +18,7 @@ export default function Page({
                 title="Music Project"
                 subtitle="This is the music project."
                 headingElement="h1"
-                data={track?.data}
+                data={track}
             />
             <main>
                 <Panel>

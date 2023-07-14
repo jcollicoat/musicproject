@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { FC, useRef } from 'react';
-import { useViewportLocation } from '@/library/hooks/useViewportLocation';
 import { ButtonContainer } from '@components/Button/Button';
+import { useViewportLocation } from '@hooks/useViewportLocation';
 import { Track } from '@music/types/tracks.types';
 import styles from './Header.module.scss';
 import { HeaderTrack } from './HeaderComponents/HeaderTrack';
