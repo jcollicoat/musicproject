@@ -1,5 +1,6 @@
-import { ClientAuthProvider } from '@components/ClientAuthProvider/ClientAuthProvider';
 import '@styles/globals.scss';
+import { AuthContextProvider } from './library/context/AuthContextProvider';
+import { QueryContextProvider } from './library/context/QueryContextProvider';
 
 export const metadata = {
     title: 'Music Project',
@@ -14,7 +15,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <ClientAuthProvider>{children}</ClientAuthProvider>
+                <AuthContextProvider>
+                    <QueryContextProvider>{children}</QueryContextProvider>
+                </AuthContextProvider>
             </body>
         </html>
     );
