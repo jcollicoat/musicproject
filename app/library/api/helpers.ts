@@ -10,7 +10,6 @@ export const getAccessToken = async (request: NextRequest): Promise<string> => {
     // Next Auth
     const token = await getToken({ req: request });
     if (token) {
-        console.warn('Access Token:', token.access_token);
         return `Bearer ${token.access_token}`;
     }
 
