@@ -5,19 +5,19 @@ import axios from 'axios';
 import { Button } from '@components/Button/Button';
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
+import { Track } from '@music/types/tracks.types';
 
 export default function Page({
     params: { trackId },
 }: {
     params: { trackId: string };
 }) {
-    const query = useQuery(
-        ['track', trackId],
-        () => axios.get(`/api/tracks/${trackId}`),
-        { staleTime: 360000 },
-    );
-
-    console.log(query);
+    const { data: track } = useQuery({
+        queryKey: ['track', trackId],
+        queryFn: () => axios.get<Track>(`/api/tracks/${trackId}`),
+        staleTime: Infinity,
+    });
+    console.log(track?.data);
 
     return (
         <>
@@ -25,6 +25,7 @@ export default function Page({
                 title="Music Project"
                 subtitle="This is the music project."
                 headingElement="h1"
+                data={track?.data}
             />
             <main>
                 <Panel>
