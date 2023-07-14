@@ -21,9 +21,9 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@components/*": ["app/components/*"],
             "@api/*": ["app/library/api/*"],
             "@auth/*": ["app/library/auth/*"],
+            "@components/*": ["app/library/components/*"],
             "@music/*": ["app/library/music/*"],
             "@spotify/*": ["app/library/spotify/*"],
             "@styles/*": ["app/library/styles/*"],
