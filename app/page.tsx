@@ -17,7 +17,7 @@ export default function Home() {
                 <Panel>
                     <Button
                         text="To Track"
-                        link="/track/21p0edNF107qz1uPc9F7EK"
+                        link="/tracks/21p0edNF107qz1uPc9F7EK"
                     />
                 </Panel>
             </main>
