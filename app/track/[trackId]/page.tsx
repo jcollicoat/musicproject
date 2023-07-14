@@ -4,21 +4,19 @@ import { Button } from '@components/Button/Button';
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
 
-export default function Home() {
+export default function Page({ params }: { params: { trackId: string } }) {
+    console.log(params);
+
     return (
         <>
             <Header
                 title="Music Project"
                 subtitle="This is the music project."
                 headingElement="h1"
-                isSticky
             />
             <main>
                 <Panel>
-                    <Button
-                        text="To Track"
-                        link="/track/21p0edNF107qz1uPc9F7EK"
-                    />
+                    <Button text="Home" link="/" />
                 </Panel>
             </main>
         </>
