@@ -7,7 +7,7 @@ export async function GET(
     { params }: { params: { trackId: string } },
 ) {
     try {
-        const accessToken = getAccessToken(request);
+        const accessToken = await getAccessToken(request);
         const { trackId } = params;
         const [audioFeatures, audioAnalysis] = hasRouteParams(request.nextUrl, [
             'audioFeatures',

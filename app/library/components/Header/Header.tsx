@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { FC, useRef } from 'react';
 import { useViewportLocation } from '@/library/hooks/useViewportLocation';
 import { ButtonContainer } from '@components/Button/Button';
@@ -18,6 +19,12 @@ const HeaderContent: FC<HeaderContentProps> = ({
     subtitle,
 }) => {
     const Heading = headingElement;
+
+    const session = useSession();
+    const onClick = () => {
+        session.status === 'authenticated' ? signOut() : signIn();
+    };
+
     return (
         <>
             <div className={styles.titles}>
@@ -35,11 +42,14 @@ const HeaderContent: FC<HeaderContentProps> = ({
                         style: 'tertiary',
                     },
                     {
-                        text: 'Login',
+                        text:
+                            session.status === 'authenticated'
+                                ? 'Logout'
+                                : 'Login',
                         iconStart: {
                             icon: 'User',
                         },
-                        onClick: () => alert('Button clicked!'),
+                        onClick: onClick,
                         style: 'cta',
                     },
                 ]}
@@ -77,7 +87,7 @@ interface Props extends HeaderContentProps {
 export const Header: FC<Props> = ({ title, subtitle, data, isSticky }) => {
     const headerRef = useRef<HTMLDivElement>(null);
     const { rect } = useViewportLocation(headerRef);
-    console.log(rect);
+    // console.log(rect);
 
     return (
         <header

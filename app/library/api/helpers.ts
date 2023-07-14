@@ -1,31 +1,41 @@
 import { NextURL } from 'next/dist/server/web/next-url';
 import { NextRequest, NextResponse } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
 const ENV = process.env.NODE_ENV;
 
 // Auth
 
-export const getAccessToken = (request: NextRequest): string => {
-    const authHeader = request.headers.get('authorization');
-    if (!authHeader) throw new Error('No access token provided');
+export const getAccessToken = async (request: NextRequest): Promise<string> => {
+    // Next Auth
+    const token = await getToken({ req: request });
+    if (token) {
+        console.warn('Access Token:', token.access_token);
+        return `Bearer ${token.access_token}`;
+    }
 
-    if (ENV === 'development' && authHeader.match(/Bearer /g)) {
-        console.log('Using Postman access token');
-        return authHeader;
-    } else {
+    if (ENV !== 'development') {
         throw new Error('Invalid access token provided');
     }
+
+    // API Direct
+    const authHeader = request.headers.get('authorization');
+    if (authHeader?.match(/Bearer /g)) {
+        console.log('Using Postman access token');
+        return authHeader;
+    }
+
+    throw new Error('Invalid access token provided');
 };
 
 // Errors
 
 export const errorResponse = (error: unknown): NextResponse => {
     if (ENV === 'development') {
-        console.error(error);
         if (error instanceof Error) {
-            return NextResponse.json(error.message);
+            return NextResponse.json({ error: error.message }, { status: 500 });
         }
-        return NextResponse.json(error);
+        return NextResponse.json({ error: error }, { status: 500 });
     }
 
     return NextResponse.json('Internal server error', { status: 500 });
