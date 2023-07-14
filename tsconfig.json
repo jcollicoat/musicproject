@@ -26,7 +26,7 @@
             "@auth/*": ["app/library/auth/*"],
             "@music/*": ["app/library/music/*"],
             "@spotify/*": ["app/library/spotify/*"],
-            "@styles/*": ["app/styles/*"],
+            "@styles/*": ["app/library/styles/*"],
             "@/*": ["app/*"]
         }
     },
