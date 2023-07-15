@@ -4,7 +4,7 @@ import { music } from '@music/api';
 
 export async function GET(request: NextRequest) {
     try {
-        const accessToken = getAccessToken(request);
+        const accessToken = await getAccessToken(request);
 
         const user = await music.user.details(accessToken);
         return NextResponse.json(user);
