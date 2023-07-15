@@ -1,11 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import NextAuth from 'next-auth';
 
-declare module 'next-auth' {
+declare module 'next-auth/jwt' {
     /**
-     * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+     * Returned by the `jwt` callback and `getToken`, when using JWT sessions
      */
-    interface Session {
-        access_token: string;
+    interface JWT {
+        access_token?: string;
+        refresh_token?: string;
+        expires?: number;
     }
 }
