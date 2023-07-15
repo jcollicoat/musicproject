@@ -1,19 +1,21 @@
 import classNames from 'classnames';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { FC, useRef } from 'react';
+import { FC } from 'react';
 import { ButtonContainer } from '@components/Button/Button';
-import { useViewportLocation } from '@hooks/useViewportLocation';
 import { Track } from '@music/types/tracks.types';
 import styles from './Header.module.scss';
 import { HeaderTrack } from './HeaderComponents/HeaderTrack';
 
-interface HeaderContentProps {
-    headingElement: 'h1' | 'span';
+interface BaseProps {
     title: string;
     subtitle?: string;
 }
 
-const HeaderContent: FC<HeaderContentProps> = ({
+interface ContentProps extends BaseProps {
+    headingElement: 'h1' | 'span';
+}
+
+const HeaderContent: FC<ContentProps> = ({
     headingElement,
     title,
     subtitle,
@@ -79,28 +81,22 @@ const HeaderContent: FC<HeaderContentProps> = ({
     );
 };
 
-interface Props extends HeaderContentProps {
+interface Props extends BaseProps {
     data?: Track;
     isSticky?: boolean;
 }
 
 export const Header: FC<Props> = ({ title, subtitle, data, isSticky }) => {
-    const headerRef = useRef<HTMLDivElement>(null);
-    const { rect } = useViewportLocation(headerRef);
-    // console.log(rect);
-
     return (
         <header
-            className={classNames(styles.wrapper, isSticky && styles.sticky)}
-            style={{ marginTop: rect?.height }}
+            className={classNames(styles.header, isSticky && styles.isSticky)}
         >
             <div
                 className={classNames(
-                    styles.header,
-                    data && styles.data,
-                    isSticky && styles.sticky,
+                    styles.content,
+                    data && styles.hasData,
+                    isSticky && styles.isSticky,
                 )}
-                ref={headerRef}
             >
                 <HeaderContent
                     headingElement={data ? 'span' : 'h1'}

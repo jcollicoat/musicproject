@@ -1,11 +1,13 @@
 @import '@styles/variables.scss';
 
-.wrapper {
+.header {
+    background-color: $color-gray-bg;
+    padding-top: $padding;
     position: relative;
 
-    &.sticky {
+    &.isSticky {
         position: sticky;
-        top: $padding;
+        top: 0;
         z-index: $z-sticky;
 
         > div:not(.header) {
@@ -15,7 +17,7 @@
         }
     }
 
-    .header {
+    .content {
         align-items: center;
         background-color: #000000;
         border: 1px solid $color-gray-8;
@@ -26,10 +28,10 @@
         margin-bottom: neg($padding);
         padding: $padding;
 
-        &.data {
+        &.hasData {
             padding-bottom: calc($padding * 2);
 
-            &.sticky {
+            &.isSticky {
                 position: fixed;
                 top: $padding;
                 width: clamp(0px, calc(100% - $padding * 2), 1800px);
@@ -37,7 +39,7 @@
             }
         }
 
-        &.sticky {
+        &.isSticky {
             position: sticky;
             top: $padding;
         }

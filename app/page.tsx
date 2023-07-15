@@ -10,7 +10,6 @@ export default function Home() {
             <Header
                 title="Music Project"
                 subtitle="This is the music project."
-                headingElement="h1"
                 isSticky
             />
             <main>

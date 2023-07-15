@@ -17,7 +17,6 @@ export default function Page({
             <Header
                 title="Music Project"
                 subtitle="This is the music project."
-                headingElement="h1"
                 data={track}
             />
             <main>
