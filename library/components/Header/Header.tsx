@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { FC } from 'react';
 import { ButtonContainer } from '@components/Button/Button';
@@ -20,15 +22,13 @@ const HeaderContent: FC<ContentProps> = ({
     title,
     subtitle,
 }) => {
-    const buttons = useHeaderButtons();
-
     return (
         <>
             <div className={styles.titles}>
                 <Heading className={styles.title}>{title}</Heading>
                 {subtitle && <p>{subtitle}</p>}
             </div>
-            <ButtonContainer buttons={buttons} />
+            <ButtonContainer buttons={useHeaderButtons()} />
         </>
     );
 };
