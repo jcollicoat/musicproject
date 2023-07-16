@@ -1,6 +1,6 @@
 import '@styles/globals.scss';
-import { AuthContextProvider } from './library/context/AuthContextProvider';
-import { QueryContextProvider } from './library/context/QueryContextProvider';
+import { AuthContextProvider } from '@context/AuthContextProvider';
+import { QueryContextProvider } from '@context/QueryContextProvider';
 
 export const metadata = {
     title: 'Music Project',

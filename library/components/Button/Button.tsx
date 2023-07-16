@@ -29,7 +29,7 @@ interface BaseProps {
 }
 
 interface PropsForButton extends BaseProps {
-    onClick: () => void;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
     link?: never;
 }
 
@@ -38,14 +38,14 @@ interface PropsForLink extends BaseProps {
     onClick?: never;
 }
 
-type ButtonProps = PropsForButton | PropsForLink;
+export type ButtonProps = PropsForButton | PropsForLink;
 
 export const Button: FC<ButtonProps> = ({
     text,
     ariaLabel,
     iconStart,
     iconEnd,
-    style = 'primary',
+    style = 'secondary',
     onClick,
     link,
 }) => {

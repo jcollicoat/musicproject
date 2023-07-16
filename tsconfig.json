@@ -21,13 +21,15 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@music/*": ["app/library/api/music/*"],
-            "@spotify/*": ["app/library/api/spotify/*"],
-            "@api/*": ["app/library/api/*"],
-            "@auth/*": ["app/library/auth/*"],
-            "@components/*": ["app/library/components/*"],
-            "@hooks/*": ["app/library/hooks/*"],
-            "@styles/*": ["app/library/styles/*"],
+            "@music/*": ["library/api/music/*"],
+            "@spotify/*": ["library/api/spotify/*"],
+            "@api/*": ["library/api/*"],
+            "@auth/*": ["library/auth/*"],
+            "@components/*": ["library/components/*"],
+            "@context/*": ["library/context/*"],
+            "@hooks/*": ["library/hooks/*"],
+            "@styles/*": ["library/styles/*"],
+            "@library/*": ["library/*"],
             "@/*": ["app/*"]
         }
     },
