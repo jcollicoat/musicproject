@@ -1,16 +1,12 @@
 'use client';
 
 import { Header } from '@components/Header/Header';
-import { useTrack } from '@hooks/music/useTrack';
 
 export default function Page({
-    params: { trackId },
+    params: { albumId },
 }: {
-    params: { trackId: string };
+    params: { albumId: string };
 }) {
-    const track = useTrack(trackId);
-    console.log(track);
-
     return (
         <Header title="Music Project" subtitle="This is the music project." />
     );
