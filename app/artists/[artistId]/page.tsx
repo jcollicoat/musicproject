@@ -7,7 +7,6 @@ export default function Page({
 }: {
     params: { artistId: string };
 }) {
-    return (
-        <Header title="Music Project" subtitle="This is the music project." />
-    );
+    console.log(artistId);
+    return <Header title="Music Project" />;
 }

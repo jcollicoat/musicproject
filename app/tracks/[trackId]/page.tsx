@@ -11,7 +11,5 @@ export default function Page({
     const track = useTrack(trackId);
     console.log(track);
 
-    return (
-        <Header title="Music Project" subtitle="This is the music project." />
-    );
+    return <Header title="Music Project" />;
 }

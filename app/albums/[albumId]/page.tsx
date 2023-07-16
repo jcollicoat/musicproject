@@ -7,7 +7,6 @@ export default function Page({
 }: {
     params: { albumId: string };
 }) {
-    return (
-        <Header title="Music Project" subtitle="This is the music project." />
-    );
+    console.log(albumId);
+    return <Header title="Music Project" />;
 }

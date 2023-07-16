@@ -7,5 +7,5 @@ export default function Page() {
     const user = useUserProfile();
     console.log(user);
 
-    return <Header title="Dashboard" isSticky />;
+    return <Header title="My Music" isSticky />;
 }
