@@ -4,7 +4,7 @@ interface Props {
     isAlternate?: boolean;
 }
 
-const Menu: FC<Props> = ({ isAlternate }) =>
+export const IconMenu: FC<Props> = ({ isAlternate }) =>
     isAlternate ? (
         // Close
         <>
@@ -24,5 +24,3 @@ const Menu: FC<Props> = ({ isAlternate }) =>
             <path d="M10 7.25C10.1381 7.25 10.25 7.13807 10.25 7C10.25 6.86193 10.1381 6.75 10 6.75"></path>
         </>
     );
-
-export default Menu;

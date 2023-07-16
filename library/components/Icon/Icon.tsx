@@ -1,7 +1,10 @@
-import { CSSProperties, FC, Suspense, lazy } from 'react';
+import { CSSProperties, FC } from 'react';
 import styles from './Icon.module.scss';
+import { IconHeart } from './icons/Heart';
+import { IconMenu } from './icons/Menu';
+import { IconMusicNote } from './icons/MusicNote';
+import { IconUser } from './icons/User';
 
-// Pulsing loading dots
 const Fallback: FC = () => (
     <g className={styles.fallback}>
         <path d="M4 7.25C3.86193 7.25 3.75 7.13807 3.75 7C3.75 6.86193 3.86193 6.75 4 6.75"></path>
@@ -13,7 +16,7 @@ const Fallback: FC = () => (
     </g>
 );
 
-type Icons = 'Close' | 'Heart' | 'Menu' | 'MusicNote' | 'User';
+type Icons = 'Heart' | 'Menu' | 'MusicNote' | 'User';
 
 export interface IconProps {
     icon: Icons;
@@ -22,7 +25,20 @@ export interface IconProps {
 }
 
 export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
-    const Icon = lazy(() => import(`./icons/${icon}`));
+    let Icon: FC<{ isAlternate?: boolean }> = Fallback;
+    switch (icon) {
+        case 'Heart':
+            Icon = IconHeart;
+            break;
+        case 'Menu':
+            Icon = IconMenu;
+            break;
+        case 'MusicNote':
+            Icon = IconMusicNote;
+            break;
+        case 'User':
+            Icon = IconUser;
+    }
 
     return (
         <div className={styles.container} style={{ fontSize: size }}>
@@ -38,9 +54,7 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
                 strokeLinejoin="round"
                 strokeWidth="1"
             >
-                <Suspense fallback={<Fallback />}>
-                    <Icon isAlternate={isAlternate} />
-                </Suspense>
+                <Icon isAlternate={isAlternate} />
             </svg>
         </div>
     );
