@@ -10,10 +10,13 @@
         top: 0;
         z-index: $z-sticky;
 
-        > div:not(.header) {
+        > div:not(.content) {
             margin-top: neg($padding);
-            position: sticky;
-            z-index: 2;
+            top: 100%;
+        }
+
+        &.isScrolled {
+            // TODO
         }
     }
 
@@ -30,18 +33,6 @@
 
         &.hasData {
             padding-bottom: calc($padding * 2);
-
-            &.isSticky {
-                position: fixed;
-                top: $padding;
-                width: clamp(0px, calc(100% - $padding * 2), 1800px);
-                z-index: 1;
-            }
-        }
-
-        &.isSticky {
-            position: sticky;
-            top: $padding;
         }
 
         .titles {

@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import { FC } from 'react';
+import { useWindowScroll } from 'react-use';
 import { ButtonContainer } from '@components/Button/Button';
 import { useHeaderButtons } from '@hooks/useHeaderButtons';
 import { Track } from '@music/types/tracks.types';
@@ -38,10 +39,22 @@ interface Props extends BaseProps {
     isSticky?: boolean;
 }
 
-export const Header: FC<Props> = ({ title, subtitle, data, isSticky }) => {
+export const Header: FC<Props> = ({
+    title,
+    subtitle,
+    data,
+    isSticky = true,
+}) => {
+    const { y } = useWindowScroll();
+    const isScrolled = y >= 100;
+
     return (
         <header
-            className={classNames(styles.header, isSticky && styles.isSticky)}
+            className={classNames(
+                styles.header,
+                isSticky && styles.isSticky,
+                isScrolled && styles.isScrolled,
+            )}
         >
             <div
                 className={classNames(

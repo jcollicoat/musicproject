@@ -33,6 +33,6 @@ export const Primary: Story = {
     args: {
         title: 'Music Project',
         subtitle: '',
-        isSticky: false,
+        isSticky: true,
     },
 };
