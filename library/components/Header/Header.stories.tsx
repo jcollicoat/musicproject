@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { AuthContextProvider } from '@context/AuthContextProvider';
 import { TrackMock } from 'mocks/music/tracks';
 import { Header } from './Header';
 
@@ -15,6 +16,13 @@ const meta: Meta<typeof Header> = {
             },
         },
     },
+    decorators: [
+        (Story) => (
+            <AuthContextProvider>
+                <Story />
+            </AuthContextProvider>
+        ),
+    ],
 };
 
 export default meta;

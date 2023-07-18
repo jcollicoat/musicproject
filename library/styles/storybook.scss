@@ -1,0 +1,11 @@
+@import '@styles/variables.scss';
+
+body {
+    padding: $padding !important;
+    padding-top: 0 !important;
+}
+
+#storybook-root {
+    min-height: 1200px;
+    position: relative;
+}
