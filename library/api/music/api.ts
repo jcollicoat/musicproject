@@ -3,49 +3,39 @@ import { tracks } from './api.tracks';
 import { builders } from './builders';
 
 const albums = {
-    get: async (albumId: string, accessToken: string) => {
-        return builders.albums.buildAlbum(
-            await spotify.albums.get(albumId, accessToken),
-        );
+    get: async (albumId: string) => {
+        return builders.albums.buildAlbum(await spotify.albums.get(albumId));
     },
 };
 
 const artists = {
-    get: async (artistId: string, accessToken: string) => {
+    get: async (artistId: string) => {
         return builders.artists.buildArtist(
-            await spotify.artists.get(artistId, accessToken),
+            await spotify.artists.get(artistId),
         );
     },
 };
 
 const playlists = {
-    get: async (playlistId: string, accessToken: string) => {
+    get: async (playlistId: string) => {
         return builders.playlists.buildPlaylist(
-            await spotify.playlists.get(playlistId, accessToken),
+            await spotify.playlists.get(playlistId),
         );
     },
 };
 
-const search = async (
-    config: {
-        query: string;
-        types?: string[];
-    },
-    accessToken: string,
-) => {
-    return builders.search.buildSearch(
-        await spotify.search(config, accessToken),
-    );
+const search = async (query: string, types?: string[]) => {
+    return builders.search.buildSearch(await spotify.search(query, types));
 };
 
 const user = {
-    details: async (accessToken: string) => {
-        return builders.user.buildUser(await spotify.user.get(accessToken));
+    details: async () => {
+        return builders.user.buildUser(await spotify.user.get());
     },
-    full: async (accessToken: string) => {
+    full: async () => {
         return builders.user.buildFullUser(
-            await spotify.user.get(accessToken),
-            await spotify.user.artists.followed(accessToken),
+            await spotify.user.get(),
+            await spotify.user.artists.followed(),
         );
     },
 };

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { errorResponse, getAccessToken } from '@api/helpers';
+import { setAccessToken } from '@api/auth';
+import { errorResponse } from '@api/helpers';
 import { music } from '@music/api';
 
 export async function GET(
@@ -7,10 +8,9 @@ export async function GET(
     { params }: { params: { albumId: string } },
 ) {
     try {
-        const accessToken = getAccessToken(request);
+        await setAccessToken(request);
         const { albumId } = params;
-
-        const album = await music.albums.get(albumId, accessToken);
+        const album = await music.albums.get(albumId);
         return NextResponse.json(album);
     } catch (error) {
         return errorResponse(error);

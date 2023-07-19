@@ -1,31 +1,7 @@
 import { NextURL } from 'next/dist/server/web/next-url';
-import { NextRequest, NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
+import { NextResponse } from 'next/server';
 
 const ENV = process.env.NODE_ENV;
-
-// Auth
-
-export const getAccessToken = async (request: NextRequest): Promise<string> => {
-    // Next Auth
-    const token = await getToken({ req: request });
-    if (token) {
-        return `Bearer ${token.access_token}`;
-    }
-
-    if (ENV !== 'development') {
-        throw new Error('Invalid access token provided');
-    }
-
-    // API Direct
-    const authHeader = request.headers.get('authorization');
-    if (authHeader?.match(/Bearer /g)) {
-        console.log('Using Postman access token');
-        return authHeader;
-    }
-
-    throw new Error('Invalid access token provided');
-};
 
 // Errors
 

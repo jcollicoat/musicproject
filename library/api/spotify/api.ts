@@ -15,37 +15,30 @@ import {
 import { SpotifyUser, SpotifyFollowedArtists } from './types/user.types';
 
 const albums = {
-    get: async (albumId: string, accessToken: string) => {
-        return await api.get<SpotifyAlbum>(`albums/${albumId}`, accessToken);
+    get: async (albumId: string) => {
+        return await api.get<SpotifyAlbum>(`albums/${albumId}`);
     },
 };
 
 const artists = {
-    get: async (artistId: string, accessToken: string) => {
-        return await api.get<SpotifyArtist>(`artists/${artistId}`, accessToken);
+    get: async (artistId: string) => {
+        return await api.get<SpotifyArtist>(`artists/${artistId}`);
     },
 };
 
 const audioAnalysis = {
-    get: async (trackId: string, accessToken: string) => {
-        return await api.get<SpotifyAudioAnalysis>(
-            `audio-analysis/${trackId}`,
-            accessToken,
-        );
+    get: async (trackId: string) => {
+        return await api.get<SpotifyAudioAnalysis>(`audio-analysis/${trackId}`);
     },
 };
 
 const audioFeatures = {
-    get: async (trackId: string, accessToken: string) => {
-        return await api.get<SpotifyAudioFeatures>(
-            `audio-features/${trackId}`,
-            accessToken,
-        );
+    get: async (trackId: string) => {
+        return await api.get<SpotifyAudioFeatures>(`audio-features/${trackId}`);
     },
-    getList: async (trackIds: string[], accessToken: string) => {
+    getList: async (trackIds: string[]) => {
         return await api.get<{ audio_features: SpotifyAudioFeatures[] }>(
             'audio-features',
-            accessToken,
             {
                 ids: trackIds.join(','),
             },
@@ -54,73 +47,52 @@ const audioFeatures = {
 };
 
 const playlists = {
-    get: async (playlistId: string, accessToken: string) => {
-        return await api.get<SpotifyPlaylist>(
-            `playlists/${playlistId}`,
-            accessToken,
-        );
+    get: async (playlistId: string) => {
+        return await api.get<SpotifyPlaylist>(`playlists/${playlistId}`);
     },
 };
 
-const search = async (
-    config: {
-        query: string;
-        types?: string[];
-    },
-    accessToken: string,
-) => {
-    return await api.get<SpotifySearch>('search', accessToken, {
-        q: config.query,
-        type: config.types?.join(',') ?? 'album,artist,track,playlist',
+const search = async (query: string, types?: string[]) => {
+    return await api.get<SpotifySearch>('search', {
+        q: query,
+        type: types?.join(',') ?? 'album,artist,track,playlist',
     });
 };
 
 const tracks = {
-    get: async (trackId: string, accessToken: string) => {
-        return await api.get<SpotifyTrack>(`tracks/${trackId}`, accessToken);
+    get: async (trackId: string) => {
+        return await api.get<SpotifyTrack>(`tracks/${trackId}`);
     },
-    getList: async (trackIds: string[], accessToken: string) => {
-        return await api.get<{ tracks: SpotifyTrack[] }>(
-            'tracks',
-            accessToken,
-            {
-                ids: trackIds.join(','),
-            },
-        );
+    getList: async (trackIds: string[]) => {
+        return await api.get<{ tracks: SpotifyTrack[] }>('tracks', {
+            ids: trackIds.join(','),
+        });
     },
 };
 
 const user = {
-    get: async (accessToken: string) => {
-        return await api.get<SpotifyUser>('me', accessToken);
+    get: async () => {
+        return await api.get<SpotifyUser>('me');
     },
     artists: {
-        followed: async (accessToken: string) => {
-            return await api.get<SpotifyFollowedArtists>(
-                'me/following',
-                accessToken,
-                {
-                    type: 'artist',
-                },
-            );
+        followed: async () => {
+            return await api.get<SpotifyFollowedArtists>('me/following', {
+                type: 'artist',
+            });
         },
     },
     tracks: {
-        isSaved: async (trackIds: string[], accessToken: string) => {
-            return await api.get<boolean[]>('me/tracks/contains', accessToken, {
+        isSaved: async (trackIds: string[]) => {
+            return await api.get<boolean[]>('me/tracks/contains', {
                 ids: trackIds.join(','),
             });
         },
-        player: async (accessToken: string) => {
-            return await api.get<SpotifyPlaybackState>(
-                'me/player',
-                accessToken,
-            );
+        player: async () => {
+            return await api.get<SpotifyPlaybackState>('me/player');
         },
-        recent: async (accessToken: string) => {
+        recent: async () => {
             return await api.get<SpotifyRecentlyPlayed>(
                 'me/player/recently-played',
-                accessToken,
             );
         },
     },
