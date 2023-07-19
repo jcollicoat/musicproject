@@ -30,7 +30,7 @@
             "@hooks/*": ["library/hooks/*"],
             "@styles/*": ["library/styles/*"],
             "@library/*": ["library/*"],
-            "@/*": ["app/*"]
+            "@app/*": ["app/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
