@@ -15,14 +15,14 @@ const oneHour = new Date().getTime() + 3600000;
 const scope =
     'user-library-read user-follow-read user-read-playback-state user-read-email user-read-recently-played user-read-private';
 
-const refreshAccessToken = async (token: JWT) => {
+const refreshToken = async (token: JWT) => {
     try {
         if (!token.refresh_token) {
             console.log('No Spotify refresh token');
             return token;
         }
 
-        console.log('Attempting to refresh Spotify access token');
+        console.log('Attempting to refresh Spotify token');
         const endpoint = 'https://accounts.spotify.com/api/token';
         const basic = `Basic ${Buffer.from(
             `${CLIENT_ID}:${CLIENT_SECRET}`,
@@ -42,18 +42,13 @@ const refreshAccessToken = async (token: JWT) => {
             },
         );
 
-        if (response.status !== 200) {
-            console.log(response);
-            throw response;
-        }
-
         return {
             ...token,
-            access_token: response.data.access_token,
+            spotify_token: response.data.access_token,
             expires: Date.now() + response.data.expires_in * 1000,
         };
     } catch (error) {
-        console.error(`Failed to refresh access token: ${error}`);
+        console.error(`Failed to refresh Spotify token: ${error}`);
 
         return {
             ...token,
@@ -77,19 +72,19 @@ const handler = NextAuth({
         // eslint-disable-next-line require-await
         jwt: async ({ account, token }) => {
             if (account) {
-                token.access_token = account.access_token;
-                token.refresh_token = account.refresh_token;
+                token.spotify_token = account.access_token;
                 token.expires = account.expires_at;
+                token.refresh_token = account.refresh_token;
             }
 
             if (token.expires && Date.now() > token.expires) {
-                return await refreshAccessToken(token);
+                return await refreshToken(token);
             }
 
-            token.access_token &&
+            token.spotify_token &&
                 cookies().set({
                     name: 'spotify_token',
-                    value: `Bearer ${token.access_token}`,
+                    value: `Bearer ${token.spotify_token}`,
                     expires: token.expires ?? oneHour,
                     httpOnly: true,
                 });
