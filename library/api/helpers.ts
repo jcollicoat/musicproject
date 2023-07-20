@@ -8,6 +8,7 @@ const ENV = process.env.NODE_ENV;
 export const errorResponse = (error: unknown): NextResponse => {
     if (ENV === 'development') {
         if (error instanceof Error) {
+            console.log(error);
             return NextResponse.json({ error: error.message }, { status: 500 });
         }
         return NextResponse.json({ error: error }, { status: 500 });

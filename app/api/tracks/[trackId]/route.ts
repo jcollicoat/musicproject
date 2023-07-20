@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { setAccessToken } from '@api/auth';
 import { errorResponse, hasRouteParams } from '@api/helpers';
 import { music } from '@music/api';
 
@@ -8,7 +7,6 @@ export async function GET(
     { params }: { params: { trackId: string } },
 ) {
     try {
-        await setAccessToken(request);
         const { trackId } = params;
         const [audioFeatures, audioAnalysis] = hasRouteParams(request.nextUrl, [
             'audioFeatures',

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { cookies } from 'next/headers';
 import NextAuth from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import SpotifyProvider from 'next-auth/providers/spotify';
@@ -8,6 +9,8 @@ const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 if (!CLIENT_ID || !CLIENT_SECRET) {
     throw new Error('Missing Spotify client details.');
 }
+
+const oneHour = new Date().getTime() + 3600000;
 
 const scope =
     'user-library-read user-follow-read user-read-playback-state user-read-email user-read-recently-played user-read-private';
@@ -82,6 +85,14 @@ const handler = NextAuth({
             if (token.expires && Date.now() > token.expires) {
                 return await refreshAccessToken(token);
             }
+
+            token.access_token &&
+                cookies().set({
+                    name: 'spotify_token',
+                    value: `Bearer ${token.access_token}`,
+                    expires: token.expires ?? oneHour,
+                    httpOnly: true,
+                });
 
             return token;
         },
