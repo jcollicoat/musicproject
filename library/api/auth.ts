@@ -4,26 +4,49 @@ import { getToken } from 'next-auth/jwt';
 
 const ENV = process.env.NODE_ENV;
 
-const isValid = (token: string) => token.match(/Bearer /g) && token.length > 7;
+const oneHour = new Date().getTime() + 3600000;
+
+const isValid = (token?: string) => {
+    return token && token.startsWith('Bearer ') && token.length > 7
+        ? true
+        : false;
+};
+
+const setCookie = (access_token: string, expires?: number) => {
+    const cookie = cookies().get('access_token')?.value;
+
+    // Reset if cookie is invalid or has been updated
+    if (!isValid(cookie) || cookie !== access_token) {
+        console.log('fired');
+        if (!isValid(access_token)) {
+            throw new Error('Invalid Spotify access token');
+        }
+
+        cookies().set({
+            name: 'access_token',
+            value: access_token,
+            expires: expires ?? oneHour,
+            httpOnly: true,
+        });
+
+        console.log(cookie);
+    }
+
+    if (!cookie || !isValid(cookie)) {
+        throw new Error('Failed to set valid Spotify access token');
+    }
+};
 
 export const setAccessToken = async (request: NextRequest) => {
-    const access_token = cookies().get('access_token')?.value;
-
     if (ENV === 'development') {
         const postmanToken = request.headers.get('authorization');
-        if (postmanToken && isValid(postmanToken)) {
-            console.log('Using Postman access token');
-            cookies().set('access_token', postmanToken);
-        }
+        postmanToken && setCookie(postmanToken);
     }
 
-    const nextAuth = await getToken({ req: request });
-    if (nextAuth?.access_token) {
-        cookies().set('access_token', `Bearer ${nextAuth.access_token}`);
-    }
-
-    if (!access_token || !isValid(access_token)) {
-        throw new Error('Failed to set Spotify access token');
+    const nextJwt = await getToken({ req: request });
+    if (nextJwt) {
+        const { access_token, expires } = nextJwt;
+        setCookie(`Bearer ${access_token}`, expires);
     }
 };
 
@@ -33,5 +56,5 @@ export const getAccessToken = (): string => {
         return access_token;
     }
 
-    throw new Error('No valid Spotify access token set');
+    throw new Error('No valid Spotify access token found');
 };
