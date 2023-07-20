@@ -17,7 +17,6 @@ const setCookie = (access_token: string, expires?: number) => {
 
     // Reset if cookie is invalid or has been updated
     if (!isValid(cookie) || cookie !== access_token) {
-        console.log('fired');
         if (!isValid(access_token)) {
             throw new Error('Invalid Spotify access token');
         }
