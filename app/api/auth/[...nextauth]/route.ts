@@ -77,19 +77,20 @@ const handler = NextAuth({
                 token.refresh_token = account.refresh_token;
             }
 
+            let jwt = token;
             if (token.expires && Date.now() > token.expires) {
-                return await refreshToken(token);
+                jwt = await refreshToken(token);
             }
 
-            token.spotify_token &&
+            jwt.spotify_token &&
                 cookies().set({
                     name: 'spotify_token',
-                    value: `Bearer ${token.spotify_token}`,
-                    expires: token.expires ?? oneHour,
+                    value: `Bearer ${jwt.spotify_token}`,
+                    expires: jwt.expires ?? oneHour,
                     httpOnly: true,
                 });
 
-            return token;
+            return jwt;
         },
     },
 });
