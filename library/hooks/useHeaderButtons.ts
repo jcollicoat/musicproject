@@ -11,7 +11,7 @@ export const useHeaderButtons = (): ButtonProps[] => {
         {
             text: 'Home',
             iconStart: {
-                icon: 'Heart',
+                icon: 'Home',
             },
             link: '/',
             style: 'tertiary',
@@ -19,7 +19,7 @@ export const useHeaderButtons = (): ButtonProps[] => {
         {
             text: 'Explore',
             iconStart: {
-                icon: 'Heart',
+                icon: 'MusicNote',
             },
             link: '/explore',
             style: 'tertiary',
@@ -27,7 +27,7 @@ export const useHeaderButtons = (): ButtonProps[] => {
         {
             text: 'My Music',
             iconStart: {
-                icon: 'MusicNote',
+                icon: 'Heart',
             },
             link: '/me',
             style: 'tertiary',
@@ -37,7 +37,7 @@ export const useHeaderButtons = (): ButtonProps[] => {
             iconStart: {
                 icon: 'User',
             },
-            onClick: isLoggedIn ? () => signOut() : () => signIn(),
+            onClick: isLoggedIn ? () => signOut() : () => signIn('spotify'),
             style: isLoggedIn ? 'tertiary' : 'cta',
         },
     ];
