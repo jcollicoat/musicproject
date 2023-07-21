@@ -7,7 +7,7 @@ const buildUser = (user: SpotifyUser): User => ({
     followers: user.followers.total,
     id: user.id,
     image: user.images[0],
-    name: user.display_name ?? 'Spotify User',
+    name: user.display_name ?? 'Me',
     product: user.product,
     type: user.type,
 });
@@ -15,7 +15,7 @@ const buildUser = (user: SpotifyUser): User => ({
 const buildFullUser = (
     details: SpotifyUser,
     followedArtists: SpotifyFollowedArtists,
-) => ({ details, followedArtists });
+) => ({ details: buildUser(details), followedArtists });
 
 const user = { buildUser, buildFullUser };
 export { user };
