@@ -3,8 +3,10 @@
 import classNames from 'classnames';
 import { FC } from 'react';
 import { ButtonContainer } from '@components/Button/Button';
+import { useAuth } from '@hooks/useAuth';
 import { Track } from '@music/types/tracks.types';
 import { HeaderTrack } from './components/HeaderTrack';
+import { HeaderUser } from './components/HeaderUser';
 import styles from './Header.module.scss';
 import { useHeaderButtons } from './hooks/useHeaderButtons';
 
@@ -21,15 +23,21 @@ const HeaderContent: FC<ContentProps> = ({
     headingElement: Heading,
     title,
     subtitle,
-}) => (
-    <>
-        <div className={styles.titles}>
-            <Heading className={styles.title}>{title}</Heading>
-            {subtitle && <p>{subtitle}</p>}
-        </div>
-        <ButtonContainer buttons={useHeaderButtons()} />
-    </>
-);
+}) => {
+    const auth = useAuth();
+    return (
+        <>
+            <div className={styles.titles}>
+                <Heading className={styles.title}>{title}</Heading>
+                {subtitle && <p>{subtitle}</p>}
+            </div>
+            <nav className={styles.navigation}>
+                <ButtonContainer buttons={useHeaderButtons()} />
+                {auth && <HeaderUser />}
+            </nav>
+        </>
+    );
+};
 
 interface Props extends BaseProps {
     data?: Track;
