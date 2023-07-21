@@ -1,7 +1,18 @@
 import { NextURL } from 'next/dist/server/web/next-url';
+import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
 
 const ENV = process.env.NODE_ENV;
+
+// Auth
+
+export const authGuard = async () => {
+    const session = await getServerSession();
+    if (!session) {
+        redirect('/');
+    }
+};
 
 // Errors
 

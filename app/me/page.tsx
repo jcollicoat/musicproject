@@ -1,11 +1,7 @@
-'use client';
-
+import { authGuard } from '@api/helpers';
 import { Header } from '@components/Header/Header';
-import { useUserProfile } from '@hooks/music/useUserProfile';
 
-export default function Page() {
-    const user = useUserProfile();
-    console.log(user);
-
+export default async function Page() {
+    await authGuard();
     return <Header title="My Music" isSticky />;
 }
