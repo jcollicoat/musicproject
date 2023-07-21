@@ -92,9 +92,7 @@ interface MenuButtonProps {
 
 const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    };
+    const toggle = () => setIsOpen(!isOpen);
 
     return (
         <div className={styles.menuwrapper}>
