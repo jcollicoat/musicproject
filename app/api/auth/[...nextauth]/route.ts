@@ -49,7 +49,6 @@ const refreshToken = async (token: JWT) => {
         };
     } catch (error) {
         console.error(`Failed to refresh Spotify token: ${error}`);
-
         return {
             ...token,
         };
