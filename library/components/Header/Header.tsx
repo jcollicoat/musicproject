@@ -3,10 +3,10 @@
 import classNames from 'classnames';
 import { FC } from 'react';
 import { ButtonContainer } from '@components/Button/Button';
-import { useHeaderButtons } from '@hooks/useHeaderButtons';
 import { Track } from '@music/types/tracks.types';
+import { HeaderTrack } from './components/HeaderTrack';
 import styles from './Header.module.scss';
-import { HeaderTrack } from './HeaderComponents/HeaderTrack';
+import { useHeaderButtons } from './hooks/useHeaderButtons';
 
 interface BaseProps {
     title: string;
