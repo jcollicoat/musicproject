@@ -11,7 +11,7 @@ import styles from './Header.module.scss';
 import { useHeaderButtons } from './hooks/useHeaderButtons';
 
 interface BaseProps {
-    title: string;
+    title?: string;
     subtitle?: string;
 }
 
@@ -21,7 +21,7 @@ interface ContentProps extends BaseProps {
 
 const HeaderContent: FC<ContentProps> = ({
     headingElement: Heading,
-    title,
+    title = 'Music Project',
     subtitle,
 }) => {
     const auth = useAuth();

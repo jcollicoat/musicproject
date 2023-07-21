@@ -1,7 +1,9 @@
-'use client';
-
 import { Header } from '@components/Header/Header';
 
+export const metadata = {
+    title: 'Explore Music',
+};
+
 export default function Page() {
-    return <Header title="Explore" />;
+    return <Header subtitle="Explore" />;
 }
