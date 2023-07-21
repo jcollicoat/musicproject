@@ -2,8 +2,9 @@
 
 import classNames from 'classnames';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Icon, IconProps } from '@components/Icon/Icon';
+import { Menu, MenuProps } from '@components/Menu/Menu';
 import styles from './Button.module.scss';
 
 interface ContentProps {
@@ -85,49 +86,9 @@ export const Button: FC<ButtonProps> = ({
     );
 };
 
-interface MenuButtonProps {
-    buttons: ButtonProps[];
-    side?: 'left' | 'right';
-}
-
-const MenuButton: FC<MenuButtonProps> = ({ buttons, side }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
-
-    return (
-        <div className={styles.menuwrapper}>
-            <button
-                aria-label="Menu"
-                className={classNames(
-                    styles.button,
-                    styles.trigger,
-                    isOpen && styles.open,
-                )}
-                onClick={toggle}
-                type="button"
-            >
-                <Icon icon="Menu" isAlternate={isOpen} size="24px" />
-            </button>
-            <menu
-                className={classNames(
-                    styles.menu,
-                    isOpen && styles.open,
-                    side && styles[side],
-                )}
-            >
-                {buttons.map((props) => (
-                    <li key={props.text}>
-                        <Button {...props} style="inMenu" />
-                    </li>
-                ))}
-            </menu>
-        </div>
-    );
-};
-
 interface ButtonContainerProps {
     buttons?: ButtonProps[];
-    menuButtons?: MenuButtonProps[];
+    menuButtons?: MenuProps[];
 }
 
 export const ButtonContainer: FC<ButtonContainerProps> = ({
@@ -138,7 +99,7 @@ export const ButtonContainer: FC<ButtonContainerProps> = ({
         <div className={styles.container}>
             {buttons?.map((props) => <Button key={props.text} {...props} />)}
             {menuButtons?.map((props) => (
-                <MenuButton key={props.buttons[0].text} {...props} />
+                <Menu key={props.buttons[0].text} {...props} />
             ))}
         </div>
     );

@@ -1,0 +1,93 @@
+@import '@styles/variables.scss';
+
+.wrapper {
+    $trigger-size: 26px;
+    $menu-offset: calc(100% + $padding / 2);
+
+    display: inline-flex;
+    position: relative;
+
+    .trigger {
+        background-color: transparent;
+        border: none;
+        border-radius: 50%;
+        color: $color-gray-5;
+        cursor: pointer;
+        height: $trigger-size;
+        overflow: hidden;
+        padding: 0;
+        transition: $transition;
+        transition-property: background-color, border-color, box-shadow, color;
+        width: $trigger-size;
+
+        &:hover,
+        &.open {
+            color: $color-gray-4;
+        }
+
+        &.open {
+            outline: 3px solid $color-gray-8;
+            z-index: calc($z-overlay + 1);
+
+            img,
+            svg {
+                position: relative;
+                z-index: 2;
+            }
+
+            &:before {
+                background-color: $color-gray-8;
+                border-radius: 50% 50% 0 0;
+                content: '';
+                height: calc($menu-offset - 3px);
+                left: 0;
+                outline: 3px solid $color-gray-8;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 1;
+            }
+        }
+    }
+
+    .menu {
+        background-color: $color-gray-8;
+        border: 2px solid $color-gray-8;
+        border-radius: 4px;
+        box-shadow: 0px 0px 12px #000000;
+        display: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: $menu-offset;
+        transform: translateX(-50%);
+        width: clamp(180px, 240px, 50vw);
+        z-index: $z-overlay;
+
+        &.open {
+            display: block;
+        }
+
+        &.left {
+            transform: translateX(calc(-100% + $trigger-size + $padding));
+        }
+
+        &.right {
+            transform: translateX(neg($padding));
+        }
+
+        li {
+            list-style-type: none;
+            margin-bottom: 2px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .button {
+                border-radius: 2px;
+            }
+        }
+    }
+}

@@ -1,7 +1,8 @@
 // import { usePathname } from 'next/navigation';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useMemo } from 'react';
 import { ButtonProps } from '@components/Button/Button';
+import { useAuth } from '@hooks/useAuth';
 
 const myMusic: ButtonProps = {
     text: 'My Music',
@@ -30,22 +31,12 @@ const login: ButtonProps = {
     style: 'cta',
 };
 
-const logout: ButtonProps = {
-    text: 'Logout',
-    iconStart: {
-        icon: 'User',
-    },
-    onClick: () => signOut(),
-    style: 'tertiary',
-};
-
 export const useHeaderButtons = (): ButtonProps[] => {
-    const { status } = useSession();
-    const isLoggedIn = status === 'authenticated';
+    const auth = useAuth();
 
     const buttons: ButtonProps[] = useMemo(() => {
-        return isLoggedIn ? [explore, myMusic, logout] : [explore, login];
-    }, [isLoggedIn]);
+        return auth ? [explore, myMusic] : [explore, login];
+    }, [auth]);
 
     return buttons;
 };
