@@ -5,7 +5,6 @@ import { useUserProfile } from '@hooks/music/useUserProfile';
 
 export const HeaderUserControl: FC = () => {
     const user = useUserProfile();
-    console.log(user);
 
     return (
         <Menu

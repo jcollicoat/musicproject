@@ -1,0 +1,11 @@
+@import '@styles/variables.scss';
+
+.content {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xlarge;
+    justify-content: space-between;
+    gap: $space-medium;
+    justify-content: flex-start;
+}

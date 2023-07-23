@@ -7,5 +7,5 @@ export const metadata = {
 
 export default async function Page() {
     await authGuard();
-    return <Header subtitle="My Music" />;
+    return <Header subtitle="My Music" data="user" />;
 }
