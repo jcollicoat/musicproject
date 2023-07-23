@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Menu } from '@components/Menu/Menu';
 import { useUserProfile } from '@hooks/music/useUserProfile';
 
-export const HeaderUser: FC = () => {
+export const HeaderUserControl: FC = () => {
     const user = useUserProfile();
     console.log(user);
 
