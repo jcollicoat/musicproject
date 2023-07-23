@@ -1,20 +1,28 @@
+@import '@styles/variables.scss';
+
 .main {
-    grid-template-columns: 1fr;
     grid-template-areas:
         'library'
         'recent'
         'artists'
         'albums';
 
-    @media (min-width: 880px) {
+    @media (min-width: $bp-screen-1) {
         grid-template-columns: inherit;
+        grid-template-areas:
+            'library library'
+            'recent artists'
+            'recent albums';
+    }
+
+    @media (min-width: $bp-screen-2) {
         grid-template-areas:
             'library library library'
             'recent recent artists'
             'recent recent albums';
     }
 
-    @media (min-width: 1280px) {
+    @media (min-width: $bp-screen-3) {
         grid-template-areas:
             'library library library library recent recent'
             'library library library library artists artists'

@@ -25,11 +25,11 @@ p {
     --font-size: calc(1rem / 16 * 13);
     --padding: 8px;
 
-    @media (min-width: 480px) {
+    @media (min-width: $bp-screen-1) {
         --padding: 12px;
     }
 
-    @media (min-width: 960px) {
+    @media (min-width: $bp-screen-2) {
         --font-size: calc(1rem / 16 * 14);
     }
 }
@@ -75,13 +75,16 @@ header {
 main {
     display: grid;
     gap: $padding;
-    grid-template-columns: 1fr 1fr;
 
-    @media (min-width: 880px) {
+    @media (min-width: $bp-screen-1) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: $bp-screen-2) {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    @media (min-width: 1280px) {
+    @media (min-width: $bp-screen-3) {
         grid-template-columns: repeat(6, 1fr);
     }
 }
