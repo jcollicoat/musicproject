@@ -1,4 +1,4 @@
-import { SpotifyImage } from '@spotify/types';
+import { Images } from '@music/types';
 import { Artist } from './artists.types';
 import { Playlist } from './playlists.types';
 import { RecentlyPlayed, Track } from './tracks.types';
@@ -8,7 +8,7 @@ export interface User {
     filterExplicit: boolean;
     followers: number;
     id: string;
-    image: SpotifyImage;
+    images: Images;
     name: string;
     product: string;
     type: string;

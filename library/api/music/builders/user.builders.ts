@@ -7,7 +7,10 @@ const buildUser = (user: SpotifyUser): User => ({
     filterExplicit: user.explicit_content.filter_enabled,
     followers: user.followers.total,
     id: user.id,
-    image: user.images[0],
+    images: {
+        small: user.images[0],
+        large: user.images[user.images.length - 1],
+    },
     name: user.display_name ?? 'Me',
     product: user.product,
     type: user.type,
