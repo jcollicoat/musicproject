@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { ButtonContainer } from '@components/Button/Button';
 import { useAuth } from '@hooks/useAuth';
-// import { Track } from '@music/types/tracks.types';
-// import { HeaderTrack } from './components/HeaderTrack';
 import { HeaderUserControl } from './components/HeaderUserControl';
+import { HeaderTrack } from './components/panels/HeaderTrack';
 import { HeaderUser } from './components/panels/HeaderUser';
 import styles from './Header.module.scss';
 import { useHeaderButtons } from './hooks/useHeaderButtons';
@@ -44,7 +43,7 @@ const HeaderContent: FC<ContentProps> = ({
 };
 
 interface Props extends BaseProps {
-    data?: 'user';
+    data?: 'track' | 'user';
     isSticky?: boolean;
 }
 
@@ -63,6 +62,6 @@ export const Header: FC<Props> = ({
             />
         </div>
         {data === 'user' && <HeaderUser />}
-        {/* {data && <HeaderTrack track={data} />} */}
+        {data === 'track' && <HeaderTrack />}
     </header>
 );
