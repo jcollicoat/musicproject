@@ -4,5 +4,12 @@
     background-color: $color-gray-9;
     border: 1px solid $color-gray-7;
     border-radius: 8px;
-    padding: $padding;
+    padding: $padding-large;
+    width: 100%;
+
+    .panel {
+        background-color: $color-gray-bg;
+        border: 1px solid $color-gray-8;
+        border-radius: 6px;
+    }
 }

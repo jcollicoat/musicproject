@@ -4,9 +4,8 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: $space-xlarge;
+    gap: $padding-large;
     justify-content: space-between;
-    gap: $space-medium;
 
     .info {
         h1 {
@@ -21,13 +20,9 @@
 
     .profile {
         align-items: center;
-        background-color: $color-gray-bg;
-        border: 1px solid $color-gray-8;
-        border-radius: 6px;
         display: flex;
         flex-direction: column;
         gap: $padding-large;
-        padding: $padding-large;
         width: 100%;
 
         .details {

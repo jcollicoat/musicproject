@@ -47,32 +47,36 @@ export const HeaderUser: FC = () => {
     return (
         <Panel element="div">
             <div className={styles.content}>
-                <div className={styles.profile}>
-                    <div className={styles.details}>
-                        {user ? (
-                            <>
-                                <Image
-                                    src={user.images.large.url}
-                                    alt={`${user.name}'s profile picture`}
-                                    height={60}
-                                    width={60}
-                                    className={styles.image}
-                                />
-                                <span className={styles.name}>{user.name}</span>
-                            </>
-                        ) : (
-                            <>
-                                <div className={styles.imageFallback}></div>
-                                <span className={styles.name}>Loading</span>
-                            </>
-                        )}
+                <Panel element="div">
+                    <div className={styles.profile}>
+                        <div className={styles.details}>
+                            {user ? (
+                                <>
+                                    <Image
+                                        src={user.images.large.url}
+                                        alt={`${user.name}'s profile picture`}
+                                        height={60}
+                                        width={60}
+                                        className={styles.image}
+                                    />
+                                    <span className={styles.name}>
+                                        {user.name}
+                                    </span>
+                                </>
+                            ) : (
+                                <>
+                                    <div className={styles.imageFallback}></div>
+                                    <span className={styles.name}>Loading</span>
+                                </>
+                            )}
+                        </div>
+                        <div className={styles.products}>
+                            <Followers />
+                            <Product />
+                            <ExplicitFilter />
+                        </div>
                     </div>
-                    <div className={styles.products}>
-                        <Followers />
-                        <Product />
-                        <ExplicitFilter />
-                    </div>
-                </div>
+                </Panel>
             </div>
         </Panel>
     );
