@@ -71,3 +71,17 @@ main {
 header {
     margin-bottom: $padding;
 }
+
+main {
+    display: grid;
+    gap: $padding;
+    grid-template-columns: 1fr 1fr;
+
+    @media (min-width: 880px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
