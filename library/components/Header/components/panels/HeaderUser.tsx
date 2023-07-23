@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Panel } from '@components/Panel/Panel';
-import { useProfile } from '@hooks/music/useProfile';
+import { useUser } from '@hooks/music/useUser';
 import styles from './HeaderUser.module.scss';
 
 export const HeaderUser: FC = () => {
-    const user = useProfile();
+    const user = useUser();
     console.log(user);
 
     return (

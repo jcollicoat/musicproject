@@ -1,10 +1,10 @@
 import { signOut } from 'next-auth/react';
 import { FC } from 'react';
 import { Menu } from '@components/Menu/Menu';
-import { useProfile } from '@hooks/music/useProfile';
+import { useUser } from '@hooks/music/useUser';
 
 export const HeaderUserControl: FC = () => {
-    const user = useProfile();
+    const user = useUser();
 
     return (
         <Menu
