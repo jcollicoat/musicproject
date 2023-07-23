@@ -25,6 +25,7 @@ $color-success: #14e310;
 // Spacing
 
 $padding: var(--padding);
+$padding-large: calc($padding * 2);
 
 $space-xsmall: 4px;
 $space-small: 8px;

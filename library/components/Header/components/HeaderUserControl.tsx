@@ -17,7 +17,7 @@ export const HeaderUserControl: FC = () => {
                     onClick: () => signOut(),
                 },
             ]}
-            image={user?.image}
+            image={user?.images.small}
             side="left"
         />
     );

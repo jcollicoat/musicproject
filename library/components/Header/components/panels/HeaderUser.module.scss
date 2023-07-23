@@ -7,7 +7,6 @@
     gap: $space-xlarge;
     justify-content: space-between;
     gap: $space-medium;
-    justify-content: flex-start;
 
     .info {
         h1 {
@@ -16,6 +15,63 @@
 
             @media (min-width: 480px) {
                 font-size: 2.5em;
+            }
+        }
+    }
+
+    .profile {
+        align-items: center;
+        background-color: $color-gray-bg;
+        border: 1px solid $color-gray-8;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: $padding-large;
+        padding: $padding-large;
+        width: 100%;
+
+        .details {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            gap: $padding-large;
+            width: 100%;
+
+            .image {
+                border-radius: 50%;
+            }
+
+            .imageFallback {
+                background-color: $color-gray-8;
+                border-radius: 50%;
+                height: 60px;
+                width: 60px;
+            }
+
+            .name {
+                font-size: 1.5em;
+                font-weight: 500;
+            }
+        }
+
+        .products {
+            display: flex;
+            font-size: 0.9em;
+            gap: $padding;
+            justify-content: center;
+            width: 100%;
+
+            .product {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5em;
+                text-align: center;
+                width: calc(100% / 3);
+
+                svg {
+                    color: $color-primary-3;
+                }
             }
         }
     }
