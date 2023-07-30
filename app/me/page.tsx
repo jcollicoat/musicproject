@@ -13,10 +13,21 @@ export default async function Page() {
         <>
             <Header subtitle="My Music" data="user" />
             <main className={styles.main}>
-                <Panel position="library">1</Panel>
-                <Panel position="recent">2</Panel>
-                <Panel position="artists">3</Panel>
-                <Panel position="albums">4</Panel>
+                <Panel position="library">
+                    <div>Library</div>
+                </Panel>
+                <Panel position="recent">
+                    <div>Recently Played</div>
+                </Panel>
+                <Panel position="queue">
+                    <div>Queue</div>
+                </Panel>
+                <Panel position="artists">
+                    <div>Artists</div>
+                </Panel>
+                <Panel position="albums">
+                    <div>Albums</div>
+                </Panel>
             </main>
         </>
     );

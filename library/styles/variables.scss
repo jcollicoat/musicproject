@@ -1,8 +1,8 @@
-// Breakpoints
+// Breakpoints: 300px min-width for content
 
-$bp-screen-1: 480px;
-$bp-screen-2: 960px;
-$bp-screen-3: 1440px;
+$bp-stack-2: 736px; // 2 columns
+$bp-stack-3: 1098px;
+$bp-stack-4: 1460px;
 
 // Colors
 
@@ -54,6 +54,10 @@ $transition: $transition-speed ease-in-out;
 $transition-slow: $transition-speed-slow ease-in-out;
 
 // Functions
+
+@function grid-cols($number) {
+    @return repeat($number, minmax(0, 1fr));
+}
 
 @function neg($value) {
     @return calc($value * -1);

@@ -5,27 +5,27 @@
         'library'
         'recent'
         'artists'
-        'albums';
+        'albums'
+        'queue';
 
-    @media (min-width: $bp-screen-1) {
-        grid-template-columns: inherit;
+    @media (min-width: $bp-stack-2) {
         grid-template-areas:
             'library library'
-            'recent artists'
-            'recent albums';
+            'recent queue'
+            'artists albums';
     }
 
-    @media (min-width: $bp-screen-2) {
+    @media (min-width: $bp-stack-3) {
+        grid-template-columns: grid-cols(6);
         grid-template-areas:
-            'library library library'
-            'recent recent artists'
-            'recent recent albums';
+            'library library library library library library'
+            'recent recent recent recent queue queue'
+            'artists artists artists albums albums albums';
     }
 
-    @media (min-width: $bp-screen-3) {
+    @media (min-width: $bp-stack-4) {
         grid-template-areas:
             'library library library library recent recent'
-            'library library library library artists artists'
-            'library library library library albums albums';
+            'queue queue artists artists albums albums';
     }
 }
