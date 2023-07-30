@@ -35,7 +35,10 @@ const HeaderContent: FC<ContentProps> = ({
                 {subtitle && <p>{subtitle}</p>}
             </div>
             <nav className={styles.navigation}>
-                <ButtonContainer buttons={useHeaderButtons()} />
+                <ButtonContainer
+                    buttons={useHeaderButtons()}
+                    collapse={{ breakpoint: 'tiny', side: 'left' }}
+                />
                 {auth && <HeaderUserControl />}
             </nav>
         </>

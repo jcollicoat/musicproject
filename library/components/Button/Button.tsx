@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { Icon, IconProps } from '@components/Icon/Icon';
 import { Menu, MenuProps } from '@components/Menu/Menu';
+import { useMediaMobile, useMediaTiny } from '@hooks/useMediaCommon';
 import styles from './Button.module.scss';
 
 interface ContentProps {
@@ -89,15 +90,33 @@ export const Button: FC<ButtonProps> = ({
 interface ButtonContainerProps {
     buttons?: ButtonProps[];
     menuButtons?: MenuProps[];
+    collapse?: {
+        breakpoint: 'tiny' | 'mobile';
+        side: MenuProps['side'];
+    };
 }
 
 export const ButtonContainer: FC<ButtonContainerProps> = ({
     buttons,
     menuButtons,
+    collapse,
 }) => {
+    const isMobile = useMediaMobile();
+    const isTiny = useMediaTiny();
+    const collapsed =
+        (collapse?.breakpoint === 'mobile' && isMobile) ||
+        (collapse?.breakpoint === 'tiny' && isTiny);
+
     return (
         <div className={styles.container}>
-            {buttons?.map((props) => <Button key={props.text} {...props} />)}
+            {buttons &&
+                (collapsed ? (
+                    <Menu buttons={buttons} side={collapse.side} />
+                ) : (
+                    buttons.map((props) => (
+                        <Button key={props.text} {...props} />
+                    ))
+                ))}
             {menuButtons?.map((props) => (
                 <Menu key={props.buttons[0].text} {...props} />
             ))}
