@@ -27,9 +27,9 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
                 type="button"
             >
                 {image ? (
-                    <Image alt="Me" src={image.url} height={26} width={26} />
+                    <Image alt="Me" src={image.url} height={30} width={30} />
                 ) : (
-                    <Icon icon="Menu" isAlternate={isOpen} size="26px" />
+                    <Icon icon="Menu" isAlternate={isOpen} size="30px" />
                 )}
             </button>
             <menu
