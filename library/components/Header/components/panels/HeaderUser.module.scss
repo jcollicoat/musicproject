@@ -1,13 +1,14 @@
 @import '@styles/variables.scss';
 
-.content {
-    align-items: center;
+.wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: $padding-large;
     justify-content: space-between;
 
-    .info {
+    .main {
+        flex-grow: 1;
+
         h1 {
             font-size: 2em;
             margin-bottom: 0.25em;
@@ -18,54 +19,61 @@
         }
     }
 
-    .profile {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: $padding-large;
+    .side {
+        flex-grow: 1;
         width: 100%;
 
-        .details {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            gap: $padding-large;
-            width: 100%;
-
-            .image {
-                border-radius: 50%;
-            }
-
-            .imageFallback {
-                background-color: $color-gray-8;
-                border-radius: 50%;
-                height: 60px;
-                width: 60px;
-            }
-
-            .name {
-                font-size: 1.5em;
-                font-weight: 500;
-            }
+        @media (min-width: $bp-stack-2) {
+            max-width: 350px;
         }
 
-        .products {
+        .profile {
+            align-items: center;
             display: flex;
-            font-size: 0.9em;
-            gap: $padding;
-            justify-content: center;
-            width: 100%;
+            flex-direction: column;
+            gap: $padding-large;
 
-            .product {
+            .details {
                 align-items: center;
                 display: flex;
-                flex-direction: column;
-                gap: 0.5em;
-                text-align: center;
-                width: calc(100% / 3);
+                justify-content: center;
+                gap: $padding-large;
 
-                svg {
-                    color: $color-primary-3;
+                .image {
+                    border-radius: 50%;
+                }
+
+                .imageFallback {
+                    background-color: $color-gray-8;
+                    border-radius: 50%;
+                    height: 60px;
+                    width: 60px;
+                }
+
+                .name {
+                    font-size: 1.5em;
+                    font-weight: 500;
+                }
+            }
+
+            .products {
+                display: flex;
+                font-size: 0.9em;
+                gap: $padding;
+                justify-content: center;
+                width: 100%;
+
+                .product {
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5em;
+                    text-align: center;
+                    width: calc(100% / 3);
+
+                    svg {
+                        color: $color-primary-3;
+                    }
                 }
             }
         }

@@ -46,37 +46,46 @@ export const HeaderUser: FC = () => {
 
     return (
         <Panel element="div">
-            <div className={styles.content}>
-                <Panel element="div">
-                    <div className={styles.profile}>
-                        <div className={styles.details}>
-                            {user ? (
-                                <>
-                                    <Image
-                                        src={user.images.large.url}
-                                        alt={`${user.name}'s profile picture`}
-                                        height={60}
-                                        width={60}
-                                        className={styles.image}
-                                    />
-                                    <span className={styles.name}>
-                                        {user.name}
-                                    </span>
-                                </>
-                            ) : (
-                                <>
-                                    <div className={styles.imageFallback}></div>
-                                    <span className={styles.name}>Loading</span>
-                                </>
-                            )}
+            <div className={styles.wrapper}>
+                <div className={styles.main}>
+                    <h1 className={styles.title}>My Music</h1>
+                </div>
+                <aside className={styles.side}>
+                    <Panel element="div">
+                        <div className={styles.profile}>
+                            <div className={styles.details}>
+                                {user ? (
+                                    <>
+                                        <Image
+                                            src={user.images.large.url}
+                                            alt={`${user.name}'s profile picture`}
+                                            height={60}
+                                            width={60}
+                                            className={styles.image}
+                                        />
+                                        <span className={styles.name}>
+                                            {user.name}
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div
+                                            className={styles.imageFallback}
+                                        ></div>
+                                        <span className={styles.name}>
+                                            Loading
+                                        </span>
+                                    </>
+                                )}
+                            </div>
+                            <div className={styles.products}>
+                                <Followers />
+                                <Product />
+                                <ExplicitFilter />
+                            </div>
                         </div>
-                        <div className={styles.products}>
-                            <Followers />
-                            <Product />
-                            <ExplicitFilter />
-                        </div>
-                    </div>
-                </Panel>
+                    </Panel>
+                </aside>
             </div>
         </Panel>
     );
