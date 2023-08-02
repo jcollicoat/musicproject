@@ -39,7 +39,7 @@ export const Header: FC<Props> = ({
                 />
             </div>
             {user && <HeaderUser user={user} />}
-            {track && <HeaderTrack />}
+            {track && <HeaderTrack track={track} />}
         </header>
     );
 };

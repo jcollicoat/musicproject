@@ -1,19 +1,18 @@
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
 import { FC } from 'react';
 import { Panel } from '@components/Panel/Panel';
-import { useTrack } from '@hooks/music/useTrack';
+import { Track } from '@music/types/tracks.types';
 import styles from './HeaderTrack.module.scss';
 
-export const HeaderTrack: FC = () => {
-    const { trackId } = useParams();
-    const track = useTrack(trackId);
-    console.log(track);
+interface Props {
+    track: Track;
+}
 
+export const HeaderTrack: FC<Props> = ({ track }) => {
     return (
         <Panel element="div">
             <div className={styles.track}>
-                {track?.album && (
+                {track.album && (
                     <Image
                         src={track.album.images[0].url}
                         alt={track.album.name}
@@ -23,9 +22,9 @@ export const HeaderTrack: FC = () => {
                     />
                 )}
                 <div className={styles.info}>
-                    <h1 className={styles.title}>{track?.name}</h1>
+                    <h1 className={styles.title}>{track.name}</h1>
                     <p>
-                        {track?.artists[0].name} • {track?.album?.name}
+                        {track.artists[0].name} • {track.album?.name}
                     </p>
                 </div>
             </div>

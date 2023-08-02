@@ -13,7 +13,8 @@ const getUser = cache(async () => {
     return await music.user.details();
 });
 
-export default async function Page() {
+export default async function Page({ params }: { params: { slug: string } }) {
+    console.log(params);
     await authGuard();
     const user = await getUser();
 
