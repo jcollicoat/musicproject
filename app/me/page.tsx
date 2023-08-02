@@ -1,14 +1,23 @@
+import { cache } from 'react';
 import { authGuard } from '@api/helpers';
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
+import { music } from '@music/api';
 import styles from './page.module.scss';
 
 export const metadata = {
     title: 'My Music',
 };
 
+const getUser = cache(async () => {
+    return await music.user.details();
+});
+
 export default async function Page() {
     await authGuard();
+    const user = await getUser();
+    console.log('logged on server:', user);
+
     return (
         <>
             <Header subtitle="My Music" data="user" />
