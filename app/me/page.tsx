@@ -16,11 +16,10 @@ const getUser = cache(async () => {
 export default async function Page() {
     await authGuard();
     const user = await getUser();
-    console.log('logged on server:', user);
 
     return (
         <>
-            <Header subtitle="My Music" data="user" />
+            <Header subtitle="My Music" user={user} />
             <main className={styles.main}>
                 <Panel position="library">
                     <div>Library</div>

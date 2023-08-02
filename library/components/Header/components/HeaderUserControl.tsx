@@ -1,12 +1,16 @@
+'use client';
+
 import { signOut } from 'next-auth/react';
 import { FC } from 'react';
 import { Menu } from '@components/Menu/Menu';
 import { useUser } from '@hooks/music/useUser';
+import { useAuth } from '@hooks/useAuth';
 
 export const HeaderUserControl: FC = () => {
+    const auth = useAuth();
     const user = useUser();
 
-    return (
+    return auth ? (
         <Menu
             buttons={[
                 {
@@ -20,5 +24,5 @@ export const HeaderUserControl: FC = () => {
             image={user?.images.small}
             side="left"
         />
-    );
+    ) : null;
 };

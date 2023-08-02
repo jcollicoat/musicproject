@@ -1,0 +1,33 @@
+@import '@styles/variables.scss';
+
+.titles {
+    .link {
+        color: $color-primary-1;
+        text-decoration: none;
+        transition: $transition color;
+
+        &:hover {
+            color: $color-primary-2;
+        }
+
+        .title {
+            font-size: 1.25em;
+            font-weight: 600;
+
+            @media (min-width: $bp-stack-2) {
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    p {
+        color: $color-gray-5;
+        margin-top: 0.25em;
+    }
+}
+
+.navigation {
+    align-items: center;
+    display: flex;
+    gap: $padding;
+}

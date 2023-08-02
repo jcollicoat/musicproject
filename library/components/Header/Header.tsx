@@ -1,70 +1,45 @@
-'use client';
-
 import classNames from 'classnames';
-import Link from 'next/link';
 import { FC } from 'react';
-import { ButtonContainer } from '@components/Button/Button';
-import { useAuth } from '@hooks/useAuth';
-import { HeaderUserControl } from './components/HeaderUserControl';
+import { Track } from '@music/types/tracks.types';
+import { User } from '@music/types/user.types';
+import { HeaderContent } from './components/HeaderContent';
 import { HeaderTrack } from './components/panels/HeaderTrack';
 import { HeaderUser } from './components/panels/HeaderUser';
 import styles from './Header.module.scss';
-import { useHeaderButtons } from './hooks/useHeaderButtons';
 
-interface BaseProps {
+interface Props {
     title?: string;
     subtitle?: string;
-}
-
-interface ContentProps extends BaseProps {
-    headingElement: 'h1' | 'span';
-}
-
-const HeaderContent: FC<ContentProps> = ({
-    headingElement: Heading,
-    title,
-    subtitle,
-}) => {
-    const auth = useAuth();
-    return (
-        <>
-            <div className={styles.titles}>
-                <Link href="/" className={styles.link}>
-                    <Heading className={styles.title}>{title}</Heading>
-                </Link>
-                {subtitle && <p>{subtitle}</p>}
-            </div>
-            <nav className={styles.navigation}>
-                <ButtonContainer
-                    buttons={useHeaderButtons()}
-                    collapse={{ breakpoint: 'tiny', side: 'left' }}
-                />
-                {auth && <HeaderUserControl />}
-            </nav>
-        </>
-    );
-};
-
-interface Props extends BaseProps {
-    data?: 'track' | 'user';
+    track?: Track;
+    user?: User;
     isSticky?: boolean;
 }
 
 export const Header: FC<Props> = ({
     title = 'Music Project',
     subtitle,
-    data,
+    track,
+    user,
     isSticky = true,
-}) => (
-    <header className={classNames(styles.header, isSticky && styles.isSticky)}>
-        <div className={classNames(styles.content, data && styles.hasData)}>
-            <HeaderContent
-                headingElement={data ? 'span' : 'h1'}
-                title={title}
-                subtitle={subtitle}
-            />
-        </div>
-        {data === 'user' && <HeaderUser />}
-        {data === 'track' && <HeaderTrack />}
-    </header>
-);
+}) => {
+    return (
+        <header
+            className={classNames(styles.header, isSticky && styles.isSticky)}
+        >
+            <div
+                className={classNames(
+                    styles.content,
+                    (track || user) && styles.hasData,
+                )}
+            >
+                <HeaderContent
+                    headingElement={track || user ? 'span' : 'h1'}
+                    title={title}
+                    subtitle={subtitle}
+                />
+            </div>
+            {user && <HeaderUser user={user} />}
+            {track && <HeaderTrack />}
+        </header>
+    );
+};
