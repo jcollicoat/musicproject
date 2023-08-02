@@ -1,0 +1,31 @@
+@import '@styles/variables.scss';
+
+.main {
+    grid-template-areas:
+        'tracks'
+        'related'
+        'about'
+        'albums'
+        'playlists';
+
+    @media (min-width: $bp-stack-2) {
+        grid-template-areas:
+            'tracks tracks'
+            'related playlists'
+            'about albums';
+    }
+
+    @media (min-width: $bp-stack-3) {
+        grid-template-columns: grid-cols(6);
+        grid-template-areas:
+            'tracks tracks tracks tracks tracks tracks'
+            'related related related related playlists playlists'
+            'about about about albums albums albums';
+    }
+
+    @media (min-width: $bp-stack-4) {
+        grid-template-areas:
+            'tracks tracks tracks tracks related related'
+            'playlists playlists about about albums albums';
+    }
+}
