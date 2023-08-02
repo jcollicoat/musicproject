@@ -14,6 +14,27 @@ export const HeaderUserControl: FC = () => {
         <Menu
             buttons={[
                 {
+                    text: 'Track',
+                    iconStart: {
+                        icon: 'User',
+                    },
+                    link: '/tracks/21p0edNF107qz1uPc9F7EK',
+                },
+                {
+                    text: 'Artist',
+                    iconStart: {
+                        icon: 'User',
+                    },
+                    link: '/artists/0GG2cWaonE4JPrjcCCQ1EG',
+                },
+                {
+                    text: 'Album',
+                    iconStart: {
+                        icon: 'User',
+                    },
+                    link: '/albums/2gwNU1WsZEOcCSyKHsXKs5',
+                },
+                {
                     text: 'Logout',
                     iconStart: {
                         icon: 'User',
