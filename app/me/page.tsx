@@ -13,10 +13,15 @@ const getUser = cache(async () => {
     return await music.user.details();
 });
 
-export default async function Page({ params }: { params: { slug: string } }) {
-    console.log(params);
+const getLikedTracks = cache(async () => {
+    return await music.user.tracks.liked();
+});
+
+export default async function Page() {
     await authGuard();
     const user = await getUser();
+    const liked = await getLikedTracks();
+    console.log(liked);
 
     return (
         <>

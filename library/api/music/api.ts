@@ -38,6 +38,12 @@ const user = {
             await spotify.user.artists.followed(),
         );
     },
+    tracks: {
+        liked: async () => {
+            const search = await spotify.user.tracks.liked();
+            return search;
+        },
+    },
 };
 
 const music = { albums, artists, playlists, search, tracks, user };

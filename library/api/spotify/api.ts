@@ -6,7 +6,7 @@ import {
     SpotifyRecentlyPlayed,
 } from './types/player.types';
 import { SpotifyPlaylist } from './types/playlists.types';
-import { SpotifySearch } from './types/search.types';
+import { SpotifySearch, SpotifySearchGroup } from './types/search.types';
 import {
     SpotifyAudioAnalysis,
     SpotifyAudioFeatures,
@@ -86,6 +86,11 @@ const user = {
             return await api.get<boolean[]>('me/tracks/contains', {
                 ids: trackIds.join(','),
             });
+        },
+        liked: async () => {
+            return await api.get<
+                SpotifySearchGroup<{ added_at: string; track: SpotifyTrack }>
+            >('me/tracks');
         },
         player: async () => {
             return await api.get<SpotifyPlaybackState>('me/player');
