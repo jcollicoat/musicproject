@@ -18,7 +18,6 @@ export default async function Page({
     params: { albumId: string };
 }) {
     const album = await getAlbum(albumId);
-    console.log(album);
 
     return (
         <>

@@ -81,7 +81,6 @@ const buildAudioFeatures = (
 
 const buildTrack = (trackDto: TrackDto): Track => {
     const { track, isSaved, audioFeatures, audioAnalysis, context } = trackDto;
-    console.log(track.artists, track.name);
     return {
         // Simple
         artists: track.artists.map((artist) =>

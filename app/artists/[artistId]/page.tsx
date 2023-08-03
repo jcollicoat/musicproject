@@ -18,7 +18,6 @@ export default async function Page({
     params: { artistId: string };
 }) {
     const artist = await getArtist(params.artistId);
-    console.log(artist);
 
     return (
         <>
