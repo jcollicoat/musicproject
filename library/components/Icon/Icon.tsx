@@ -5,6 +5,7 @@ import { IconHome } from './icons/Home';
 import { IconLock } from './icons/Lock';
 import { IconMenu } from './icons/Menu';
 import { IconMusicNote } from './icons/MusicNote';
+import { IconSpotify } from './icons/Spotify';
 import { IconStar } from './icons/Star';
 import { IconUser } from './icons/User';
 
@@ -19,7 +20,15 @@ const Fallback: FC = () => (
     </g>
 );
 
-type Icons = 'Heart' | 'Home' | 'Lock' | 'Menu' | 'MusicNote' | 'Star' | 'User';
+type Icons =
+    | 'Heart'
+    | 'Home'
+    | 'Lock'
+    | 'Menu'
+    | 'MusicNote'
+    | 'Spotify'
+    | 'Star'
+    | 'User';
 
 export interface IconProps {
     icon?: Icons;
@@ -44,6 +53,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'MusicNote':
             Icon = IconMusicNote;
+            break;
+        case 'Spotify':
+            Icon = IconSpotify;
             break;
         case 'Star':
             Icon = IconStar;

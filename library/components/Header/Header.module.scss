@@ -27,7 +27,7 @@
         margin-bottom: neg($padding);
         padding: $padding;
 
-        &.hasData {
+        &.hasPanel {
             padding-bottom: calc($padding * 2);
         }
     }

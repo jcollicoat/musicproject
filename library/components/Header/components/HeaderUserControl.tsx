@@ -1,16 +1,15 @@
-'use client';
-
-import { signOut } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
 import { FC } from 'react';
 import { Menu } from '@components/Menu/Menu';
-import { useUser } from '@hooks/music/useUser';
-import { useAuth } from '@hooks/useAuth';
+import { music } from '@music/api';
 
-export const HeaderUserControl: FC = () => {
-    const auth = useAuth();
-    const user = useUser();
+export const HeaderUserControl: FC = async () => {
+    const session = await getServerSession();
+    if (!session) return null;
 
-    return auth ? (
+    const user = await music.user.details();
+
+    return (
         <Menu
             buttons={[
                 {
@@ -37,13 +36,13 @@ export const HeaderUserControl: FC = () => {
                 {
                     text: 'Logout',
                     iconStart: {
-                        icon: 'User',
+                        icon: 'Spotify',
                     },
-                    onClick: () => signOut(),
+                    onClick: 'signout',
                 },
             ]}
-            image={user?.images.small}
+            image={user.images.small}
             side="left"
         />
-    ) : null;
+    );
 };

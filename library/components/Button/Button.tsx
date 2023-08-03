@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import Link from 'next/link';
+import { signIn, signOut } from 'next-auth/react';
 import { FC } from 'react';
 import { Icon, IconProps } from '@components/Icon/Icon';
 import { Menu, MenuProps } from '@components/Menu/Menu';
@@ -33,7 +34,7 @@ interface BaseProps {
 }
 
 interface PropsForButton extends BaseProps {
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onClick: React.MouseEventHandler<HTMLButtonElement> | 'signin' | 'signout';
     link?: never;
 }
 
@@ -54,11 +55,20 @@ export const Button: FC<ButtonProps> = ({
     link,
 }) => {
     if (onClick) {
+        let click;
+        if (onClick === 'signin') {
+            click = () => signIn('spotify');
+        } else if (onClick === 'signout') {
+            click = () => signOut();
+        } else {
+            click = onClick;
+        }
+
         return (
             <button
                 aria-label={ariaLabel ?? text}
                 className={classNames(styles.button, styles[style])}
-                onClick={onClick}
+                onClick={click}
                 type="button"
             >
                 <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />

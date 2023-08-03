@@ -23,14 +23,13 @@ interface Props {
 
 export const Header: FC<Props> = ({
     title = 'Music Project',
-    subtitle,
     album,
     artist,
     track,
     user,
     isSticky = true,
 }) => {
-    const hasData = album || artist || track || user;
+    const hasPanel = album || artist || track || user;
 
     return (
         <header
@@ -39,19 +38,18 @@ export const Header: FC<Props> = ({
             <div
                 className={classNames(
                     styles.content,
-                    hasData && styles.hasData,
+                    hasPanel && styles.hasPanel,
                 )}
             >
                 <HeaderContent
-                    headingElement={hasData ? 'span' : 'h1'}
+                    headingElement={hasPanel ? 'span' : 'h1'}
                     title={title}
-                    subtitle={subtitle}
                 />
             </div>
             {album && <HeaderAlbum album={album} />}
             {artist && <HeaderArtist artist={artist} />}
-            {user && <HeaderUser user={user} />}
             {track && <HeaderTrack track={track} />}
+            {user && <HeaderUser user={user} />}
         </header>
     );
 };
