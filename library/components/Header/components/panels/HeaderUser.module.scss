@@ -28,57 +28,45 @@
         }
     }
 
-    .side {
+    .profile {
+        align-items: center;
+        display: flex;
         flex-grow: 1;
+        gap: $padding-large;
+        max-width: 100%;
+        overflow: hidden;
         width: 100%;
 
         @media (min-width: $bp-stack-2) {
-            max-width: 350px;
+            flex-grow: 0;
+            width: unset;
         }
 
-        .profile {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            gap: $padding-large;
+        .image {
+            border-radius: 50%;
+        }
 
-            .details {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-                gap: $padding-large;
-
-                .image {
-                    border-radius: 50%;
-                }
-
-                .imageFallback {
-                    background-color: $color-gray-8;
-                    border-radius: 50%;
-                    height: 60px;
-                    width: 60px;
-                }
-
-                .name {
-                    font-size: 1.5em;
-                    font-weight: 500;
-                }
+        .details {
+            .name {
+                display: block;
+                font-size: 1.5em;
+                font-weight: 500;
+                margin-bottom: $space-small;
             }
 
             .products {
+                column-gap: $padding-large;
                 display: flex;
                 font-size: 0.9em;
-                gap: $padding;
-                justify-content: center;
-                width: 100%;
+                justify-content: flex-start;
+                row-gap: $space-small;
 
                 .product {
                     align-items: center;
                     display: flex;
-                    flex-direction: column;
                     gap: 0.5em;
                     text-align: center;
-                    width: calc(100% / 3);
+                    white-space: nowrap;
 
                     svg {
                         color: $color-primary-3;
