@@ -7,6 +7,49 @@
     padding: $padding-large;
     width: 100%;
 
+    &.hasImage {
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        border-width: 2px;
+        position: relative;
+        z-index: $z-normal;
+
+        &::after {
+            background-image: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.9),
+                rgba(0, 0, 0, 0.8)
+            );
+            border-radius: 6px;
+            bottom: 0;
+            content: '';
+            left: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        * {
+            z-index: 2;
+        }
+
+        @media (min-width: $bp-stack-2) {
+            background-position: left center;
+            background-size: 50% auto;
+
+            &::after {
+                background-image: linear-gradient(
+                    to left,
+                    #000000 50%,
+                    rgba(#000000, 0.8) 100%
+                );
+            }
+        }
+    }
+
     .panel {
         background-color: $color-gray-bg;
         border: 1px solid $color-gray-8;

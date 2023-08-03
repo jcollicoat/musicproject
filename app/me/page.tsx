@@ -21,11 +21,12 @@ export default async function Page() {
     await authGuard();
     const user = await getUser();
     const liked = await getLikedTracks();
-    console.log(liked);
+
+    const image = liked.items[0].track.album?.images[0].url;
 
     return (
         <>
-            <Header subtitle="My Music" user={user} />
+            <Header subtitle="My Music" user={user} image={image} />
             <main className={styles.main}>
                 <Panel position="library">
                     <div>Library</div>

@@ -18,6 +18,7 @@ interface Props {
     artist?: Artist;
     track?: Track;
     user?: User;
+    image?: string;
     isSticky?: boolean;
 }
 
@@ -27,6 +28,7 @@ export const Header: FC<Props> = ({
     artist,
     track,
     user,
+    image,
     isSticky = true,
 }) => {
     const hasPanel = album || artist || track || user;
@@ -49,7 +51,7 @@ export const Header: FC<Props> = ({
             {album && <HeaderAlbum album={album} />}
             {artist && <HeaderArtist artist={artist} />}
             {track && <HeaderTrack track={track} />}
-            {user && <HeaderUser user={user} />}
+            {user && <HeaderUser user={user} image={image} />}
         </header>
     );
 };
