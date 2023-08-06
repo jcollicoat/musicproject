@@ -1,28 +1,6 @@
-import axios from 'axios';
 import { cookies } from 'next/headers';
 
-// const isValid = (token?: string) => {
-//     return token && token.startsWith('Bearer ') && token.length > 7
-//         ? true
-//         : false;
-// };
-
-const get = async <T>(endpoint: string, params?: unknown) => {
-    const spotify_token = cookies().get('spotify_token')?.value;
-
-    const response = await axios.get<T>(
-        `https://api.spotify.com/v1/${endpoint}`,
-        {
-            headers: {
-                Authorization: spotify_token,
-            },
-            params: params,
-        },
-    );
-    return response.data;
-};
-
-export const getNew = async <T>(
+export const get = async <T>(
     endpoint: string,
     config?: {
         params?: URLSearchParams;
@@ -37,8 +15,7 @@ export const getNew = async <T>(
     }
 
     const response = await fetch(
-        `https://api.spotify.com/v1/${endpoint}` +
-            new URLSearchParams(config?.params),
+        `https://api.spotify.com/v1/${endpoint}` + config?.params,
         {
             headers: new Headers({
                 Authorization: spotify_token,
@@ -55,5 +32,5 @@ export const getNew = async <T>(
     return response.json() as T;
 };
 
-const api = { get, getNew };
+const api = { get };
 export { api };
