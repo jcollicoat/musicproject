@@ -40,7 +40,9 @@ const audioFeatures = {
         return await api.get<{ audio_features: SpotifyAudioFeatures[] }>(
             'audio-features',
             {
-                params: new URLSearchParams({ ids: trackIds.join(',') }),
+                params: {
+                    ids: trackIds.join(','),
+                },
             },
         );
     },
@@ -54,10 +56,10 @@ const playlists = {
 
 const search = async (query: string, types?: string[]) => {
     return await api.get<SpotifySearch>('search', {
-        params: new URLSearchParams({
+        params: {
             q: query,
             type: types?.join(',') ?? 'album,artist,track,playlist',
-        }),
+        },
     });
 };
 
@@ -67,7 +69,9 @@ const tracks = {
     },
     getList: async (trackIds: string[]) => {
         return await api.get<{ tracks: SpotifyTrack[] }>('tracks', {
-            params: new URLSearchParams({ ids: trackIds.join(',') }),
+            params: {
+                ids: trackIds.join(','),
+            },
         });
     },
 };
@@ -79,18 +83,19 @@ const user = {
     artists: {
         followed: async () => {
             return await api.get<SpotifyFollowedArtists>('me/following', {
-                params: new URLSearchParams({
+                params: {
                     type: 'artist',
-                }),
+                },
             });
         },
     },
     tracks: {
         isSaved: async (trackIds: string[]) => {
             return await api.get<boolean[]>('me/tracks/contains', {
-                params: new URLSearchParams({
+                params: {
                     ids: trackIds.join(','),
-                }),
+                },
+                noCache: true,
             });
         },
         liked: async () => {
