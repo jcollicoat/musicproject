@@ -72,7 +72,7 @@ const tracks = {
 
 const user = {
     get: async () => {
-        return await api.get<SpotifyUser>('me');
+        return await api.getNew<SpotifyUser>('me');
     },
     artists: {
         followed: async () => {
