@@ -17,7 +17,7 @@ export const get = async <T>(
     endpoint = `https://api.spotify.com/v1/${endpoint}`;
     if (config?.params !== undefined) {
         const params = new URLSearchParams(config.params);
-        endpoint = endpoint + `?${params}`;
+        endpoint = endpoint + `?${params.toString()}`;
     }
 
     const response = await fetch(endpoint, {
