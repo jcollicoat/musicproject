@@ -8,8 +8,8 @@ export const get = async <T>(
         revalidate?: number;
     },
 ) => {
-    const spotify_token = cookies().get('spotifyToken')?.value;
-    if (!spotify_token) {
+    const spotifyToken = cookies().get('spotifyToken')?.value;
+    if (!spotifyToken) {
         // TODO: refresh token if auth session available
         throw new Error('No spotifyToken cookie');
     }
@@ -22,7 +22,7 @@ export const get = async <T>(
 
     const response = await fetch(endpoint, {
         headers: new Headers({
-            Authorization: spotify_token,
+            Authorization: spotifyToken,
         }),
         cache: config?.noCache ? 'no-cache' : 'force-cache',
         next: { revalidate: config?.revalidate },
