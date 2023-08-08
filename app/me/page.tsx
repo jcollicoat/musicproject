@@ -1,5 +1,4 @@
 import { cache } from 'react';
-import { authGuard } from '@api/helpers';
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
@@ -18,7 +17,6 @@ const getLikedTracks = cache(async () => {
 });
 
 export default async function Page() {
-    await authGuard();
     const user = await getUser();
     const liked = await getLikedTracks();
 

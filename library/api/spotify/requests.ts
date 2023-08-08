@@ -8,10 +8,10 @@ export const get = async <T>(
         revalidate?: number;
     },
 ) => {
-    const spotify_token = cookies().get('spotify_token')?.value;
+    const spotify_token = cookies().get('spotifyToken')?.value;
     if (!spotify_token) {
         // TODO: refresh token if auth session available
-        throw new Error('No spotify_token cookie');
+        throw new Error('No spotifyToken cookie');
     }
 
     endpoint = `https://api.spotify.com/v1/${endpoint}`;
