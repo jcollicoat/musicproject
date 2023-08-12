@@ -1,9 +1,9 @@
 @import '@styles/variables.scss';
 
-.wrapper {
-    $trigger-size: 30px;
-    $menu-offset: calc(100% + $padding / 2);
+$trigger-size: 30px;
+$menu-offset: calc(100% + $padding / 2);
 
+.wrapper {
     display: inline-flex;
     position: relative;
 
