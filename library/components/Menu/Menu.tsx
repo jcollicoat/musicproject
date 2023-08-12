@@ -2,7 +2,7 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { Button, ButtonProps } from '@components/Button/Button';
 import { Icon } from '@components/Icon/Icon';
 import { SpotifyImage } from '@spotify/types';
@@ -18,6 +18,8 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
+    const imageUrl = useMemo(() => image?.url, [image?.url]);
+
     return (
         <div className={styles.wrapper}>
             <button
@@ -26,8 +28,8 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
                 onClick={toggle}
                 type="button"
             >
-                {image ? (
-                    <Image alt="Me" src={image.url} height={30} width={30} />
+                {imageUrl ? (
+                    <Image alt="Me" src={imageUrl} height={30} width={30} />
                 ) : (
                     <Icon icon="Menu" isAlternate={isOpen} size="30px" />
                 )}

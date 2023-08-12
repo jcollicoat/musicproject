@@ -14,40 +14,51 @@
         color: $color-gray-5;
         cursor: pointer;
         height: $trigger-size;
+        outline: 0px solid $color-gray-8;
         overflow: hidden;
         padding: 0;
         transition: $transition;
-        transition-property: background-color, border-color, box-shadow, color;
+        transition-property: background-color, color, outline-width;
         width: $trigger-size;
+
+        &::before {
+            background-color: transparent;
+            border-radius: calc($trigger-size / 2) calc($trigger-size / 2) 0 0;
+            content: '';
+            height: calc($menu-offset - 3px);
+            left: 0;
+            outline: 3px solid transparent;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            transform: scale(0.85);
+            transition: $transition;
+            transition-property: background-color, outline-color, transform;
+            width: 100%;
+            z-index: 1;
+        }
 
         &:hover,
         &.open {
+            background-color: $color-gray-8;
             color: $color-gray-4;
+            outline-width: 3px;
         }
 
         &.open {
-            outline: 3px solid $color-gray-8;
             z-index: calc($z-overlay + 1);
 
-            img,
-            svg {
-                position: relative;
-                z-index: 2;
-            }
-
-            &:before {
+            &::before {
                 background-color: $color-gray-8;
-                border-radius: 50% 50% 0 0;
-                content: '';
-                height: calc($menu-offset - 3px);
-                left: 0;
-                outline: 3px solid $color-gray-8;
-                pointer-events: none;
-                position: absolute;
-                top: 0;
-                width: 100%;
-                z-index: 1;
+                outline-color: $color-gray-8;
+                transform: scale(1);
             }
+        }
+
+        img,
+        svg {
+            position: relative;
+            z-index: 2;
         }
     }
 
