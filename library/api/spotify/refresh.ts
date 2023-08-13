@@ -6,9 +6,12 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
     throw new Error('Missing Spotify client details.');
 }
 
-export const refreshSpotifyToken = async (jwt: JWT): Promise<JWT> => {
+export const spotifyTokenIsExpired = (expiry: number) =>
+    Math.floor(Date.now() / 1000) > expiry;
+
+export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
     try {
-        if (!jwt.refresh_token) {
+        if (!jwt.spotifyRefreshToken) {
             console.log('No Spotify refresh token, logging out');
             // TODO: Logout
         }
@@ -38,18 +41,17 @@ export const refreshSpotifyToken = async (jwt: JWT): Promise<JWT> => {
         const refreshed = await response.json();
 
         const {
-            access_token,
-            expires_in, // in seconds
-            refresh_token,
+            access_token: spotifyTokenNoBearer,
+            expires_in: spotifyExpiresInSeconds, // Usually 3600
+            refresh_token: spotifyRefreshToken,
         } = refreshed;
-
-        const expiryMs = Date.now() + expires_in ? expires_in * 1000 : 3600000; // One hour from now
 
         return {
             ...jwt,
-            spotifyToken: `Bearer ${access_token}`,
-            spotifyExpires: expiryMs,
-            spotifyRefresh: refresh_token ?? '',
+            spotifyToken: `Bearer ${spotifyTokenNoBearer}`,
+            spotifyTokenExpiresAt:
+                Math.floor(Date.now() / 1000) + spotifyExpiresInSeconds,
+            spotifyRefreshToken: spotifyRefreshToken,
         };
     } catch (error) {
         console.error(`Failed to refresh Spotify token: ${error}`);

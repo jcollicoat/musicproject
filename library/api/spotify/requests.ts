@@ -8,7 +8,7 @@ export const get = async <T>(
         revalidate?: number;
     },
 ) => {
-    const spotifyToken = cookies().get('spotifyToken')?.value;
+    const spotifyToken = cookies().get('spotify')?.value;
     if (!spotifyToken) {
         // TODO: refresh token if auth session available
         throw new Error('No spotifyToken cookie');

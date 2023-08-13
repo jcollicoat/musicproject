@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import { refreshSpotifyToken } from '@spotify/refresh';
+import { refreshSpotifyInJwt, spotifyTokenIsExpired } from '@spotify/refresh';
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
@@ -24,22 +24,29 @@ const handler = NextAuth({
         }),
     ],
     callbacks: {
+        // Set JWT on sign in
         jwt: async ({ account, token }) => {
             if (account) {
-                const expiryMs = account.expires_at
-                    ? account.expires_at * 1000
-                    : new Date().getTime() + 3600000; // One hour from now
+                const {
+                    access_token: spotifyTokenNoBearer,
+                    expires_at: spotifyTokenExpiresAtSeconds,
+                    refresh_token: spotifyRefreshToken,
+                } = account;
 
-                // Only happens on sign in
-                token.spotifyToken = `Bearer ${account.access_token}`;
-                token.spotifyExpires = expiryMs;
-                token.spotifyRefresh = account.refresh_token ?? '';
+                if (!spotifyTokenNoBearer) {
+                    throw new Error('No Spotify token on login');
+                }
+
+                token.spotifyToken = `Bearer ${spotifyTokenNoBearer}`;
+                token.spotifyTokenExpiresAt =
+                    spotifyTokenExpiresAtSeconds ??
+                    Math.floor(Date.now() / 1000);
+                token.spotifyRefreshToken = spotifyRefreshToken;
             }
 
-            // Happens whenever token is fetched
             let jwt = token;
-            if (Date.now() > jwt.spotifyExpires) {
-                jwt = await refreshSpotifyToken(jwt);
+            if (spotifyTokenIsExpired(jwt.spotifyTokenExpiresAt)) {
+                jwt = await refreshSpotifyInJwt(jwt);
             }
 
             return jwt;

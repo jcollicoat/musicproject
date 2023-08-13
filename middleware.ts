@@ -5,38 +5,39 @@ const secret = process.env.NEXTAUTH_SECRET;
 
 const authRoutes = ['/albums', '/artists', '/me', '/tracks'];
 
-const isInvalid = (token?: string) =>
-    token?.startsWith('Bearer ') ? false : true;
-
 export async function middleware(request: NextRequest) {
     const jwt = await getToken({ req: request, secret });
-    console.log('jwt:', jwt);
+    const spotifyCookie = request.cookies.get('spotify')?.value;
 
-    if (authRoutes.some((route) => request.nextUrl.pathname.includes(route))) {
-        if (!jwt) {
+    if (!jwt) {
+        const isAuthRoute = authRoutes.some((route) =>
+            request.nextUrl.pathname.includes(route),
+        );
+        if (isAuthRoute) {
             return NextResponse.redirect(new URL('/', request.url));
         }
-    }
 
-    const spotifyToken = request.cookies.get('spotifyToken')?.value;
+        if (spotifyCookie) {
+            request.cookies.delete('spotify');
+            const next = NextResponse.next({ request });
+            next.cookies.delete('spotify');
+            return next;
+        }
+    } else {
+        const { spotifyToken, spotifyTokenExpiresAt } = jwt;
 
-    if (isInvalid(spotifyToken)) {
-        if (jwt) {
-            // Set cookie for this request
-            request.cookies.set({
-                name: 'spotifyToken',
-                value: jwt.spotifyToken,
-            });
-
-            // Set cookie in response
-            const nextWithCookie = NextResponse.next({ request });
-            nextWithCookie.cookies.set({
-                name: 'spotifyToken',
-                value: jwt.spotifyToken,
-                expires: jwt.spotifyExpires,
+        if (spotifyToken !== spotifyCookie) {
+            const cookie = {
+                name: 'spotify',
+                value: spotifyToken,
+                expires: Math.floor(spotifyTokenExpiresAt * 1000), // Cookie set in ms
                 httpOnly: true,
-            });
-            return nextWithCookie;
+            };
+
+            request.cookies.set(cookie);
+            const next = NextResponse.next({ request });
+            next.cookies.set(cookie);
+            return next;
         }
     }
 
