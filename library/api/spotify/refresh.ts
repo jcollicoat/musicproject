@@ -12,8 +12,8 @@ export const spotifyTokenIsExpired = (expiry: number) =>
 export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
     try {
         if (!jwt.spotifyRefreshToken) {
-            console.log('No Spotify refresh token, logging out');
-            // TODO: Logout
+            console.log('No Spotify refresh token, returning original JWT');
+            return jwt;
         }
 
         console.log('Refreshing Spotify token');
@@ -23,7 +23,7 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
         ).toString('base64')}`;
 
         const response = await fetch(
-            `https://accounts.spotify.com/api/token?grant_type=refresh_token&refresh_token=${jwt.refresh_token}`,
+            `https://accounts.spotify.com/api/token?grant_type=refresh_token&refresh_token=${jwt.spotifyRefreshToken}`,
             {
                 method: 'POST',
                 headers: new Headers({
@@ -34,8 +34,10 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
         );
 
         if (!response.ok) {
-            console.log('Bad response from Spotify token refresh API');
-            // TODO: handle
+            console.log(
+                'Bad response from Spotify token refresh API, returning original JWT',
+            );
+            return jwt;
         }
 
         const refreshed = await response.json();
