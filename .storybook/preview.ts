@@ -1,4 +1,4 @@
-import '@styles/globals.scss';
+import '@styles/layout.scss';
 import '@styles/storybook.scss';
 import type { Preview } from '@storybook/react';
 

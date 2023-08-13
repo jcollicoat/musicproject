@@ -1,4 +1,4 @@
-import '@styles/globals.scss';
+import '@styles/layout.scss';
 import { AuthContextProvider } from '@context/AuthContextProvider';
 import { QueryContextProvider } from '@context/QueryContextProvider';
 
