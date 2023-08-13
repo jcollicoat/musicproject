@@ -13,8 +13,7 @@ export const refreshSpotifyToken = async (jwt: JWT): Promise<JWT> => {
             // TODO: Logout
         }
 
-        console.log('jwt:', jwt);
-        console.log('Attempting to refresh Spotify token');
+        console.log('Refreshing Spotify token');
 
         const basic = `Basic ${Buffer.from(
             `${CLIENT_ID}:${CLIENT_SECRET}`,
@@ -37,8 +36,6 @@ export const refreshSpotifyToken = async (jwt: JWT): Promise<JWT> => {
         }
 
         const refreshed = await response.json();
-
-        console.log('refresh API response:', refreshed);
 
         const {
             access_token,

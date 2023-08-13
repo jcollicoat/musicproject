@@ -29,7 +29,9 @@ export const get = async <T>(
     });
 
     if (!response.ok) {
-        throw new Error(`Bad response from Spotify API: ${endpoint}`);
+        const message = `Bad response from Spotify API: ${endpoint} | `;
+        console.error(message, response);
+        throw new Error(message);
     }
 
     return response.json() as T;
