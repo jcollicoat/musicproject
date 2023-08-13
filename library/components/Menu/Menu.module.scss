@@ -14,7 +14,7 @@ $menu-offset: calc(100% + $padding / 2);
         color: $color-gray-5;
         cursor: pointer;
         height: $trigger-size;
-        outline: 0px solid $color-gray-8;
+        outline: 0px solid $color-gray-6;
         overflow: hidden;
         padding: 0;
         transition: $transition;
@@ -38,11 +38,14 @@ $menu-offset: calc(100% + $padding / 2);
             z-index: 1;
         }
 
-        &:hover,
-        &.open {
-            background-color: $color-gray-8;
-            color: $color-gray-4;
+        &:hover {
             outline-width: 3px;
+        }
+
+        &.open {
+            background-color: $color-gray-6;
+            color: $color-gray-4;
+            outline-width: 0px;
         }
 
         &.open {

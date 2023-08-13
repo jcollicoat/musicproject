@@ -11,7 +11,6 @@ const myMusic: ButtonProps = {
         icon: 'Heart',
     },
     link: '/me',
-    style: 'tertiary',
 };
 
 const explore: ButtonProps = {
@@ -20,7 +19,6 @@ const explore: ButtonProps = {
         icon: 'MusicNote',
     },
     link: '/explore',
-    style: 'tertiary',
 };
 
 const login: ButtonProps = {

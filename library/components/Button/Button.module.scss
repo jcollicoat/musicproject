@@ -9,6 +9,7 @@
     flex-wrap: nowrap;
     font-weight: 500;
     gap: 0.5em;
+    line-height: 1;
     padding: 0.75em 1em;
     text-decoration: none;
     transition: $transition;
@@ -46,7 +47,7 @@
 
     &.tertiary {
         background-color: rgba($color-gray-5, 0.1);
-        border: 1px solid $color-gray-6;
+        border-color: $color-gray-6;
         color: $color-gray-4;
 
         &:hover {
