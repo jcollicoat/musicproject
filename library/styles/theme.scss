@@ -1,0 +1,87 @@
+:root {
+    // Constants
+
+    --color-primary-0: #4a044e;
+    --color-primary-1: #a21caf;
+    --color-primary-2: #d946ef;
+    --color-primary-3: #e879f9;
+    --color-primary-4: #f5d0fe;
+    --color-primary-5: #fdf4ff;
+
+    --color-grey-0: #0e0e10;
+    --color-grey-1: #18181b;
+    --color-grey-2: #27272a;
+    --color-grey-3: #3f3f46;
+    --color-grey-4: #52525b;
+    --color-grey-5: #71717a;
+    --color-grey-6: #a1a1aa;
+    --color-grey-7: #d4d4d8;
+    --color-grey-8: #e4e4e7;
+    --color-grey-9: #f4f4f5;
+
+    // Themes
+
+    // dark-theme default
+
+    --theme-color-button-cta-face: var(--color-primary-2);
+    --theme-color-button-cta-face-hover: var(--color-primary-3);
+
+    --theme-color-button-primary-face: var(--color-grey-9);
+    --theme-color-button-primary-face-hover: var(--color-primary-5);
+    --theme-color-button-primary-text: var(--color-grey-1);
+    --theme-color-button-primary-text-hover: var(--color-primary-3);
+
+    --theme-color-button-secondary-face: var(--color-grey-6);
+    --theme-color-button-secondary-face-hover: var(--color-grey-7);
+
+    --theme-color-button-tertiary-border: var(--color-grey-2);
+    --theme-color-button-tertiary-border-hover: var(--color-grey-3);
+    --theme-color-button-tertiary-face: var(--color-grey-1);
+    --theme-color-button-tertiary-face-hover: var(--color-grey-2);
+    --theme-color-button-tertiary-text: #ffffff;
+
+    --theme-color-image-overlay: rgba(0, 0, 0, 0.8);
+
+    --theme-color-link: var(--color-primary-4);
+    --theme-color-link-hover: var(--color-primary-3);
+
+    --theme-color-min: #000000;
+    --theme-color-max: #ffffff;
+
+    --theme-color-page-background: var(--color-grey-0);
+
+    --theme-color-panel-background: var(--color-grey-1);
+    --theme-color-panel-border: var(--color-grey-2);
+
+    .light-theme {
+        // --theme-color-button-cta-face
+        // --theme-color-button-cta-face-hover
+
+        --theme-color-button-primary-face: var(--color-grey-1);
+        --theme-color-button-primary-face-hover: var(--color-grey-3);
+        --theme-color-button-primary-text: #ffffff;
+        --theme-color-button-primary-text-hover: #ffffff;
+
+        --theme-color-button-secondary-face: var(--color-grey-5);
+        --theme-color-button-secondary-face-hover: var(--color-grey-6);
+
+        --theme-color-button-tertiary-border: var(--color-grey-7);
+        --theme-color-button-tertiary-border-hover: var(--color-grey-8);
+        --theme-color-button-tertiary-face: var(--color-grey-8);
+        --theme-color-button-tertiary-face-hover: var(--color-grey-9);
+        --theme-color-button-tertiary-text: var(--color-grey-1);
+
+        --theme-color-image-overlay: rgba(255, 255, 255, 0.8);
+
+        --theme-color-link: var(--color-primary-2);
+        // --theme-color-link-hover
+
+        --theme-color-min: #ffffff;
+        --theme-color-max: #000000;
+
+        --theme-color-page-background: var(--color-grey-9);
+
+        --theme-color-panel-background: var(--color-grey-8);
+        --theme-color-panel-border: var(--color-grey-7);
+    }
+}

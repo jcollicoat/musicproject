@@ -6,23 +6,23 @@ $bp-stack-4: 1460px;
 
 // Colors
 
-$color-primary-0: #fdf4ff;
-$color-primary-1: #f5d0fe;
-$color-primary-2: #e879f9;
-$color-primary-3: #d946ef;
-$color-primary-4: #a21caf;
-$color-primary-5: #4a044e;
+$color-primary-0: #4a044e;
+$color-primary-1: #a21caf;
+$color-primary-2: #d946ef;
+$color-primary-3: #e879f9;
+$color-primary-4: #f5d0fe;
+$color-primary-5: #fdf4ff;
 
-$color-gray-1: #f4f4f5;
-$color-gray-2: #e4e4e7;
-$color-gray-3: #d4d4d8;
-$color-gray-4: #a1a1aa;
+$color-gray-0: #0e0e10;
+$color-gray-1: #18181b;
+$color-gray-2: #27272a;
+$color-gray-3: #3f3f46;
+$color-gray-4: #52525b;
 $color-gray-5: #71717a;
-$color-gray-6: #52525b;
-$color-gray-7: #3f3f46;
-$color-gray-8: #27272a;
-$color-gray-9: #18181b;
-$color-gray-bg: #0e0e10;
+$color-gray-6: #a1a1aa;
+$color-gray-7: #d4d4d8;
+$color-gray-8: #e4e4e7;
+$color-gray-9: #f4f4f5;
 
 $color-error: #ff1e00;
 $color-warning: #ffae00;
@@ -46,6 +46,48 @@ $space-xxxlarge: 60px;
 $z-normal: 1;
 $z-sticky: 10;
 $z-overlay: 20;
+
+// Theme
+
+$theme-color-button-cta-face: var(--theme-color-button-cta-face);
+$theme-color-button-cta-face-hover: var(--theme-color-button-cta-face-hover);
+
+$theme-color-button-primary-face: var(--theme-color-button-primary-face);
+$theme-color-button-primary-face-hover: var(
+    --theme-color-button-primary-face-hover
+);
+$theme-color-button-primary-text: var(--theme-color-button-primary-text);
+$theme-color-button-primary-text-hover: var(
+    --theme-color-button-primary-text-hover
+);
+
+$theme-color-button-secondary-face: var(--theme-color-button-secondary-face);
+$theme-color-button-secondary-face-hover: var(
+    --theme-color-button-secondary-face-hover
+);
+
+$theme-color-button-tertiary-border: var(--theme-color-button-tertiary-border);
+$theme-color-button-tertiary-border-hover: var(
+    --theme-color-button-tertiary-border-hover
+);
+$theme-color-button-tertiary-face: var(--theme-color-button-tertiary-face);
+$theme-color-button-tertiary-face-hover: var(
+    --theme-color-button-tertiary-face-hover
+);
+$theme-color-button-tertiary-text: var(--theme-color-button-tertiary-text);
+
+$theme-color-panel-image-overlay: var(--theme-color-image-overlay);
+
+$theme-color-link: var(--theme-color-link);
+$theme-color-link-hover: var(--theme-color-link-hover);
+
+$theme-color-min: var(--theme-color-min);
+$theme-color-max: var(--theme-color-max);
+
+$theme-color-page-background: var(--theme-color-page-background);
+
+$theme-color-panel-background: var(--theme-color-panel-background);
+$theme-color-panel-border: var(--theme-color-panel-border);
 
 // Transitions
 

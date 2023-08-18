@@ -1,8 +1,8 @@
 @import '@styles/variables.scss';
 
 .panel {
-    background-color: $color-gray-9;
-    border: 1px solid $color-gray-7;
+    background-color: $theme-color-panel-background;
+    border: 1px solid $theme-color-panel-border;
     border-radius: 8px;
     padding: $padding-large;
     width: 100%;
@@ -16,10 +16,11 @@
         z-index: $z-normal;
 
         &::after {
+            background-color: $theme-color-panel-image-overlay;
             background-image: linear-gradient(
                 to top,
-                #000000,
-                rgba(#000000, 0.8)
+                $theme-color-min,
+                transparent
             );
             border-radius: 6px;
             bottom: 0;
@@ -43,15 +44,15 @@
             &::after {
                 background-image: linear-gradient(
                     to left,
-                    #000000 50%,
-                    rgba(#000000, 0.8) 100%
+                    $theme-color-min 50%,
+                    transparent 100%
                 );
             }
         }
     }
 
     .panel {
-        background-color: $color-gray-bg;
+        background-color: $theme-color-page-background;
         border: 1px solid $color-gray-8;
         border-radius: 6px;
     }

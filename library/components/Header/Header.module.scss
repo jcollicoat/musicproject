@@ -1,7 +1,6 @@
 @import '@styles/variables.scss';
 
 .header {
-    background-color: $color-gray-bg;
     padding-top: $padding;
     position: relative;
 
@@ -18,8 +17,8 @@
 
     .content {
         align-items: center;
-        background-color: #000000;
-        border: 1px solid $color-gray-8;
+        background-color: $theme-color-min;
+        border: 1px solid $theme-color-panel-border;
         border-radius: 8px;
         display: flex;
         font-size: 0.9em;

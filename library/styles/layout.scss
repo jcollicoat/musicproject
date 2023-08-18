@@ -1,5 +1,6 @@
 @import './normalize.scss';
 @import './variables.scss';
+@import './theme.scss';
 
 // Typography
 
@@ -41,7 +42,7 @@ p {
 }
 
 body {
-    background-color: $color-gray-bg;
+    background-color: $theme-color-page-background;
     color: #ffffff;
     font-family:
         'FigTree',

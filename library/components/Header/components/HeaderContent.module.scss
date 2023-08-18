@@ -2,12 +2,12 @@
 
 .titles {
     .link {
-        color: $color-primary-1;
+        color: $theme-color-link;
         text-decoration: none;
         transition: $transition color;
 
         &:hover {
-            color: $color-primary-2;
+            color: $theme-color-link-hover;
         }
 
         .title {
