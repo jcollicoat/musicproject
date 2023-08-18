@@ -7,10 +7,6 @@
     gap: $padding-large;
     justify-content: space-between;
 
-    @media (min-width: $bp-stack-3) {
-        padding-left: $space-xxxlarge;
-    }
-
     .main {
         flex-grow: 1;
 
