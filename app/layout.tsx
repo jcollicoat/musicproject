@@ -14,7 +14,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>
+            <body
+            // className="light-theme"
+            >
                 <AuthContextProvider>
                     <QueryContextProvider>{children}</QueryContextProvider>
                 </AuthContextProvider>

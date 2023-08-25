@@ -5,6 +5,15 @@ import { ButtonContainer, ButtonProps } from '@components/Button/Button';
 import styles from './HeaderContent.module.scss';
 import { HeaderUserControl } from './HeaderUserControl';
 
+const blah: ButtonProps = {
+    text: 'Blah',
+    iconStart: {
+        icon: 'Heart',
+    },
+    link: '#',
+    style: 'tertiary',
+};
+
 const myMusic: ButtonProps = {
     text: 'My Music',
     iconStart: {
@@ -19,6 +28,7 @@ const explore: ButtonProps = {
         icon: 'MusicNote',
     },
     link: '/explore',
+    style: 'primary',
 };
 
 const login: ButtonProps = {
@@ -50,8 +60,17 @@ export const HeaderContent: FC<Props> = async ({
             </div>
             <nav className={styles.navigation}>
                 <ButtonContainer
-                    buttons={session ? [myMusic, explore] : [explore, login]}
+                    buttons={
+                        session
+                            ? [blah, myMusic, explore]
+                            : [blah, myMusic, explore, login]
+                    }
                     collapse={{ breakpoint: 'tiny', side: 'left' }}
+                    menuButtons={
+                        session
+                            ? [{ buttons: [blah, myMusic, explore] }]
+                            : [{ buttons: [blah, myMusic, explore, login] }]
+                    }
                 />
                 <HeaderUserControl />
             </nav>
