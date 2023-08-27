@@ -36,11 +36,10 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
                     onClick={() => setIsOpen(!isOpen)}
                     type="button"
                 >
-                    {imageUrl ? (
+                    {imageUrl && (
                         <Image alt="Me" src={imageUrl} height={30} width={30} />
-                    ) : (
-                        <Icon icon="Menu" isAlternate={isOpen} size="30px" />
                     )}
+                    <Icon icon="Menu" isAlternate={isOpen} size="30px" />
                 </button>
                 <menu
                     className={classNames(

@@ -21,8 +21,7 @@ $menu-offset: calc(100% + $padding / 2);
         transition-property: background-color, color, outline-width;
         width: $trigger-size;
 
-        &::before,
-        &::after {
+        &::before {
             content: '';
             left: 0;
             pointer-events: none;
@@ -34,14 +33,6 @@ $menu-offset: calc(100% + $padding / 2);
         }
 
         &::before {
-            border-radius: calc($trigger-size / 2) calc($trigger-size / 2) 0 0;
-            height: calc($menu-offset - 3px);
-            outline: 3px solid transparent;
-            transform: scaleX(0.85);
-            transition-property: background-color, outline-color, transform;
-        }
-
-        &::after {
             border-radius: 50%;
             height: 100%;
             outline: 1px dashed transparent;
@@ -55,19 +46,13 @@ $menu-offset: calc(100% + $padding / 2);
         }
 
         &:focus-visible {
-            &::after {
+            &::before {
                 outline-color: currentColor;
             }
         }
 
         &.open {
             z-index: calc($z-overlay + 1);
-
-            &::before {
-                background-color: var(--Menu-background-color);
-                outline-color: var(--Menu-background-color);
-                transform: scale(1);
-            }
         }
 
         img,
@@ -95,10 +80,32 @@ $menu-offset: calc(100% + $padding / 2);
         width: clamp(180px, 240px, 75vw);
         z-index: $z-overlay;
 
+        &::before {
+            border-radius: calc($trigger-size / 2) calc($trigger-size / 2) 0 0;
+            content: '';
+            height: calc($trigger-size + 3px);
+            left: calc(50% - ($trigger-size / 2));
+            outline: 3px solid transparent;
+            pointer-events: none;
+            position: absolute;
+            top: calc(neg($trigger-size) - 6px);
+            transform: scaleX(0.85);
+            transition: $transition;
+            transition-property: background-color, outline-color, transform;
+            width: $trigger-size;
+            z-index: 1;
+        }
+
         &.open {
             opacity: 1;
             pointer-events: auto;
             transform: translateX(-50%) scale(1);
+
+            &::before {
+                background-color: var(--Menu-background-color);
+                outline-color: var(--Menu-background-color);
+                transform: scale(1);
+            }
         }
 
         &.left {
@@ -110,6 +117,10 @@ $menu-offset: calc(100% + $padding / 2);
                 transform: translateX(calc(-100% + $trigger-size + $padding))
                     scale(1);
             }
+
+            &::before {
+                left: calc(100% - $trigger-size - $padding);
+            }
         }
 
         &.right {
@@ -119,6 +130,10 @@ $menu-offset: calc(100% + $padding / 2);
             &.open {
                 opacity: 1;
                 transform: translateX(neg($padding)) scale(1);
+            }
+
+            &::before {
+                left: $padding;
             }
         }
 
