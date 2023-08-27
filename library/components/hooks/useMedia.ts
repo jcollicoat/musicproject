@@ -1,11 +1,15 @@
-import { useMedia } from 'react-use';
+import { useMediaQuery } from '@react-hookz/web';
 
 export const useMediaMobile = () => {
-    const isMobile = useMedia('(max-width: 479px)', false);
+    const isMobile = useMediaQuery('(max-width: 479px)', {
+        initializeWithValue: false,
+    });
     return isMobile;
 };
 
 export const useMediaTiny = () => {
-    const isTiny = useMedia('(max-width: 349px)', false);
+    const isTiny = useMediaQuery('(max-width: 349px)', {
+        initializeWithValue: false,
+    });
     return isTiny;
 };
