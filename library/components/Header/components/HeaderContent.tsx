@@ -81,7 +81,6 @@ export const HeaderContent: FC<Props> = async ({
                               ]
                     }
                     collapse={{ breakpoint: 'tiny', side: 'left' }}
-                    reversed
                 />
                 <HeaderUserControl />
             </nav>
