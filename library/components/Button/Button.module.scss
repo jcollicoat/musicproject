@@ -16,57 +16,54 @@
     transition-property: background-color, border-color, box-shadow, color;
 
     &.cta {
-        background-color: $theme-color-button-cta-face;
+        background-color: $color-primary-2;
         color: #ffffff;
 
         &:hover {
-            background-color: $theme-color-button-cta-face-hover;
+            background-color: $color-primary-3;
             box-shadow: 0px 4px 12px -4px rgba($color-primary-3, 0.5);
         }
     }
 
     &.primary {
-        background-color: $theme-color-button-primary-face;
-        color: $theme-color-button-primary-text;
+        background-color: var(--Button-primary-background-color);
+        color: var(--Button-primary-color);
 
         &:hover {
-            background-color: $theme-color-button-primary-face-hover;
-            color: $theme-color-button-primary-text-hover;
-            box-shadow: 0px 4px 12px -4px rgba($color-primary-2, 0.25);
+            background-color: $color-primary-2;
+            color: $color-primary-5;
         }
     }
 
     &.secondary {
-        background-color: $theme-color-button-secondary-face;
-        color: $theme-color-min;
+        background-color: var(--Button-secondary-background-color);
+        color: var(--Button-secondary-color);
 
         &:hover {
-            background-color: $theme-color-button-secondary-face-hover;
+            background-color: var(--Button-secondary-hover-background-color);
         }
     }
 
     &.tertiary {
-        background-color: $theme-color-button-tertiary-face;
-        border-color: $theme-color-button-tertiary-border;
-        color: $theme-color-button-tertiary-text;
+        background-color: var(--Button-tertiary-background-color);
+        border-color: var(--Button-tertiary-border-color);
+        color: var(--Button-tertiary-color);
 
         &:hover {
-            background-color: $theme-color-button-tertiary-face-hover;
-            border-color: $theme-color-button-tertiary-border-hover;
+            background-color: var(--Button-tertiary-hover-background-color);
         }
     }
 
     &.inMenu {
-        background-color: $color-gray-7;
+        background-color: var(--Button-inMenu-background-color);
         border-radius: 0;
-        color: $color-gray-1;
+        color: var(--Button-inMenu-color);
         gap: 1em;
         padding: 0.75em 1em;
         width: 100%;
 
         &:hover {
-            background-color: $color-gray-6;
-            box-shadow: 0px 4px 12px -4px rgba($color-gray-5, 0.25);
+            background-color: var(--Button-inMenu-hover-background-color);
         }
     }
 }

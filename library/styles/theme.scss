@@ -23,22 +23,23 @@
 
     // dark-theme default
 
-    --theme-color-button-cta-face: var(--color-primary-2);
-    --theme-color-button-cta-face-hover: var(--color-primary-3);
+    --Button-primary-background-color: var(--color-grey-9);
+    --Button-primary-color: var(--color-grey-0);
 
-    --theme-color-button-primary-face: var(--color-grey-9);
-    --theme-color-button-primary-face-hover: var(--color-primary-5);
-    --theme-color-button-primary-text: var(--color-grey-1);
-    --theme-color-button-primary-text-hover: var(--color-primary-3);
+    --Button-secondary-background-color: var(--color-grey-4);
+    --Button-secondary-color: var(--color-grey-9);
+    --Button-secondary-hover-background-color: var(--color-grey-5);
 
-    --theme-color-button-secondary-face: var(--color-grey-6);
-    --theme-color-button-secondary-face-hover: var(--color-grey-7);
+    --Button-tertiary-background-color: var(--color-grey-1);
+    --Button-tertiary-border-color: var(--color-grey-2);
+    --Button-tertiary-color: var(--color-grey-9);
+    --Button-tertiary-hover-background-color: var(--color-grey-2);
 
-    --theme-color-button-tertiary-border: var(--color-grey-2);
-    --theme-color-button-tertiary-border-hover: var(--color-grey-3);
-    --theme-color-button-tertiary-face: var(--color-grey-1);
-    --theme-color-button-tertiary-face-hover: var(--color-grey-2);
-    --theme-color-button-tertiary-text: #ffffff;
+    --Button-inMenu-background-color: var(--color-grey-4);
+    --Button-inMenu-color: var(--color-gray-9);
+    --Button-inMenu-hover-background-color: var(--color-grey-5);
+
+    --Menu-trigger-color: var(--color-grey-5);
 
     --theme-color-image-overlay: rgba(0, 0, 0, 0.8);
 
@@ -54,22 +55,21 @@
     --theme-color-panel-border: var(--color-grey-2);
 
     .light-theme {
-        // --theme-color-button-cta-face
-        // --theme-color-button-cta-face-hover
+        --Button-primary-background-color: var(--color-grey-0);
+        --Button-primary-color: var(--color-grey-9);
 
-        --theme-color-button-primary-face: var(--color-grey-1);
-        --theme-color-button-primary-face-hover: var(--color-grey-3);
-        --theme-color-button-primary-text: #ffffff;
-        --theme-color-button-primary-text-hover: #ffffff;
+        --Button-secondary-background-color: var(--color-grey-6);
+        --Button-secondary-color: var(--color-grey-0);
+        --Button-secondary-hover-background-color: var(--color-grey-7);
 
-        --theme-color-button-secondary-face: var(--color-grey-5);
-        --theme-color-button-secondary-face-hover: var(--color-grey-6);
+        --Button-tertiary-background-color: var(--color-grey-8);
+        --Button-tertiary-border-color: var(--color-grey-8);
+        --Button-tertiary-color: var(--color-grey-1);
+        --Button-tertiary-hover-background-color: var(--color-grey-9);
 
-        --theme-color-button-tertiary-border: var(--color-grey-7);
-        --theme-color-button-tertiary-border-hover: var(--color-grey-8);
-        --theme-color-button-tertiary-face: var(--color-grey-8);
-        --theme-color-button-tertiary-face-hover: var(--color-grey-9);
-        --theme-color-button-tertiary-text: var(--color-grey-1);
+        --Button-inMenu-background-color: var(--color-grey-7);
+        --Button-inMenu-color: var(--color-grey-0);
+        --Button-inMenu-hover-background-color: var(--color-grey-9);
 
         --theme-color-image-overlay: rgba(255, 255, 255, 0.8);
 
