@@ -68,8 +68,18 @@ export const HeaderContent: FC<Props> = async ({
                     collapse={{ breakpoint: 'tiny', side: 'left' }}
                     menuButtons={
                         session
-                            ? [{ buttons: [blah, myMusic, explore] }]
-                            : [{ buttons: [blah, myMusic, explore, login] }]
+                            ? [
+                                  {
+                                      buttons: [blah, myMusic, explore],
+                                      side: 'left',
+                                  },
+                              ]
+                            : [
+                                  {
+                                      buttons: [blah, myMusic, explore, login],
+                                      side: 'left',
+                                  },
+                              ]
                     }
                 />
                 <HeaderUserControl />
