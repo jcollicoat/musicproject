@@ -54,7 +54,7 @@ $menu-offset: calc(100% + $padding / 2);
             outline-width: 3px;
         }
 
-        &:focus {
+        &:focus-visible {
             &::after {
                 outline-color: currentColor;
             }

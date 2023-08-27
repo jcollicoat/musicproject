@@ -72,7 +72,7 @@ $transition-slow: $transition-speed-slow ease-in-out;
     transition: $transition;
     transition-property: outline-color;
 
-    &:focus {
+    &:focus-visible {
         outline-color: currentColor;
     }
 }
