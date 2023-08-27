@@ -1,9 +1,10 @@
 'use client';
 
+import { useClickOutside } from '@react-hookz/web';
 import classNames from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import Image from 'next/image';
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo, useRef, useState } from 'react';
 import { Button, ButtonProps } from '@components/Button/Button';
 import { Icon } from '@components/Icon/Icon';
 import { SpotifyImage } from '@spotify/types';
@@ -17,20 +18,22 @@ export interface MenuProps {
 
 export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
-
     const imageUrl = useMemo(() => image?.url, [image?.url]);
+    const wrapperRef = useRef(null);
+    useClickOutside(wrapperRef, () => {
+        setIsOpen(false);
+    });
 
     return (
         <FocusTrap active={isOpen}>
-            <div className={styles.wrapper}>
+            <div className={styles.wrapper} ref={wrapperRef}>
                 <button
                     aria-label="Menu"
                     className={classNames(
                         styles.trigger,
                         isOpen && styles.open,
                     )}
-                    onClick={toggle}
+                    onClick={() => setIsOpen(!isOpen)}
                     type="button"
                 >
                     {imageUrl ? (
