@@ -12,7 +12,10 @@ export const spotifyTokenIsExpired = (expiry: number) =>
 export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
     try {
         if (!jwt.spotifyRefreshToken) {
-            console.log('No Spotify refresh token, returning original JWT');
+            console.log(
+                'No Spotify refresh token, returning original JWT:',
+                jwt,
+            );
             return jwt;
         }
 
