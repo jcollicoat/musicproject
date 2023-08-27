@@ -1,6 +1,8 @@
 @import '@styles/variables.scss';
 
 .button {
+    @include focus-outline;
+
     align-items: center;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -10,10 +12,12 @@
     font-weight: 500;
     gap: 0.5em;
     line-height: 1;
+    outline-offset: -2px;
     padding: 0.75em 1em;
     text-decoration: none;
     transition: $transition;
-    transition-property: background-color, border-color, box-shadow, color;
+    transition-property: background-color, border-color, box-shadow, color,
+        outline-color;
 
     &.cta {
         background-color: $color-primary-2;

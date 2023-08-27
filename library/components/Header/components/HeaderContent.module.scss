@@ -2,9 +2,11 @@
 
 .titles {
     .link {
+        @include focus-outline;
+
         color: var(--link-color);
         text-decoration: none;
-        transition: $transition color;
+        transition-property: color, outline-color;
 
         &:hover {
             color: var(--link-hover-color);

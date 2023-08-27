@@ -63,3 +63,16 @@ $transition-slow: $transition-speed-slow ease-in-out;
 @function neg($value) {
     @return calc($value * -1);
 }
+
+// Mixins
+
+@mixin focus-outline {
+    outline: 1px dashed transparent;
+    outline-offset: 2px;
+    transition: $transition;
+    transition-property: outline-color;
+
+    &:focus {
+        outline-color: currentColor;
+    }
+}
