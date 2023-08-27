@@ -23,13 +23,12 @@
 
     // dark-theme default
 
-    --layout-background-color: var(--color-grey-0);
-
-    --link-color: var(--color-primary-4);
-    --link-hover-color: var(--color-primary-2);
-
-    --shade-min: #000000;
-    --shade-max: #ffffff;
+    --theme-background-color: var(--color-grey-0);
+    --theme-color: var(--color-grey-9);
+    --theme-link-color: var(--color-primary-4);
+    --theme-link-hover-color: var(--color-primary-2);
+    --theme-shade-min: #000000;
+    --theme-shade-max: #ffffff;
 
     --Button-primary-background-color: var(--color-grey-9);
     --Button-primary-color: var(--color-grey-0);
@@ -57,13 +56,12 @@
     --Panel-hasImage-after-background-color: rgba(0, 0, 0, 0.8);
 
     .light-theme {
-        --layout-background-color: var(--color-grey-9);
-
-        --link-color: var(--color-primary-2);
-        --link-hover-color: var(--color-primary-3);
-
-        --shade-min: #ffffff;
-        --shade-max: #000000;
+        --theme-background-color: var(--color-grey-9);
+        --theme-color: var(--color-grey-0);
+        --theme-link-color: var(--color-primary-2);
+        --theme-link-hover-color: var(--color-primary-3);
+        --theme-shade-min: #ffffff;
+        --theme-shade-max: #000000;
 
         --Button-primary-background-color: var(--color-grey-0);
         --Button-primary-color: var(--color-grey-9);

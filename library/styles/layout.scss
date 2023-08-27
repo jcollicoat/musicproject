@@ -42,8 +42,8 @@ p {
 }
 
 body {
-    background-color: var(--layout-background-color);
-    color: #ffffff;
+    background-color: var(--theme-background-color);
+    color: var(--theme-color);
     font-family:
         'FigTree',
         -apple-system,

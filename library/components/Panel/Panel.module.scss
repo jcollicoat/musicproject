@@ -19,7 +19,7 @@
             background-color: var(--Panel-image-overlay-color);
             background-image: linear-gradient(
                 to top,
-                var(--shade-min),
+                var(--theme-shade-min),
                 transparent
             );
             border-radius: 6px;
@@ -44,7 +44,7 @@
             &::after {
                 background-image: linear-gradient(
                     to left,
-                    var(--shade-min) 50%,
+                    var(--theme-shade-min) 50%,
                     transparent 100%
                 );
             }
@@ -52,7 +52,7 @@
     }
 
     .panel {
-        background-color: var(--layout-background-color);
+        background-color: var(--theme-background-color);
         border: 1px solid var(--Panel-border-color);
         border-radius: 6px;
     }
