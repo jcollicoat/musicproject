@@ -62,25 +62,26 @@ export const HeaderContent: FC<Props> = async ({
                 <ButtonContainer
                     buttons={
                         session
-                            ? [blah, myMusic, explore]
-                            : [blah, myMusic, explore, login]
+                            ? [explore, myMusic, blah]
+                            : [login, explore, myMusic, blah]
                     }
-                    collapse={{ breakpoint: 'tiny', side: 'left' }}
                     menuButtons={
                         session
                             ? [
                                   {
-                                      buttons: [blah, myMusic, explore],
+                                      buttons: [explore, myMusic, blah],
                                       side: 'left',
                                   },
                               ]
                             : [
                                   {
-                                      buttons: [blah, myMusic, explore, login],
+                                      buttons: [login, explore, myMusic, blah],
                                       side: 'left',
                                   },
                               ]
                     }
+                    collapse={{ breakpoint: 'tiny', side: 'left' }}
+                    reversed
                 />
                 <HeaderUserControl />
             </nav>

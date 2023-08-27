@@ -104,12 +104,14 @@ interface ButtonContainerProps {
         breakpoint: 'tiny' | 'mobile';
         side: MenuProps['side'];
     };
+    reversed?: boolean;
 }
 
 export const ButtonContainer: FC<ButtonContainerProps> = ({
     buttons,
     menuButtons,
     collapse,
+    reversed,
 }) => {
     const isMobile = useMediaMobile();
     const isTiny = useMediaTiny();
@@ -118,7 +120,16 @@ export const ButtonContainer: FC<ButtonContainerProps> = ({
         (collapse?.breakpoint === 'tiny' && isTiny);
 
     return (
-        <div className={styles.container}>
+        <div
+            className={classNames(
+                styles.container,
+                reversed && styles.reversed,
+            )}
+        >
+            {reversed &&
+                menuButtons?.map((props) => (
+                    <Menu key={props.buttons[0].text} {...props} />
+                ))}
             {buttons &&
                 (collapsed ? (
                     <Menu buttons={buttons} side={collapse.side} />
@@ -127,9 +138,10 @@ export const ButtonContainer: FC<ButtonContainerProps> = ({
                         <Button key={props.text} {...props} />
                     ))
                 ))}
-            {menuButtons?.map((props) => (
-                <Menu key={props.buttons[0].text} {...props} />
-            ))}
+            {!reversed &&
+                menuButtons?.map((props) => (
+                    <Menu key={props.buttons[0].text} {...props} />
+                ))}
         </div>
     );
 };

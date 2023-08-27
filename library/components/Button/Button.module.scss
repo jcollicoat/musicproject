@@ -69,7 +69,12 @@
 }
 
 .container {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: $padding;
+
+    &.reversed {
+        flex-direction: row-reverse;
+    }
 }
