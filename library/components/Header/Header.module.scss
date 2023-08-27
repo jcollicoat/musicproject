@@ -17,8 +17,8 @@
 
     .content {
         align-items: center;
-        background-color: $theme-color-min;
-        border: 1px solid $theme-color-panel-border;
+        background-color: var(--shade-min);
+        border: 1px solid var(--Panel-border-color);
         border-radius: 8px;
         display: flex;
         font-size: 0.9em;

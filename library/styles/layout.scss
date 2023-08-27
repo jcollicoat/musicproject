@@ -42,7 +42,7 @@ p {
 }
 
 body {
-    background-color: $theme-color-page-background;
+    background-color: var(--layout-background-color);
     color: #ffffff;
     font-family:
         'FigTree',

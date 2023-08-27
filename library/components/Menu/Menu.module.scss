@@ -11,7 +11,7 @@ $menu-offset: calc(100% + $padding / 2);
         background-color: transparent;
         border: none;
         border-radius: 50%;
-        color: $color-gray-5;
+        color: var(--Menu-trigger-color);
         cursor: pointer;
         height: $trigger-size;
         outline: 0px solid $color-gray-6;

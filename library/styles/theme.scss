@@ -23,6 +23,14 @@
 
     // dark-theme default
 
+    --layout-background-color: var(--color-grey-0);
+
+    --link-color: var(--color-primary-4);
+    --link-hover-color: var(--color-primary-2);
+
+    --shade-min: #000000;
+    --shade-max: #ffffff;
+
     --Button-primary-background-color: var(--color-grey-9);
     --Button-primary-color: var(--color-grey-0);
 
@@ -41,20 +49,19 @@
 
     --Menu-trigger-color: var(--color-grey-5);
 
-    --theme-color-image-overlay: rgba(0, 0, 0, 0.8);
-
-    --theme-color-link: var(--color-primary-4);
-    --theme-color-link-hover: var(--color-primary-3);
-
-    --theme-color-min: #000000;
-    --theme-color-max: #ffffff;
-
-    --theme-color-page-background: var(--color-grey-0);
-
-    --theme-color-panel-background: var(--color-grey-1);
-    --theme-color-panel-border: var(--color-grey-2);
+    --Panel-background-color: var(--color-grey-1);
+    --Panel-border-color: var(--color-grey-2);
+    --Panel-hasImage-after-background-color: rgba(0, 0, 0, 0.8);
 
     .light-theme {
+        --layout-background-color: var(--color-grey-9);
+
+        --link-color: var(--color-primary-2);
+        --link-hover-color: var(--color-primary-3);
+
+        --shade-min: #ffffff;
+        --shade-max: #000000;
+
         --Button-primary-background-color: var(--color-grey-0);
         --Button-primary-color: var(--color-grey-9);
 
@@ -71,17 +78,8 @@
         --Button-inMenu-color: var(--color-grey-0);
         --Button-inMenu-hover-background-color: var(--color-grey-9);
 
-        --theme-color-image-overlay: rgba(255, 255, 255, 0.8);
-
-        --theme-color-link: var(--color-primary-2);
-        // --theme-color-link-hover
-
-        --theme-color-min: #ffffff;
-        --theme-color-max: #000000;
-
-        --theme-color-page-background: var(--color-grey-9);
-
-        --theme-color-panel-background: var(--color-grey-8);
-        --theme-color-panel-border: var(--color-grey-7);
+        --Panel-background-color: var(--color-grey-8);
+        --Panel-border-color: var(--color-grey-7);
+        --Panel-image-overlay-color: rgba(255, 255, 255, 0.8);
     }
 }

@@ -1,8 +1,8 @@
 @import '@styles/variables.scss';
 
 .panel {
-    background-color: $theme-color-panel-background;
-    border: 1px solid $theme-color-panel-border;
+    background-color: var(--Panel-background-color);
+    border: 1px solid var(--Panel-border-color);
     border-radius: 8px;
     padding: $padding-large;
     width: 100%;
@@ -16,10 +16,10 @@
         z-index: $z-normal;
 
         &::after {
-            background-color: $theme-color-panel-image-overlay;
+            background-color: var(--Panel-image-overlay-color);
             background-image: linear-gradient(
                 to top,
-                $theme-color-min,
+                var(--shade-min),
                 transparent
             );
             border-radius: 6px;
@@ -44,7 +44,7 @@
             &::after {
                 background-image: linear-gradient(
                     to left,
-                    $theme-color-min 50%,
+                    var(--shade-min) 50%,
                     transparent 100%
                 );
             }
@@ -52,8 +52,8 @@
     }
 
     .panel {
-        background-color: $theme-color-page-background;
-        border: 1px solid $color-gray-8;
+        background-color: var(--layout-background-color);
+        border: 1px solid var(--Panel-border-color);
         border-radius: 6px;
     }
 }
