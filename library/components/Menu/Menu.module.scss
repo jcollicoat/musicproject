@@ -14,46 +14,58 @@ $menu-offset: calc(100% + $padding / 2);
         color: var(--Menu-trigger-color);
         cursor: pointer;
         height: $trigger-size;
-        outline: 0px solid $color-gray-6;
+        outline: 0px solid var(--Menu-trigger-hover-background-color);
         overflow: hidden;
         padding: 0;
         transition: $transition;
         transition-property: background-color, color, outline-width;
         width: $trigger-size;
 
-        &::before {
-            background-color: transparent;
-            border-radius: calc($trigger-size / 2) calc($trigger-size / 2) 0 0;
+        &::before,
+        &::after {
             content: '';
-            height: calc($menu-offset - 3px);
             left: 0;
-            outline: 3px solid transparent;
             pointer-events: none;
             position: absolute;
             top: 0;
-            transform: scaleX(0.85);
             transition: $transition;
-            transition-property: background-color, outline-color, transform;
             width: 100%;
             z-index: 1;
         }
 
+        &::before {
+            border-radius: calc($trigger-size / 2) calc($trigger-size / 2) 0 0;
+            height: calc($menu-offset - 3px);
+            outline: 3px solid transparent;
+            transform: scaleX(0.85);
+            transition-property: background-color, outline-color, transform;
+        }
+
+        &::after {
+            border-radius: 50%;
+            height: 100%;
+            outline: 1px dashed transparent;
+            outline-offset: 2px;
+            transition-property: outline-color;
+        }
+
         &:hover {
+            background-color: var(--Menu-trigger-hover-background-color);
             outline-width: 3px;
         }
 
-        &.open {
-            background-color: $color-gray-6;
-            color: $color-gray-4;
-            outline-width: 0px;
+        &:focus {
+            &::after {
+                outline-color: currentColor;
+            }
         }
 
         &.open {
             z-index: calc($z-overlay + 1);
 
             &::before {
-                background-color: $color-gray-8;
-                outline-color: $color-gray-8;
+                background-color: var(--Menu-background-color);
+                outline-color: var(--Menu-background-color);
                 transform: scale(1);
             }
         }
@@ -66,12 +78,12 @@ $menu-offset: calc(100% + $padding / 2);
     }
 
     .menu {
-        background-color: $color-gray-8;
+        background-color: var(--Menu-background-color);
         border-radius: 4px;
-        box-shadow: 0px 0px 12px #000000;
+        box-shadow: 0px 0px 12px var(--Menu-box-shadow-color);
         margin: 0;
         opacity: 0;
-        outline: 3px solid $color-gray-8;
+        outline: 3px solid var(--Menu-background-color);
         padding: 0;
         pointer-events: none;
         position: absolute;

@@ -31,6 +31,7 @@ interface BaseProps {
     iconStart?: IconProps;
     iconEnd?: IconProps;
     style?: ButtonStyles;
+    tabIndex?: HTMLElement['tabIndex'];
 }
 
 interface PropsForButton extends BaseProps {
@@ -51,6 +52,7 @@ export const Button: FC<ButtonProps> = ({
     iconStart,
     iconEnd,
     style = 'secondary',
+    tabIndex,
     onClick,
     link,
 }) => {
@@ -69,6 +71,7 @@ export const Button: FC<ButtonProps> = ({
                 aria-label={ariaLabel ?? text}
                 className={classNames(styles.button, styles[style])}
                 onClick={click}
+                tabIndex={tabIndex}
                 type="button"
             >
                 <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />
@@ -81,6 +84,7 @@ export const Button: FC<ButtonProps> = ({
             aria-label={ariaLabel ?? text}
             className={classNames(styles.button, styles[style])}
             href={link}
+            tabIndex={tabIndex}
         >
             <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />
         </Link>
@@ -90,6 +94,7 @@ export const Button: FC<ButtonProps> = ({
             className={classNames(styles.button, styles[style])}
             href={link}
             rel="noopener noreferrer"
+            tabIndex={tabIndex}
             target="_blank"
         >
             <Content text={text} iconStart={iconStart} iconEnd={iconEnd} />

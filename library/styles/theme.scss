@@ -47,7 +47,10 @@
     --Button-inMenu-color: var(--color-gray-9);
     --Button-inMenu-hover-background-color: var(--color-grey-5);
 
-    --Menu-trigger-color: var(--color-grey-5);
+    --Menu-background-color: var(--color-grey-3);
+    --Menu-box-shadow-color: #000000;
+    --Menu-trigger-color: var(--color-grey-6);
+    --Menu-trigger-hover-background-color: var(--color-grey-3);
 
     --Panel-background-color: var(--color-grey-1);
     --Panel-border-color: var(--color-grey-2);
@@ -77,6 +80,11 @@
         --Button-inMenu-background-color: var(--color-grey-7);
         --Button-inMenu-color: var(--color-grey-0);
         --Button-inMenu-hover-background-color: var(--color-grey-9);
+
+        --Menu-background-color: var(--color-grey-9);
+        --Menu-box-shadow-color: rgba(0, 0, 0, 0.35);
+        --Menu-trigger-color: var(--color-grey-4);
+        --Menu-trigger-hover-background-color: var(--color-grey-8);
 
         --Panel-background-color: var(--color-grey-8);
         --Panel-border-color: var(--color-grey-7);

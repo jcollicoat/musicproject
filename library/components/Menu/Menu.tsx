@@ -43,7 +43,11 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
             >
                 {buttons.map((props) => (
                     <li key={props.text}>
-                        <Button {...props} style="inMenu" />
+                        <Button
+                            {...props}
+                            style="inMenu"
+                            tabIndex={isOpen ? 0 : -1}
+                        />
                     </li>
                 ))}
             </menu>
