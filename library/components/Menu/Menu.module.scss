@@ -15,29 +15,27 @@ $menu-offset: calc(100% + $padding / 2);
         cursor: pointer;
         height: $trigger-size;
         outline: 0px solid var(--Menu-trigger-hover-background-color);
-        overflow: hidden;
+        // overflow: hidden;
         padding: 0;
+        position: relative;
         transition: $transition;
         transition-property: background-color, color, outline-width;
         width: $trigger-size;
 
         &::before {
+            border-radius: 50%;
             content: '';
+            height: 100%;
             left: 0;
+            outline: 1px dashed transparent;
+            outline-offset: 2px;
             pointer-events: none;
             position: absolute;
             top: 0;
             transition: $transition;
-            width: 100%;
-            z-index: 1;
-        }
-
-        &::before {
-            border-radius: 50%;
-            height: 100%;
-            outline: 1px dashed transparent;
-            outline-offset: 2px;
             transition-property: outline-color;
+            width: 100%;
+            z-index: 3;
         }
 
         &:hover {
@@ -51,14 +49,29 @@ $menu-offset: calc(100% + $padding / 2);
             }
         }
 
-        &.open {
-            z-index: calc($z-overlay + 1);
-        }
-
         img,
         svg {
-            position: relative;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        img {
+            left: 0;
             z-index: 2;
+        }
+
+        svg {
+            transition: $transition background-color;
+            z-index: 1;
+        }
+
+        &.open {
+            z-index: calc($z-overlay + 1);
+
+            img ~ div > svg {
+                background-color: var(--Menu-image-overlay-background-color);
+                z-index: 4;
+            }
         }
     }
 

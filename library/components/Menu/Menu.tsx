@@ -42,6 +42,7 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
                     <Icon icon="Menu" isAlternate={isOpen} size="30px" />
                 </button>
                 <menu
+                    aria-hidden={!isOpen}
                     className={classNames(
                         styles.menu,
                         isOpen && styles.open,
