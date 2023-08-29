@@ -7,18 +7,17 @@ import Image from 'next/image';
 import { FC, useMemo, useRef, useState } from 'react';
 import { Button, ButtonProps } from '@components/Button/Button';
 import { Icon } from '@components/Icon/Icon';
-import { SpotifyImage } from '@spotify/types';
 import styles from './Menu.module.scss';
 
 export interface MenuProps {
     buttons: ButtonProps[];
-    image?: SpotifyImage;
+    imageUrl?: string;
     side?: 'left' | 'right';
 }
 
-export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
+export const Menu: FC<MenuProps> = ({ buttons, imageUrl, side }) => {
+    const src = useMemo(() => imageUrl, [imageUrl]);
     const [isOpen, setIsOpen] = useState(false);
-    const imageUrl = useMemo(() => image?.url, [image?.url]);
     const wrapperRef = useRef(null);
     useClickOutside(wrapperRef, () => {
         setIsOpen(false);
@@ -36,9 +35,7 @@ export const Menu: FC<MenuProps> = ({ buttons, image, side }) => {
                     onClick={() => setIsOpen(!isOpen)}
                     type="button"
                 >
-                    {imageUrl && (
-                        <Image alt="Me" src={imageUrl} height={30} width={30} />
-                    )}
+                    {src && <Image alt="Me" src={src} height={30} width={30} />}
                     <Icon icon="Menu" isAlternate={isOpen} size="30px" />
                 </button>
                 <menu

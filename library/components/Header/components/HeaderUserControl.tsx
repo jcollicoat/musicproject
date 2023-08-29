@@ -41,7 +41,7 @@ export const HeaderUserControl: FC = async () => {
                     onClick: 'signout',
                 },
             ]}
-            image={user.images.small}
+            imageUrl={user.images.small?.url}
             side="left"
         />
     );
