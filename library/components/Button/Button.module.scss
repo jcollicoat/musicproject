@@ -22,6 +22,7 @@
     &.cta {
         background-color: $color-primary-2;
         color: #ffffff;
+        transition-duration: $transition-speed-slow;
 
         &:hover {
             background-color: $color-primary-3;
@@ -32,6 +33,7 @@
     &.primary {
         background-color: var(--Button-primary-background-color);
         color: var(--Button-primary-color);
+        transition-duration: $transition-speed-slow;
 
         &:hover {
             background-color: $color-primary-2;
