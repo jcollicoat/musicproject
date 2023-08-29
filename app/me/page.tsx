@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
+import { RecentlyPlayed } from '@components/RecentlyPlayed/RecentlyPlayed';
 import { music } from '@music/api';
 import styles from './page.module.scss';
 
@@ -30,7 +31,7 @@ export default async function Page() {
                     <div>Library</div>
                 </Panel>
                 <Panel position="recent">
-                    <div>Recently Played</div>
+                    <RecentlyPlayed />
                 </Panel>
                 <Panel position="queue">
                     <div>Queue</div>
