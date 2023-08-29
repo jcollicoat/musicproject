@@ -1,4 +1,5 @@
 import { FC, cache } from 'react';
+import { Track } from '@components/Track/Track';
 import { music } from '@music/api';
 import styles from './RecentlyPlayed.module.scss';
 
@@ -11,15 +12,15 @@ export const RecentlyPlayed: FC = async () => {
 
     return (
         <div className={styles.wrapper}>
-            <h2>Play History</h2>
-            {recent.items.map((track) => {
-                console.log(track.name);
-                return (
-                    <div key={track.context?.playedAt}>
-                        <p>{track.name}</p>
-                    </div>
-                );
-            })}
+            <h2 className={styles.heading}>Play History</h2>
+            <div className={styles.tracks}>
+                {recent.items.map((track) => {
+                    console.log(track.name);
+                    return (
+                        <Track key={track.context?.playedAt} track={track} />
+                    );
+                })}
+            </div>
         </div>
     );
 };

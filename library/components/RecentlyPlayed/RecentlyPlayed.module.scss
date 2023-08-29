@@ -1,7 +1,13 @@
 @import '@styles/variables.scss';
 
 .wrapper {
-    p {
-        margin-top: 1em;
+    .heading {
+        margin-bottom: 1em;
+    }
+
+    .tracks {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
     }
 }
