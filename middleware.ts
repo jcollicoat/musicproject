@@ -10,6 +10,7 @@ export async function middleware(request: NextRequest) {
     const spotifyCookie = request.cookies.get('spotify')?.value;
 
     if (!jwt) {
+        // Redirect auth routes to home
         const isAuthRoute = authRoutes.some((route) =>
             request.nextUrl.pathname.includes(route),
         );
@@ -17,6 +18,7 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL('/', request.url));
         }
 
+        // Clean up spotifyCookie if user has signed out
         if (spotifyCookie) {
             request.cookies.delete('spotify');
             const next = NextResponse.next({ request });
@@ -26,6 +28,7 @@ export async function middleware(request: NextRequest) {
     } else {
         const { spotifyToken, spotifyTokenExpiresAt } = jwt;
 
+        // Update spotifyCookie if jwt has different spotifyToken value
         if (spotifyToken !== spotifyCookie) {
             const cookie = {
                 name: 'spotify',
