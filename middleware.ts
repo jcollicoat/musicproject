@@ -6,6 +6,7 @@ const secret = process.env.NEXTAUTH_SECRET;
 const authRoutes = ['/albums', '/artists', '/me', '/tracks'];
 
 export async function middleware(request: NextRequest) {
+    // TODO: This doesn't work when session is revived after a long time - Spotify token is invalid
     const jwt = await getToken({ req: request, secret });
     const spotifyCookie = request.cookies.get('spotify')?.value;
 
@@ -27,6 +28,12 @@ export async function middleware(request: NextRequest) {
         }
     } else {
         const { spotifyToken, spotifyTokenExpiresAt } = jwt;
+
+        console.log('spotifyToken in middleware.ts:', spotifyToken);
+        console.log(
+            'spotifyTokespotifyTokenExpiresAt in middleware.ts:',
+            spotifyTokenExpiresAt,
+        );
 
         // Update spotifyCookie if jwt has different spotifyToken value
         if (spotifyToken !== spotifyCookie) {
