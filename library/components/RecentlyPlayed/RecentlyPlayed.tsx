@@ -1,11 +1,11 @@
-import { FC, cache } from 'react';
+import { FC } from 'react';
 import { Track } from '@components/Track/Track';
 import { music } from '@music/api';
 import styles from './RecentlyPlayed.module.scss';
 
-const getRecentlyPlayed = cache(async () => {
+const getRecentlyPlayed = async () => {
     return await music.tracks.recentlyPlayed(true);
-});
+};
 
 export const RecentlyPlayed: FC = async () => {
     const recent = await getRecentlyPlayed();
