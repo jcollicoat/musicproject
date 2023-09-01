@@ -2,5 +2,33 @@
 
 .wrapper {
     background-color: $color-grey-9;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: left center;
     padding: $padding;
+    position: relative;
+
+    &::before {
+        background-image: linear-gradient(
+            to left,
+            $color-grey-9,
+            $color-grey-9 5%,
+            rgba($color-grey-9, 0.8)
+        );
+        content: '';
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 50%;
+        z-index: 1;
+    }
+
+    .content {
+        align-items: center;
+        display: flex;
+        gap: $padding-large;
+        position: relative;
+        z-index: 2;
+    }
 }
