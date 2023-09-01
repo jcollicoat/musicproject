@@ -31,7 +31,7 @@ export async function middleware(request: NextRequest) {
 
         console.log('spotifyToken in middleware.ts:', spotifyToken);
         console.log(
-            'spotifyTokespotifyTokenExpiresAt in middleware.ts:',
+            'potifyTokenExpiresAt in middleware.ts:',
             spotifyTokenExpiresAt,
         );
 
