@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import { refreshSpotifyInJwt, spotifyTokenIsExpired } from '@spotify/refresh';
 
 const secret = process.env.NEXTAUTH_SECRET;
 
@@ -7,7 +8,7 @@ const authRoutes = ['/albums', '/artists', '/me', '/tracks'];
 
 export async function middleware(request: NextRequest) {
     // TODO: This doesn't work when session is revived after a long time - Spotify token is invalid
-    const jwt = await getToken({ req: request, secret });
+    let jwt = await getToken({ req: request, secret });
     const spotifyCookie = request.cookies.get('spotify')?.value;
 
     if (!jwt) {
@@ -27,20 +28,17 @@ export async function middleware(request: NextRequest) {
             return next;
         }
     } else {
-        const { spotifyToken, spotifyTokenExpiresAt } = jwt;
-
-        console.log('spotifyToken in middleware.ts:', spotifyToken);
-        console.log(
-            'spotifyTokenExpiresAt in middleware.ts:',
-            spotifyTokenExpiresAt,
-        );
+        if (spotifyTokenIsExpired(jwt.spotifyTokenExpiresAt)) {
+            console.log('Refreshing spotifyToken in middleware');
+            jwt = await refreshSpotifyInJwt(jwt);
+        }
 
         // Update spotifyCookie if jwt has different spotifyToken value
-        if (spotifyToken !== spotifyCookie) {
+        if (jwt.spotifyToken !== spotifyCookie) {
             const cookie = {
                 name: 'spotify',
-                value: spotifyToken,
-                expires: Math.floor(spotifyTokenExpiresAt * 1000), // Cookie set in ms
+                value: jwt.spotifyToken,
+                expires: Math.floor(jwt.spotifyTokenExpiresAt * 1000), // Cookie needs to be set in ms
                 httpOnly: true,
             };
 

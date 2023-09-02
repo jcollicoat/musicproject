@@ -12,6 +12,7 @@ export const spotifyTokenIsExpired = (expiry: number) =>
 export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
     try {
         if (!jwt.spotifyRefreshToken) {
+            // TODO: sign user out if no refresh token
             console.log(
                 'No Spotify refresh token, returning original JWT:',
                 jwt,
@@ -37,6 +38,7 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
         );
 
         if (!response.ok) {
+            // TODO: sign user out if no refresh token
             console.log(
                 'Bad response from Spotify token refresh API, returning original JWT',
             );
