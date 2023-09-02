@@ -1,6 +1,8 @@
 @import '@styles/variables.scss';
 
 .header {
+    background-color: var(--theme-background-color);
+    border-radius: 0 0 8px 8px;
     padding-top: $padding;
     position: relative;
 
