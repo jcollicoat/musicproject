@@ -5,6 +5,8 @@
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: left center;
+    border-radius: 4px;
+    container-type: inline-size;
     padding: $padding;
     position: relative;
 
@@ -30,5 +32,9 @@
         gap: $padding-large;
         position: relative;
         z-index: 2;
+
+        @container (min-width: 100px) {
+            color: red;
+        }
     }
 }
