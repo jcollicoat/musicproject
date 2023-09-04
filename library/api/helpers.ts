@@ -1,5 +1,6 @@
 import { NextURL } from 'next/dist/server/web/next-url';
 import { NextResponse } from 'next/server';
+import { logVariables } from '@library/utilities';
 
 const ENV = process.env.NODE_ENV;
 
@@ -8,7 +9,7 @@ const ENV = process.env.NODE_ENV;
 export const errorResponse = (error: unknown): NextResponse => {
     if (ENV === 'development') {
         if (error instanceof Error) {
-            console.log('Error:', error);
+            logVariables('Error in errorResponse', [error]);
             return NextResponse.json({ error: error.message }, { status: 500 });
         }
         return NextResponse.json({ error: error }, { status: 500 });

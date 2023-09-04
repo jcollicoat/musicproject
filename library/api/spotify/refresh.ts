@@ -1,4 +1,5 @@
 import { JWT } from 'next-auth/jwt';
+import { logVariables } from '@library/utilities';
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
@@ -52,6 +53,13 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
             expires_in: spotifyExpiresInSeconds, // Usually 3600
             refresh_token: spotifyRefreshToken,
         } = refreshed;
+
+        logVariables('Refreshed Spotify credentials', [
+            refreshed,
+            spotifyTokenNoBearer,
+            spotifyExpiresInSeconds,
+            spotifyRefreshToken,
+        ]);
 
         return {
             ...jwt,
