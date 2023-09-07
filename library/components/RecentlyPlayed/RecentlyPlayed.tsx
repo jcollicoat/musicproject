@@ -15,7 +15,6 @@ export const RecentlyPlayed: FC = async () => {
             <h2 className={styles.heading}>Play History</h2>
             <div className={styles.tracks}>
                 {recent.items.map((track) => {
-                    console.log(track.name);
                     return (
                         <Track key={track.context?.playedAt} track={track} />
                     );

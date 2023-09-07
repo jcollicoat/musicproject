@@ -85,3 +85,12 @@ main {
         grid-template-columns: grid-cols(3);
     }
 }
+
+a {
+    color: var(--theme-shade-max);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

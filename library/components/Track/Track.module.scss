@@ -2,7 +2,7 @@
 
 .wrapper {
     background-color: $color-grey-9;
-    background-size: 50%;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: left center;
     border-radius: 4px;
@@ -12,17 +12,16 @@
 
     &::before {
         background-image: linear-gradient(
-            to left,
+            to right,
             $color-grey-9,
-            $color-grey-9 5%,
-            rgba($color-grey-9, 0.8)
+            rgba($color-grey-9, 0.95)
         );
         content: '';
         left: 0;
         height: 100%;
         position: absolute;
         top: 0;
-        width: 50%;
+        width: 100%;
         z-index: 1;
     }
 
@@ -33,8 +32,34 @@
         position: relative;
         z-index: 2;
 
-        @container (min-width: 100px) {
-            color: red;
+        img {
+            height: 48px;
+            width: 48px;
+        }
+
+        .details {
+            overflow: hidden;
+            white-space: nowrap;
+
+            .name {
+                margin-bottom: 0.5em;
+            }
+
+            .meta {
+                color: $color-grey-6;
+                font-size: 0.8em;
+
+                a {
+                    color: inherit;
+                }
+            }
+        }
+
+        @container (min-width: 400px) {
+            img {
+                height: 60px;
+                width: 60px;
+            }
         }
     }
 }

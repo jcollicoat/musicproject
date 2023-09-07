@@ -19,6 +19,10 @@
     transition-property: background-color, border-color, box-shadow, color,
         outline-color;
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &.cta {
         background-color: $color-primary-2;
         color: #ffffff;
