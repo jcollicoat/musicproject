@@ -21,8 +21,6 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
             return jwt;
         }
 
-        console.log('Refreshing Spotify token');
-
         const basic = `Basic ${Buffer.from(
             `${CLIENT_ID}:${CLIENT_SECRET}`,
         ).toString('base64')}`;
