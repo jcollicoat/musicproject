@@ -51,14 +51,12 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
         const {
             access_token: spotifyTokenNoBearer,
             expires_in: spotifyExpiresInSeconds, // Usually 3600
-            refresh_token: spotifyRefreshToken,
         } = refreshed;
 
         logVariables('Refreshed Spotify credentials', [
             refreshed,
             spotifyTokenNoBearer,
             spotifyExpiresInSeconds,
-            spotifyRefreshToken,
         ]);
 
         return {
@@ -66,7 +64,6 @@ export const refreshSpotifyInJwt = async (jwt: JWT): Promise<JWT> => {
             spotifyToken: `Bearer ${spotifyTokenNoBearer}`,
             spotifyTokenExpiresAt:
                 Math.floor(Date.now() / 1000) + spotifyExpiresInSeconds,
-            spotifyRefreshToken: spotifyRefreshToken,
         };
     } catch (error) {
         console.error(`Failed to refresh Spotify token: ${error}`);
