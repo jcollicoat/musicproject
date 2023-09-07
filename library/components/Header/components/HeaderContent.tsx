@@ -5,20 +5,21 @@ import { ButtonContainer, ButtonProps } from '@components/Button/Button';
 import styles from './HeaderContent.module.scss';
 import { HeaderUserControl } from './HeaderUserControl';
 
-const myMusic: ButtonProps = {
-    text: 'My Music',
-    iconStart: {
-        icon: 'Heart',
-    },
-    link: '/me',
-};
-
 const explore: ButtonProps = {
     text: 'Explore',
     iconStart: {
         icon: 'MusicNote',
     },
     link: '/explore',
+};
+
+const myMusic: ButtonProps = {
+    text: 'My Music',
+    iconStart: {
+        icon: 'Heart',
+    },
+    link: '/me',
+    style: 'tertiary',
 };
 
 const signIn: ButtonProps = {
