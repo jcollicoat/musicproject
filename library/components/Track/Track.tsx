@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
+import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Track as TrackType } from '@music/types/tracks.types';
 import styles from './Track.module.scss';
 
@@ -9,12 +10,12 @@ interface Props {
 }
 
 export const Track: FC<Props> = ({ track }) => {
-    console.log(track);
     return (
         <div
             className={styles.wrapper}
             style={{ backgroundImage: `url(${track.album?.images[0].url})` }}
         >
+            <ClientLogger data={track} name={track.name} />
             <div className={styles.content}>
                 {track.album && (
                     <Image
