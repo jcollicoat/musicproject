@@ -38,8 +38,13 @@
         }
 
         .details {
-            overflow: hidden;
+            overflow-x: scroll;
+            scrollbar-width: none;
             white-space: nowrap;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             .name {
                 margin-bottom: 0.5em;
