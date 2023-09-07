@@ -5,15 +5,6 @@ import { ButtonContainer, ButtonProps } from '@components/Button/Button';
 import styles from './HeaderContent.module.scss';
 import { HeaderUserControl } from './HeaderUserControl';
 
-const blah: ButtonProps = {
-    text: 'Blah',
-    iconStart: {
-        icon: 'Heart',
-    },
-    link: '#',
-    style: 'tertiary',
-};
-
 const myMusic: ButtonProps = {
     text: 'My Music',
     iconStart: {
@@ -28,10 +19,9 @@ const explore: ButtonProps = {
         icon: 'MusicNote',
     },
     link: '/explore',
-    style: 'primary',
 };
 
-const login: ButtonProps = {
+const signIn: ButtonProps = {
     text: 'Sign In',
     iconStart: {
         icon: 'Spotify',
@@ -62,23 +52,8 @@ export const HeaderContent: FC<Props> = async ({
                 <ButtonContainer
                     buttons={
                         session
-                            ? [explore, myMusic, blah]
-                            : [login, explore, myMusic, blah]
-                    }
-                    menuButtons={
-                        session
-                            ? [
-                                  {
-                                      buttons: [explore, myMusic, blah],
-                                      side: 'left',
-                                  },
-                              ]
-                            : [
-                                  {
-                                      buttons: [login, explore, myMusic, blah],
-                                      side: 'left',
-                                  },
-                              ]
+                            ? [explore, myMusic]
+                            : [explore, myMusic, signIn]
                     }
                     collapse={{ breakpoint: 'tiny', side: 'left' }}
                 />

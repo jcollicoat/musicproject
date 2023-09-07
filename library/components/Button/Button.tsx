@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocalStorageValue } from '@react-hookz/web';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { signIn, signOut } from 'next-auth/react';
@@ -35,7 +36,11 @@ interface BaseProps {
 }
 
 interface PropsForButton extends BaseProps {
-    onClick: React.MouseEventHandler<HTMLButtonElement> | 'signin' | 'signout';
+    onClick:
+        | React.MouseEventHandler<HTMLButtonElement>
+        | 'signin'
+        | 'signout'
+        | 'theme';
     link?: never;
 }
 
@@ -56,12 +61,19 @@ export const Button: FC<ButtonProps> = ({
     onClick,
     link,
 }) => {
+    const theme = useLocalStorageValue('theme');
+
     if (onClick) {
         let click;
         if (onClick === 'signin') {
             click = () => signIn('spotify');
         } else if (onClick === 'signout') {
             click = () => signOut();
+        } else if (onClick === 'theme') {
+            click = () =>
+                theme.value === 'light'
+                    ? theme.set('dark')
+                    : theme.set('light');
         } else {
             click = onClick;
         }

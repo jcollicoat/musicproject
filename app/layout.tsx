@@ -1,4 +1,5 @@
 import '@styles/layout.scss';
+import { ThemeBody } from '@components/ThemeBody/ThemeBody';
 import { AuthContextProvider } from '@context/AuthContextProvider';
 import { QueryContextProvider } from '@context/QueryContextProvider';
 
@@ -14,11 +15,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="light-theme">
+            <ThemeBody>
                 <AuthContextProvider>
                     <QueryContextProvider>{children}</QueryContextProvider>
                 </AuthContextProvider>
-            </body>
+            </ThemeBody>
         </html>
     );
 }
