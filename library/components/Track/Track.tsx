@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { ClientLogger } from '@components/ClientLogger/ClientLogger';
+import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
 import styles from './Track.module.scss';
 
@@ -39,6 +40,9 @@ export const Track: FC<Props> = ({ track }) => {
                             {track.album?.name}
                         </Link>
                     </div>
+                </div>
+                <div className={styles.data}>
+                    <TimeText durationMs={track.durationMs} />
                 </div>
             </div>
         </div>

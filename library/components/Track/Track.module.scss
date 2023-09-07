@@ -55,6 +55,14 @@
             }
         }
 
+        .data {
+            background-color: $color-grey-9;
+            border-radius: 4px;
+            color: $color-grey-6;
+            margin-left: auto;
+            padding: $padding;
+        }
+
         @container (min-width: 400px) {
             img {
                 height: 60px;
