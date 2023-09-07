@@ -10,17 +10,17 @@
     &.hasImage {
         background-position: top center;
         background-repeat: no-repeat;
-        background-size: 100% auto;
+        background-size: clamp(0px, 100%, 1200px) auto;
         border-width: 2px;
         position: relative;
         z-index: $z-normal;
 
-        &::after {
+        &::before {
             background-color: var(--Panel-image-overlay-color);
             background-image: linear-gradient(
                 to top,
                 var(--theme-shade-min),
-                transparent
+                rgba(var(--theme-shade-min-rgb), 0.9)
             );
             border-radius: 6px;
             bottom: 0;
@@ -38,14 +38,15 @@
         }
 
         @media (min-width: $bp-stack-2) {
-            background-position: left center;
-            background-size: 50% auto;
+            background-position: right center;
+            // background-size: 50% auto;
 
-            &::after {
+            &::before {
                 background-image: linear-gradient(
-                    to left,
-                    var(--theme-shade-min) 50%,
-                    transparent 100%
+                    to right,
+                    var(--theme-shade-min),
+                    var(--theme-shade-min) clamp(0px, 100%, calc(100% - 1200px)),
+                    rgba(var(--theme-shade-min-rgb), 0.9)
                 );
             }
         }

@@ -23,12 +23,17 @@
 
     // dark-theme default
 
+    --rgb-black: 0, 0, 0;
+    --rgb-white: 255, 255, 255;
+
     --theme-background-color: var(--color-grey-0);
     --theme-color: var(--color-grey-9);
     --theme-link-color: var(--color-primary-4);
     --theme-link-hover-color: var(--color-primary-2);
     --theme-shade-min: #000000;
+    --theme-shade-min-rgb: var(--rgb-black);
     --theme-shade-max: #ffffff;
+    --theme-shade-max-rgb: var(--rgb-white);
 
     --Button-primary-background-color: var(--color-grey-9);
     --Button-primary-color: var(--color-grey-0);
@@ -62,7 +67,9 @@
         --theme-link-color: var(--color-primary-2);
         --theme-link-hover-color: var(--color-primary-3);
         --theme-shade-min: #ffffff;
+        --theme-shade-min-rgb: var(--rgb-white);
         --theme-shade-max: #000000;
+        --theme-shade-max-rgb: var(--rgb-black);
 
         --Button-primary-background-color: var(--color-grey-0);
         --Button-primary-color: var(--color-grey-9);
