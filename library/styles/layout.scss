@@ -87,6 +87,8 @@ main {
 }
 
 a {
+    @include focus-outline;
+
     color: var(--theme-shade-max);
     text-decoration: none;
 
