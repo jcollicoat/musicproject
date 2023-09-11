@@ -8,9 +8,11 @@ interface Props {
 }
 
 export const ClientLogger: FC<Props> = ({ data, name }) => {
-    if (name) {
-        console.log(`${name}:`);
+    if (typeof window !== 'undefined') {
+        if (name) {
+            console.log(`${name}:`);
+        }
+        console.log(data);
     }
-    console.log(data);
     return null;
 };
