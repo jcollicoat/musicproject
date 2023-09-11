@@ -16,7 +16,6 @@
         z-index: $z-normal;
 
         &::before {
-            background-color: var(--Panel-image-overlay-color);
             background-image: linear-gradient(
                 to top,
                 var(--theme-shade-min),
