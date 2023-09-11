@@ -1,10 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
 import styles from './Track.module.scss';
+
+type Artists = Pick<TrackType, 'artists'>;
+
+const Artists: FC<Artists> = ({ artists }) => {
+    return artists.map((artist, index) => (
+        <Fragment key={artist.id}>
+            <Link href={`/artists/${artist.id}`}>{artist.name}</Link>
+            {index !== artists.length - 1 && <>, </>}
+        </Fragment>
+    ));
+};
 
 interface Props {
     track: TrackType;
@@ -32,10 +43,7 @@ export const Track: FC<Props> = ({ track }) => {
                         <Link href={`/tracks/${track.id}`}>{track.name}</Link>
                     </div>
                     <div className={styles.meta}>
-                        <Link href={`/artists/${track.artists[0].id}`}>
-                            {track.artists[0].name}
-                        </Link>{' '}
-                        •{' '}
+                        <Artists artists={track.artists} /> •{' '}
                         <Link href={`/albums/${track.album?.id}`}>
                             {track.album?.name}
                         </Link>
