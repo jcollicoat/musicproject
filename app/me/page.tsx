@@ -9,13 +9,9 @@ export const metadata = {
     title: 'My Music',
 };
 
-const getUser = cache(async () => {
-    return await music.user.details();
-});
+const getUser = cache(async () => await music.user.details());
 
-const getLikedTracks = cache(async () => {
-    return await music.user.tracks.liked();
-});
+const getLikedTracks = async () => await music.user.tracks.liked();
 
 export default async function Page() {
     const user = await getUser();
