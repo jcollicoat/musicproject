@@ -1,7 +1,7 @@
 @import '@styles/variables.scss';
 
 .wrapper {
-    background-color: $color-grey-9;
+    background-color: var(--Track-background-color);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: left center;
@@ -13,8 +13,8 @@
     &::before {
         background-image: linear-gradient(
             to right,
-            $color-grey-9,
-            rgba($color-grey-9, 0.95)
+            rgb(var(--Track-overlay-color)),
+            rgba(var(--Track-overlay-color), 0.95)
         );
         content: '';
         left: 0;
@@ -61,7 +61,7 @@
         }
 
         .data {
-            background-color: $color-grey-9;
+            background-color: var(--Track-background-color);
             border-radius: 4px;
             color: $color-grey-6;
             margin-left: auto;

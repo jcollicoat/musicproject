@@ -61,6 +61,9 @@
     --Panel-border-color: var(--color-grey-2);
     --Panel-hasImage-after-background-color: rgba(0, 0, 0, 0.8);
 
+    --Track-background-color: var(--color-grey-1);
+    --Track-overlay-color: 24, 24, 27;
+
     .theme-light {
         --theme-background-color: var(--color-grey-9);
         --theme-color: var(--color-grey-0);
@@ -96,5 +99,8 @@
         --Panel-background-color: var(--color-grey-8);
         --Panel-border-color: var(--color-grey-7);
         --Panel-image-overlay-color: rgba(255, 255, 255, 0.8);
+
+        --Track-background-color: var(--color-grey-9);
+        --Track-overlay-color: 244, 244, 245;
     }
 }
