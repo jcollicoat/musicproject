@@ -61,9 +61,13 @@
         }
 
         .data {
+            align-items: center;
             background-color: var(--Track-background-color);
             border-radius: 4px;
             color: $color-grey-6;
+            display: flex;
+            font-size: 0.8em;
+            gap: $padding;
             margin-left: auto;
             padding: $padding;
         }

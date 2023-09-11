@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
+import { AudioFeature } from '@components/AudioFeature/AudioFeature';
 import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
@@ -51,6 +52,26 @@ export const Track: FC<Props> = ({ track }) => {
                 </div>
                 <div className={styles.data}>
                     <TimeText durationMs={track.durationMs} />
+                    {track.audioFeatures && (
+                        <>
+                            <AudioFeature
+                                feature="acousticness"
+                                value={track.audioFeatures.acousticness}
+                            />
+                            <AudioFeature
+                                feature="danceability"
+                                value={track.audioFeatures.danceability}
+                            />
+                            <AudioFeature
+                                feature="energy"
+                                value={track.audioFeatures.energy}
+                            />
+                            <AudioFeature
+                                feature="liveness"
+                                value={track.audioFeatures.liveness}
+                            />
+                        </>
+                    )}
                 </div>
             </div>
         </div>

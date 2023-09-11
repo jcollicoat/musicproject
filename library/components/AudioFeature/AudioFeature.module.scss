@@ -1,0 +1,14 @@
+@import '@styles/variables.scss';
+
+.wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+
+    .bar {
+        border-radius: 1px;
+        height: 2px;
+        width: 24px;
+    }
+}
