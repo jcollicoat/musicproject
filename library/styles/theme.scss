@@ -10,6 +10,7 @@
 
     --color-grey-0: rgb(9, 9, 13);
     --color-grey-1: rgb(24, 24, 27);
+    --color-grey-1-rgb: 24, 24, 27;
     --color-grey-2: rgb(39, 39, 42);
     --color-grey-3: rgb(63, 63, 70);
     --color-grey-4: rgb(82, 82, 91);
@@ -18,6 +19,7 @@
     --color-grey-7: rgb(212, 212, 216);
     --color-grey-8: rgb(228, 228, 231);
     --color-grey-9: rgb(244, 244, 245);
+    --color-grey-9-rgb: 244, 244, 245;
 
     --rgb-black: 0, 0, 0;
     --rgb-white: 255, 255, 255;
@@ -33,34 +35,6 @@
     --theme-shade-max: rgb(255, 255, 255);
     --theme-shade-max-rgb: var(--rgb-white);
 
-    --Button-primary-background-color: var(--color-grey-9);
-    --Button-primary-color: var(--color-grey-0);
-
-    --Button-secondary-background-color: var(--color-grey-4);
-    --Button-secondary-color: var(--color-grey-9);
-    --Button-secondary-hover-background-color: var(--color-grey-5);
-
-    --Button-tertiary-background-color: var(--color-grey-1);
-    --Button-tertiary-border-color: var(--color-grey-2);
-    --Button-tertiary-color: var(--color-grey-9);
-    --Button-tertiary-hover-background-color: var(--color-grey-2);
-
-    --Button-inMenu-background-color: var(--color-grey-4);
-    --Button-inMenu-color: var(--color-grey-9);
-    --Button-inMenu-hover-background-color: var(--color-grey-5);
-
-    --Menu-background-color: var(--color-grey-3);
-    --Menu-box-shadow-color: rgb(0, 0, 0);
-    --Menu-image-overlay-background-color: rgba(0, 0, 0, 0.8);
-    --Menu-trigger-color: var(--color-grey-6);
-    --Menu-trigger-hover-background-color: var(--color-grey-3);
-
-    --Panel-background-color: var(--color-grey-1);
-    --Panel-border-color: var(--color-grey-2);
-
-    --Track-background-color: var(--color-grey-1);
-    --Track-overlay-color: 24, 24, 27;
-
     .theme-light {
         --theme-background-color: rgb(255, 255, 255);
         --theme-color: var(--color-grey-0);
@@ -70,33 +44,10 @@
         --theme-shade-min-rgb: var(--rgb-white);
         --theme-shade-max: rgb(0, 0, 0);
         --theme-shade-max-rgb: var(--rgb-black);
-
-        --Button-primary-background-color: var(--color-grey-0);
-        --Button-primary-color: var(--color-grey-9);
-
-        --Button-secondary-background-color: var(--color-grey-7);
-        --Button-secondary-color: var(--color-grey-0);
-        --Button-secondary-hover-background-color: var(--color-grey-8);
-
-        --Button-tertiary-background-color: var(--color-grey-9);
-        --Button-tertiary-border-color: var(--color-grey-8);
-        --Button-tertiary-color: var(--color-grey-1);
-        --Button-tertiary-hover-background-color: rgb(255, 255, 255);
-
-        --Button-inMenu-background-color: var(--color-grey-7);
-        --Button-inMenu-color: var(--color-grey-0);
-        --Button-inMenu-hover-background-color: var(--color-grey-9);
-
-        --Menu-background-color: var(--color-grey-9);
-        --Menu-box-shadow-color: rgba(0, 0, 0, 0.35);
-        --Menu-image-overlay-background-color: rgba(255, 255, 255, 0.8);
-        --Menu-trigger-color: var(--color-grey-4);
-        --Menu-trigger-hover-background-color: var(--color-grey-8);
-
-        --Panel-background-color: var(--color-grey-8);
-        --Panel-border-color: var(--color-grey-7);
-
-        --Track-background-color: var(--color-grey-9);
-        --Track-overlay-color: 244, 244, 245;
     }
 }
+
+@import '@components/Button/Button.theme.scss';
+@import '@components/Menu/Menu.theme.scss';
+@import '@components/Panel/Panel.theme.scss';
+@import '@components/Track/Track.theme.scss';

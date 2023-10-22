@@ -11,10 +11,10 @@ $menu-offset: calc(100% + $padding / 2);
         background-color: transparent;
         border: none;
         border-radius: 50%;
-        color: var(--Menu-trigger-color);
+        color: var(--trigger-color);
         cursor: pointer;
         height: $trigger-size;
-        outline: 0px solid var(--Menu-trigger-hover-background-color);
+        outline: 0px solid var(--trigger-hover-background-color);
         // overflow: hidden;
         padding: 0;
         position: relative;
@@ -39,7 +39,7 @@ $menu-offset: calc(100% + $padding / 2);
         }
 
         &:hover {
-            background-color: var(--Menu-trigger-hover-background-color);
+            background-color: var(--trigger-hover-background-color);
             outline-width: 3px;
         }
 
@@ -69,19 +69,19 @@ $menu-offset: calc(100% + $padding / 2);
             z-index: calc($z-overlay + 1);
 
             img ~ div > svg {
-                background-color: var(--Menu-image-overlay-background-color);
+                background-color: var(--image-overlay-background-color);
                 z-index: 4;
             }
         }
     }
 
     .menu {
-        background-color: var(--Menu-background-color);
+        background-color: var(--background-color);
         border-radius: 4px;
-        box-shadow: 0px 0px 12px var(--Menu-box-shadow-color);
+        box-shadow: 0px 0px 12px var(--box-shadow-color);
         margin: 0;
         opacity: 0;
-        outline: 3px solid var(--Menu-background-color);
+        outline: 3px solid var(--background-color);
         padding: 0;
         pointer-events: none;
         position: absolute;
@@ -115,8 +115,8 @@ $menu-offset: calc(100% + $padding / 2);
             transform: translateX(-50%) scale(1);
 
             &::before {
-                background-color: var(--Menu-background-color);
-                outline-color: var(--Menu-background-color);
+                background-color: var(--background-color);
+                outline-color: var(--background-color);
                 transform: scale(1);
             }
         }

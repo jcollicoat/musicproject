@@ -1,0 +1,13 @@
+:root {
+    [class^='Track'] {
+        --background-color: var(--color-grey-0);
+        --overlay-color: var(--color-grey-1-rgb);
+    }
+
+    .theme-light {
+        [class^='Track'] {
+            --background-color: var(--color-grey-9);
+            --overlay-color: var(--color-grey-9-rgb);
+        }
+    }
+}

@@ -1,7 +1,7 @@
 @import '@styles/variables.scss';
 
 .wrapper {
-    background-color: var(--Track-background-color);
+    background-color: var(--background-color);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: left center;
@@ -13,8 +13,8 @@
     &::before {
         background-image: linear-gradient(
             to right,
-            rgb(var(--Track-overlay-color)),
-            rgba(var(--Track-overlay-color), 0.95)
+            rgb(var(--overlay-color)),
+            rgba(var(--overlay-color), 0.95)
         );
         content: '';
         left: 0;
@@ -33,6 +33,7 @@
         z-index: 2;
 
         img {
+            border-radius: 2px;
             height: 48px;
             width: 48px;
         }
@@ -62,7 +63,7 @@
 
         .data {
             align-items: center;
-            background-color: var(--Track-background-color);
+            background-color: var(--background-color);
             border-radius: 4px;
             color: $color-grey-6;
             display: flex;
