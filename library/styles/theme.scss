@@ -10,7 +10,6 @@
 
     --color-grey-0: rgb(9, 9, 13);
     --color-grey-1: rgb(24, 24, 27);
-    --color-grey-1-rgb: 24, 24, 27;
     --color-grey-2: rgb(39, 39, 42);
     --color-grey-3: rgb(63, 63, 70);
     --color-grey-4: rgb(82, 82, 91);
@@ -19,10 +18,9 @@
     --color-grey-7: rgb(212, 212, 216);
     --color-grey-8: rgb(228, 228, 231);
     --color-grey-9: rgb(244, 244, 245);
-    --color-grey-9-rgb: 244, 244, 245;
 
-    --rgb-black: 0, 0, 0;
-    --rgb-white: 255, 255, 255;
+    --rgb-color-grey-1: 24, 24, 27;
+    --rgb-color-grey-9: 244, 244, 245;
 
     // Themes
 
@@ -31,9 +29,9 @@
     --theme-link-color: var(--color-primary-4);
     --theme-link-hover-color: var(--color-primary-2);
     --theme-shade-min: rgb(0, 0, 0);
-    --theme-shade-min-rgb: var(--rgb-black);
+    --theme-shade-min-rgb: 0, 0, 0;
     --theme-shade-max: rgb(255, 255, 255);
-    --theme-shade-max-rgb: var(--rgb-white);
+    --theme-shade-max-rgb: 255, 255, 255;
 
     .theme-light {
         --theme-background-color: rgb(255, 255, 255);
@@ -41,9 +39,9 @@
         --theme-link-color: var(--color-primary-2);
         --theme-link-hover-color: var(--color-primary-3);
         --theme-shade-min: rgb(255, 255, 255);
-        --theme-shade-min-rgb: var(--rgb-white);
+        --theme-shade-min-rgb: 255, 255, 255;
         --theme-shade-max: rgb(0, 0, 0);
-        --theme-shade-max-rgb: var(--rgb-black);
+        --theme-shade-max-rgb: 0, 0, 0;
     }
 }
 
