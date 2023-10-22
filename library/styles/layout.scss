@@ -25,7 +25,7 @@ p {
     --font-size: calc(1rem / 16 * 13);
     --padding: 8px;
 
-    @media (min-width: 480px) {
+    @media (min-width: $bp-stack-2) {
         --padding: 12px;
     }
 
