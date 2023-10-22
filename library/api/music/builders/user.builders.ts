@@ -1,3 +1,4 @@
+import { titleCase } from '@api/helpers';
 import { builders } from '@music/builders';
 import { User } from '@music/types/user.types';
 import { SpotifyFollowedArtists, SpotifyUser } from '@spotify/types/user.types';
@@ -12,7 +13,7 @@ const buildUser = (user: SpotifyUser): User => ({
         large: user.images[user.images.length - 1],
     },
     name: user.display_name ?? 'Me',
-    product: user.product,
+    product: titleCase(user.product),
     type: user.type,
 });
 

@@ -33,8 +33,7 @@ export const HeaderUser: FC<Props> = ({ user, image }) => (
                         </div>
                         <div className={styles.product}>
                             <Icon icon="Star" size="1rem" />
-                            {user.product.charAt(0).toUpperCase() +
-                                user.product.slice(1)}
+                            {user.product}
                         </div>
                         <div className={styles.product}>
                             <Icon icon="Lock" size="1rem" />

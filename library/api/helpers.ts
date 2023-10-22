@@ -53,3 +53,9 @@ export const getArrayRouteParams = (url: NextURL, params: string[]) =>
     params.map((param) => getArrayRouteParam(url, param));
 
 export const getUrlSlug = (url?: string) => url?.replace(/^(.*[\\/])/, '');
+
+export const titleCase = (input: string) =>
+    input
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
