@@ -23,17 +23,19 @@ interface Props {
 }
 
 export const Track: FC<Props> = ({ track }) => {
+    const { album, artists, durationMs, id, name, audioFeatures } = track;
+
     return (
         <div
             className={styles.wrapper}
-            style={{ backgroundImage: `url(${track.album?.images[0].url})` }}
+            style={{ backgroundImage: `url(${album?.images[0].url})` }}
         >
-            <ClientLogger data={track} name={track.name} />
+            <ClientLogger data={track} name={name} />
             <div className={styles.content}>
-                {track.album && (
+                {album && (
                     <Image
-                        src={track.album.images[0].url}
-                        alt={track.album.name}
+                        src={album.images[0].url}
+                        alt={album.name}
                         height={60}
                         width={60}
                         className={styles.image}
@@ -41,37 +43,35 @@ export const Track: FC<Props> = ({ track }) => {
                 )}
                 <div className={styles.details}>
                     <div className={styles.name}>
-                        <Link href={`/tracks/${track.id}`}>{track.name}</Link>
+                        <Link href={`/tracks/${id}`}>{name}</Link>
                     </div>
                     <div className={styles.meta}>
-                        <Artists artists={track.artists} /> •{' '}
-                        <Link href={`/albums/${track.album?.id}`}>
-                            {track.album?.name}
-                        </Link>
+                        <Artists artists={artists} /> •{' '}
+                        <Link href={`/albums/${album?.id}`}>{album?.name}</Link>
                     </div>
                 </div>
                 <div className={styles.data}>
-                    <TimeText durationMs={track.durationMs} />
-                    {track.audioFeatures && (
-                        <>
+                    {audioFeatures && (
+                        <div className={styles.audioFeatures}>
                             <AudioFeature
                                 feature="acousticness"
-                                value={track.audioFeatures.acousticness}
+                                value={audioFeatures.acousticness}
                             />
                             <AudioFeature
                                 feature="danceability"
-                                value={track.audioFeatures.danceability}
+                                value={audioFeatures.danceability}
                             />
                             <AudioFeature
                                 feature="energy"
-                                value={track.audioFeatures.energy}
+                                value={audioFeatures.energy}
                             />
                             <AudioFeature
                                 feature="liveness"
-                                value={track.audioFeatures.liveness}
+                                value={audioFeatures.liveness}
                             />
-                        </>
+                        </div>
                     )}
+                    <TimeText durationMs={durationMs} title={name} />
                 </div>
             </div>
         </div>

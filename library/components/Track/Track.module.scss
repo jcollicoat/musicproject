@@ -27,18 +27,29 @@
 
     .content {
         align-items: center;
-        display: flex;
+        display: grid;
+        grid-template-columns: 48px 3fr 2fr;
         gap: $padding-large;
         position: relative;
         z-index: 2;
+
+        @container (min-width: 400px) {
+            grid-template-columns: 60px 3fr 2fr;
+        }
 
         img {
             border-radius: 2px;
             height: 48px;
             width: 48px;
+
+            @container (min-width: 400px) {
+                height: 60px;
+                width: 60px;
+            }
         }
 
         .details {
+            min-width: 150px;
             overflow-x: scroll;
             scrollbar-width: none;
             white-space: nowrap;
@@ -71,12 +82,15 @@
             gap: $padding;
             margin-left: auto;
             padding: $padding;
-        }
 
-        @container (min-width: 400px) {
-            img {
-                height: 60px;
-                width: 60px;
+            .audioFeatures {
+                align-items: inherit;
+                display: inherit;
+                gap: inherit;
+
+                @container (max-width: 450px) {
+                    display: none;
+                }
             }
         }
     }
