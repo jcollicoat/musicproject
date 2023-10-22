@@ -8,7 +8,7 @@
     --color-primary-4: rgb(245, 208, 254);
     --color-primary-5: rgb(253, 244, 255);
 
-    --color-grey-0: rgb(14, 14, 16);
+    --color-grey-0: rgb(9, 9, 13);
     --color-grey-1: rgb(24, 24, 27);
     --color-grey-2: rgb(39, 39, 42);
     --color-grey-3: rgb(63, 63, 70);
@@ -24,7 +24,7 @@
 
     // Themes
 
-    --theme-background-color: var(--color-grey-0);
+    --theme-background-color: rgb(0, 0, 0);
     --theme-color: var(--color-grey-9);
     --theme-link-color: var(--color-primary-4);
     --theme-link-hover-color: var(--color-primary-2);
@@ -62,7 +62,7 @@
     --Track-overlay-color: 24, 24, 27;
 
     .theme-light {
-        --theme-background-color: var(--color-grey-9);
+        --theme-background-color: rgb(255, 255, 255);
         --theme-color: var(--color-grey-0);
         --theme-link-color: var(--color-primary-2);
         --theme-link-hover-color: var(--color-primary-3);
