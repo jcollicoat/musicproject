@@ -26,6 +26,8 @@
 
     --theme-background-color: rgb(0, 0, 0);
     --theme-color: var(--color-grey-9);
+    --theme-color-secondary: var(--color-grey-6);
+    --theme-color-tertiary: var(--color-grey-5);
     --theme-link-color: var(--color-primary-4);
     --theme-link-hover-color: var(--color-primary-2);
     --theme-shade-min: rgb(0, 0, 0);
@@ -36,6 +38,8 @@
     .theme-light {
         --theme-background-color: rgb(255, 255, 255);
         --theme-color: var(--color-grey-0);
+        --theme-color-secondary: var(--color-grey-5);
+        --theme-color-tertiary: var(--color-grey-6);
         --theme-link-color: var(--color-primary-2);
         --theme-link-hover-color: var(--color-primary-3);
         --theme-shade-min: rgb(255, 255, 255);
