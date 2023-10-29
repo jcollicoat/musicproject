@@ -29,7 +29,7 @@ export const Header: FC<Props> = ({
     track,
     user,
     image,
-    isSticky = true,
+    isSticky,
 }) => {
     const hasPanel = album || artist || track || user;
 
