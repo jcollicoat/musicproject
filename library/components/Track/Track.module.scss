@@ -1,20 +1,21 @@
 @import '@styles/variables.scss';
 
-.wrapper {
+.track {
     background-color: var(--background-color);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: left center;
     border-radius: 4px;
+    container-name: track;
     container-type: inline-size;
     padding: $padding;
     position: relative;
 
     &::before {
         background-image: linear-gradient(
-            to right,
+            to left,
             rgb(var(--overlay-color)),
-            rgba(var(--overlay-color), 0.95)
+            rgba(var(--overlay-color), 0.975)
         );
         content: '';
         left: 0;
@@ -28,12 +29,12 @@
     .content {
         align-items: center;
         display: grid;
-        grid-template-columns: 48px 3fr 2fr;
-        gap: $padding-large;
+        grid-template-columns: 48px 1fr 60px;
+        gap: $padding;
         position: relative;
         z-index: 2;
 
-        @container (min-width: 400px) {
+        @container track (min-width: 400px) {
             grid-template-columns: 60px 3fr 2fr;
         }
 
@@ -49,8 +50,7 @@
         }
 
         .details {
-            min-width: 150px;
-            overflow-x: scroll;
+            overflow-y: hidden;
             scrollbar-width: none;
             white-space: nowrap;
 
@@ -63,7 +63,7 @@
             }
 
             .meta {
-                color: $color-grey-6;
+                color: var(--theme-color-secondary);
                 font-size: 0.8em;
 
                 a {
@@ -73,22 +73,21 @@
         }
 
         .data {
-            align-items: center;
-            background-color: var(--background-color);
+            align-items: flex-end;
             border-radius: 4px;
-            color: $color-grey-6;
+            color: var(--theme-color-secondary);
+            container-name: track;
+            container-type: inline-size;
             display: flex;
+            flex-direction: column;
             font-size: 0.8em;
             gap: $padding;
-            margin-left: auto;
-            padding: $padding;
 
-            .audioFeatures {
-                align-items: inherit;
-                display: inherit;
-                gap: inherit;
+            .dataMeta {
+                color: var(--theme-color-tertiary);
+                font-size: 0.9em;
 
-                @container (max-width: 450px) {
+                .albumType {
                     display: none;
                 }
             }

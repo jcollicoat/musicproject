@@ -2,6 +2,7 @@ import { CSSProperties, FC } from 'react';
 import styles from './Icon.module.scss';
 import { IconHeart } from './icons/Heart';
 import { IconHome } from './icons/Home';
+import { IconInfo } from './icons/Info';
 import { IconLock } from './icons/Lock';
 import { IconMenu } from './icons/Menu';
 import { IconMusicNote } from './icons/MusicNote';
@@ -27,6 +28,7 @@ const Fallback: FC = () => (
 type Icons =
     | 'Heart'
     | 'Home'
+    | 'Info'
     | 'Lock'
     | 'Menu'
     | 'MusicNote'
@@ -52,6 +54,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'Home':
             Icon = IconHome;
+            break;
+        case 'Info':
+            Icon = IconInfo;
             break;
         case 'Lock':
             Icon = IconLock;

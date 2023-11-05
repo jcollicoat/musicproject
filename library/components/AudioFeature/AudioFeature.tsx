@@ -21,22 +21,24 @@ const icons: Record<
 
 interface Props {
     feature: keyof typeof icons;
-    value: number;
+    value?: number;
 }
 
 export const AudioFeature: FC<Props> = ({ feature, value }) => {
     return (
         <div className={styles.wrapper}>
             <Icon icon={icons[feature]} />
-            <div
-                className={styles.bar}
-                style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                    backgroundImage: `linear-gradient(to right, currentColor, currentColor ${
-                        value * 100
-                    }%, transparent ${value * 100}%, transparent)`,
-                }}
-            ></div>
+            {value && (
+                <div
+                    className={styles.bar}
+                    style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                        backgroundImage: `linear-gradient(to right, currentColor, currentColor ${
+                            value * 100
+                        }%, transparent ${value * 100}%, transparent)`,
+                    }}
+                ></div>
+            )}
         </div>
     );
 };

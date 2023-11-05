@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
-import { AudioFeature } from '@components/AudioFeature/AudioFeature';
 import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
+import { AudioFeatures } from './components/AudioFeatures';
 import styles from './Track.module.scss';
 
 type Artists = Pick<TrackType, 'artists'>;
@@ -27,7 +27,7 @@ export const Track: FC<Props> = ({ track }) => {
 
     return (
         <div
-            className={styles.wrapper}
+            className={styles.track}
             style={{ backgroundImage: `url(${album?.images[0].url})` }}
         >
             <ClientLogger data={track} name={name} />
@@ -52,26 +52,33 @@ export const Track: FC<Props> = ({ track }) => {
                 </div>
                 <div className={styles.data}>
                     {audioFeatures && (
-                        <div className={styles.audioFeatures}>
-                            <AudioFeature
-                                feature="acousticness"
-                                value={audioFeatures.acousticness}
-                            />
-                            <AudioFeature
-                                feature="danceability"
-                                value={audioFeatures.danceability}
-                            />
-                            <AudioFeature
-                                feature="energy"
-                                value={audioFeatures.energy}
-                            />
-                            <AudioFeature
-                                feature="liveness"
-                                value={audioFeatures.liveness}
-                            />
-                        </div>
+                        <AudioFeatures {...audioFeatures} />
+                        // <div className={styles.audioFeatures}>
+                        //     <Icon icon="Info" size="1rem" />
+                        //     {/* <AudioFeature
+                        //         feature="acousticness"
+                        //         value={audioFeatures.acousticness}
+                        //     />
+                        //     <AudioFeature
+                        //         feature="danceability"
+                        //         value={audioFeatures.danceability}
+                        //     />
+                        //     <AudioFeature
+                        //         feature="energy"
+                        //         value={audioFeatures.energy}
+                        //     />
+                        //     <AudioFeature
+                        //         feature="liveness"
+                        //         value={audioFeatures.liveness}
+                        //     /> */}
+                        // </div>
                     )}
-                    <TimeText durationMs={durationMs} title={name} />
+                    <div className={styles.dataMeta}>
+                        <span className={styles.albumType}>
+                            {album?.albumType} •{' '}
+                        </span>
+                        <TimeText durationMs={durationMs} title={name} />
+                    </div>
                 </div>
             </div>
         </div>
