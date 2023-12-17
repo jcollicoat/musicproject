@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
+import { AudioFeature } from '@components/AudioFeature/AudioFeature';
 import { ClientLogger } from '@components/ClientLogger/ClientLogger';
+import { Icon } from '@components/Icon/Icon';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
-import { AudioFeatures } from './components/AudioFeatures';
 import styles from './Track.module.scss';
 
 type Artists = Pick<TrackType, 'artists'>;
@@ -52,33 +53,45 @@ export const Track: FC<Props> = ({ track }) => {
                 </div>
                 <div className={styles.data}>
                     {audioFeatures && (
-                        <AudioFeatures {...audioFeatures} />
-                        // <div className={styles.audioFeatures}>
-                        //     <Icon icon="Info" size="1rem" />
-                        //     {/* <AudioFeature
-                        //         feature="acousticness"
-                        //         value={audioFeatures.acousticness}
-                        //     />
-                        //     <AudioFeature
-                        //         feature="danceability"
-                        //         value={audioFeatures.danceability}
-                        //     />
-                        //     <AudioFeature
-                        //         feature="energy"
-                        //         value={audioFeatures.energy}
-                        //     />
-                        //     <AudioFeature
-                        //         feature="liveness"
-                        //         value={audioFeatures.liveness}
-                        //     /> */}
-                        // </div>
+                        <div className={styles.audioFeatures}>
+                            <AudioFeature
+                                feature="acousticness"
+                                value={audioFeatures.acousticness}
+                            />
+                            <AudioFeature
+                                feature="danceability"
+                                value={audioFeatures.danceability}
+                            />
+                            <AudioFeature
+                                feature="energy"
+                                value={audioFeatures.energy}
+                            />
+                            <AudioFeature
+                                feature="instrumentalness"
+                                value={audioFeatures.instrumentalness}
+                            />
+                            <AudioFeature feature="key" />
+                            <AudioFeature
+                                feature="liveness"
+                                value={audioFeatures.liveness}
+                            />
+                            <AudioFeature
+                                feature="loudness"
+                                value={audioFeatures.loudness}
+                            />
+                            <AudioFeature feature="mode" />
+                            <AudioFeature
+                                feature="tempo"
+                                value={audioFeatures.tempo}
+                            />
+                            <AudioFeature
+                                feature="valence"
+                                value={audioFeatures.valence}
+                            />
+                            <Icon icon="Info" size="1rem" />
+                        </div>
                     )}
-                    <div className={styles.dataMeta}>
-                        <span className={styles.albumType}>
-                            {album?.albumType} •{' '}
-                        </span>
-                        <TimeText durationMs={durationMs} title={name} />
-                    </div>
+                    <TimeText durationMs={durationMs} title="Track length" />
                 </div>
             </div>
         </div>

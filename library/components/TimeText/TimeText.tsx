@@ -6,15 +6,13 @@ interface Props {
 }
 
 export const TimeText: FC<Props> = ({ durationMs, title }) => {
-    const seconds = Math.floor(durationMs / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const secondsRemaining = seconds - minutes * 60;
-    const secondsDisplay =
-        secondsRemaining < 10 ? `0${secondsRemaining}` : secondsRemaining;
+    const totalSeconds = Math.ceil(durationMs / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
 
     return (
         <span
-            aria-label={`${title}: ${minutes} minutes, ${secondsRemaining} seconds`}
+            aria-label={`${title}: ${minutes} minutes, ${seconds} seconds`}
             style={{ whiteSpace: 'nowrap' }}
         >
             {minutes}
@@ -26,7 +24,7 @@ export const TimeText: FC<Props> = ({ durationMs, title }) => {
             >
                 :
             </span>
-            {secondsDisplay}
+            {seconds < 10 ? `0${seconds}` : seconds}
         </span>
     );
 };

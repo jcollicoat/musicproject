@@ -1,12 +1,17 @@
+'use client';
+
 import { FC } from 'react';
+import { Tooltip } from 'react-tooltip';
 import { Icon, IconProps } from '@components/Icon/Icon';
 import { AudioFeatures } from '@music/types/tracks.types';
 import styles from './AudioFeature.module.scss';
 
-const icons: Record<
-    keyof Omit<AudioFeatures, 'id' | 'speechiness' | 'timeSignature'>,
-    IconProps['icon']
-> = {
+type AudioFeatureKeys = keyof Omit<
+    AudioFeatures,
+    'id' | 'speechiness' | 'timeSignature'
+>;
+
+const icons: Record<AudioFeatureKeys, IconProps['icon']> = {
     acousticness: 'MusicNote2',
     danceability: 'Spark',
     energy: 'Pulse',
@@ -20,13 +25,17 @@ const icons: Record<
 };
 
 interface Props {
-    feature: keyof typeof icons;
+    feature: AudioFeatureKeys;
     value?: number;
 }
 
 export const AudioFeature: FC<Props> = ({ feature, value }) => {
     return (
-        <div className={styles.wrapper}>
+        <div
+            className={styles.wrapper}
+            data-tooltip-id={feature}
+            data-tooltip-content={feature}
+        >
             <Icon icon={icons[feature]} />
             {value && (
                 <div
@@ -39,6 +48,7 @@ export const AudioFeature: FC<Props> = ({ feature, value }) => {
                     }}
                 ></div>
             )}
+            <Tooltip id={feature} />
         </div>
     );
 };
