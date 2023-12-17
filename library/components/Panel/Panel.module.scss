@@ -1,18 +1,15 @@
 @import '@styles/variables.scss';
 
 .panel {
-    --background-color: var(--color-grey-0);
     --border-color: var(--color-grey-1);
 }
 
 :global(.theme-light) .panel {
-    --background-color: var(--color-grey-8);
-    --border-color: var(--color-grey-7);
+    --border-color: var(--color-grey-9);
 }
 
 .panel {
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
+    background-color: var(--theme-shade-min);
     border-radius: 8px;
     padding: $padding-large;
     width: 100%;
@@ -21,7 +18,7 @@
         background-position: top center;
         background-repeat: no-repeat;
         background-size: clamp(0px, 100%, 1200px) auto;
-        border-width: 2px;
+        border: 2px solid var(--border-color);
         position: relative;
         z-index: $z-normal;
 

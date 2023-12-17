@@ -8,6 +8,7 @@ import { IconMenu } from './icons/Menu';
 import { IconMusicNote } from './icons/MusicNote';
 import { IconMusicNote2 } from './icons/MusicNote2';
 import { IconPulse } from './icons/Pulse';
+import { IconRecent } from './icons/Recent';
 import { IconSpark } from './icons/Spark';
 import { IconSpeaker } from './icons/Speaker';
 import { IconSpotify } from './icons/Spotify';
@@ -34,6 +35,7 @@ type Icons =
     | 'MusicNote'
     | 'MusicNote2'
     | 'Pulse'
+    | 'Recent'
     | 'Spark'
     | 'Speaker'
     | 'Spotify'
@@ -72,6 +74,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'Pulse':
             Icon = IconPulse;
+            break;
+        case 'Recent':
+            Icon = IconRecent;
             break;
         case 'Spark':
             Icon = IconSpark;

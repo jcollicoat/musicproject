@@ -1,14 +1,6 @@
 @import '@styles/variables.scss';
 
 .header {
-    --border-color: var(--color-grey-1);
-}
-
-:global(.theme-light) .header {
-    --border-color: var(--color-grey-7);
-}
-
-.header {
     background-color: var(--theme-background-color);
     border-radius: 0 0 8px 8px;
     padding-top: $padding;
@@ -28,7 +20,6 @@
     .content {
         align-items: center;
         background-color: var(--theme-shade-min);
-        border: 1px solid var(--border-color);
         border-radius: 8px;
         display: flex;
         font-size: 0.9em;

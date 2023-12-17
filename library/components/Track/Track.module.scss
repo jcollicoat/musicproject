@@ -2,12 +2,12 @@
 
 .track {
     --background-color: var(--color-grey-0);
-    --overlay-color: var(--rgb-color-grey-1);
+    --overlay-color: var(--rgb-color-grey-0);
 }
 
 :global(.theme-light) .track {
-    --background-color: var(--color-grey-9);
-    --overlay-color: var(--rgb-color-grey-9);
+    --background-color: var(--color-grey-10);
+    --overlay-color: var(--rgb-color-grey-10);
 }
 
 .track {

@@ -2,7 +2,13 @@
 
 .wrapper {
     .heading {
+        display: flex;
+        font-size: 1rem;
+        font-weight: 300;
+        gap: 0.5em;
+        letter-spacing: 0.1em;
         margin-bottom: 1em;
+        text-transform: uppercase;
     }
 
     .tracks {

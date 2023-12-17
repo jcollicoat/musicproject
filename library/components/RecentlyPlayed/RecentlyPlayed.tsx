@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Icon } from '@components/Icon/Icon';
 import { Track } from '@components/Track/Track';
 import { music } from '@music/api';
 import styles from './RecentlyPlayed.module.scss';
@@ -12,7 +13,10 @@ export const RecentlyPlayed: FC = async () => {
 
     return (
         <div className={styles.wrapper}>
-            <h2 className={styles.heading}>Play History</h2>
+            <h2 className={styles.heading}>
+                <Icon icon="Recent" />
+                Recent Tracks
+            </h2>
             <div className={styles.tracks}>
                 {recent.items.map((track) => {
                     return (
