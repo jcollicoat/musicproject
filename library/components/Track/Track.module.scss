@@ -1,6 +1,16 @@
 @import '@styles/variables.scss';
 
 .track {
+    --background-color: var(--color-grey-0);
+    --overlay-color: var(--rgb-color-grey-1);
+}
+
+:global(.theme-light) .track {
+    --background-color: var(--color-grey-9);
+    --overlay-color: var(--rgb-color-grey-9);
+}
+
+.track {
     background-color: var(--background-color);
     background-size: 100%;
     background-repeat: no-repeat;

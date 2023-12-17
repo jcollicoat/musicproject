@@ -1,6 +1,16 @@
 @import '@styles/variables.scss';
 
 .panel {
+    --background-color: var(--color-grey-0);
+    --border-color: var(--color-grey-1);
+}
+
+:global(.theme-light) .panel {
+    --background-color: var(--color-grey-8);
+    --border-color: var(--color-grey-7);
+}
+
+.panel {
     background-color: var(--background-color);
     border: 1px solid var(--border-color);
     border-radius: 8px;
