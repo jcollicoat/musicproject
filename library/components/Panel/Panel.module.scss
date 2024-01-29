@@ -59,6 +59,17 @@
         }
     }
 
+    h2 {
+        display: flex;
+        font-size: 1rem;
+        font-weight: 300;
+        gap: 0.5em;
+        grid-column: span 3;
+        letter-spacing: 0.1em;
+        margin-bottom: $padding-large;
+        text-transform: uppercase;
+    }
+
     .panel {
         background-color: var(--theme-background-color);
         border: 1px solid var(--border-color);

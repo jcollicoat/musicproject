@@ -23,20 +23,35 @@ export default async function Page() {
         <>
             <Header subtitle="My Music" user={user} image={image} />
             <main className={styles.main}>
-                <Panel position="library">
-                    <div>Library</div>
+                <Panel
+                    heading={{ text: 'Library', icon: 'Recent' }}
+                    position="library"
+                >
+                    <div></div>
                 </Panel>
-                <Panel position="recent">
+                <Panel
+                    heading={{ text: 'Recent Tracks', icon: 'Recent' }}
+                    position="recent"
+                >
                     <RecentlyPlayed />
                 </Panel>
-                <Panel position="queue">
-                    <div>Queue</div>
+                <Panel
+                    heading={{ text: 'Queue', icon: 'Recent' }}
+                    position="queue"
+                >
+                    <div></div>
                 </Panel>
-                <Panel position="artists">
-                    <div>Artists</div>
+                <Panel
+                    heading={{ text: 'Artists', icon: 'Recent' }}
+                    position="artists"
+                >
+                    <div></div>
                 </Panel>
-                <Panel position="albums">
-                    <div>Albums</div>
+                <Panel
+                    heading={{ text: 'Albums', icon: 'Recent' }}
+                    position="albums"
+                >
+                    <div></div>
                 </Panel>
             </main>
         </>
