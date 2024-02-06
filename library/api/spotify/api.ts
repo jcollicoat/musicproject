@@ -95,7 +95,7 @@ const user = {
                 params: {
                     ids: trackIds.join(','),
                 },
-                noCache: true,
+                doNotCache: true,
             });
         },
         liked: async () => {

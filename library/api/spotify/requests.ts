@@ -4,8 +4,8 @@ export const get = async <T>(
     endpoint: string,
     config?: {
         params?: Record<string, string>;
-        noCache?: boolean;
-        revalidate?: number;
+        doNotCache?: boolean;
+        cacheLifetime?: number; // seconds
     },
 ) => {
     const spotifyToken = cookies().get('spotify')?.value;
@@ -24,8 +24,8 @@ export const get = async <T>(
         headers: new Headers({
             Authorization: spotifyToken,
         }),
-        cache: config?.noCache ? 'no-cache' : 'force-cache',
-        next: { revalidate: config?.revalidate },
+        cache: config?.doNotCache ? 'no-cache' : 'force-cache',
+        next: { revalidate: config?.cacheLifetime },
     });
 
     if (!response.ok) {
