@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import { Panel } from '@components/Panel/Panel';
-import { Track } from '@music/types/tracks.types';
+import { music } from '@music/api';
 import styles from './HeaderTrack.module.scss';
 
 interface Props {
-    track: Track;
+    trackId: string;
 }
 
-export const HeaderTrack: FC<Props> = ({ track }) => {
+export const HeaderTrack: FC<Props> = async ({ trackId }) => {
+    const track = await music.tracks.id(trackId, true, true);
+
     return (
         <Panel element="div">
             <div className={styles.track}>

@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { FC } from 'react';
 import { Album } from '@music/types/albums.types';
 import { Artist } from '@music/types/artists.types';
-import { Track } from '@music/types/tracks.types';
 import { User } from '@music/types/user.types';
 import { HeaderContent } from './components/HeaderContent';
 import { HeaderAlbum } from './components/panels/HeaderAlbum';
@@ -16,7 +15,7 @@ interface Props {
     subtitle?: string;
     album?: Album;
     artist?: Artist;
-    track?: Track;
+    trackId?: string;
     user?: User;
     image?: string;
     isSticky?: boolean;
@@ -26,12 +25,12 @@ export const Header: FC<Props> = ({
     title = 'Music Project',
     album,
     artist,
-    track,
+    trackId,
     user,
     image,
     isSticky,
 }) => {
-    const hasPanel = album || artist || track || user;
+    const hasPanel = album || artist || trackId || user;
 
     return (
         <header
@@ -50,7 +49,7 @@ export const Header: FC<Props> = ({
             </div>
             {album && <HeaderAlbum album={album} />}
             {artist && <HeaderArtist artist={artist} />}
-            {track && <HeaderTrack track={track} />}
+            {trackId && <HeaderTrack trackId={trackId} />}
             {user && <HeaderUser user={user} image={image} />}
         </header>
     );
