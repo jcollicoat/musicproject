@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { FC } from 'react';
-import { Menu } from '@components/Menu/Menu';
+import { Menu } from '@components/client/Menu/Menu';
 import { music } from '@music/api';
 
 export const HeaderUserControl: FC = async () => {

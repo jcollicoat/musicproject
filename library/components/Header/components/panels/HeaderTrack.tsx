@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const HeaderTrack: FC<Props> = async ({ trackId }) => {
-    const track = await music.tracks.id(trackId, true, true);
+    const track = await music.tracks.getById(trackId);
 
     return (
         <Panel element="div">

@@ -37,6 +37,11 @@ const id = async (
     });
 };
 
+const getById = async (trackId: string) => {
+    const track = await spotify.tracks.get(trackId);
+    return builders.tracks.buildTrack({ track });
+};
+
 const ids = async (trackIds: string[], hasAudioFeatures: boolean) => {
     const { tracks } = await spotify.tracks.getList(trackIds);
     const isSavedList = await spotify.user.tracks.isSaved(trackIds);
@@ -83,6 +88,7 @@ const tracks = {
     audioAnalysis,
     audioFeatures,
     id,
+    getById,
     ids,
     nowPlaying,
     recentlyPlayed,

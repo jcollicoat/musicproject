@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getServerSession } from 'next-auth';
 import { FC } from 'react';
-import { ButtonContainer, ButtonProps } from '@components/Button/Button';
+import { ButtonContainer, ButtonProps } from '@components/client/Button/Button';
 import styles from './HeaderContent.module.scss';
 import { HeaderUserControl } from './HeaderUserControl';
 

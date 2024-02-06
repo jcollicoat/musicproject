@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import Image from 'next/image';
 import { FC, useMemo, useRef, useState } from 'react';
-import { Button, ButtonProps } from '@components/Button/Button';
+import { Button, ButtonProps } from '@components/client/Button/Button';
 import { Icon } from '@components/Icon/Icon';
 import styles from './Menu.module.scss';
 

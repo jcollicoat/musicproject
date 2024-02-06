@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
-import { AudioFeature } from '@components/AudioFeature/AudioFeature';
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
+import { AudioFeature } from '@components/client/AudioFeature/AudioFeature';
+import { ClientLogger } from '@components/client/ClientLogger/ClientLogger';
 import { Icon } from '@components/Icon/Icon';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
