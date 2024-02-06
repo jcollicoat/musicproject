@@ -7,7 +7,7 @@ import { signIn, signOut } from 'next-auth/react';
 import { FC } from 'react';
 import { Menu, MenuProps } from '@components/client/Menu/Menu';
 import { Icon, IconProps } from '@components/Icon/Icon';
-import { useMediaMobile, useMediaTiny } from '@hooks/useMedia';
+import { useMediaMobile, useMediaTiny } from '@library/hooks/useMedia';
 import styles from './Button.module.scss';
 
 interface ContentProps {
