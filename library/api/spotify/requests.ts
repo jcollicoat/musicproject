@@ -24,7 +24,7 @@ export const get = async <T>(
         headers: new Headers({
             Authorization: spotifyToken,
         }),
-        cache: config?.doNotCache ? 'no-cache' : 'force-cache',
+        cache: config?.doNotCache ? 'no-store' : 'force-cache',
         next: { revalidate: config?.cacheLifetime },
     });
 
