@@ -23,11 +23,11 @@ export default async function Page({
         <>
             <Header subtitle="Artist" artist={artist} />
             <main className={styles.main}>
-                <Panel position="tracks">Top Tracks</Panel>
-                <Panel position="related">Related</Panel>
-                <Panel position="playlists">In Playlists</Panel>
-                <Panel position="about">About</Panel>
-                <Panel position="albums">Albums</Panel>
+                <Panel gridArea="tracks">Top Tracks</Panel>
+                <Panel gridArea="related">Related</Panel>
+                <Panel gridArea="playlists">In Playlists</Panel>
+                <Panel gridArea="about">About</Panel>
+                <Panel gridArea="albums">Albums</Panel>
             </main>
         </>
     );

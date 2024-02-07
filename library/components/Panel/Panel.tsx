@@ -10,23 +10,26 @@ interface Props {
         text: string;
         icon?: IconProps['icon'];
     };
-    image?: CSSProperties['backgroundImage'];
-    position?: string;
+    backgroundImage?: CSSProperties['backgroundImage'];
+    gridArea?: CSSProperties['gridArea'];
 }
 
 export const Panel: FC<Props> = ({
     children,
     element: Element = 'section',
     heading,
-    image,
-    position,
+    backgroundImage,
+    gridArea,
 }) => {
     return (
         <Element
-            className={classNames(styles.panel, image && styles.hasImage)}
+            className={classNames(
+                styles.panel,
+                backgroundImage && styles.hasImage,
+            )}
             style={{
-                backgroundImage: `url(${image})`,
-                gridArea: position,
+                backgroundImage: `url(${backgroundImage})`,
+                gridArea,
             }}
         >
             {heading && (

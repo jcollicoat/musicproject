@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const HeaderUser: FC<Props> = ({ user, image }) => (
-    <Panel element="div" image={image}>
+    <Panel element="div" backgroundImage={image}>
         <div className={styles.wrapper}>
             <div className={styles.main}>
                 <h1 className={styles.title}>My Music</h1>

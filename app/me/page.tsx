@@ -25,31 +25,31 @@ export default async function Page() {
             <main className={styles.main}>
                 <Panel
                     heading={{ text: 'Library', icon: 'Recent' }}
-                    position="library"
+                    gridArea="library"
                 >
                     <div></div>
                 </Panel>
                 <Panel
                     heading={{ text: 'Recent Tracks', icon: 'Recent' }}
-                    position="recent"
+                    gridArea="recent"
                 >
                     <RecentlyPlayed />
                 </Panel>
                 <Panel
                     heading={{ text: 'Queue', icon: 'Recent' }}
-                    position="queue"
+                    gridArea="queue"
                 >
                     <div></div>
                 </Panel>
                 <Panel
                     heading={{ text: 'Artists', icon: 'Recent' }}
-                    position="artists"
+                    gridArea="artists"
                 >
                     <div></div>
                 </Panel>
                 <Panel
                     heading={{ text: 'Albums', icon: 'Recent' }}
-                    position="albums"
+                    gridArea="albums"
                 >
                     <div></div>
                 </Panel>

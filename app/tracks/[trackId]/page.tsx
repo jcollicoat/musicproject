@@ -15,11 +15,11 @@ export default function Page({
         <>
             <Header subtitle="Track" trackId={trackId} />
             <main className={styles.main}>
-                <Panel position="timeline">Timeline</Panel>
-                <Panel position="related">Related</Panel>
-                <Panel position="playlists">In Playlists</Panel>
-                <Panel position="artist">Artist</Panel>
-                <Panel position="album">Album</Panel>
+                <Panel gridArea="timeline">Timeline</Panel>
+                <Panel gridArea="related">Related</Panel>
+                <Panel gridArea="playlists">In Playlists</Panel>
+                <Panel gridArea="artist">Artist</Panel>
+                <Panel gridArea="album">Album</Panel>
             </main>
         </>
     );
