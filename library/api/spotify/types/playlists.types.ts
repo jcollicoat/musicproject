@@ -2,7 +2,7 @@ import { SpotifyFollowers, SpotifyImage, SpotifyObject } from '@spotify/types';
 import { SpotifySearchGroup } from './search.types';
 import { SpotifyTrack } from './tracks.types';
 
-interface PlaylistOwner {
+interface SpotifyPlaylistOwner {
     external_urls: SpotifyObject;
     href: string;
     id: string;
@@ -11,52 +11,34 @@ interface PlaylistOwner {
     display_name: string | null;
 }
 
-interface PlaylistTrack extends SpotifyTrack {
+interface SpotifyPlaylistTrack extends SpotifyTrack {
     episode: boolean;
     track: boolean;
 }
 
-interface PlaylistTrackContext {
+type SpotifyPlaylistTracks = SpotifySearchGroup<{
     added_at: string;
-    added_by: Omit<PlaylistOwner, 'display_name'>;
+    added_by: Omit<SpotifyPlaylistOwner, 'display_name'>;
     is_local: boolean;
     primary_color: string | null;
-    track: PlaylistTrack;
+    track: SpotifyPlaylistTrack;
     video_thumbnail: SpotifyObject;
-}
+}>;
 
-interface PlaylistTracksSimple {
-    href: string;
-    total: number;
-    items?: PlaylistTrackContext[];
-}
-
-type PlaylistTracks = SpotifySearchGroup<PlaylistTrackContext>;
-
-export const IsFullTracks = (
-    tracks: PlaylistTracksSimple | PlaylistTracks,
-): tracks is PlaylistTracks => {
-    return tracks.items ? true : false;
-};
-
-interface SpotifyPlaylistSimple {
+export interface SpotifyPlaylist {
     collaborative: boolean;
     description: string | null;
     external_urls: SpotifyObject;
+    followers: SpotifyFollowers;
     href: string;
     id: string;
     images: SpotifyImage[];
     name: string;
-    owner: PlaylistOwner;
+    owner: SpotifyPlaylistOwner;
     primary_color: string | null;
     public: boolean | null;
     snapshot_id: string;
-    tracks: PlaylistTracksSimple;
     type: string;
+    tracks: SpotifyPlaylistTracks;
     uri: string;
-}
-
-export interface SpotifyPlaylist extends SpotifyPlaylistSimple {
-    followers?: SpotifyFollowers;
-    tracks: PlaylistTracks | PlaylistTracksSimple;
 }

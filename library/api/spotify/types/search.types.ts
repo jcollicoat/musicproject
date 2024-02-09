@@ -4,8 +4,8 @@ import { SpotifyPlaylist } from './playlists.types';
 import { SpotifyTrack } from './tracks.types';
 
 export interface SpotifySearchGroup<T> {
-    items: T[];
     href: string;
+    items: T[];
     limit: number;
     next: string | null;
     offset: number;

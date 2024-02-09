@@ -1,29 +1,50 @@
 import { SpotifyCopyright, SpotifyImage, SpotifyObject } from '@spotify/types';
-import { SpotifyArtist } from './artists.types';
 import { SpotifySearchGroup } from './search.types';
-import { SpotifyTrack } from './tracks.types';
 
-interface SpotifyAlbumSimple {
-    album_type: string;
-    artists: SpotifyArtist[];
-    available_markets: string[];
+interface SpotifyAlbumArtist {
     external_urls: SpotifyObject;
     href: string;
     id: string;
-    images: SpotifyImage[];
     name: string;
-    release_date: string;
-    release_date_precision: string;
-    total_tracks: number;
     type: string;
     uri: string;
 }
 
-export interface SpotifyAlbum extends SpotifyAlbumSimple {
-    copyrights?: SpotifyCopyright[];
-    external_ids?: SpotifyObject;
-    genres?: string[];
-    label?: string;
-    popularity?: number;
-    tracks?: SpotifySearchGroup<SpotifyTrack>;
+interface SpotifyAlbumTrack {
+    artists: SpotifyAlbumArtist[];
+    available_markets: string;
+    disc_number: number;
+    duration_ms: number;
+    explicit: boolean;
+    external_urls: SpotifyObject;
+    href: string;
+    id: string;
+    is_local: boolean;
+    name: string;
+    preview_url: string;
+    track_number: number;
+    type: string;
+    uri: string;
+}
+
+export interface SpotifyAlbum {
+    album_type: string;
+    artists: SpotifyAlbumArtist[];
+    available_markets: string[];
+    copyrights: SpotifyCopyright[];
+    external_ids: SpotifyObject;
+    external_urls: SpotifyObject;
+    genres: string[];
+    href: string;
+    id: string;
+    images: SpotifyImage[];
+    label: string;
+    name: string;
+    popularity: number;
+    release_date: string;
+    release_date_precision: string;
+    total_tracks: number;
+    tracks: SpotifySearchGroup<SpotifyAlbumTrack>;
+    type: string;
+    uri: string;
 }
