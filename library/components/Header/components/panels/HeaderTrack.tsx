@@ -13,10 +13,11 @@ interface Props {
 
 export const HeaderTrack: FC<Props> = async ({ trackId }) => {
     const track = await music.trackId(trackId);
+    const audioFeatures = await music.audioFeatures(trackId);
 
     return (
         <Panel element="div" backgroundImage={track.album.images.large}>
-            <ClientLogger data={track} />
+            <ClientLogger data={[track, audioFeatures]} />
             <div className={styles.track}>
                 <Image
                     src={track.album.images.large}
