@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
 import { ClientLogger } from '@components/client/ClientLogger/ClientLogger';
+import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
+import { LinkedArtists } from '@components/Linked/LinkedArtists';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
 import styles from './Track.module.scss';
@@ -44,8 +46,8 @@ export const Track: FC<Props> = ({ track }) => {
                         <Link href={`/tracks/${id}`}>{name}</Link>
                     </div>
                     <div className={styles.meta}>
-                        <Artists artists={artists} /> •{' '}
-                        <Link href={`/albums/${album.id}`}>{album.name}</Link>
+                        <LinkedArtists artists={artists} /> •{' '}
+                        <LinkedAlbum album={album} />
                     </div>
                 </div>
                 <div className={styles.data}>

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import { ClientLogger } from '@components/client/ClientLogger/ClientLogger';
+import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
+import { LinkedArtists } from '@components/Linked/LinkedArtists';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
 import styles from './HeaderTrack.module.scss';
@@ -26,7 +28,8 @@ export const HeaderTrack: FC<Props> = async ({ trackId }) => {
                 <div className={styles.info}>
                     <h1 className={styles.title}>{track.name}</h1>
                     <p>
-                        {track.artists[0].name} • {track.album.name}
+                        <LinkedArtists artists={track.artists} /> •{' '}
+                        <LinkedAlbum album={track.album} />
                     </p>
                 </div>
             </div>
