@@ -1,9 +1,18 @@
-import { albums } from './builders/albums.builders';
-import { artists } from './builders/artists.builders';
-import { playlists } from './builders/playlists.builders';
-import { search } from './builders/search.builders';
-import { tracks } from './builders/tracks.builders';
+import { SpotifyImage } from '@spotify/types';
+import { trackId, trackIds } from './builders/tracks.builders';
 import { user } from './builders/user.builders';
+import { Images } from './types';
 
-const builders = { albums, artists, playlists, search, tracks, user };
+const images = (images: SpotifyImage[]): Images => ({
+    large: images[0]?.url,
+    medium: images[1]?.url,
+    small: images[2]?.url,
+});
+
+const builders = {
+    images,
+    trackId,
+    trackIds,
+    user,
+};
 export { builders };

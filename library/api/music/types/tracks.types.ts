@@ -1,92 +1,33 @@
-import { ItemGroup } from '@music/types';
-import {
-    SpotifyAudioAnalysis,
-    SpotifyAudioFeatures,
-    SpotifyTrack,
-} from '@spotify/types/tracks.types';
-import { Album } from './albums.types';
-import { Artist } from './artists.types';
+import { Images } from '@music/types';
 
-interface Interval {
-    duration: number;
-    start: number;
-}
-
-interface Section extends Interval {
-    key: string;
-    loudness: number;
-    mode: string;
-    tempo: number;
-    timeSignature: number;
-}
-
-export interface AudioAnalysis {
-    bars: Interval[];
-    beats: Interval[];
-    endOfFadeIn: number;
-    sections: Section[];
-    startOfFadeOut: number;
-}
-
-export interface AudioFeatures {
-    acousticness: number;
-    danceability: number;
-    energy: number;
+interface TrackAlbumArtist {
     id: string;
-    instrumentalness: number;
-    key: string;
-    liveness: number;
-    loudness: number;
-    mode: string;
-    speechiness: number;
-    tempo: number;
-    timeSignature: number;
-    valence: number;
+    name: string;
 }
 
-interface TrackContext {
-    id?: string;
-    type?: string;
-    playedAt?: string;
+interface TrackAlbum {
+    albumType: string;
+    artists: TrackAlbumArtist[];
+    id: string;
+    images: Images;
+    name: string;
+    releaseDate: string;
+    releaseDatePrecision: string;
+    totalTracks: number;
+}
+
+interface TrackArtist {
+    id: string;
+    name: string;
 }
 
 export interface Track {
-    artists: Artist[];
+    album: TrackAlbum;
+    artists: TrackArtist[];
     durationMs: number;
     explicit: boolean;
     id: string;
     name: string;
-    album?: Album;
-    popularity?: number;
+    popularity: number;
     previewUrl?: string;
-    saved?: boolean;
-    audioAnalysis?: AudioAnalysis;
-    audioFeatures?: AudioFeatures;
-    context?: TrackContext;
 }
-
-export interface TrackDto {
-    track: SpotifyTrack;
-    isSaved?: boolean;
-    audioFeatures?: SpotifyAudioFeatures;
-    audioAnalysis?: SpotifyAudioAnalysis;
-    context?: TrackContext;
-}
-
-export interface NowPlaying {
-    device: {
-        isActive: boolean;
-        isPrivate: boolean;
-        isRestricted: boolean;
-        name: string;
-        type: string;
-    };
-    repeat: 'track' | 'context' | false;
-    shuffle: boolean;
-    context: TrackContext;
-    progressMs: number;
-    isPlaying: boolean;
-    track?: Track;
-}
-
-export type RecentlyPlayed = ItemGroup<Track>;

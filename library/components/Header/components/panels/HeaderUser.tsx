@@ -18,7 +18,7 @@ export const HeaderUser: FC<Props> = ({ user, image }) => (
             </div>
             <div className={styles.profile}>
                 <Image
-                    src={user.images.large.url}
+                    src={user.images.large}
                     alt={`${user.name}'s profile picture`}
                     height={60}
                     width={60}

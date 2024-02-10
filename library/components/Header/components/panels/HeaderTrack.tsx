@@ -16,19 +16,17 @@ export const HeaderTrack: FC<Props> = async ({ trackId }) => {
         <Panel element="div">
             <ClientLogger data={track} />
             <div className={styles.track}>
-                {track.album && (
-                    <Image
-                        src={track.album.images.small.url}
-                        alt={track.album.name}
-                        height={60}
-                        width={60}
-                        className={styles.image}
-                    />
-                )}
+                <Image
+                    src={track.album.images.large}
+                    alt={track.album.name}
+                    height={120}
+                    width={120}
+                    className={styles.image}
+                />
                 <div className={styles.info}>
                     <h1 className={styles.title}>{track.name}</h1>
                     <p>
-                        {track.artists[0].name} • {track.album?.name}
+                        {track.artists[0].name} • {track.album.name}
                     </p>
                 </div>
             </div>

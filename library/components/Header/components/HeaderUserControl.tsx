@@ -7,7 +7,7 @@ export const HeaderUserControl: FC = async () => {
     const session = await getServerSession();
     if (!session) return null;
 
-    const user = await music.user.details();
+    const user = await music.user();
 
     return (
         <Menu
@@ -27,7 +27,7 @@ export const HeaderUserControl: FC = async () => {
                     onClick: 'signout',
                 },
             ]}
-            imageUrl={user.images.small?.url}
+            imageUrl={user.images.medium}
             side="left"
         />
     );

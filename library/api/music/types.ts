@@ -1,9 +1,7 @@
-import { SpotifyImage } from '@spotify/types';
-
 export interface Images {
-    small?: SpotifyImage;
-    medium?: SpotifyImage;
-    large: SpotifyImage;
+    large: string;
+    medium: string;
+    small: string;
 }
 
 export interface ItemGroup<T> {

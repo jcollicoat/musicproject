@@ -1,27 +1,15 @@
-import { cache } from 'react';
-import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
 import { RecentlyPlayed } from '@components/RecentlyPlayed/RecentlyPlayed';
-import { music } from '@music/api';
 import styles from './page.module.scss';
 
 export const metadata = {
     title: 'My Music',
 };
 
-const getUser = cache(async () => await music.user.details());
-
-const getLikedTracks = async () => await music.user.tracks.liked();
-
-export default async function Page() {
-    const user = await getUser();
-    const liked = await getLikedTracks();
-
-    const image = liked.items[0].track.album?.images[0].url;
-
+export default function Page() {
     return (
         <>
-            <Header subtitle="My Music" user={user} image={image} />
+            {/* <Header subtitle="My Music" user={user} image={image} /> */}
             <main className={styles.main}>
                 <Panel
                     heading={{ text: 'Library', icon: 'Recent' }}

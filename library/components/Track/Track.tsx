@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
-import { AudioFeature } from '@components/client/AudioFeature/AudioFeature';
 import { ClientLogger } from '@components/client/ClientLogger/ClientLogger';
-import { Icon } from '@components/Icon/Icon';
 import { TimeText } from '@components/TimeText/TimeText';
 import { Track as TrackType } from '@music/types/tracks.types';
 import styles from './Track.module.scss';
@@ -24,35 +22,34 @@ interface Props {
 }
 
 export const Track: FC<Props> = ({ track }) => {
-    const { album, artists, durationMs, id, name, audioFeatures } = track;
+    const { album, artists, durationMs, id, name } = track;
 
     return (
         <div
             className={styles.track}
-            style={{ backgroundImage: `url(${album?.images[0].url})` }}
+            style={{ backgroundImage: `url(${album.images.large})` }}
         >
             <ClientLogger data={track} name={name} />
             <div className={styles.content}>
-                {album && (
-                    <Image
-                        src={album.images[0].url}
-                        alt={album.name}
-                        height={60}
-                        width={60}
-                        className={styles.image}
-                    />
-                )}
+                <Image
+                    src={album.images.large}
+                    alt={album.name}
+                    height={60}
+                    width={60}
+                    className={styles.image}
+                />
+
                 <div className={styles.details}>
                     <div className={styles.name}>
                         <Link href={`/tracks/${id}`}>{name}</Link>
                     </div>
                     <div className={styles.meta}>
                         <Artists artists={artists} /> •{' '}
-                        <Link href={`/albums/${album?.id}`}>{album?.name}</Link>
+                        <Link href={`/albums/${album.id}`}>{album.name}</Link>
                     </div>
                 </div>
                 <div className={styles.data}>
-                    {audioFeatures && (
+                    {/* {audioFeatures && (
                         <div className={styles.audioFeatures}>
                             <AudioFeature
                                 feature="acousticness"
@@ -90,7 +87,7 @@ export const Track: FC<Props> = ({ track }) => {
                             />
                             <Icon icon="Info" size="1rem" />
                         </div>
-                    )}
+                    )} */}
                     <TimeText durationMs={durationMs} title="Track length" />
                 </div>
             </div>
