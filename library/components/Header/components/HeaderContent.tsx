@@ -56,7 +56,7 @@ export const HeaderContent: FC<Props> = async ({
                             ? [explore, myMusic]
                             : [explore, myMusic, signIn]
                     }
-                    collapse={{ breakpoint: 'tiny', side: 'left' }}
+                    collapse={{ breakpoint: 'mobile', side: 'left' }}
                 />
                 <HeaderUserControl />
             </nav>

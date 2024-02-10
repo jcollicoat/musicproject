@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const Header: FC<Props> = ({
-    title = 'Music Project',
+    title,
     album,
     artist,
     trackId,
