@@ -13,7 +13,7 @@ export const HeaderTrack: FC<Props> = async ({ trackId }) => {
     const track = await music.trackId(trackId);
 
     return (
-        <Panel element="div">
+        <Panel element="div" backgroundImage={track.album.images.large}>
             <ClientLogger data={track} />
             <div className={styles.track}>
                 <Image
