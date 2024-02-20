@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
+import { AudioFeature } from '@components/AudioFeature/AudioFeature';
 import { ClientLogger } from '@components/client/ClientLogger/ClientLogger';
 import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
 import { LinkedArtists } from '@components/Linked/LinkedArtists';
@@ -33,6 +34,15 @@ export const HeaderTrack: FC<Props> = async ({ trackId }) => {
                         <LinkedAlbum album={track.album} />
                     </p>
                 </div>
+                <AudioFeature feature="energy" value={audioFeatures.energy} />
+                <AudioFeature
+                    feature="danceability"
+                    value={audioFeatures.danceability}
+                />
+                <AudioFeature
+                    feature="liveness"
+                    value={audioFeatures.liveness}
+                />
             </div>
         </Panel>
     );

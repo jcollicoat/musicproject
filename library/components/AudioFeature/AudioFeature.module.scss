@@ -1,0 +1,19 @@
+@import '@styles/variables.scss';
+
+.feature {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    font-size: 1.5em;
+    height: 48px;
+    justify-content: center;
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: -2px;
+    position: relative;
+    width: 48px;
+
+    .circle {
+        position: absolute;
+        transform: rotate(-90deg);
+    }
+}
