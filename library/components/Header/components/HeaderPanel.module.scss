@@ -1,0 +1,27 @@
+@import '@styles/variables.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xlarge;
+
+    .main {
+        flex-grow: 3;
+        padding: $space-xlarge 0;
+    }
+
+    .secondary {
+        border-radius: 4px;
+        flex-grow: 2;
+        padding: $padding-large;
+    }
+
+    @media (min-width: $bp-stack-3) {
+        align-items: center;
+        flex-direction: row;
+
+        .secondary {
+            max-width: 600px;
+        }
+    }
+}

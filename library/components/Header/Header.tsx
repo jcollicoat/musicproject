@@ -6,8 +6,8 @@ import { User } from '@music/types/user.types';
 import { HeaderContent } from './components/HeaderContent';
 import { HeaderAlbum } from './components/panels/HeaderAlbum';
 import { HeaderArtist } from './components/panels/HeaderArtist';
-import { HeaderTrack } from './components/panels/HeaderTrack';
 import { HeaderUser } from './components/panels/HeaderUser';
+import { TrackPanel } from './components/panels/TrackPanel';
 import styles from './Header.module.scss';
 
 interface Props {
@@ -49,7 +49,7 @@ export const Header: FC<Props> = ({
             </div>
             {album && <HeaderAlbum album={album} />}
             {artist && <HeaderArtist artist={artist} />}
-            {trackId && <HeaderTrack trackId={trackId} />}
+            {trackId && <TrackPanel trackId={trackId} />}
             {user && <HeaderUser user={user} image={image} />}
         </header>
     );

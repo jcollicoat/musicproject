@@ -1,0 +1,45 @@
+@import '@styles/variables.scss';
+
+.main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xlarge;
+
+    .image {
+        border-radius: 4px;
+    }
+
+    .info {
+        text-align: center;
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    @media (min-width: $bp-stack-1) {
+        flex-direction: row;
+        padding: 0 $space-xlarge;
+
+        .info {
+            text-align: left;
+        }
+    }
+}
+
+.secondary {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: $space-xlarge;
+
+    @media (min-width: $bp-stack-1) {
+        justify-content: flex-start;
+    }
+
+    @media (min-width: $bp-stack-3) {
+        justify-content: flex-end;
+    }
+}
