@@ -4,13 +4,8 @@
     .link {
         @include focus-outline;
 
-        color: var(--theme-link-color);
         text-decoration: none;
         transition-property: color, outline-color;
-
-        &:hover {
-            color: var(--theme-link-hover-color);
-        }
 
         .title {
             font-size: 1.25em;
