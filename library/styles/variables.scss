@@ -25,11 +25,6 @@
     --rgb-color-grey-9: 244, 244, 245;
     --rgb-color-grey-10: 250, 250, 250;
 
-    --font-size: calc(1rem / 16 * 13);
-    @media (min-width: $bp-stack-3) {
-        --font-size: calc(1rem / 16 * 14);
-    }
-
     // Variables
 
     --theme-background-color: var(--color-grey-0);

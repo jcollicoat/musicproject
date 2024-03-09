@@ -41,9 +41,13 @@ body {
         'Apple Color Emoji',
         'Segoe UI Emoji',
         'Segoe UI Symbol';
-    font-size: var(--font-size);
+    font-size: calc(1rem / 16 * 13);
     padding: $space-medium;
     padding-top: 0;
+
+    @media (min-width: $bp-stack-3) {
+        font-size: calc(1rem / 16 * 14);
+    }
 
     min-height: 2000px;
 }
