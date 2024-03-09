@@ -3,7 +3,7 @@
 .header {
     background-color: var(--theme-background-color);
     border-radius: 0 0 8px 8px;
-    padding-top: var(--padding);
+    padding-top: $space-medium;
     position: relative;
 
     &.isSticky {
@@ -12,7 +12,7 @@
         z-index: $z-sticky;
 
         > div:not(.content) {
-            margin-top: neg(var(--padding));
+            margin-top: neg($space-medium);
             top: 100%;
         }
     }
@@ -24,11 +24,11 @@
         display: flex;
         font-size: 0.9em;
         justify-content: space-between;
-        margin-bottom: neg(var(--padding));
-        padding: var(--padding);
+        margin-bottom: neg($space-medium);
+        padding: $space-medium;
 
         &.hasPanel {
-            padding-bottom: calc(var(--padding) * 2);
+            padding-bottom: calc($space-medium * 2);
         }
     }
 }

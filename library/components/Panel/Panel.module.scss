@@ -11,7 +11,7 @@
 .panel {
     background-color: var(--theme-shade-min);
     border-radius: 8px;
-    padding: var(--padding-large);
+    padding: $space-xlarge;
     width: 100%;
 
     &.hasImage {
@@ -66,7 +66,7 @@
         gap: 0.5em;
         grid-column: span 3;
         letter-spacing: 0.1em;
-        margin-bottom: var(--padding-large);
+        margin-bottom: $space-xlarge;
         text-transform: uppercase;
     }
 

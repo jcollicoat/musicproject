@@ -4,7 +4,7 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--padding-large);
+    gap: $space-xlarge;
     justify-content: space-between;
 
     .main {
@@ -28,7 +28,7 @@
         align-items: center;
         display: flex;
         flex-grow: 1;
-        gap: var(--padding-large);
+        gap: $space-xlarge;
         max-width: 100%;
         overflow: hidden;
         width: 100%;
@@ -51,7 +51,7 @@
             }
 
             .products {
-                column-gap: var(--padding-large);
+                column-gap: $space-xlarge;
                 display: flex;
                 font-size: 0.9em;
                 justify-content: flex-start;

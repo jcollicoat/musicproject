@@ -1,7 +1,7 @@
 @import '@styles/constants.scss';
 
 $trigger-size: 30px;
-$menu-offset: calc(100% + var(--padding) / 2);
+$menu-offset: calc(100% + $space-medium / 2);
 
 .wrapper {
     --background-color: var(--color-grey-3);
@@ -138,33 +138,33 @@ $menu-offset: calc(100% + var(--padding) / 2);
         }
 
         &.left {
-            transform: translateX(calc(-100% + $trigger-size + var(--padding)))
+            transform: translateX(calc(-100% + $trigger-size + $space-medium))
                 scale(0.95);
             transform-origin: top right;
 
             &.open {
                 transform: translateX(
-                        calc(-100% + $trigger-size + var(--padding))
+                        calc(-100% + $trigger-size + $space-medium)
                     )
                     scale(1);
             }
 
             &::before {
-                left: calc(100% - $trigger-size - var(--padding));
+                left: calc(100% - $trigger-size - $space-medium);
             }
         }
 
         &.right {
-            transform: translateX(neg(var(--padding))) scale(0.95);
+            transform: translateX(neg($space-medium)) scale(0.95);
             transform-origin: top left;
 
             &.open {
                 opacity: 1;
-                transform: translateX(neg(var(--padding))) scale(1);
+                transform: translateX(neg($space-medium)) scale(1);
             }
 
             &::before {
-                left: var(--padding);
+                left: $space-medium;
             }
         }
 
