@@ -2,14 +2,14 @@
 
 .wrapper {
     display: grid;
-    gap: $padding-large;
+    gap: var(--padding-large);
     grid-template-columns: grid-cols(3);
 
     .item {
         background-color: var(--theme-background-color);
         border-radius: 8px;
         grid-column: span 1;
-        padding: $padding-large;
+        padding: var(--padding-large);
 
         h3 {
             display: flex;

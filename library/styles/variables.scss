@@ -5,34 +5,7 @@ $bp-stack-2: 736px; // 2 columns
 $bp-stack-3: 1098px;
 $bp-stack-4: 1460px;
 
-// Colors
-
-$color-primary-0: rgb(74, 4, 78);
-$color-primary-1: rgb(162, 28, 175);
-$color-primary-2: rgb(217, 70, 239);
-$color-primary-3: rgb(232, 121, 249);
-$color-primary-4: rgb(245, 208, 254);
-$color-primary-5: rgb(253, 244, 255);
-
-$color-grey-0: rgb(14, 14, 16);
-$color-grey-1: rgb(24, 24, 27);
-$color-grey-2: rgb(39, 39, 42);
-$color-grey-3: rgb(63, 63, 70);
-$color-grey-4: rgb(82, 82, 91);
-$color-grey-5: rgb(113, 113, 122);
-$color-grey-6: rgb(161, 161, 170);
-$color-grey-7: rgb(212, 212, 216);
-$color-grey-8: rgb(228, 228, 231);
-$color-grey-9: rgb(244, 244, 245);
-
-$color-error: rgb(255, 30, 0);
-$color-warning: rgb(255, 174, 0);
-$color-success: rgb(20, 227, 16);
-
 // Spacing
-
-$padding: var(--padding);
-$padding-large: calc($padding * 2);
 
 $space-xsmall: 4px;
 $space-small: 8px;

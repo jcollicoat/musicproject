@@ -60,13 +60,13 @@
     }
 
     &.cta {
-        background-color: $color-primary-2;
+        background-color: var(--color-primary-2);
         color: rgb(255, 255, 255);
         transition-duration: $transition-speed-slow;
 
         &:hover {
-            background-color: $color-primary-3;
-            box-shadow: 0px 4px 12px -4px rgba($color-primary-3, 0.5);
+            background-color: var(--color-primary-3);
+            box-shadow: 0px 4px 12px -4px rgba(var(--color-primary-3), 0.5);
         }
     }
 
@@ -76,8 +76,8 @@
         transition-duration: $transition-speed-slow;
 
         &:hover {
-            background-color: $color-primary-2;
-            color: $color-primary-5;
+            background-color: var(--color-primary-2);
+            color: var(--color-primary-5);
         }
     }
 
@@ -118,5 +118,5 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: $padding;
+    gap: var(--padding);
 }

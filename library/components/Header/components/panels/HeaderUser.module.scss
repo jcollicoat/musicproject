@@ -4,7 +4,7 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: $padding-large;
+    gap: var(--padding-large);
     justify-content: space-between;
 
     .main {
@@ -28,7 +28,7 @@
         align-items: center;
         display: flex;
         flex-grow: 1;
-        gap: $padding-large;
+        gap: var(--padding-large);
         max-width: 100%;
         overflow: hidden;
         width: 100%;
@@ -51,7 +51,7 @@
             }
 
             .products {
-                column-gap: $padding-large;
+                column-gap: var(--padding-large);
                 display: flex;
                 font-size: 0.9em;
                 justify-content: flex-start;
@@ -65,7 +65,7 @@
                     white-space: nowrap;
 
                     svg {
-                        color: $color-primary-3;
+                        color: var(--color-primary-3);
                     }
                 }
             }

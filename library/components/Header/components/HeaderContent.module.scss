@@ -23,7 +23,7 @@
     }
 
     p {
-        color: $color-grey-5;
+        color: var(--color-grey-5);
         margin-top: 0.25em;
     }
 }
@@ -31,5 +31,5 @@
 .navigation {
     align-items: center;
     display: flex;
-    gap: $padding;
+    gap: var(--padding);
 }

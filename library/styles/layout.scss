@@ -24,6 +24,7 @@ p {
 :root {
     --font-size: calc(1rem / 16 * 13);
     --padding: 8px;
+    --padding-large: calc(var(--padding) * 2);
 
     @media (min-width: $bp-stack-2) {
         --padding: 12px;
@@ -57,7 +58,7 @@ body {
         'Segoe UI Emoji',
         'Segoe UI Symbol';
     font-size: var(--font-size);
-    padding: $padding;
+    padding: var(--padding);
     padding-top: 0;
 
     min-height: 2000px;
@@ -70,12 +71,12 @@ main {
 }
 
 header {
-    margin-bottom: $padding;
+    margin-bottom: var(--padding);
 }
 
 main {
     display: grid;
-    gap: $padding;
+    gap: var(--padding);
 
     @media (min-width: $bp-stack-2) {
         grid-template-columns: grid-cols(2);

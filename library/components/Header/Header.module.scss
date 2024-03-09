@@ -3,7 +3,7 @@
 .header {
     background-color: var(--theme-background-color);
     border-radius: 0 0 8px 8px;
-    padding-top: $padding;
+    padding-top: var(--padding);
     position: relative;
 
     &.isSticky {
@@ -12,7 +12,7 @@
         z-index: $z-sticky;
 
         > div:not(.content) {
-            margin-top: neg($padding);
+            margin-top: neg(var(--padding));
             top: 100%;
         }
     }
@@ -24,11 +24,11 @@
         display: flex;
         font-size: 0.9em;
         justify-content: space-between;
-        margin-bottom: neg($padding);
-        padding: $padding;
+        margin-bottom: neg(var(--padding));
+        padding: var(--padding);
 
         &.hasPanel {
-            padding-bottom: calc($padding * 2);
+            padding-bottom: calc(var(--padding) * 2);
         }
     }
 }
