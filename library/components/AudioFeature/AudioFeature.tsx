@@ -39,7 +39,7 @@ export const AudioFeature: FC<Props> = ({ feature, value }) => {
                 viewBox={`0 0 ${diameter} ${diameter}`}
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="1"
                 className={styles.circle}
                 strokeDasharray={strokeDasharray}
                 strokeDashoffset={strokeDashoffset}
