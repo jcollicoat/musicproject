@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { errorResponse } from '@api/helpers';
-// import { logVariables } from '@library/utilities';
 import { refreshSpotifyInJwt, spotifyTokenIsExpired } from '@spotify/refresh';
 
 const secret = process.env.NEXTAUTH_SECRET;
@@ -9,9 +8,14 @@ const secret = process.env.NEXTAUTH_SECRET;
 const authRoutes = ['/albums', '/artists', '/me', '/tracks'];
 
 export async function middleware(request: NextRequest) {
+    // Stop strange requests to /undefined
+    if (request.url.includes('undefined')) {
+        return NextResponse.redirect(new URL('/', request.url));
+    }
+    // Need to ensure this works in deployed envs
+
     try {
         let jwt = await getToken({ req: request, secret });
-        // logVariables('jwt in middleware:', [jwt]);
         const spotifyCookie = request.cookies.get('spotify')?.value;
 
         if (!jwt) {
