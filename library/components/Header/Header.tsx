@@ -4,14 +4,15 @@ import { FC } from 'react';
 import styles from './Header.module.scss';
 import { Navigation } from './Navigation/Navigation';
 import { TrackPanel } from './Panels/TrackPanel';
+import { UserPanel } from './Panels/UserPanel';
 
 interface Props {
     trackId?: string;
-    image?: string;
+    user?: boolean;
     isSticky?: boolean;
 }
 
-export const Header: FC<Props> = ({ trackId, isSticky }) => {
+export const Header: FC<Props> = ({ trackId, user, isSticky }) => {
     const hasPanel = Boolean(trackId);
     const HeadingElement = hasPanel ? 'span' : 'h1';
 
@@ -33,6 +34,7 @@ export const Header: FC<Props> = ({ trackId, isSticky }) => {
                 <Navigation />
             </div>
             {trackId && <TrackPanel trackId={trackId} />}
+            {user && <UserPanel />}
         </header>
     );
 };

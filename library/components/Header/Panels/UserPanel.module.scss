@@ -1,74 +1,28 @@
 @import '@styles/constants.scss';
 
-.wrapper {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
+.content {
+    display: grid;
     gap: $space-xl;
-    justify-content: space-between;
+    justify-items: center;
+    padding: $space-xl 0;
 
-    .main {
-        flex-grow: 1;
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 0.25em;
-
-            @media (min-width: $breakpoint-2) {
-                font-size: 2.5em;
-            }
-
-            @media (min-width: $breakpoint-3) {
-                font-size: 4em;
-            }
-        }
+    .image {
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
     }
 
-    .profile {
+    h1 {
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+    @media (min-width: $breakpoint-2) {
         align-items: center;
-        display: flex;
-        flex-grow: 1;
-        gap: $space-xl;
-        max-width: 100%;
-        overflow: hidden;
-        width: 100%;
+        grid-template-columns: auto 1fr;
+        justify-items: start;
 
-        @media (min-width: $breakpoint-2) {
-            flex-grow: 0;
-            width: unset;
-        }
-
-        .image {
-            border-radius: 50%;
-        }
-
-        .details {
-            .name {
-                display: block;
-                font-size: 1.5em;
-                font-weight: 500;
-                margin-bottom: $space-s;
-            }
-
-            .products {
-                column-gap: $space-xl;
-                display: flex;
-                font-size: 0.9em;
-                justify-content: flex-start;
-                row-gap: $space-s;
-
-                .product {
-                    align-items: center;
-                    display: flex;
-                    gap: 0.5em;
-                    text-align: center;
-                    white-space: nowrap;
-
-                    svg {
-                        color: var(--color-primary-3);
-                    }
-                }
-            }
+        h1 {
+            font-size: 3em;
         }
     }
 }

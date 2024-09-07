@@ -1,49 +1,24 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
-import { User } from '@music/types/user.types';
+import { music } from '@music/api';
 import styles from './UserPanel.module.scss';
 
-interface Props {
-    user: User;
-    image?: string;
-}
+export const UserPanel: FC = async () => {
+    const user = await music.user();
 
-export const UserPanel: FC<Props> = ({ user, image }) => (
-    <Panel element="div" backgroundImage={image}>
-        <div className={styles.wrapper}>
-            <div className={styles.main}>
-                <h1 className={styles.title}>My Music</h1>
-            </div>
-            <div className={styles.profile}>
+    return (
+        <Panel element="div">
+            <div className={styles.content}>
                 <Image
                     src={user.images.large}
                     alt={`${user.name}'s profile picture`}
-                    height={60}
-                    width={60}
+                    height={160}
+                    width={160}
                     className={styles.image}
                 />
-                <div className={styles.details}>
-                    <span className={styles.name}>{user.name}</span>
-                    <div className={styles.products}>
-                        <div className={styles.product}>
-                            <Icon icon="Heart" size="1rem" />
-                            {`${user.followers} Followers`}
-                        </div>
-                        <div className={styles.product}>
-                            <Icon icon="Star" size="1rem" />
-                            {user.product}
-                        </div>
-                        <div className={styles.product}>
-                            <Icon icon="Lock" size="1rem" />
-                            {user.filterExplicit
-                                ? 'Explicit Off'
-                                : 'Explicit On'}
-                        </div>
-                    </div>
-                </div>
+                <h1 className={styles.title}>My Library</h1>
             </div>
-        </div>
-    </Panel>
-);
+        </Panel>
+    );
+};

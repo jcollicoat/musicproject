@@ -10,7 +10,7 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            <Header />
+            <Header user />
             <main className={styles.main}>
                 <Panel
                     heading={{ text: 'Library', icon: 'Recent' }}
