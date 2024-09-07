@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { ComponentProps, FC } from 'react';
-import { Button, ButtonContainer } from '@components/client/Button/Button';
+import { Button, ButtonContainer } from '@components/Button/Button';
 import styles from './Navigation.module.scss';
 import { UserMenu } from './UserMenu/UserMenu';
 

@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { ComponentProps, FC } from 'react';
-import { Button } from '@components/client/Button/Button';
-import { Menu } from '@components/client/Menu/Menu';
+import { Button } from '@components/Button/Button';
+import { Menu } from '@components/Menu/Menu';
 import { music } from '@music/api';
 
 const ENV = process.env.NODE_ENV;

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
-import { ClientLogger } from '@components/client/ClientLogger/ClientLogger';
+import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
 import { LinkedArtists } from '@components/Linked/LinkedArtists';
 import { TimeText } from '@components/TimeText/TimeText';
