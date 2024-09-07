@@ -65,6 +65,21 @@
         justify-items: center;
     }
 
+    @media (min-width: $breakpoint-2) {
+        .main {
+            .image {
+                height: 200px;
+                width: 200px;
+            }
+
+            .details {
+                h1 {
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+
     @media (min-width: $breakpoint-3) {
         grid-template-columns: 4fr 2fr;
         padding: $space-l 0;
