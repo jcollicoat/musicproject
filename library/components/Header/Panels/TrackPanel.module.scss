@@ -33,13 +33,15 @@
 
                 .artists,
                 .album,
-                .duration {
+                .duration,
+                .release {
                     align-items: center;
                     display: flex;
                     gap: $space-s;
                 }
 
                 .duration,
+                .release,
                 .explicit {
                     color: var(--theme-color-secondary);
                 }

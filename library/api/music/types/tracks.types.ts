@@ -11,7 +11,10 @@ interface TrackAlbum {
     id: string;
     images: Images;
     name: string;
-    releaseDate: string;
+    releaseDate: {
+        display: string;
+        exact: string;
+    };
     releaseDatePrecision: string;
     totalTracks: number;
 }

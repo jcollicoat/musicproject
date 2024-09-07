@@ -20,7 +20,10 @@ const trackAlbum = (album: SpotifyTrack['album']) => {
         id: album.id,
         images: builders.images(album.images),
         name: album.name,
-        releaseDate: album.release_date,
+        releaseDate: {
+            display: new Date(album.release_date).toDateString(),
+            exact: album.release_date,
+        },
         releaseDatePrecision: album.release_date_precision,
         totalTracks: album.total_tracks,
     };

@@ -45,6 +45,13 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                                 <Icon icon="Pulse" />
                                 <TimeText durationMs={track.durationMs} />
                             </div>
+                            <div className={styles.release}>
+                                <Icon icon="Recent" />
+                                <span>
+                                    Released on{' '}
+                                    {track.album.releaseDate.display}
+                                </span>
+                            </div>
                             {track.explicit && (
                                 <span className={styles.explicit}>
                                     Explicit
