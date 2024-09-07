@@ -23,6 +23,7 @@
         z-index: $z-normal;
 
         &::before {
+            aspect-ratio: 1 / 1;
             background-image: linear-gradient(
                 to top,
                 var(--theme-shade-min),
@@ -48,6 +49,7 @@
             background-position: right center;
 
             &::before {
+                aspect-ratio: unset;
                 background-image: linear-gradient(
                     to right,
                     var(--theme-shade-min),

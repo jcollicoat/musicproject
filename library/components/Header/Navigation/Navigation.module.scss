@@ -1,0 +1,7 @@
+@import '@styles/constants.scss';
+
+.navigation {
+    align-items: center;
+    display: flex;
+    gap: $space-m;
+}

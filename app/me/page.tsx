@@ -1,3 +1,4 @@
+import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
 import { RecentlyPlayed } from '@components/RecentlyPlayed/RecentlyPlayed';
 import styles from './page.module.scss';
@@ -9,7 +10,7 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            {/* <Header subtitle="My Music" user={user} image={image} /> */}
+            <Header />
             <main className={styles.main}>
                 <Panel
                     heading={{ text: 'Library', icon: 'Recent' }}

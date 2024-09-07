@@ -13,7 +13,7 @@ export default function Page({
 }) {
     return (
         <>
-            <Header subtitle="Track" trackId={trackId} />
+            <Header trackId={trackId} />
             <main className={styles.main}>
                 <Panel gridArea="timeline">Timeline</Panel>
                 <Panel gridArea="related">Related</Panel>

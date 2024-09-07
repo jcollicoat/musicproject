@@ -2,7 +2,7 @@
 
 .header {
     border-radius: 0 0 8px 8px;
-    padding-top: $space-medium;
+    padding-top: $space-m;
     position: relative;
 
     &.isSticky {
@@ -11,23 +11,39 @@
         z-index: $z-sticky;
 
         > div:not(.content) {
-            margin-top: neg($space-medium);
+            margin-top: neg($space-m);
             top: 100%;
         }
     }
 
-    .content {
+    .navBar {
         align-items: center;
         background-color: var(--theme-shade-min);
         border-radius: 8px;
         display: flex;
         font-size: 0.9em;
         justify-content: space-between;
-        margin-bottom: neg($space-medium);
-        padding: $space-medium;
+        margin-bottom: neg($space-m);
+        padding: $space-m;
 
         &.hasPanel {
-            padding-bottom: calc($space-medium * 2);
+            padding-bottom: calc($space-m * 2);
+        }
+
+        .link {
+            @include focus-outline;
+
+            text-decoration: none;
+            transition-property: color, outline-color;
+
+            .title {
+                font-size: 1.25em;
+                font-weight: 600;
+
+                @media (min-width: $breakpoint-2) {
+                    font-size: 1.5em;
+                }
+            }
         }
     }
 }

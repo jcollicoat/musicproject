@@ -2,10 +2,10 @@ import { FC } from 'react';
 
 interface Props {
     durationMs: number;
-    title: string;
+    title?: string;
 }
 
-export const TimeText: FC<Props> = ({ durationMs, title }) => {
+export const TimeText: FC<Props> = ({ durationMs, title = 'Duration' }) => {
     const totalSeconds = Math.ceil(durationMs / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;

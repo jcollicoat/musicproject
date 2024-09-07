@@ -6,10 +6,14 @@ interface Props {
 }
 
 export const LinkedArtists: FC<Props> = ({ artists }) => {
-    return artists.map((artist, index) => (
-        <Fragment key={artist.id}>
-            <Link href={`/artists/${artist.id}`}>{artist.name}</Link>
-            {index !== artists.length - 1 && <>, </>}
-        </Fragment>
-    ));
+    return (
+        <span>
+            {artists.map((artist, index) => (
+                <Fragment key={artist.id}>
+                    <Link href={`/artists/${artist.id}`}>{artist.name}</Link>
+                    {index !== artists.length - 1 && <>, </>}
+                </Fragment>
+            ))}
+        </span>
+    );
 };

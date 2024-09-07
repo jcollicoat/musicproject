@@ -3,14 +3,14 @@ import { FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
 import { User } from '@music/types/user.types';
-import styles from './HeaderUser.module.scss';
+import styles from './UserPanel.module.scss';
 
 interface Props {
     user: User;
     image?: string;
 }
 
-export const HeaderUser: FC<Props> = ({ user, image }) => (
+export const UserPanel: FC<Props> = ({ user, image }) => (
     <Panel element="div" backgroundImage={image}>
         <div className={styles.wrapper}>
             <div className={styles.main}>

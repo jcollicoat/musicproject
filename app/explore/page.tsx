@@ -5,5 +5,5 @@ export const metadata = {
 };
 
 export default function Page() {
-    return <Header subtitle="Explore" />;
+    return <Header />;
 }

@@ -33,19 +33,22 @@ export const AudioFeature: FC<Props> = ({ feature, value }) => {
 
     return (
         <div className={styles.feature}>
-            <Icon icon={icons[feature]} />
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox={`0 0 ${diameter} ${diameter}`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                className={styles.circle}
-                strokeDasharray={strokeDasharray}
-                strokeDashoffset={strokeDashoffset}
-            >
-                <circle cx={radius} cy={radius} r={radius - 1} />
-            </svg>
+            <div className={styles.icon}>
+                <Icon icon={icons[feature]} />
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox={`0 0 ${diameter} ${diameter}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    className={styles.circle}
+                    strokeDasharray={strokeDasharray}
+                    strokeDashoffset={strokeDashoffset}
+                >
+                    <circle cx={radius} cy={radius} r={radius - 1} />
+                </svg>
+            </div>
+            <span>{feature[0].toUpperCase() + feature.slice(1)}</span>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
 import styles from './page.module.scss';
 
@@ -10,7 +11,7 @@ export default function Page({ params }: { params: { artistId: string } }) {
 
     return (
         <>
-            {/* <Header subtitle="Artist" artist={artist} /> */}
+            <Header />
             <main className={styles.main}>
                 <Panel gridArea="tracks">Top Tracks</Panel>
                 <Panel gridArea="related">Related</Panel>
