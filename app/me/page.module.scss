@@ -8,14 +8,14 @@
         'albums'
         'queue';
 
-    @media (min-width: $bp-stack-2) {
+    @media (min-width: $breakpoint-2) {
         grid-template-areas:
             'library library'
             'recent queue'
             'artists albums';
     }
 
-    @media (min-width: $bp-stack-3) {
+    @media (min-width: $breakpoint-3) {
         grid-template-columns: grid-cols(6);
         grid-template-areas:
             'library library library library library library'
@@ -23,7 +23,7 @@
             'artists artists artists albums albums albums';
     }
 
-    @media (min-width: $bp-stack-4) {
+    @media (min-width: $breakpoint-4) {
         grid-template-areas:
             'library library library library recent recent'
             'queue queue artists artists albums albums';

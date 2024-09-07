@@ -11,7 +11,7 @@
 .panel {
     background-color: var(--theme-shade-min);
     border-radius: 8px;
-    padding: $space-xlarge;
+    padding: $space-xl;
     width: 100%;
 
     &.hasImage {
@@ -44,9 +44,8 @@
             z-index: 2;
         }
 
-        @media (min-width: $bp-stack-2) {
+        @media (min-width: $breakpoint-2) {
             background-position: right center;
-            // background-size: 50% auto;
 
             &::before {
                 background-image: linear-gradient(
@@ -66,7 +65,7 @@
         gap: 0.5em;
         grid-column: span 3;
         letter-spacing: 0.1em;
-        margin-bottom: $space-xlarge;
+        margin-bottom: $space-xl;
         text-transform: uppercase;
     }
 

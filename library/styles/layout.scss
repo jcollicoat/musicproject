@@ -42,10 +42,10 @@ body {
         'Segoe UI Emoji',
         'Segoe UI Symbol';
     font-size: calc(1rem / 16 * 13);
-    padding: $space-medium;
+    padding: $space-m;
     padding-top: 0;
 
-    @media (min-width: $bp-stack-3) {
+    @media (min-width: $breakpoint-3) {
         font-size: calc(1rem / 16 * 14);
     }
 
@@ -59,18 +59,18 @@ main {
 }
 
 header {
-    margin-bottom: $space-medium;
+    margin-bottom: $space-m;
 }
 
 main {
     display: grid;
-    gap: $space-medium;
+    gap: $space-m;
 
-    @media (min-width: $bp-stack-2) {
+    @media (min-width: $breakpoint-2) {
         grid-template-columns: grid-cols(2);
     }
 
-    @media (min-width: $bp-stack-3) {
+    @media (min-width: $breakpoint-3) {
         grid-template-columns: grid-cols(3);
     }
 }

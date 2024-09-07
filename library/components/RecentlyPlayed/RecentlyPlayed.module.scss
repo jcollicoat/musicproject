@@ -2,14 +2,14 @@
 
 .wrapper {
     display: grid;
-    gap: $space-xlarge;
+    gap: $space-xl;
     grid-template-columns: grid-cols(3);
 
     .item {
         background-color: var(--theme-background-color);
         border-radius: 8px;
         grid-column: span 1;
-        padding: $space-xlarge;
+        padding: $space-xl;
 
         h3 {
             display: flex;

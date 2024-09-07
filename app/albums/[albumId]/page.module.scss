@@ -8,14 +8,14 @@
         'about'
         'playlists';
 
-    @media (min-width: $bp-stack-2) {
+    @media (min-width: $breakpoint-2) {
         grid-template-areas:
             'tracks tracks'
             'related playlists'
             'artist about';
     }
 
-    @media (min-width: $bp-stack-3) {
+    @media (min-width: $breakpoint-3) {
         grid-template-columns: grid-cols(6);
         grid-template-areas:
             'tracks tracks tracks tracks tracks tracks'
@@ -23,7 +23,7 @@
             'artist artist artist about about about';
     }
 
-    @media (min-width: $bp-stack-4) {
+    @media (min-width: $breakpoint-4) {
         grid-template-areas:
             'tracks tracks tracks tracks related related'
             'playlists playlists artist artist about about';

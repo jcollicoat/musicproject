@@ -1,7 +1,7 @@
 @import '@styles/constants.scss';
 
 $trigger-size: 30px;
-$menu-offset: calc(100% + $space-medium / 2);
+$menu-offset: calc(100% + $space-m / 2);
 
 .wrapper {
     --background-color: var(--color-grey-3);
@@ -138,33 +138,31 @@ $menu-offset: calc(100% + $space-medium / 2);
         }
 
         &.left {
-            transform: translateX(calc(-100% + $trigger-size + $space-medium))
+            transform: translateX(calc(-100% + $trigger-size + $space-m))
                 scale(0.95);
             transform-origin: top right;
 
             &.open {
-                transform: translateX(
-                        calc(-100% + $trigger-size + $space-medium)
-                    )
+                transform: translateX(calc(-100% + $trigger-size + $space-m))
                     scale(1);
             }
 
             &::before {
-                left: calc(100% - $trigger-size - $space-medium);
+                left: calc(100% - $trigger-size - $space-m);
             }
         }
 
         &.right {
-            transform: translateX(neg($space-medium)) scale(0.95);
+            transform: translateX(neg($space-m)) scale(0.95);
             transform-origin: top left;
 
             &.open {
                 opacity: 1;
-                transform: translateX(neg($space-medium)) scale(1);
+                transform: translateX(neg($space-m)) scale(1);
             }
 
             &::before {
-                left: $space-medium;
+                left: $space-m;
             }
         }
 

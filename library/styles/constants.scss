@@ -1,19 +1,19 @@
 // Breakpoints: 300px min-width for content
 
-$bp-stack-1: 480px; // Mobile
-$bp-stack-2: 736px; // 2 columns
-$bp-stack-3: 1098px;
-$bp-stack-4: 1460px;
+$breakpoint-1: 480px; // Mobile
+$breakpoint-2: 736px; // 2 columns
+$breakpoint-3: 1098px;
+$breakpoint-4: 1460px;
 
 // Spacing
 
-$space-xsmall: 4px;
-$space-small: 8px;
-$space-medium: 12px;
-$space-large: 18px;
-$space-xlarge: 24px;
-$space-xxlarge: 36px;
-$space-xxxlarge: 60px;
+$space-xs: 4px;
+$space-s: 8px;
+$space-m: 12px;
+$space-l: 18px;
+$space-xl: 24px;
+$space-xxl: 36px;
+$space-xxxl: 60px;
 
 // Stacking
 
