@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export const IconSpotify: FC = () => (
+export const Spotify: FC = () => (
     <g>
         <path d="M1 7a6 6 0 1 0 12 0A6 6 0 1 0 1 7"></path>
         <path d="M4.055 4.837c2.382-.455 4.248-.202 6.51 1.002"></path>

@@ -4,7 +4,7 @@ interface Props {
     isAlternate?: boolean;
 }
 
-export const IconMenu: FC<Props> = ({ isAlternate }) =>
+export const Menu: FC<Props> = ({ isAlternate }) =>
     isAlternate ? (
         // Close
         <>

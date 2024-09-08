@@ -1,21 +1,21 @@
 import { CSSProperties, FC } from 'react';
-import { IconCalendar } from './Glyphs/Calendar';
-import { IconClock } from './Glyphs/Clock';
-import { IconDisc } from './Glyphs/Disc';
-import { IconHeart } from './Glyphs/Heart';
-import { IconHome } from './Glyphs/Home';
-import { IconInfo } from './Glyphs/Info';
-import { IconLock } from './Glyphs/Lock';
-import { IconMenu } from './Glyphs/Menu';
-import { IconMusicNote } from './Glyphs/MusicNote';
-import { IconMusicNote2 } from './Glyphs/MusicNote2';
-import { IconPulse } from './Glyphs/Pulse';
-import { IconRecent } from './Glyphs/Recent';
-import { IconSpark } from './Glyphs/Spark';
-import { IconSpeaker } from './Glyphs/Speaker';
-import { IconSpotify } from './Glyphs/Spotify';
-import { IconStar } from './Glyphs/Star';
-import { IconUser } from './Glyphs/User';
+import { Calendar } from './Glyphs/Calendar';
+import { Clock } from './Glyphs/Clock';
+import { Disc } from './Glyphs/Disc';
+import { Heart } from './Glyphs/Heart';
+import { Home } from './Glyphs/Home';
+import { Info } from './Glyphs/Info';
+import { Lock } from './Glyphs/Lock';
+import { Menu } from './Glyphs/Menu';
+import { MusicNote } from './Glyphs/MusicNote';
+import { MusicNote2 } from './Glyphs/MusicNote2';
+import { Pulse } from './Glyphs/Pulse';
+import { Recent } from './Glyphs/Recent';
+import { Spark } from './Glyphs/Spark';
+import { Speaker } from './Glyphs/Speaker';
+import { Spotify } from './Glyphs/Spotify';
+import { Star } from './Glyphs/Star';
+import { User } from './Glyphs/User';
 import styles from './Icon.module.scss';
 
 const Fallback: FC = () => (
@@ -58,55 +58,55 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
     let Icon: FC<{ isAlternate?: boolean }> = Fallback;
     switch (icon) {
         case 'Calendar':
-            Icon = IconCalendar;
+            Icon = Calendar;
             break;
         case 'Clock':
-            Icon = IconClock;
+            Icon = Clock;
             break;
         case 'Disc':
-            Icon = IconDisc;
+            Icon = Disc;
             break;
         case 'Heart':
-            Icon = IconHeart;
+            Icon = Heart;
             break;
         case 'Home':
-            Icon = IconHome;
+            Icon = Home;
             break;
         case 'Info':
-            Icon = IconInfo;
+            Icon = Info;
             break;
         case 'Lock':
-            Icon = IconLock;
+            Icon = Lock;
             break;
         case 'Menu':
-            Icon = IconMenu;
+            Icon = Menu;
             break;
         case 'MusicNote':
-            Icon = IconMusicNote;
+            Icon = MusicNote;
             break;
         case 'MusicNote2':
-            Icon = IconMusicNote2;
+            Icon = MusicNote2;
             break;
         case 'Pulse':
-            Icon = IconPulse;
+            Icon = Pulse;
             break;
         case 'Recent':
-            Icon = IconRecent;
+            Icon = Recent;
             break;
         case 'Spark':
-            Icon = IconSpark;
+            Icon = Spark;
             break;
         case 'Speaker':
-            Icon = IconSpeaker;
+            Icon = Speaker;
             break;
         case 'Spotify':
-            Icon = IconSpotify;
+            Icon = Spotify;
             break;
         case 'Star':
-            Icon = IconStar;
+            Icon = Star;
             break;
         case 'User':
-            Icon = IconUser;
+            Icon = User;
             break;
         default:
             Icon = Fallback;
