@@ -36,6 +36,10 @@
             text-decoration: none;
             transition-property: color, outline-color;
 
+            &:hover {
+                color: var(--color-primary-2);
+            }
+
             .title {
                 font-size: 1.25em;
                 font-weight: 600;
