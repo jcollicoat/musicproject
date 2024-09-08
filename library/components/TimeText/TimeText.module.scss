@@ -1,0 +1,10 @@
+@import '@styles/constants.scss';
+
+.time {
+    white-space: nowrap;
+
+    .separator {
+        display: inline-block;
+        transform: translateY(-0.1em);
+    }
+}
