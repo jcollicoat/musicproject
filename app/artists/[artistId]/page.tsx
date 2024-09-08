@@ -6,12 +6,16 @@ export const metadata = {
     title: 'Artist',
 };
 
-export default function Page({ params }: { params: { artistId: string } }) {
-    console.log(params.artistId);
-
+export default function Page({
+    params: { artistId },
+}: {
+    params: {
+        artistId: string;
+    };
+}) {
     return (
         <>
-            <Header />
+            <Header artistId={artistId} />
             <main className={styles.main}>
                 <Panel gridArea="tracks">Top Tracks</Panel>
                 <Panel gridArea="related">Related</Panel>

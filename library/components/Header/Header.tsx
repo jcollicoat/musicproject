@@ -4,18 +4,26 @@ import { FC } from 'react';
 import styles from './Header.module.scss';
 import { Navigation } from './Navigation/Navigation';
 import { AlbumPanel } from './Panels/AlbumPanel';
+import { ArtistPanel } from './Panels/ArtistPanel';
 import { TrackPanel } from './Panels/TrackPanel';
 import { UserPanel } from './Panels/UserPanel';
 
 interface Props {
     albumId?: string;
+    artistId?: string;
     trackId?: string;
     user?: boolean;
     isSticky?: boolean;
 }
 
-export const Header: FC<Props> = ({ albumId, trackId, user, isSticky }) => {
-    const hasPanel = Boolean(albumId || trackId || user);
+export const Header: FC<Props> = ({
+    albumId,
+    artistId,
+    trackId,
+    user,
+    isSticky,
+}) => {
+    const hasPanel = Boolean(albumId || artistId || trackId || user);
     const HeadingElement = hasPanel ? 'span' : 'h1';
 
     return (
@@ -36,6 +44,7 @@ export const Header: FC<Props> = ({ albumId, trackId, user, isSticky }) => {
                 <Navigation />
             </div>
             {albumId && <AlbumPanel albumId={albumId} />}
+            {artistId && <ArtistPanel artistId={artistId} />}
             {trackId && <TrackPanel trackId={trackId} />}
             {user && <UserPanel />}
         </header>
