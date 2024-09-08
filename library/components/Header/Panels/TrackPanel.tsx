@@ -29,7 +29,7 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                         className={styles.image}
                     />
                     <div className={styles.details}>
-                        <h1 className={styles.title}>{track.name}</h1>
+                        <h1>{track.name}</h1>
                         <div className={styles.section}>
                             <div className={styles.artists}>
                                 <Icon icon="User" />

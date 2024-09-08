@@ -19,6 +19,7 @@
         background-repeat: no-repeat;
         background-size: clamp(0px, 100%, 1200px) auto;
         border: 2px solid var(--border-color);
+        overflow: hidden;
         position: relative;
         z-index: $z-normal;
 

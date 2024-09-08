@@ -11,11 +11,9 @@ export default function Page({
 }: {
     params: { albumId: string };
 }) {
-    console.log(albumId);
-
     return (
         <>
-            <Header />
+            <Header albumId={albumId} />
             <main className={styles.main}>
                 <Panel gridArea="tracks">Tracks</Panel>
                 <Panel gridArea="related">Related</Panel>

@@ -1,18 +1,29 @@
-import { SpotifyImage } from '@spotify/types';
-import { Artist } from './artists.types';
-import { Track } from './tracks.types';
+import { Images } from '@music/types';
+
+interface AlbumArtist {
+    id: string;
+    name: string;
+}
+
+interface AlbumTrack {
+    id: string;
+    name: string;
+}
 
 export interface Album {
     albumType: string;
-    artists: Artist[];
+    artists: AlbumArtist[];
     id: string;
-    images: SpotifyImage[];
+    images: Images;
+    length: number;
     name: string;
-    releaseDate: string;
-    releaseDatePrecision: string;
+    releaseDate: {
+        display: string;
+        exact: string;
+    };
     totalTracks: number;
     genres?: string[];
     label?: string;
     popularity?: number;
-    tracks?: Track[];
+    tracks?: AlbumTrack[];
 }
