@@ -36,17 +36,17 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                                 <LinkedArtists artists={track.artists} />
                             </div>
                             <div className={styles.album}>
-                                <Icon icon="Spotify" />
+                                <Icon icon="Disc" />
                                 <LinkedAlbum album={track.album} />
                             </div>
                         </div>
                         <div className={styles.section}>
                             <div className={styles.duration}>
-                                <Icon icon="Pulse" />
+                                <Icon icon="Clock" />
                                 <TimeText durationMs={track.durationMs} />
                             </div>
                             <div className={styles.release}>
-                                <Icon icon="Recent" />
+                                <Icon icon="Calendar" />
                                 <span>
                                     Released on{' '}
                                     {track.album.releaseDate.display}

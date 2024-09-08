@@ -1,19 +1,22 @@
 import { CSSProperties, FC } from 'react';
+import { IconCalendar } from './Glyphs/Calendar';
+import { IconClock } from './Glyphs/Clock';
+import { IconDisc } from './Glyphs/Disc';
+import { IconHeart } from './Glyphs/Heart';
+import { IconHome } from './Glyphs/Home';
+import { IconInfo } from './Glyphs/Info';
+import { IconLock } from './Glyphs/Lock';
+import { IconMenu } from './Glyphs/Menu';
+import { IconMusicNote } from './Glyphs/MusicNote';
+import { IconMusicNote2 } from './Glyphs/MusicNote2';
+import { IconPulse } from './Glyphs/Pulse';
+import { IconRecent } from './Glyphs/Recent';
+import { IconSpark } from './Glyphs/Spark';
+import { IconSpeaker } from './Glyphs/Speaker';
+import { IconSpotify } from './Glyphs/Spotify';
+import { IconStar } from './Glyphs/Star';
+import { IconUser } from './Glyphs/User';
 import styles from './Icon.module.scss';
-import { IconHeart } from './icons/Heart';
-import { IconHome } from './icons/Home';
-import { IconInfo } from './icons/Info';
-import { IconLock } from './icons/Lock';
-import { IconMenu } from './icons/Menu';
-import { IconMusicNote } from './icons/MusicNote';
-import { IconMusicNote2 } from './icons/MusicNote2';
-import { IconPulse } from './icons/Pulse';
-import { IconRecent } from './icons/Recent';
-import { IconSpark } from './icons/Spark';
-import { IconSpeaker } from './icons/Speaker';
-import { IconSpotify } from './icons/Spotify';
-import { IconStar } from './icons/Star';
-import { IconUser } from './icons/User';
 
 const Fallback: FC = () => (
     <g className={styles.fallback}>
@@ -27,6 +30,9 @@ const Fallback: FC = () => (
 );
 
 type Icons =
+    | 'Calendar'
+    | 'Clock'
+    | 'Disc'
     | 'Heart'
     | 'Home'
     | 'Info'
@@ -51,6 +57,15 @@ export interface IconProps {
 export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
     let Icon: FC<{ isAlternate?: boolean }> = Fallback;
     switch (icon) {
+        case 'Calendar':
+            Icon = IconCalendar;
+            break;
+        case 'Clock':
+            Icon = IconClock;
+            break;
+        case 'Disc':
+            Icon = IconDisc;
+            break;
         case 'Heart':
             Icon = IconHeart;
             break;
