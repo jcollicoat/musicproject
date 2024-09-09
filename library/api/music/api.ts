@@ -8,7 +8,7 @@ const albumId = async (albumId: string) => {
 
 const artistId = async (artistId: string) => {
     const artist = await spotify.artistId(artistId);
-    return builders.artistId(artist);
+    return builders.artist(artist);
 };
 
 const audioFeatures = async (trackId: string) => {

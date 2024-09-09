@@ -1,36 +1,28 @@
 import { SpotifyImage } from '@spotify/types';
 import { albumId } from './builders/albums.builders';
-import { artistId } from './builders/artists.builders';
+import { artist } from './builders/artists.builders';
 import { audioFeatures } from './builders/audio.builders';
 import { trackId, trackIds } from './builders/tracks.builders';
 import { user } from './builders/user.builders';
-import { Images } from './types';
 
-const images = (images: SpotifyImage[]): Images => {
-    if (images.length === 1) {
-        return {
-            large: images[0].url,
-            medium: images[0].url,
-            small: images[1].url,
-        };
-    } else if (images.length === 2) {
-        return {
-            large: images[0].url,
-            medium: images[1].url,
-            small: images[1].url,
-        };
-    } else {
-        return {
-            large: images[0].url,
-            medium: images[1].url,
-            small: images[2].url,
-        };
-    }
+const images = (images: SpotifyImage[]) => {
+    const sorted = images.sort((a, b) => {
+        if (!a.width || !b.width) return 0;
+        if (a.width < b.width) return -1;
+        if (a.width > b.width) return 1;
+        return 0;
+    });
+
+    return {
+        small: sorted[0].url,
+        medium: sorted[1]?.url ?? sorted[0].url,
+        large: sorted[sorted.length - 1].url,
+    };
 };
 
 const builders = {
     albumId,
-    artistId,
+    artist,
     audioFeatures,
     images,
     trackId,
