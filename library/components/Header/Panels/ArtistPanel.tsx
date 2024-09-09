@@ -12,6 +12,7 @@ interface Props {
 
 export const ArtistPanel: FC<Props> = async ({ artistId }) => {
     const artist = await music.artistId(artistId);
+    const isFollowing = await music.following.artistId(artistId);
 
     return (
         <Panel element="div" backgroundImage={artist.images.large}>
@@ -27,7 +28,12 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                     <span className={styles.label}>Artist</span>
                     <h1>{artist.name}</h1>
                     <div className={styles.follow}>
-                        <Button text="Follow" link="/" style="cta" />
+                        <Button
+                            text={isFollowing ? 'Unfollow' : 'Follow'}
+                            iconStart={{ icon: 'Heart' }}
+                            onClick="follow"
+                            style={isFollowing ? 'tertiary' : 'cta'}
+                        />
                         <span>
                             <em>{artist.followers.display}</em> followers
                         </span>

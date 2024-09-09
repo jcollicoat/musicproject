@@ -16,6 +16,13 @@ const audioFeatures = async (trackId: string) => {
     return builders.audioFeatures(audioFeatures);
 };
 
+const following = {
+    artistId: async (artistId: string) => {
+        const isFollowing = await spotify.following.artistIds([artistId]);
+        return isFollowing[0];
+    },
+};
+
 const trackId = async (trackId: string) => {
     const track = await spotify.trackId(trackId);
     return builders.trackId(track);
@@ -26,5 +33,5 @@ const user = async () => {
     return builders.user(user);
 };
 
-const music = { albumId, artistId, audioFeatures, trackId, user };
+const music = { albumId, artistId, audioFeatures, following, trackId, user };
 export { music };

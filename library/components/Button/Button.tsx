@@ -36,11 +36,7 @@ interface BaseProps {
 }
 
 interface PropsForButton extends BaseProps {
-    onClick:
-        | React.MouseEventHandler<HTMLButtonElement>
-        | 'signin'
-        | 'signout'
-        | 'theme';
+    onClick: 'follow' | 'signin' | 'signout' | 'theme';
     link?: never;
 }
 
@@ -65,6 +61,11 @@ export const Button: FC<ButtonProps> = ({
 
     if (onClick) {
         let click;
+        if (onClick === 'follow') {
+            click = async () => {
+                await alert('Followed!');
+            };
+        }
         if (onClick === 'signin') {
             click = () => signIn('spotify');
         } else if (onClick === 'signout') {
@@ -74,8 +75,6 @@ export const Button: FC<ButtonProps> = ({
                 theme.value === 'light'
                     ? theme.set('dark')
                     : theme.set('light');
-        } else {
-            click = onClick;
         }
 
         return (

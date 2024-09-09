@@ -17,6 +17,14 @@ const audioFeatures = async (trackId: string) => {
     return await api.get<SpotifyAudioFeatures>(`audio-features/${trackId}`);
 };
 
+const following = {
+    artistIds: async (artistIds: string[]) => {
+        return await api.get<boolean[]>('me/following/contains', {
+            params: { type: 'artist', ids: artistIds.join(',') },
+        });
+    },
+};
+
 const trackId = async (trackId: string) => {
     return await api.get<SpotifyTrack>(`tracks/${trackId}`);
 };
@@ -29,6 +37,7 @@ const spotify = {
     albumId,
     artistId,
     audioFeatures,
+    following,
     trackId,
     user,
 };
