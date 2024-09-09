@@ -57,5 +57,9 @@ export const getUrlSlug = (url?: string) => url?.replace(/^(.*[\\/])/, '');
 export const titleCase = (input: string) =>
     input
         .split(' ')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .map((word) =>
+            word.length < 2 || word.includes('&')
+                ? word.toUpperCase()
+                : word.charAt(0).toUpperCase() + word.slice(1),
+        )
         .join(' ');
