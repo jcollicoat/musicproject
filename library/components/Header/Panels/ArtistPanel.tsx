@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { titleCase } from '@api/helpers';
+import { Button } from '@components/Button/Button';
 import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
@@ -14,46 +14,52 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
     const artist = await music.artistId(artistId);
 
     return (
-        <Panel element="div" backgroundImage={artist.images?.large}>
+        <Panel element="div" backgroundImage={artist.images.large}>
             <div className={styles.content}>
-                {artist.images && (
-                    <Image
-                        src={artist.images.large}
-                        alt={artist.name}
-                        height={160}
-                        width={160}
-                        className={styles.image}
-                    />
-                )}
+                <Image
+                    src={artist.images.medium}
+                    alt={artist.name}
+                    height={160}
+                    width={160}
+                    className={styles.image}
+                />
                 <div className={styles.details}>
+                    <span className={styles.label}>Artist</span>
                     <h1>{artist.name}</h1>
-                    <div className={styles.section}>
-                        <div className={styles.followers}>
-                            <Icon icon="Star" />
-                            <span>{artist.followers} followers</span>
-                        </div>
+                    <div className={styles.follow}>
+                        <Button text="Follow" link="/" style="cta" />
+                        <span>
+                            <em>{artist.followers.display}</em> followers
+                        </span>
                     </div>
-                    <div className={styles.section}>
-                        {artist.genres && (
-                            <div className={styles.genres}>
+                </div>
+                <div className={styles.sidebar}>
+                    <div className={styles.popularity}>
+                        <div className={styles.header}>
+                            <Icon icon="Heart" />
+                            <span>Popularity</span>
+                        </div>
+                        <span>{artist.popularity}</span>
+                    </div>
+                    {artist.genres && (
+                        <div className={styles.genres}>
+                            <div className={styles.header}>
                                 <Icon icon="MusicNote" />
-                                <span>
-                                    {artist.genres.map(
-                                        (genre, index) =>
-                                            `${titleCase(genre)}` +
-                                            (index !==
+                                <span>Genres</span>
+                            </div>
+                            <span>
+                                {artist.genres.map(
+                                    (genre, index) =>
+                                        `${genre}${
+                                            index !==
                                             (artist.genres?.length ?? 0) - 1
                                                 ? ', '
-                                                : ''),
-                                    )}
-                                </span>
-                            </div>
-                        )}
-                        <div className={styles.popularity}>
-                            <Icon icon="Heart" />
-                            <span>{artist.popularity}/100</span>
+                                                : ''
+                                        }`,
+                                )}
+                            </span>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </Panel>
