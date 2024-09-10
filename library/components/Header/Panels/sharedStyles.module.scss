@@ -79,7 +79,6 @@
     }
 
     @media (min-width: $breakpoint-3) {
-        align-items: center;
         grid-template-columns: auto 3fr 2fr;
         justify-items: start;
         padding: $space-l 0;

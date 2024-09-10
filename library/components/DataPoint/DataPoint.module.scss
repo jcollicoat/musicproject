@@ -1,0 +1,19 @@
+@import '@styles/constants.scss';
+
+.wrapper {
+    .header {
+        color: var(--theme-color-secondary);
+        display: flex;
+        gap: 4px;
+        margin-bottom: 4px;
+    }
+
+    .value {
+        font-size: 1.5em;
+        font-weight: 600;
+
+        &.large {
+            font-size: 2em;
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
+import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Icon } from '@components/Icon/Icon';
 import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
 import { LinkedArtists } from '@components/Linked/LinkedArtists';
@@ -16,7 +17,7 @@ interface Props {
 
 export const TrackPanel: FC<Props> = async ({ trackId }) => {
     const track = await music.trackId(trackId);
-    // const audioFeatures = await music.audioFeatures(trackId);
+    const album = await music.albumId(track.album.id);
 
     return (
         <Panel element="div" backgroundImage={track.album.images.large}>
@@ -57,7 +58,18 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                         )}
                     </div>
                 </div>
-                <div className={sharedStyles.sidebar}></div>
+                <div className={sharedStyles.sidebar}>
+                    <DataPoint
+                        name="Popularity"
+                        value={track.popularity}
+                        icon="Heart"
+                    />
+                    <DataPoint
+                        name="Label"
+                        value={album.label}
+                        icon="MusicNote"
+                    />
+                </div>
             </div>
         </Panel>
     );

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 import { FollowButton } from '@components/Button/Actions/FollowButton';
-import { Icon } from '@components/Icon/Icon';
+import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
 import styles from './ArtistPanel.module.scss';
@@ -41,31 +41,21 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                     </div>
                 </div>
                 <div className={sharedStyles.sidebar}>
-                    <div className={sharedStyles.popularity}>
-                        <div className={sharedStyles.header}>
-                            <Icon icon="Heart" />
-                            <span>Popularity</span>
-                        </div>
-                        <span>{artist.popularity}</span>
-                    </div>
+                    {artist.popularity && (
+                        <DataPoint
+                            name="Popularity"
+                            value={artist.popularity}
+                            icon="Heart"
+                        />
+                    )}
                     {artist.genres && (
-                        <div className={styles.genres}>
-                            <div className={styles.header}>
-                                <Icon icon="MusicNote" />
-                                <span>Genres</span>
-                            </div>
-                            <span>
-                                {artist.genres.map(
-                                    (genre, index) =>
-                                        `${genre}${
-                                            index !==
-                                            (artist.genres?.length ?? 0) - 1
-                                                ? ', '
-                                                : ''
-                                        }`,
-                                )}
-                            </span>
-                        </div>
+                        <DataPoint
+                            name="Genres"
+                            value={artist.genres
+                                .map((genre) => genre)
+                                .join(', ')}
+                            icon="MusicNote"
+                        />
                     )}
                 </div>
             </div>

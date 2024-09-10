@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
+import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Icon } from '@components/Icon/Icon';
 import { LinkedArtists } from '@components/Linked/LinkedArtists';
 import { Panel } from '@components/Panel/Panel';
@@ -19,7 +19,6 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
 
     return (
         <Panel element="div" backgroundImage={album.images.large}>
-            <ClientLogger data={album} />
             <div className={sharedStyles.content}>
                 <Image
                     src={album.images.large}
@@ -42,7 +41,10 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
                     <div className={sharedStyles.section}>
                         <div className={sharedStyles.item}>
                             <Icon icon="Disc" />
-                            <span>{album.totalTracks} tracks</span>
+                            <span>
+                                {album.totalTracks}{' '}
+                                {album.totalTracks === 1 ? 'track' : 'tracks'}
+                            </span>
                         </div>
                         <div className={sharedStyles.item}>
                             <Icon icon="Clock" />
@@ -55,20 +57,16 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
                     </div>
                 </div>
                 <div className={sharedStyles.sidebar}>
-                    <div className={sharedStyles.popularity}>
-                        <div className={sharedStyles.header}>
-                            <Icon icon="Heart" />
-                            <span>Popularity</span>
-                        </div>
-                        <span>{album.popularity}</span>
-                    </div>
-                    <div className={styles.label}>
-                        <div className={styles.header}>
-                            <Icon icon="MusicNote" />
-                            <span>Label</span>
-                        </div>
-                        <span>{album.label}</span>
-                    </div>
+                    <DataPoint
+                        name="Popularity"
+                        value={album.popularity}
+                        icon="Heart"
+                    />
+                    <DataPoint
+                        name="Label"
+                        value={album.label}
+                        icon="MusicNote"
+                    />
                 </div>
             </div>
         </Panel>
