@@ -1,6 +1,6 @@
 @import '@styles/constants.scss';
 
-.track {
+.item {
     background-color: var(--theme-background-color);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -34,11 +34,7 @@
         position: relative;
         z-index: 2;
 
-        @container (width >= 400px) {
-            grid-template-columns: 60px 1fr auto;
-        }
-
-        img {
+        .image {
             border-radius: 2px;
             height: 100%;
             width: 100%;
@@ -70,8 +66,7 @@
                 display: none;
             }
 
-            .artists,
-            .album {
+            .section {
                 align-items: center;
                 color: var(--theme-color-secondary);
                 display: flex;
@@ -83,14 +78,16 @@
 
         .data {
             align-items: flex-end;
+            color: var(--theme-color-tertiary);
             display: flex;
             flex-direction: column;
             font-size: 0.9em;
+        }
+    }
 
-            span {
-                color: var(--theme-color-tertiary);
-                font-size: 0.9em;
-            }
+    @media (min-width: $breakpoint-3) {
+        .content {
+            grid-template-columns: 60px 1fr auto;
         }
     }
 }

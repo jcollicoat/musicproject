@@ -17,6 +17,7 @@ const artist = {
             {
                 params: {
                     include_groups: 'album,single,compilation',
+                    limit: '10',
                 },
             },
         );

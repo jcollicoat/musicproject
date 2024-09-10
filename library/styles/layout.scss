@@ -66,14 +66,6 @@ main {
     display: grid;
     gap: $space-m;
     grid-auto-columns: minmax(0, 1fr);
-
-    @media (min-width: $breakpoint-2) {
-        grid-template-columns: grid-cols(2);
-    }
-
-    @media (min-width: $breakpoint-3) {
-        grid-template-columns: grid-cols(3);
-    }
 }
 
 img {

@@ -1,6 +1,7 @@
+import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
+import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
-import { TracksList } from '@components/TracksList/TracksList';
 import { music } from '@music/api';
 import styles from './page.module.scss';
 
@@ -16,21 +17,28 @@ export default async function Page({
     };
 }) {
     const topTracks = await music.artist.topTracks(artistId);
+    const albums = await music.artist.albums(artistId);
 
     return (
         <>
             <Header artistId={artistId} />
+            <ClientLogger data={albums} />
             <main className={styles.main}>
                 <Panel
                     gridArea="tracks"
                     heading={{ text: 'Top Tracks', icon: 'MusicNote2' }}
                 >
-                    <TracksList tracks={topTracks} initialLimit={5} />
+                    <ItemsList tracks={topTracks} initialLimit={5} />
+                </Panel>
+                <Panel
+                    gridArea="albums"
+                    heading={{ text: 'Albums', icon: 'Disc' }}
+                >
+                    <ItemsList albums={albums} initialLimit={5} />
                 </Panel>
                 <Panel gridArea="related">Related</Panel>
                 <Panel gridArea="playlists">In Playlists</Panel>
                 <Panel gridArea="about">About</Panel>
-                <Panel gridArea="albums">Albums</Panel>
             </main>
         </>
     );

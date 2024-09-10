@@ -6,7 +6,7 @@ import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
 import { LinkedArtists } from '@components/Linked/LinkedArtists';
 import { TimeText } from '@components/TimeText/TimeText';
 import { music } from '@music/api';
-import styles from './Track.module.scss';
+import sharedStyles from './sharedStyles.module.scss';
 
 interface Props {
     track: Awaited<ReturnType<typeof music.trackId>>;
@@ -17,32 +17,31 @@ export const Track: FC<Props> = ({ track }) => {
 
     return (
         <div
-            className={styles.track}
+            className={sharedStyles.item}
             style={{ backgroundImage: `url(${album.images.large})` }}
         >
-            <div className={styles.content}>
+            <div className={sharedStyles.content}>
                 <Image
                     src={album.images.medium}
                     alt={album.name}
                     height={60}
                     width={60}
-                    className={styles.image}
+                    className={sharedStyles.image}
                 />
-
-                <div className={styles.details}>
-                    <div className={styles.name}>
+                <div className={sharedStyles.details}>
+                    <div className={sharedStyles.name}>
                         <Link href={`/tracks/${id}`}>{name}</Link>
                     </div>
-                    <div className={styles.artists}>
+                    <div className={sharedStyles.section}>
                         <Icon icon="User" />
                         <LinkedArtists artists={artists} />
                     </div>
-                    <div className={styles.album}>
+                    <div className={sharedStyles.section}>
                         <Icon icon="Disc" />
                         <LinkedAlbum album={album} />
                     </div>
                 </div>
-                <div className={styles.data}>
+                <div className={sharedStyles.data}>
                     <TimeText durationMs={durationMs} title="Track length" />
                 </div>
             </div>
