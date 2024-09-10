@@ -9,7 +9,17 @@ const albumId = async (albumId: string) => {
 const artist = {
     albums: async (artistId: string) => {
         const albums = await spotify.artist.albums(artistId);
-        return albums.items.map((album) => builders.albumSimple(album));
+        return albums.items
+            .sort((a, b) => {
+                if (a.release_date > b.release_date) {
+                    return -1;
+                }
+                if (a.release_date < b.release_date) {
+                    return 1;
+                }
+                return 0;
+            })
+            .map((album) => builders.albumSimple(album));
     },
     id: async (artistId: string) => {
         const artist = await spotify.artist.id(artistId);
