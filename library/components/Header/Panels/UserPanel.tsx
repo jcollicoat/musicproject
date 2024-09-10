@@ -1,7 +1,9 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
+import sharedStyles from './sharedStyles.module.scss';
 import styles from './UserPanel.module.scss';
 
 export const UserPanel: FC = async () => {
@@ -9,15 +11,17 @@ export const UserPanel: FC = async () => {
 
     return (
         <Panel element="div">
-            <div className={styles.content}>
+            <div className={sharedStyles.content}>
                 <Image
                     src={user.images.large}
                     alt={`${user.name}'s profile picture`}
                     height={160}
                     width={160}
-                    className={styles.image}
+                    className={classNames(sharedStyles.image, styles.image)}
                 />
-                <h1 className={styles.title}>My Library</h1>
+                <div className={sharedStyles.details}>
+                    <h1>My Library</h1>
+                </div>
             </div>
         </Panel>
     );

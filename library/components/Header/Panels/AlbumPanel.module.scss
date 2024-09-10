@@ -4,28 +4,6 @@
     border-radius: 4px;
 }
 
-.section {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-m;
-
-    .artists,
-    .length,
-    .duration,
-    .release {
-        align-items: center;
-        display: flex;
-        gap: $space-s;
-    }
-
-    .length,
-    .duration,
-    .release {
-        color: var(--theme-color-secondary);
-    }
-}
-
 .label {
     .header {
         color: var(--theme-color-secondary);

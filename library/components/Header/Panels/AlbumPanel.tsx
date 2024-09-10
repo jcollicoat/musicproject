@@ -33,22 +33,22 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
                         {album.albumType}
                     </span>
                     <h1>{album.name}</h1>
-                    <div className={styles.section}>
-                        <div className={styles.artists}>
+                    <div className={sharedStyles.section}>
+                        <div className={sharedStyles.item}>
                             <Icon icon="User" />
                             <LinkedArtists artists={album.artists} />
                         </div>
                     </div>
-                    <div className={styles.section}>
-                        <div className={styles.length}>
+                    <div className={sharedStyles.section}>
+                        <div className={sharedStyles.item}>
                             <Icon icon="Disc" />
                             <span>{album.totalTracks} tracks</span>
                         </div>
-                        <div className={styles.duration}>
+                        <div className={sharedStyles.item}>
                             <Icon icon="Clock" />
                             <TimeText durationMs={album.length} />
                         </div>
-                        <div className={styles.release}>
+                        <div className={sharedStyles.item}>
                             <Icon icon="Calendar" />
                             <span>Released on {album.releaseDate.display}</span>
                         </div>

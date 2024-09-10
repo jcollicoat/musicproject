@@ -18,6 +18,23 @@
         h1 {
             font-size: 2.5em;
         }
+
+        .section {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: $space-m;
+
+            &:not(:first-of-type) {
+                color: var(--theme-color-secondary);
+            }
+
+            .item {
+                align-items: center;
+                display: flex;
+                gap: $space-s;
+            }
+        }
     }
 
     .sidebar {

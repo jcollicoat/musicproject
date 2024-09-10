@@ -1,99 +1,13 @@
 @import '@styles/constants.scss';
 
-.content {
-    display: grid;
-    gap: $space-xxl;
-    padding: $space-xl 0;
+.image {
+    border-radius: 4px;
+}
 
-    .main {
-        display: grid;
-        gap: $space-xl;
-        justify-items: center;
-
-        .image {
-            border-radius: 4px;
-        }
-
-        .details {
-            display: grid;
-            gap: $space-l;
-            justify-items: inherit;
-
-            h1 {
-                font-size: 2.5em;
-                text-align: center;
-            }
-
-            .section {
-                align-items: center;
-                display: flex;
-                flex-wrap: wrap;
-                gap: $space-l;
-                justify-content: center;
-
-                .artists,
-                .album,
-                .duration,
-                .release {
-                    align-items: center;
-                    display: flex;
-                    gap: $space-s;
-                }
-
-                .duration,
-                .release,
-                .explicit {
-                    color: var(--theme-color-secondary);
-                }
-
-                .explicit {
-                    border-radius: 4px;
-                    font-size: 0.75em;
-                    outline: 1px solid var(--theme-color-secondary);
-                    padding: 0.5em;
-                    text-transform: uppercase;
-                }
-            }
-        }
-    }
-
-    .secondary {
-        align-items: center;
-        display: grid;
-        gap: $space-l;
-        grid-template-columns: repeat(3, 1fr);
-        justify-items: center;
-    }
-
-    @media (min-width: $breakpoint-2) {
-        .main {
-            .image {
-                height: 200px;
-                width: 200px;
-            }
-
-            .details {
-                h1 {
-                    font-size: 3em;
-                }
-            }
-        }
-    }
-
-    @media (min-width: $breakpoint-3) {
-        grid-template-columns: 4fr 2fr;
-        padding: $space-l 0;
-
-        .main {
-            align-items: center;
-            grid-template-columns: auto 1fr;
-            justify-items: start;
-
-            .details {
-                h1 {
-                    text-align: left;
-                }
-            }
-        }
-    }
+.explicit {
+    border-radius: 4px;
+    font-size: 0.75em;
+    outline: 1px solid var(--theme-color-secondary);
+    padding: 0.5em;
+    text-transform: uppercase;
 }

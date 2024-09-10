@@ -1,12 +1,13 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
-import { AudioFeature } from '@components/AudioFeature/AudioFeature';
 import { Icon } from '@components/Icon/Icon';
 import { LinkedAlbum } from '@components/Linked/LinkedAlbum';
 import { LinkedArtists } from '@components/Linked/LinkedArtists';
 import { Panel } from '@components/Panel/Panel';
 import { TimeText } from '@components/TimeText/TimeText';
 import { music } from '@music/api';
+import sharedStyles from './sharedStyles.module.scss';
 import styles from './TrackPanel.module.scss';
 
 interface Props {
@@ -15,65 +16,48 @@ interface Props {
 
 export const TrackPanel: FC<Props> = async ({ trackId }) => {
     const track = await music.trackId(trackId);
-    const audioFeatures = await music.audioFeatures(trackId);
+    // const audioFeatures = await music.audioFeatures(trackId);
 
     return (
         <Panel element="div" backgroundImage={track.album.images.large}>
-            <div className={styles.content}>
-                <div className={styles.main}>
-                    <Image
-                        src={track.album.images.large}
-                        alt={track.album.name}
-                        height={160}
-                        width={160}
-                        className={styles.image}
-                    />
-                    <div className={styles.details}>
-                        <h1>{track.name}</h1>
-                        <div className={styles.section}>
-                            <div className={styles.artists}>
-                                <Icon icon="User" />
-                                <LinkedArtists artists={track.artists} />
-                            </div>
-                            <div className={styles.album}>
-                                <Icon icon="Disc" />
-                                <LinkedAlbum album={track.album} />
-                            </div>
+            <div className={sharedStyles.content}>
+                <Image
+                    src={track.album.images.large}
+                    alt={track.album.name}
+                    height={160}
+                    width={160}
+                    className={classNames(sharedStyles.image, styles.image)}
+                />
+                <div className={sharedStyles.details}>
+                    <span className={sharedStyles.label}>Track</span>
+                    <h1>{track.name}</h1>
+                    <div className={sharedStyles.section}>
+                        <div className={sharedStyles.item}>
+                            <Icon icon="User" />
+                            <LinkedArtists artists={track.artists} />
                         </div>
-                        <div className={styles.section}>
-                            <div className={styles.duration}>
-                                <Icon icon="Clock" />
-                                <TimeText durationMs={track.durationMs} />
-                            </div>
-                            <div className={styles.release}>
-                                <Icon icon="Calendar" />
-                                <span>
-                                    Released on{' '}
-                                    {track.album.releaseDate.display}
-                                </span>
-                            </div>
-                            {track.explicit && (
-                                <span className={styles.explicit}>
-                                    Explicit
-                                </span>
-                            )}
+                        <div className={sharedStyles.item}>
+                            <Icon icon="Disc" />
+                            <LinkedAlbum album={track.album} />
                         </div>
                     </div>
+                    <div className={sharedStyles.section}>
+                        <div className={sharedStyles.item}>
+                            <Icon icon="Clock" />
+                            <TimeText durationMs={track.durationMs} />
+                        </div>
+                        <div className={sharedStyles.item}>
+                            <Icon icon="Calendar" />
+                            <span>
+                                Released on {track.album.releaseDate.display}
+                            </span>
+                        </div>
+                        {track.explicit && (
+                            <span className={styles.explicit}>Explicit</span>
+                        )}
+                    </div>
                 </div>
-                <div className={styles.secondary}>
-                    <AudioFeature
-                        feature="energy"
-                        value={audioFeatures.energy}
-                    />
-                    <AudioFeature
-                        feature="danceability"
-                        value={audioFeatures.danceability}
-                    />
-                    <AudioFeature
-                        feature="liveness"
-                        value={audioFeatures.liveness}
-                    />
-                </div>
+                <div className={sharedStyles.sidebar}></div>
             </div>
         </Panel>
     );
