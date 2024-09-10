@@ -1,3 +1,4 @@
+import { titleCase } from '@api/helpers';
 import { builders } from '@music/builders';
 import { SpotifyAlbum } from '@spotify/types/albums.types';
 
@@ -11,7 +12,7 @@ const albumDuration = (tracks: SpotifyAlbum['tracks']['items']) => {
 
 const albumId = (album: SpotifyAlbum) => {
     return {
-        albumType: album.album_type,
+        albumType: titleCase(album.album_type),
         artists: album.artists.map((artist) => builders.idAndName(artist)),
         genres: album.genres,
         id: album.id,
