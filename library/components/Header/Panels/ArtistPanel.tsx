@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { Button } from '@components/Button/Button';
+import { FollowButton } from '@components/Button/Actions/FollowButton';
 import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
@@ -28,11 +28,10 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                     <span className={styles.label}>Artist</span>
                     <h1>{artist.name}</h1>
                     <div className={styles.follow}>
-                        <Button
-                            text={isFollowing ? 'Unfollow' : 'Follow'}
-                            iconStart={{ icon: 'Heart' }}
-                            onClick="follow"
-                            style={isFollowing ? 'tertiary' : 'cta'}
+                        <FollowButton
+                            action={isFollowing ? 'remove' : 'add'}
+                            type="artist"
+                            id={artistId}
                         />
                         <span>
                             <em>{artist.followers.display}</em> followers

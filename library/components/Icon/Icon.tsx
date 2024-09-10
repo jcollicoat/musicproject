@@ -36,6 +36,7 @@ type Icons =
     | 'Heart'
     | 'Home'
     | 'Info'
+    | 'Loading'
     | 'Lock'
     | 'Menu'
     | 'MusicNote'
@@ -108,6 +109,7 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
         case 'User':
             Icon = User;
             break;
+        case 'Loading':
         default:
             Icon = Fallback;
     }

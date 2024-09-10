@@ -18,10 +18,27 @@ const audioFeatures = async (trackId: string) => {
 };
 
 const following = {
-    artistIds: async (artistIds: string[]) => {
-        return await api.get<boolean[]>('me/following/contains', {
-            params: { type: 'artist', ids: artistIds.join(',') },
-        });
+    check: {
+        artistIds: async (artistIds: string[]) => {
+            return await api.get<boolean[]>('me/following/contains', {
+                params: { type: 'artist', ids: artistIds.join(',') },
+                doNotCache: true,
+            });
+        },
+    },
+    add: {
+        artistIds: async (artistIds: string[]) => {
+            return await api.put('me/following', {
+                params: { type: 'artist', ids: artistIds.join(',') },
+            });
+        },
+    },
+    remove: {
+        artistIds: async (artistIds: string[]) => {
+            return await api.del('me/following', {
+                params: { type: 'artist', ids: artistIds.join(',') },
+            });
+        },
     },
 };
 

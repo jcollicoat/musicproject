@@ -9,7 +9,7 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
 }
 
 const scope =
-    'user-library-read user-follow-read user-read-playback-state user-read-email user-read-recently-played user-read-private';
+    'user-library-read user-follow-read user-read-playback-state user-read-email user-read-recently-played user-read-private user-follow-modify';
 
 const handler = NextAuth({
     providers: [
