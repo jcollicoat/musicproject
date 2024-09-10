@@ -28,14 +28,14 @@ const following = {
     },
     add: {
         artistIds: async (artistIds: string[]) => {
-            return await api.put('me/following', {
+            return await api.action('me/following', 'PUT', {
                 params: { type: 'artist', ids: artistIds.join(',') },
             });
         },
     },
     remove: {
         artistIds: async (artistIds: string[]) => {
-            return await api.del('me/following', {
+            return await api.action('me/following', 'DELETE', {
                 params: { type: 'artist', ids: artistIds.join(',') },
             });
         },
