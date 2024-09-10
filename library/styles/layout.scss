@@ -75,10 +75,14 @@ main {
     }
 }
 
+img {
+    object-fit: cover;
+}
+
 a {
     @include focus-outline;
 
-    color: var(--theme-shade-max);
+    color: inherit;
     text-decoration: none;
 
     &:hover {

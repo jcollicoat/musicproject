@@ -28,6 +28,7 @@
     // Variables
 
     --theme-background-color: var(--color-grey-0);
+    --theme-background-color-rgb: var(--rgb-color-grey-0);
     --theme-color: var(--color-grey-9);
     --theme-color-secondary: var(--color-grey-6);
     --theme-color-tertiary: var(--color-grey-5);
@@ -38,6 +39,7 @@
 
     .theme-light {
         --theme-background-color: var(--color-grey-10);
+        --theme-background-color-rgb: var(--rgb-color-grey-10);
         --theme-color: var(--color-grey-0);
         --theme-color-secondary: var(--color-grey-5);
         --theme-color-tertiary: var(--color-grey-6);

@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const ArtistPanel: FC<Props> = async ({ artistId }) => {
-    const artist = await music.artistId(artistId);
+    const artist = await music.artist.id(artistId);
     const isFollowing = await music.following.artistId(artistId);
 
     return (

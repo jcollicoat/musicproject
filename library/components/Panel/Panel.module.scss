@@ -11,7 +11,7 @@
 .panel {
     background-color: var(--theme-shade-min);
     border-radius: 8px;
-    padding: $space-xl;
+    padding: $space-xl $space-m;
     width: 100%;
 
     &.hasImage {
@@ -61,14 +61,13 @@
     }
 
     h2 {
+        color: var(--theme-color-secondary);
         display: flex;
         font-size: 1rem;
         font-weight: 300;
         gap: 0.5em;
         grid-column: span 3;
-        letter-spacing: 0.1em;
         margin-bottom: $space-xl;
-        text-transform: uppercase;
     }
 
     .panel {
@@ -76,8 +75,4 @@
         border: 1px solid var(--border-color);
         border-radius: 6px;
     }
-
-    // > * {
-    //     width: 300px !important;
-    // }
 }

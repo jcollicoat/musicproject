@@ -47,6 +47,7 @@
     flex-wrap: nowrap;
     font-weight: 500;
     gap: 0.5em;
+    justify-content: center;
     line-height: 1;
     outline-offset: -2px;
     padding: 0.75em 1em;
@@ -104,6 +105,7 @@
         background-color: var(--inMenu-background-color);
         border-radius: 0;
         color: var(--inMenu-color);
+        justify-content: start;
         gap: 1em;
         padding: 0.75em 1em;
         width: 100%;

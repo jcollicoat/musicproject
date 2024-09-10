@@ -1,0 +1,12 @@
+@import '@styles/constants.scss';
+
+.list {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+
+    > button {
+        margin-top: $space-xs;
+    }
+}
