@@ -3,14 +3,14 @@
 .main {
     grid-template-areas:
         'tracks'
-        'related'
-        'about'
         'albums'
-        'playlists';
+        'playlists'
+        'related'
+        'about';
 
     @media (min-width: $breakpoint-2) {
         grid-template-areas:
             'tracks tracks albums'
-            'playlists about related';
+            'playlists related about';
     }
 }
