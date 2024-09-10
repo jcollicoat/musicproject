@@ -3,10 +3,14 @@ import { builders } from './builders';
 
 const albumId = async (albumId: string) => {
     const album = await spotify.albumId(albumId);
-    return builders.albumId(album);
+    return builders.album(album);
 };
 
 const artist = {
+    albums: async (artistId: string) => {
+        const albums = await spotify.artist.albums(artistId);
+        return albums.items.map((album) => builders.albumSimple(album));
+    },
     id: async (artistId: string) => {
         const artist = await spotify.artist.id(artistId);
         return builders.artist(artist);

@@ -48,3 +48,8 @@ export interface SpotifyAlbum {
     type: string;
     uri: string;
 }
+
+export type SpotifyAlbumSimple = Omit<
+    SpotifyAlbum,
+    'artists' | 'copyrights' | 'genres' | 'label' | 'popularity' | 'tracks'
+>;

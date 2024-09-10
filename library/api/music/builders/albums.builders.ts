@@ -1,6 +1,6 @@
 import { titleCase } from '@api/helpers';
 import { builders } from '@music/builders';
-import { SpotifyAlbum } from '@spotify/types/albums.types';
+import { SpotifyAlbum, SpotifyAlbumSimple } from '@spotify/types/albums.types';
 
 const albumDuration = (tracks: SpotifyAlbum['tracks']['items']) => {
     let durationMs = 0;
@@ -10,7 +10,7 @@ const albumDuration = (tracks: SpotifyAlbum['tracks']['items']) => {
     return durationMs;
 };
 
-const albumId = (album: SpotifyAlbum) => {
+const album = (album: SpotifyAlbum) => {
     return {
         albumType: titleCase(album.album_type),
         artists: album.artists.map((artist) => builders.idAndName(artist)),
@@ -30,4 +30,18 @@ const albumId = (album: SpotifyAlbum) => {
     };
 };
 
-export { albumId };
+const albumSimple = (album: SpotifyAlbumSimple) => {
+    return {
+        albumType: titleCase(album.album_type),
+        id: album.id,
+        images: builders.images(album.images),
+        name: album.name,
+        releaseDate: {
+            display: new Date(album.release_date).toDateString(),
+            exact: album.release_date,
+        },
+        totalTracks: album.total_tracks,
+    };
+};
+
+export { album, albumSimple };

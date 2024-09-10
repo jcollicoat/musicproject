@@ -1,7 +1,8 @@
 import { api } from './requests';
-import { SpotifyAlbum } from './types/albums.types';
+import { SpotifyAlbum, SpotifyAlbumSimple } from './types/albums.types';
 import { SpotifyArtist, SpotifyArtistTopTracks } from './types/artists.types';
 import { SpotifyAudioFeatures } from './types/audio.types';
+import { SpotifySearchGroup } from './types/search.types';
 import { SpotifyTrack } from './types/tracks.types';
 import { SpotifyUser } from './types/user.types';
 
@@ -10,6 +11,16 @@ const albumId = async (albumId: string) => {
 };
 
 const artist = {
+    albums: async (artistId: string) => {
+        return await api.get<SpotifySearchGroup<SpotifyAlbumSimple>>(
+            `artists/${artistId}/albums`,
+            {
+                params: {
+                    include_groups: 'album,single,compilation',
+                },
+            },
+        );
+    },
     id: async (artistId: string) => {
         return await api.get<SpotifyArtist>(`artists/${artistId}`);
     },

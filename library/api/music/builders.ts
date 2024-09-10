@@ -1,5 +1,5 @@
 import { SpotifyImage } from '@spotify/types';
-import { albumId } from './builders/albums.builders';
+import { album, albumSimple } from './builders/albums.builders';
 import { artist } from './builders/artists.builders';
 import { audioFeatures } from './builders/audio.builders';
 import { track, tracks } from './builders/tracks.builders';
@@ -28,7 +28,8 @@ const images = (images: SpotifyImage[]) => {
 };
 
 const builders = {
-    albumId,
+    album,
+    albumSimple,
     artist,
     audioFeatures,
     idAndName,
