@@ -1,3 +1,4 @@
+import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
 import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
@@ -15,13 +16,15 @@ export default async function Page({
         artistId: string;
     };
 }) {
-    const topTracks = await music.artist.topTracks(artistId);
-    const albums = await music.artist.albums(artistId);
+    const topTracks = await music.artists.topTracks(artistId);
+    const albums = await music.artists.albums(artistId);
+    const relatedArtists = await music.artists.relatedArtists(artistId);
 
     return (
         <>
             <Header artistId={artistId} />
             <main className={styles.main}>
+                <ClientLogger data={relatedArtists} />
                 <Panel
                     gridArea="tracks"
                     heading={{ text: 'Top Tracks', icon: 'MusicNote2' }}

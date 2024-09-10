@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const ArtistPanel: FC<Props> = async ({ artistId }) => {
-    const artist = await music.artist.id(artistId);
+    const artist = await music.artists.id(artistId);
     const isFollowing = await music.following.artistId(artistId);
 
     return (
@@ -41,13 +41,11 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                     </div>
                 </div>
                 <div className={sharedStyles.sidebar}>
-                    {artist.popularity && (
-                        <DataPoint
-                            name="Popularity"
-                            value={artist.popularity}
-                            icon="Heart"
-                        />
-                    )}
+                    <DataPoint
+                        name="Popularity"
+                        value={artist.popularity}
+                        icon="Heart"
+                    />
                     {artist.genres && (
                         <DataPoint
                             name="Genres"

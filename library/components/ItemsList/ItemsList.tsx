@@ -7,7 +7,7 @@ import { Album } from './Items/Album';
 import { Track } from './Items/Track';
 import styles from './ItemsList.module.scss';
 
-type Albums = Awaited<ReturnType<typeof music.artist.albums>>;
+type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
 type Tracks = Awaited<ReturnType<typeof music.trackId>>[];
 
 interface Props {

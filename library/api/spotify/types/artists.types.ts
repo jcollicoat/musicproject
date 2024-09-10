@@ -11,7 +11,7 @@ export interface SpotifyArtist {
     name: string;
     type: string;
     uri: string;
-    popularity?: number;
+    popularity: number;
 }
 
 export interface SpotifyArtistTopTracks {

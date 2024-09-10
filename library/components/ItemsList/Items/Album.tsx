@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Icon } from '@components/Icon/Icon';
 
 interface Props {
-    album: Awaited<ReturnType<typeof music.artist.albums>>[0];
+    album: Awaited<ReturnType<typeof music.artists.albums>>[0];
 }
 
 export const Album: FC<Props> = ({ album }) => {

@@ -22,7 +22,7 @@ const artist = (artist: SpotifyArtist) => {
                 : artist.genres.map((genre) => titleCase(genre)),
         images: builders.images(artist.images),
         name: artist.name,
-        popularity: artist.popularity ?? null,
+        popularity: artist.popularity,
     };
 };
 

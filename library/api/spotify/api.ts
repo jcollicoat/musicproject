@@ -10,7 +10,7 @@ const albumId = async (albumId: string) => {
     return await api.get<SpotifyAlbum>(`albums/${albumId}`);
 };
 
-const artist = {
+const artists = {
     albums: async (artistId: string) => {
         return await api.get<SpotifySearchGroup<SpotifyAlbumSimple>>(
             `artists/${artistId}/albums`,
@@ -24,6 +24,9 @@ const artist = {
     },
     id: async (artistId: string) => {
         return await api.get<SpotifyArtist>(`artists/${artistId}`);
+    },
+    relatedArtists: async (artistId: string) => {
+        return await api.get(`artists/${artistId}/related-artists`);
     },
     topTracks: async (artistId: string, market: string) => {
         return await api.get<SpotifyArtistTopTracks>(
@@ -74,7 +77,7 @@ const user = async () => {
 
 const spotify = {
     albumId,
-    artist,
+    artists,
     audioFeatures,
     following,
     trackId,
