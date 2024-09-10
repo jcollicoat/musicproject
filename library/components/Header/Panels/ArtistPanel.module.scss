@@ -1,99 +1,26 @@
 @import '@styles/constants.scss';
 
-.content {
-    display: grid;
-    gap: $space-xl;
-    padding: $space-xl 0;
+.image {
+    border-radius: 50%;
+}
 
-    .image {
-        border-radius: 50%;
-    }
+.follow {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-m;
+}
 
-    .details {
-        display: grid;
-        gap: $space-m;
-
-        .label {
-            color: var(--theme-color-tertiary);
-            font-size: 0.9em;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: 2.5em;
-        }
-
-        .follow {
-            align-items: center;
-            display: flex;
-            flex-wrap: wrap;
-            gap: $space-m;
-        }
-    }
-
-    .sidebar {
+.genres {
+    .header {
+        color: var(--theme-color-secondary);
         display: flex;
-        flex-direction: column;
-        gap: $space-m;
-        width: 100%;
-
-        .popularity {
-            .header {
-                color: var(--theme-color-secondary);
-                display: flex;
-                gap: 4px;
-                margin-bottom: 4px;
-            }
-
-            > span {
-                font-size: 2em;
-                font-weight: 600;
-            }
-        }
-
-        .genres {
-            .header {
-                color: var(--theme-color-secondary);
-                display: flex;
-                gap: 4px;
-                margin-bottom: 4px;
-            }
-
-            > span {
-                font-size: 1.5em;
-                font-weight: 600;
-            }
-        }
+        gap: 4px;
+        margin-bottom: 4px;
     }
 
-    @media (min-width: $breakpoint-2) {
-        align-items: center;
-        grid-template-columns: auto 1fr;
-
-        .image {
-            height: 200px;
-            width: 200px;
-        }
-
-        .details {
-            h1 {
-                font-size: 3em;
-            }
-        }
-
-        .sidebar {
-            grid-column: span 2;
-        }
-    }
-
-    @media (min-width: $breakpoint-3) {
-        align-items: center;
-        grid-template-columns: auto 3fr 2fr;
-        justify-items: start;
-        padding: $space-l 0;
-
-        .sidebar {
-            grid-column: span 1;
-        }
+    > span {
+        font-size: 1.5em;
+        font-weight: 600;
     }
 }
