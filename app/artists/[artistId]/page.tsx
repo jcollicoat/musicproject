@@ -1,4 +1,3 @@
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
 import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
@@ -22,7 +21,6 @@ export default async function Page({
     return (
         <>
             <Header artistId={artistId} />
-            <ClientLogger data={albums} />
             <main className={styles.main}>
                 <Panel
                     gridArea="tracks"
