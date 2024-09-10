@@ -26,8 +26,8 @@ const artists = {
         return builders.artist(artist);
     },
     relatedArtists: async (artistId: string) => {
-        const artists = await spotify.artists.relatedArtists(artistId);
-        return artists;
+        const response = await spotify.artists.relatedArtists(artistId);
+        return response.artists.map((artist) => builders.artist(artist));
     },
     topTracks: async (artistId: string) => {
         // eslint-disable-next-line no-use-before-define

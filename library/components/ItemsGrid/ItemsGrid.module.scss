@@ -1,0 +1,70 @@
+@import '@styles/constants.scss';
+
+.container {
+    container-type: inline-size;
+
+    .grid {
+        display: grid;
+        gap: $space-m;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        @container (width >= calc(360px + calc(#{$space-m} * 2))) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @container (width >= calc(480px + calc(#{$space-m} * 2))) {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        @container (width >= calc(720px + calc(#{$space-m} * 2))) {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        @container (width >= calc(1440px + calc(#{$space-m} * 2))) {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
+
+        .artist {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: $space-m;
+            padding: $space-m $space-s;
+
+            &:hover {
+                text-decoration: none;
+
+                .name {
+                    text-decoration: underline;
+                }
+            }
+
+            .image {
+                aspect-ratio: 1 / 1;
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    object-fit: cover;
+                }
+            }
+
+            .name {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .followers {
+                align-items: center;
+                color: var(--theme-color-secondary);
+                display: flex;
+                font-size: 0.9em;
+                gap: 4px;
+                margin-top: auto;
+            }
+        }
+    }
+}

@@ -26,7 +26,9 @@ const artists = {
         return await api.get<SpotifyArtist>(`artists/${artistId}`);
     },
     relatedArtists: async (artistId: string) => {
-        return await api.get(`artists/${artistId}/related-artists`);
+        return await api.get<{ artists: SpotifyArtist[] }>(
+            `artists/${artistId}/related-artists`,
+        );
     },
     topTracks: async (artistId: string, market: string) => {
         return await api.get<SpotifyArtistTopTracks>(
