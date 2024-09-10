@@ -80,8 +80,7 @@ img {
     object-fit: cover;
 }
 
-a,
-button {
+a {
     @include focus-outline;
 
     color: inherit;
