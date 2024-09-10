@@ -1,7 +1,6 @@
 @import '@styles/constants.scss';
 
 .main {
-    grid-auto-columns: minmax(0, 1fr);
     grid-template-areas:
         'tracks'
         'related'
