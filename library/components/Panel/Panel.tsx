@@ -28,7 +28,9 @@ export const Panel: FC<Props> = ({
                 backgroundImage && styles.hasImage,
             )}
             style={{
-                backgroundImage: `url(${backgroundImage})`,
+                backgroundImage: backgroundImage
+                    ? `url(${backgroundImage})`
+                    : undefined,
                 gridArea,
             }}
         >
