@@ -2,8 +2,15 @@ import { SpotifyImage } from '@spotify/types';
 import { albumId } from './builders/albums.builders';
 import { artist } from './builders/artists.builders';
 import { audioFeatures } from './builders/audio.builders';
-import { trackId, trackIds } from './builders/tracks.builders';
+import { track, tracks } from './builders/tracks.builders';
 import { user } from './builders/user.builders';
+
+const idAndName = (input: { id: string; name: string }) => {
+    return {
+        id: input.id,
+        name: input.name,
+    };
+};
 
 const images = (images: SpotifyImage[]) => {
     const sorted = images.sort((a, b) => {
@@ -24,9 +31,10 @@ const builders = {
     albumId,
     artist,
     audioFeatures,
+    idAndName,
     images,
-    trackId,
-    trackIds,
+    track,
+    tracks,
     user,
 };
 export { builders };

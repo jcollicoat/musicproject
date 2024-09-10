@@ -1,8 +1,7 @@
 import { titleCase } from '@api/helpers';
-import { User } from '@music/types/user.types';
 import { SpotifyUser } from '@spotify/types/user.types';
 
-const user = (user: SpotifyUser): User => ({
+const user = (user: SpotifyUser) => ({
     country: user.country,
     filterExplicit: user.explicit_content.filter_enabled,
     followers: user.followers.total,

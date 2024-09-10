@@ -1,6 +1,6 @@
 import { api } from './requests';
 import { SpotifyAlbum } from './types/albums.types';
-import { SpotifyArtist } from './types/artists.types';
+import { SpotifyArtist, SpotifyArtistTopTracks } from './types/artists.types';
 import { SpotifyAudioFeatures } from './types/audio.types';
 import { SpotifyTrack } from './types/tracks.types';
 import { SpotifyUser } from './types/user.types';
@@ -9,8 +9,18 @@ const albumId = async (albumId: string) => {
     return await api.get<SpotifyAlbum>(`albums/${albumId}`);
 };
 
-const artistId = async (artistId: string) => {
-    return await api.get<SpotifyArtist>(`artists/${artistId}`);
+const artist = {
+    id: async (artistId: string) => {
+        return await api.get<SpotifyArtist>(`artists/${artistId}`);
+    },
+    topTracks: async (artistId: string, market: string) => {
+        return await api.get<SpotifyArtistTopTracks>(
+            `artists/${artistId}/top-tracks`,
+            {
+                params: { market },
+            },
+        );
+    },
 };
 
 const audioFeatures = async (trackId: string) => {
@@ -52,7 +62,7 @@ const user = async () => {
 
 const spotify = {
     albumId,
-    artistId,
+    artist,
     audioFeatures,
     following,
     trackId,

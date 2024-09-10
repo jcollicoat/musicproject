@@ -6,9 +6,17 @@ const albumId = async (albumId: string) => {
     return builders.albumId(album);
 };
 
-const artistId = async (artistId: string) => {
-    const artist = await spotify.artistId(artistId);
-    return builders.artist(artist);
+const artist = {
+    id: async (artistId: string) => {
+        const artist = await spotify.artist.id(artistId);
+        return builders.artist(artist);
+    },
+    topTracks: async (artistId: string) => {
+        // eslint-disable-next-line no-use-before-define
+        const region = (await user()).country;
+        const response = await spotify.artist.topTracks(artistId, region);
+        return builders.tracks(response.tracks);
+    },
 };
 
 const audioFeatures = async (trackId: string) => {
@@ -25,7 +33,7 @@ const following = {
 
 const trackId = async (trackId: string) => {
     const track = await spotify.trackId(trackId);
-    return builders.trackId(track);
+    return builders.track(track);
 };
 
 const user = async () => {
@@ -35,7 +43,7 @@ const user = async () => {
 
 const music = {
     albumId,
-    artistId,
+    artist,
     audioFeatures,
     following,
     trackId,
