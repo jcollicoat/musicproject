@@ -114,6 +114,14 @@
             background-color: var(--inMenu-hover-background-color);
         }
     }
+
+    &.text {
+        background-color: unset;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .container {

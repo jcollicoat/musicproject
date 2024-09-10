@@ -24,7 +24,13 @@ const Content: FC<ContentProps> = ({ text, iconStart, iconEnd }) => (
     </>
 );
 
-type ButtonStyles = 'cta' | 'primary' | 'secondary' | 'tertiary' | 'inMenu';
+type ButtonStyles =
+    | 'cta'
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'inMenu'
+    | 'text';
 
 interface BaseProps {
     text: string;

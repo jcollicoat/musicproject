@@ -27,7 +27,8 @@ export const TracksList: FC<Props> = ({ tracks, initialLimit }) => {
             <Button
                 text={isExpanded ? 'Show less' : 'Show more'}
                 onClick={toggle}
-                style="tertiary"
+                iconEnd={isExpanded ? { icon: 'Minus' } : { icon: 'Plus' }}
+                style="text"
             />
         </div>
     );

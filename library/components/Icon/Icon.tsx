@@ -7,8 +7,10 @@ import { Home } from './Glyphs/Home';
 import { Info } from './Glyphs/Info';
 import { Lock } from './Glyphs/Lock';
 import { Menu } from './Glyphs/Menu';
+import { Minus } from './Glyphs/Minus';
 import { MusicNote } from './Glyphs/MusicNote';
 import { MusicNote2 } from './Glyphs/MusicNote2';
+import { Plus } from './Glyphs/Plus';
 import { Pulse } from './Glyphs/Pulse';
 import { Recent } from './Glyphs/Recent';
 import { Spark } from './Glyphs/Spark';
@@ -39,8 +41,10 @@ type Icons =
     | 'Loading'
     | 'Lock'
     | 'Menu'
+    | 'Minus'
     | 'MusicNote'
     | 'MusicNote2'
+    | 'Plus'
     | 'Pulse'
     | 'Recent'
     | 'Spark'
@@ -82,11 +86,17 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
         case 'Menu':
             Icon = Menu;
             break;
+        case 'Minus':
+            Icon = Minus;
+            break;
         case 'MusicNote':
             Icon = MusicNote;
             break;
         case 'MusicNote2':
             Icon = MusicNote2;
+            break;
+        case 'Plus':
+            Icon = Plus;
             break;
         case 'Pulse':
             Icon = Pulse;
