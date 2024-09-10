@@ -4,20 +4,20 @@
     grid-template-areas:
         'tracks'
         'albums'
-        'playlists'
         'related'
+        'playlists'
         'about';
 
     @media (min-width: $breakpoint-2) {
         grid-template-areas:
             'tracks tracks'
-            'albums playlists'
-            'related about';
+            'albums related'
+            'playlists about';
     }
 
     @media (min-width: $breakpoint-3) {
         grid-template-areas:
-            'tracks tracks tracks albums albums albums'
-            'playlists playlists related related about about';
+            'tracks tracks tracks tracks albums albums albums'
+            'related related related playlists playlists about about';
     }
 }
