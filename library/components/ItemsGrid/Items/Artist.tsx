@@ -18,6 +18,7 @@ export const Artist: FC<Props> = ({ artist }) => (
                 src={artist.images.medium}
                 alt={`Image for ${artist.name}`}
                 fill
+                sizes="115px"
             />
         </div>
         <div className={layout.content}>

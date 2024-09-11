@@ -18,6 +18,7 @@ export const Album: FC<Props> = ({ album }) => (
                 src={album.images.medium}
                 alt={`Image for ${album.name}`}
                 fill
+                sizes="115px"
             />
         </div>
         <div className={layout.content}>
