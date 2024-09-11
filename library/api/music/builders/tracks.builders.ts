@@ -41,9 +41,13 @@ const track = {
 
 const tracks = {
     full: (tracks: SpotifyTrack[]) =>
-        tracks.map((trackObj) => track.full(trackObj)),
+        tracks
+            .filter((track) => !track.is_local)
+            .map((trackObj) => track.full(trackObj)),
     simple: (tracks: SpotifyTrackSimple[]) =>
-        tracks.map((trackObj) => track.simple(trackObj)),
+        tracks
+            .filter((track) => !track.is_local)
+            .map((trackObj) => track.simple(trackObj)),
 };
 
 export { track, tracks };

@@ -49,7 +49,7 @@ const audio = {
 const playlists = {
     id: async (playlistId: string) => {
         const playlist = await spotify.playlists.id(playlistId);
-        return playlist;
+        return builders.playlist.full(playlist);
     },
 };
 

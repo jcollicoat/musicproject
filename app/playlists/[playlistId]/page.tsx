@@ -1,5 +1,5 @@
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
+import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
 import styles from './page.module.scss';
@@ -18,13 +18,16 @@ export default async function Page({
     return (
         <>
             <Header />
-            <ClientLogger data={playlist} />
             <main className={styles.main}>
                 <Panel
                     gridArea="tracks"
                     heading={{ text: 'Tracks', icon: 'MusicNote2' }}
                 >
-                    <div></div>
+                    <ItemsList
+                        tracks={playlist.tracks}
+                        fallbackImage={playlist.images?.medium ?? ''}
+                        overflowScroll={false}
+                    />
                 </Panel>
             </main>
         </>
