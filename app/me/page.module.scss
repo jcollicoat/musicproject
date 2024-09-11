@@ -2,30 +2,10 @@
 
 .main {
     grid-template-areas:
-        'library'
-        'recent'
-        'artists'
-        'albums'
-        'queue';
-
-    @media (min-width: $breakpoint-2) {
-        grid-template-areas:
-            'library library'
-            'recent queue'
-            'artists albums';
-    }
+        'playlists'
+        'recent';
 
     @media (min-width: $breakpoint-3) {
-        grid-template-columns: grid-cols(6);
-        grid-template-areas:
-            'library library library library library library'
-            'recent recent recent recent queue queue'
-            'artists artists artists albums albums albums';
-    }
-
-    @media (min-width: $breakpoint-4) {
-        grid-template-areas:
-            'library library library library recent recent'
-            'queue queue artists artists albums albums';
+        grid-template-areas: 'playlists playlists recent';
     }
 }

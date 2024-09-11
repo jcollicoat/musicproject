@@ -1,6 +1,5 @@
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';
-import { RecentlyPlayed } from '@components/RecentlyPlayed/RecentlyPlayed';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -13,32 +12,14 @@ export default function Page() {
             <Header user />
             <main className={styles.main}>
                 <Panel
-                    heading={{ text: 'Library', icon: 'Recent' }}
-                    gridArea="library"
+                    heading={{ text: 'Playlists', icon: 'Disc' }}
+                    gridArea="playlists"
                 >
                     <div></div>
                 </Panel>
                 <Panel
                     heading={{ text: 'Recent Tracks', icon: 'Recent' }}
                     gridArea="recent"
-                >
-                    <RecentlyPlayed />
-                </Panel>
-                <Panel
-                    heading={{ text: 'Queue', icon: 'Recent' }}
-                    gridArea="queue"
-                >
-                    <div></div>
-                </Panel>
-                <Panel
-                    heading={{ text: 'Artists', icon: 'Recent' }}
-                    gridArea="artists"
-                >
-                    <div></div>
-                </Panel>
-                <Panel
-                    heading={{ text: 'Albums', icon: 'Recent' }}
-                    gridArea="albums"
                 >
                     <div></div>
                 </Panel>
