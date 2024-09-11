@@ -1,0 +1,11 @@
+@import '@styles/constants.scss';
+
+.main {
+    grid-template-areas:
+        'playlists'
+        'recent';
+
+    @media (min-width: $breakpoint-3) {
+        grid-template-areas: 'playlists playlists recent';
+    }
+}
