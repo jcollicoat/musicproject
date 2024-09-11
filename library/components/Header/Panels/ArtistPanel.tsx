@@ -14,7 +14,7 @@ interface Props {
 
 export const ArtistPanel: FC<Props> = async ({ artistId }) => {
     const artist = await music.artists.id(artistId);
-    const isFollowing = await music.following.artistId(artistId);
+    const isFollowing = await music.user.following.artist(artistId);
 
     return (
         <Panel element="div" backgroundImage={artist.images.large}>

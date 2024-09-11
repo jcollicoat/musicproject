@@ -44,19 +44,20 @@ const audioFeatures = async (trackId: string) => {
     return builders.audioFeatures(audioFeatures);
 };
 
-const following = {
-    artistId: async (artistId: string) => {
-        const isFollowing = await spotify.following.check.artistIds([artistId]);
-        return isFollowing[0];
-    },
-};
-
 const trackId = async (trackId: string) => {
     const track = await spotify.trackId(trackId);
     return builders.track.full(track);
 };
 
 const user = {
+    following: {
+        artist: async (artistId: string) => {
+            const isFollowing = await spotify.user.following.artists([
+                artistId,
+            ]);
+            return isFollowing[0];
+        },
+    },
     playlists: async () => {
         const playlists = await spotify.user.playlists();
         return builders.playlists.simple(playlists.items);
@@ -77,7 +78,6 @@ const music = {
     albums,
     artists,
     audioFeatures,
-    following,
     trackId,
     user,
 };

@@ -48,15 +48,7 @@ const audioFeatures = async (trackId: string) => {
     return await api.get<SpotifyAudioFeatures>(`audio-features/${trackId}`);
 };
 
-const following = {
-    check: {
-        artistIds: async (artistIds: string[]) => {
-            return await api.get<boolean[]>('me/following/contains', {
-                params: { type: 'artist', ids: artistIds.join(',') },
-                doNotCache: true,
-            });
-        },
-    },
+const follow = {
     add: {
         artistIds: async (artistIds: string[]) => {
             return await api.action('me/following', 'PUT', {
@@ -78,6 +70,14 @@ const trackId = async (trackId: string) => {
 };
 
 const user = {
+    following: {
+        artists: async (artistIds: string[]) => {
+            return await api.get<boolean[]>('me/following/contains', {
+                params: { type: 'artist', ids: artistIds.join(',') },
+                doNotCache: true,
+            });
+        },
+    },
     playlists: async () => {
         return await api.get<SpotifySearchGroup<SpotifyPlaylistSimple>>(
             'me/playlists',
@@ -101,7 +101,7 @@ const spotify = {
     albums,
     artists,
     audioFeatures,
-    following,
+    follow,
     trackId,
     user,
 };
