@@ -21,9 +21,12 @@ export const useOverflow = (enabled: boolean) => {
                 setHasOverflowTop(false);
             }
 
-            if (scrollerHeight + scrollTop < contentHeight) {
+            if (scrollerHeight + Math.ceil(scrollTop) < contentHeight) {
                 setHasOverflowBottom(true);
-            } else if (scrollerHeight + scrollTop === contentHeight) {
+            } else if (
+                scrollerHeight + Math.ceil(scrollTop) ===
+                contentHeight
+            ) {
                 setHasOverflowBottom(false);
             }
         }

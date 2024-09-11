@@ -20,9 +20,9 @@ export const useOverflow = () => {
             setHasOverflowLeft(false);
         }
 
-        if (scrollerWidth + scrollLeft < contentWidth) {
+        if (scrollerWidth + Math.ceil(scrollLeft) < contentWidth) {
             setHasOverflowRight(true);
-        } else if (scrollerWidth + scrollLeft === contentWidth) {
+        } else if (scrollerWidth + Math.ceil(scrollLeft) === contentWidth) {
             setHasOverflowRight(false);
         }
     };
