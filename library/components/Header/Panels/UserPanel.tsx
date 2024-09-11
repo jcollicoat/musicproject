@@ -7,7 +7,7 @@ import layout from './layout.module.scss';
 import styles from './UserPanel.module.scss';
 
 export const UserPanel: FC = async () => {
-    const user = await music.user();
+    const user = await music.user.profile();
 
     return (
         <Panel element="div">

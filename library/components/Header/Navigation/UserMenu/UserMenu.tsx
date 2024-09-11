@@ -53,7 +53,7 @@ export const UserMenu: FC = async () => {
     const session = await getServerSession();
     if (!session) return null;
 
-    const user = await music.user();
+    const user = await music.user.profile();
 
     const buttons: ComponentProps<typeof Button>[] = [theme, signout];
     if (ENV === 'development') {

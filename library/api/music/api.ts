@@ -33,7 +33,7 @@ const artists = {
     },
     topTracks: async (artistId: string) => {
         // eslint-disable-next-line no-use-before-define
-        const region = (await user()).country;
+        const region = (await user.profile()).country;
         const response = await spotify.artists.topTracks(artistId, region);
         return builders.tracks.full(response.tracks);
     },
@@ -56,9 +56,17 @@ const trackId = async (trackId: string) => {
     return builders.track.full(track);
 };
 
-const user = async () => {
-    const user = await spotify.user();
-    return builders.user(user);
+const user = {
+    profile: async () => {
+        const user = await spotify.user.profile();
+        return builders.user(user);
+    },
+    recentTracks: async () => {
+        const recentTracks = await spotify.user.recentTracks();
+        return builders.tracks.full(
+            recentTracks.items.map((item) => item.track),
+        );
+    },
 };
 
 const music = {
