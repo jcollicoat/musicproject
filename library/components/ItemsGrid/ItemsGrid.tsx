@@ -17,18 +17,16 @@ export const ItemsGrid: FC<Props> = ({ albums, artists }) => {
     if (!items) return null;
 
     return (
-        <div className={styles.container}>
-            <div className={styles.scroller}>
-                <div className={styles.grid}>
-                    {albums &&
-                        albums.map((album) => (
-                            <Album key={album.id} album={album} />
-                        ))}
-                    {artists &&
-                        artists.map((artist) => (
-                            <Artist key={artist.id} artist={artist} />
-                        ))}
-                </div>
+        <div className={styles.scroller}>
+            <div className={styles.grid}>
+                {albums &&
+                    albums.map((album) => (
+                        <Album key={album.id} album={album} />
+                    ))}
+                {artists &&
+                    artists.map((artist) => (
+                        <Artist key={artist.id} artist={artist} />
+                    ))}
             </div>
         </div>
     );
