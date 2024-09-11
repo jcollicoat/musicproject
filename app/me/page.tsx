@@ -1,5 +1,5 @@
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
+import { ItemsGrid } from '@components/ItemsGrid/ItemsGrid';
 import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
@@ -16,13 +16,12 @@ export default async function Page() {
     return (
         <>
             <Header user />
-            <ClientLogger data={playlists} />
             <main className={styles.main}>
                 <Panel
                     heading={{ text: 'Playlists', icon: 'Disc' }}
                     gridArea="playlists"
                 >
-                    <div></div>
+                    <ItemsGrid playlists={playlists} />
                 </Panel>
                 <Panel
                     heading={{ text: 'Recent Tracks', icon: 'Recent' }}

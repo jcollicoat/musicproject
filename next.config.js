@@ -13,6 +13,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'platform-lookaside.fbsbx.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'image-cdn-*.spotifycdn.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'mosaic.scdn.co',
+            },
         ],
     },
 };
