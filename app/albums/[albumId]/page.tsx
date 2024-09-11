@@ -1,4 +1,3 @@
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
 import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
@@ -20,7 +19,6 @@ export default async function Page({
         <>
             <Header albumId={albumId} />
             <main className={styles.main}>
-                <ClientLogger data={album} />
                 <Panel gridArea="tracks">
                     <ItemsList
                         tracks={album.tracks}
