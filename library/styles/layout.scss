@@ -60,6 +60,7 @@ main {
     display: grid;
     gap: $space-m;
     grid-auto-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
 }
 
 img {

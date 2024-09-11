@@ -20,17 +20,19 @@ export const Album: FC<Props> = ({ album }) => (
                 fill
             />
         </div>
-        <span className={layout.name}>{album.name}</span>
-        <div className={layout.label}>
-            <Icon icon="Disc" />
-            <span>
-                {album.totalTracks}{' '}
-                {album.totalTracks === 1 ? 'track' : 'tracks'}
-            </span>
-        </div>
-        <div className={layout.label}>
-            <Icon icon="Calendar" />
-            <span>{album.releaseDate.exact.split('-')[0]}</span>
+        <div className={layout.content}>
+            <span className={layout.name}>{album.name}</span>
+            <div className={layout.label}>
+                <Icon icon="Disc" />
+                <span>
+                    {album.totalTracks}{' '}
+                    {album.totalTracks === 1 ? 'track' : 'tracks'}
+                </span>
+            </div>
+            <div className={layout.label}>
+                <Icon icon="Calendar" />
+                <span>{album.releaseDate.exact.split('-')[0]}</span>
+            </div>
         </div>
     </Link>
 );

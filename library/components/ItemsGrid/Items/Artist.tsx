@@ -20,13 +20,15 @@ export const Artist: FC<Props> = ({ artist }) => (
                 fill
             />
         </div>
-        <span className={layout.name}>{artist.name}</span>
-        <div className={layout.label}>
-            <Icon icon="Heart" />
-            <span>
-                {artist.followers.display}{' '}
-                {artist.followers.total === 1 ? 'follower' : 'followers'}
-            </span>
+        <div className={layout.content}>
+            <span className={layout.name}>{artist.name}</span>
+            <div className={layout.label}>
+                <Icon icon="Heart" />
+                <span>
+                    {artist.followers.display}{' '}
+                    {artist.followers.total === 1 ? 'follower' : 'followers'}
+                </span>
+            </div>
         </div>
     </Link>
 );

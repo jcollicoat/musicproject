@@ -1,10 +1,24 @@
 @import '@styles/constants.scss';
 
-.wrapper {
-    .grid {
-        container-type: inline-size;
-        display: grid;
-        gap: $space-m;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
+$rows: 2;
+$row-height: 210px;
+$total-height: calc($row-height * $rows);
+$cell-height: calc($row-height - ($space-m / $rows));
+
+.container {
+    container-type: inline-size;
+
+    .scroller {
+        max-height: $total-height;
+        overflow-x: scroll;
+        width: 100%;
+
+        .grid {
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-rows: repeat($rows, minmax(0, $cell-height));
+            grid-auto-columns: minmax(130px, 1fr);
+            gap: $space-m;
+        }
     }
 }

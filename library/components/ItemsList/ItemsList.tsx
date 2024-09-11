@@ -1,7 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
-import { Button } from '@components/Button/Button';
+import { FC } from 'react';
 import { music } from '@music/api';
 import { Album } from './Items/Album';
 import { Track } from './Items/Track';
@@ -13,36 +12,24 @@ type Tracks = Awaited<ReturnType<typeof music.trackId>>[];
 interface Props {
     albums?: Albums;
     tracks?: Tracks;
-    initialLimit: number;
 }
 
-export const ItemsList: FC<Props> = ({ albums, tracks, initialLimit }) => {
-    const [limit, setLimit] = useState(initialLimit);
-    const isExpanded = limit !== initialLimit;
-
+export const ItemsList: FC<Props> = ({ albums, tracks }) => {
     const items = albums || tracks;
     if (!items) return null;
 
-    const toggle = () => {
-        setLimit(isExpanded ? initialLimit : items.length);
-    };
-
     return (
-        <div className={styles.list}>
-            {tracks &&
-                tracks
-                    .slice(0, limit)
-                    .map((track) => <Track key={track.id} track={track} />)}
-            {albums &&
-                albums
-                    .slice(0, limit)
-                    .map((album) => <Album key={album.id} album={album} />)}
-            <Button
-                text={isExpanded ? 'Show less' : 'Show more'}
-                onClick={toggle}
-                iconEnd={isExpanded ? { icon: 'Minus' } : { icon: 'Plus' }}
-                style="text"
-            />
+        <div className={styles.scroller}>
+            <div className={styles.list}>
+                {tracks &&
+                    tracks.map((track) => (
+                        <Track key={track.id} track={track} />
+                    ))}
+                {albums &&
+                    albums.map((album) => (
+                        <Album key={album.id} album={album} />
+                    ))}
+            </div>
         </div>
     );
 };

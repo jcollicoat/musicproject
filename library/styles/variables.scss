@@ -36,6 +36,7 @@
     --theme-shade-min-rgb: 0, 0, 0;
     --theme-shade-max: rgb(255, 255, 255);
     --theme-shade-max-rgb: 255, 255, 255;
+    --theme-shade-liftoff: rgba(var(--theme-shade-max-rgb), 0.075);
 
     .theme-light {
         --theme-background-color: var(--color-grey-10);
@@ -47,5 +48,6 @@
         --theme-shade-min-rgb: 255, 255, 255;
         --theme-shade-max: rgb(0, 0, 0);
         --theme-shade-max-rgb: 0, 0, 0;
+        --theme-shade-liftoff: rgba(var(--theme-shade-max-rgb), 0.05);
     }
 }

@@ -28,19 +28,19 @@ export default async function Page({
                     gridArea="tracks"
                     heading={{ text: 'Top Tracks', icon: 'MusicNote2' }}
                 >
-                    <ItemsList tracks={topTracks} initialLimit={5} />
+                    <ItemsList tracks={topTracks} />
                 </Panel>
                 <Panel
                     gridArea="albums"
                     heading={{ text: 'Albums', icon: 'Disc' }}
                 >
-                    <ItemsGrid albums={albums} initialLimit={12} />
+                    <ItemsGrid albums={albums} />
                 </Panel>
                 <Panel
                     gridArea="related"
                     heading={{ text: 'Related Artists', icon: 'User' }}
                 >
-                    <ItemsGrid artists={relatedArtists} initialLimit={12} />
+                    <ItemsGrid artists={relatedArtists} />
                 </Panel>
             </main>
         </>

@@ -1,12 +1,14 @@
 @import '@styles/constants.scss';
 
 .item {
+    align-items: center;
     background-color: var(--theme-background-color);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: left center;
     border-radius: 5px;
     container-type: inline-size;
+    display: flex;
     padding: $space-s;
     position: relative;
     width: 100%;
@@ -32,6 +34,7 @@
         grid-template-columns: 48px 1fr auto;
         gap: $space-m;
         position: relative;
+        width: 100%;
         z-index: 2;
 
         .image {
