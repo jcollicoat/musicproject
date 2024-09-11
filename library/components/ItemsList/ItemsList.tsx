@@ -1,6 +1,7 @@
 'use client';
 
-import { FC } from 'react';
+import classNames from 'classnames';
+import { FC, useRef, useState } from 'react';
 import { music } from '@music/api';
 import { Album } from './Items/Album';
 import { Track } from './Items/Track';
@@ -15,12 +16,44 @@ interface Props {
 }
 
 export const ItemsList: FC<Props> = ({ albums, tracks }) => {
+    const scrollerRef = useRef<HTMLDivElement>(null);
+    const [hasOverflowTop, setHasOverflowTop] = useState(false);
+    const [hasOverflowBottom, setHasOverflowBottom] = useState(false);
+
+    const calculate = () => {
+        const scrollerHeight = scrollerRef.current?.clientHeight;
+        const contentHeight = scrollerRef.current?.scrollHeight;
+        const scrollTop = scrollerRef.current?.scrollTop;
+
+        if (!scrollerHeight || !contentHeight || scrollTop === undefined) {
+            return;
+        }
+
+        if (scrollTop > 0) {
+            setHasOverflowTop(true);
+        } else {
+            setHasOverflowTop(false);
+        }
+
+        if (scrollerHeight + scrollTop < contentHeight) {
+            setHasOverflowBottom(true);
+        } else if (scrollerHeight + scrollTop === contentHeight) {
+            setHasOverflowBottom(false);
+        }
+    };
+
     const items = albums || tracks;
     if (!items) return null;
 
     return (
-        <div className={styles.scroller}>
-            <div className={styles.list}>
+        <div
+            className={classNames(
+                styles.scroller,
+                hasOverflowTop && styles.overflowTop,
+                hasOverflowBottom && styles.overflowBottom,
+            )}
+        >
+            <div className={styles.list} ref={scrollerRef} onScroll={calculate}>
                 {tracks &&
                     tracks.map((track) => (
                         <Track key={track.id} track={track} />
