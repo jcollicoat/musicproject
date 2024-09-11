@@ -11,7 +11,10 @@
 .panel {
     background-color: var(--theme-shade-min);
     border-radius: 8px;
-    padding: $space-xl $space-m;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+    padding: $space-m;
     width: 100%;
 
     &.hasImage {
@@ -67,7 +70,7 @@
         font-weight: 300;
         gap: 0.5em;
         grid-column: span 3;
-        margin-bottom: $space-xl;
+        margin-top: $space-m;
     }
 
     .panel {
