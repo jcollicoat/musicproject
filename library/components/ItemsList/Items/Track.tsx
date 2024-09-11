@@ -10,7 +10,7 @@ import layout from './layout.module.scss';
 
 interface Props {
     track:
-        | Awaited<ReturnType<typeof music.trackId>>
+        | Awaited<ReturnType<typeof music.tracks.id>>
         | Awaited<ReturnType<typeof music.albums.id>>['tracks'][0];
     fallbackImage: string;
 }

@@ -12,7 +12,7 @@ export default async function Page({
 }: {
     params: { trackId: string };
 }) {
-    const track = await music.trackId(trackId);
+    const track = await music.tracks.id(trackId);
 
     return (
         <>

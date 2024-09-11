@@ -10,7 +10,7 @@ import { useOverflow } from './useOverflow';
 
 type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
 type Tracks =
-    | Awaited<ReturnType<typeof music.trackId>>[]
+    | Awaited<ReturnType<typeof music.tracks.id>>[]
     | Awaited<ReturnType<typeof music.albums.id>>['tracks'];
 
 interface Props {

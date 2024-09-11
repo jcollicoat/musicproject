@@ -39,14 +39,18 @@ const artists = {
     },
 };
 
-const audioFeatures = async (trackId: string) => {
-    const audioFeatures = await spotify.audioFeatures(trackId);
-    return builders.audioFeatures(audioFeatures);
+const audio = {
+    features: async (trackId: string) => {
+        const audioFeatures = await spotify.audio.features(trackId);
+        return builders.audioFeatures(audioFeatures);
+    },
 };
 
-const trackId = async (trackId: string) => {
-    const track = await spotify.trackId(trackId);
-    return builders.track.full(track);
+const tracks = {
+    id: async (trackId: string) => {
+        const track = await spotify.tracks.id(trackId);
+        return builders.track.full(track);
+    },
 };
 
 const user = {
@@ -77,8 +81,8 @@ const user = {
 const music = {
     albums,
     artists,
-    audioFeatures,
-    trackId,
+    audio,
+    tracks,
     user,
 };
 export { music };

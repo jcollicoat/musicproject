@@ -44,8 +44,10 @@ const artists = {
     },
 };
 
-const audioFeatures = async (trackId: string) => {
-    return await api.get<SpotifyAudioFeatures>(`audio-features/${trackId}`);
+const audio = {
+    features: async (trackId: string) => {
+        return await api.get<SpotifyAudioFeatures>(`audio-features/${trackId}`);
+    },
 };
 
 const follow = {
@@ -65,8 +67,10 @@ const follow = {
     },
 };
 
-const trackId = async (trackId: string) => {
-    return await api.get<SpotifyTrack>(`tracks/${trackId}`);
+const tracks = {
+    id: async (trackId: string) => {
+        return await api.get<SpotifyTrack>(`tracks/${trackId}`);
+    },
 };
 
 const user = {
@@ -100,9 +104,9 @@ const user = {
 const spotify = {
     albums,
     artists,
-    audioFeatures,
+    audio,
     follow,
-    trackId,
+    tracks,
     user,
 };
 export { spotify };

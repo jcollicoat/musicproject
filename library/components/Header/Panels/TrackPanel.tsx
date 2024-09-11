@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const TrackPanel: FC<Props> = async ({ trackId }) => {
-    const track = await music.trackId(trackId);
+    const track = await music.tracks.id(trackId);
     const album = await music.albums.id(track.album.id);
 
     return (
