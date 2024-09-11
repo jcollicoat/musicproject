@@ -1,17 +1,17 @@
 import Image from 'next/image';
 import { FC } from 'react';
+import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
-import sharedStyles from './sharedStyles.module.scss';
+import layout from './layout.module.scss';
 import styles from './UserPanel.module.scss';
-import { Icon } from '@components/Icon/Icon';
 
 export const UserPanel: FC = async () => {
     const user = await music.user();
 
     return (
         <Panel element="div">
-            <div className={sharedStyles.content}>
+            <div className={layout.content}>
                 <Image
                     src={user.images.large}
                     alt={`${user.name}'s profile picture`}
@@ -19,11 +19,11 @@ export const UserPanel: FC = async () => {
                     width={140}
                     className={styles.image}
                 />
-                <div className={sharedStyles.details}>
-                    <span className={sharedStyles.label}>{user.name}</span>
+                <div className={layout.details}>
+                    <span className={layout.label}>{user.name}</span>
                     <h1>My Library</h1>
-                    <div className={sharedStyles.section}>
-                        <div className={sharedStyles.item}>
+                    <div className={layout.section}>
+                        <div className={layout.item}>
                             <Icon icon="Heart" />
                             <span>
                                 {user.followers}{' '}
@@ -33,8 +33,8 @@ export const UserPanel: FC = async () => {
                             </span>
                         </div>
                     </div>
-                    <div className={sharedStyles.section}>
-                        <div className={sharedStyles.item}>
+                    <div className={layout.section}>
+                        <div className={layout.item}>
                             <Icon icon="Info" />
                             <span>{user.product} User</span>
                         </div>

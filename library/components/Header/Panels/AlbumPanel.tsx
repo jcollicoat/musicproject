@@ -8,7 +8,7 @@ import { Panel } from '@components/Panel/Panel';
 import { TimeText } from '@components/TimeText/TimeText';
 import { music } from '@music/api';
 import styles from './AlbumPanel.module.scss';
-import sharedStyles from './sharedStyles.module.scss';
+import layout from './layout.module.scss';
 
 interface Props {
     albumId: string;
@@ -19,44 +19,42 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
 
     return (
         <Panel element="div" backgroundImage={album.images.large}>
-            <div className={sharedStyles.content}>
+            <div className={layout.content}>
                 <Image
                     src={album.images.large}
                     alt={album.name}
                     height={160}
                     width={160}
-                    className={classNames(sharedStyles.image, styles.image)}
+                    className={classNames(layout.image, styles.image)}
                 />
-                <div className={sharedStyles.details}>
-                    <span className={sharedStyles.label}>
-                        {album.albumType}
-                    </span>
+                <div className={layout.details}>
+                    <span className={layout.label}>{album.albumType}</span>
                     <h1>{album.name}</h1>
-                    <div className={sharedStyles.section}>
-                        <div className={sharedStyles.item}>
+                    <div className={layout.section}>
+                        <div className={layout.item}>
                             <Icon icon="User" />
                             <LinkedArtists artists={album.artists} />
                         </div>
                     </div>
-                    <div className={sharedStyles.section}>
-                        <div className={sharedStyles.item}>
+                    <div className={layout.section}>
+                        <div className={layout.item}>
                             <Icon icon="Disc" />
                             <span>
                                 {album.totalTracks}{' '}
                                 {album.totalTracks === 1 ? 'track' : 'tracks'}
                             </span>
                         </div>
-                        <div className={sharedStyles.item}>
+                        <div className={layout.item}>
                             <Icon icon="Clock" />
                             <TimeText durationMs={album.length} />
                         </div>
-                        <div className={sharedStyles.item}>
+                        <div className={layout.item}>
                             <Icon icon="Calendar" />
                             <span>Released on {album.releaseDate.display}</span>
                         </div>
                     </div>
                 </div>
-                <div className={sharedStyles.sidebar}>
+                <div className={layout.sidebar}>
                     <DataPoint
                         name="Popularity"
                         value={album.popularity}
