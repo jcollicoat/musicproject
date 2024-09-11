@@ -23,10 +23,10 @@
         display: flex;
         font-size: 0.9em;
         justify-content: space-between;
-        margin-bottom: neg($space-m);
         padding: $space-m;
 
         &.hasPanel {
+            margin-bottom: neg($space-m);
             padding-bottom: calc($space-m * 2);
         }
 
