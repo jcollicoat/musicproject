@@ -13,14 +13,11 @@ export const Album: FC<Props> = ({ album }) => {
     const { albumType, id, images, name, releaseDate, totalTracks } = album;
 
     return (
-        <div
-            className={layout.item}
-            style={{ backgroundImage: `url(${images.large})` }}
-        >
+        <div className={layout.item}>
             <div className={layout.content}>
                 <Image
-                    src={album.images.medium}
-                    alt={album.name}
+                    src={images.medium}
+                    alt={name}
                     height={60}
                     width={60}
                     className={layout.image}

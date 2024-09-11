@@ -1,7 +1,7 @@
 @import '@styles/constants.scss';
 
 .tile {
-    background-color: var(--theme-shade-liftoff);
+    background-color: var(--theme-tile-color);
     border-radius: 8px;
     display: flex;
     flex-direction: column;

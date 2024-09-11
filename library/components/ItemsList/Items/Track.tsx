@@ -18,15 +18,13 @@ interface Props {
 export const Track: FC<Props> = ({ track, fallbackImage }) => {
     const { artists, durationMs, id, name } = track;
 
-    const bg = 'album' in track ? track.album.images.large : fallbackImage;
-    const albumImage =
-        'album' in track ? track.album.images.medium : fallbackImage;
+    const image = 'album' in track ? track.album.images.medium : fallbackImage;
 
     return (
-        <div className={layout.item} style={{ backgroundImage: `url(${bg})` }}>
+        <div className={layout.item}>
             <div className={layout.content}>
                 <Image
-                    src={albumImage}
+                    src={image}
                     alt=""
                     height={60}
                     width={60}

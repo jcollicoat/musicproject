@@ -20,15 +20,15 @@
     --color-grey-9: rgb(244, 244, 245);
     --color-grey-10: rgb(250, 250, 250);
 
-    --rgb-color-grey-0: 9, 9, 13;
-    --rgb-color-grey-1: 24, 24, 27;
-    --rgb-color-grey-9: 244, 244, 245;
-    --rgb-color-grey-10: 250, 250, 250;
+    --color-grey-0-rgb: 9, 9, 13;
+    --color-grey-1-rgb: 24, 24, 27;
+    --color-grey-9-rgb: 244, 244, 245;
+    --color-grey-10-rgb: 250, 250, 250;
 
     // Variables
 
     --theme-background-color: var(--color-grey-0);
-    --theme-background-color-rgb: var(--rgb-color-grey-0);
+    --theme-background-color-rgb: var(--color-grey-0-rgb);
     --theme-color: var(--color-grey-9);
     --theme-color-secondary: var(--color-grey-6);
     --theme-color-tertiary: var(--color-grey-5);
@@ -37,10 +37,12 @@
     --theme-shade-max: rgb(255, 255, 255);
     --theme-shade-max-rgb: 255, 255, 255;
     --theme-shade-liftoff: rgba(var(--theme-shade-max-rgb), 0.075);
+    --theme-tile-color: var(--color-grey-1);
+    --theme-tile-color-rgb: var(--color-grey-1-rgb);
 
     .theme-light {
         --theme-background-color: var(--color-grey-10);
-        --theme-background-color-rgb: var(--rgb-color-grey-10);
+        --theme-background-color-rgb: var(--color-grey-10-rgb);
         --theme-color: var(--color-grey-0);
         --theme-color-secondary: var(--color-grey-5);
         --theme-color-tertiary: var(--color-grey-6);
@@ -49,5 +51,7 @@
         --theme-shade-max: rgb(0, 0, 0);
         --theme-shade-max-rgb: 0, 0, 0;
         --theme-shade-liftoff: rgba(var(--theme-shade-max-rgb), 0.05);
+        --theme-tile-color: var(--color-grey-9);
+        --theme-tile-color-rgb: var(--color-grey-9-rgb);
     }
 }

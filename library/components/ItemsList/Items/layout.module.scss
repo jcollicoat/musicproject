@@ -2,31 +2,13 @@
 
 .item {
     align-items: center;
-    background-color: var(--theme-background-color);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: left center;
+    background-color: var(--theme-tile-color);
     border-radius: 5px;
     container-type: inline-size;
     display: flex;
     padding: $space-s;
     position: relative;
     width: 100%;
-
-    &::before {
-        background-image: linear-gradient(
-            to left,
-            var(--theme-background-color),
-            rgba(var(--theme-background-color-rgb), 0.95)
-        );
-        content: '';
-        left: 0;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-    }
 
     .content {
         align-items: center;
@@ -54,8 +36,8 @@
             &::after {
                 background-image: linear-gradient(
                     to left,
-                    var(--theme-background-color),
-                    rgba(var(--theme-background-color-rgb), 0)
+                    var(--theme-tile-color),
+                    rgba(var(--theme-tile-color-rgb), 0)
                 );
                 content: '';
                 height: 100%;

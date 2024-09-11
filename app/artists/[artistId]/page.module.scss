@@ -5,12 +5,11 @@
         'tracks'
         'albums'
         'related'
-        'playlists'
-        'about';
+        'albums2';
 
     @media (min-width: $breakpoint-2) {
         grid-template-areas:
             'tracks albums'
-            'related related';
+            'albums2 related';
     }
 }

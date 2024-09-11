@@ -28,7 +28,13 @@ export default async function Page({
                     gridArea="tracks"
                     heading={{ text: 'Top Tracks', icon: 'MusicNote2' }}
                 >
-                    <ItemsList tracks={topTracks} />
+                    <ItemsList tracks={topTracks} fallbackImage="" />
+                </Panel>
+                <Panel
+                    gridArea="albums2"
+                    heading={{ text: 'Top Tracks', icon: 'MusicNote2' }}
+                >
+                    <ItemsList albums={albums} fallbackImage="" />
                 </Panel>
                 <Panel
                     gridArea="albums"
