@@ -57,7 +57,7 @@ $cell-height: calc($row-height - ($space-m / $rows));
         display: grid;
         grid-auto-flow: column;
         grid-template-rows: repeat($rows, minmax(0, $cell-height));
-        grid-auto-columns: minmax(130px, 1fr);
+        grid-auto-columns: 130px;
         gap: $space-m;
         overflow-x: scroll;
         scrollbar-width: none;
