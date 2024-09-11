@@ -21,9 +21,9 @@ const images = (images: SpotifyImage[]) => {
     });
 
     return {
-        small: sorted[0].url,
-        medium: sorted[1]?.url ?? sorted[0].url,
-        large: sorted[sorted.length - 1].url,
+        small: sorted[0]?.url,
+        medium: sorted[1]?.url ?? sorted[0]?.url,
+        large: sorted[sorted.length - 1]?.url,
     };
 };
 
