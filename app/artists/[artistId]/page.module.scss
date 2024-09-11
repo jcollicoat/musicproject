@@ -4,12 +4,11 @@
     grid-template-areas:
         'tracks'
         'albums'
-        'related'
-        'albums2';
+        'related';
 
     @media (min-width: $breakpoint-2) {
         grid-template-areas:
             'tracks albums'
-            'albums2 related';
+            'related related';
     }
 }

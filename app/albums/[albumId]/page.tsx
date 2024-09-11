@@ -29,10 +29,6 @@ export default async function Page({
                         overflowScroll={false}
                     />
                 </Panel>
-                <Panel gridArea="related">Related</Panel>
-                <Panel gridArea="playlists">In Playlists</Panel>
-                <Panel gridArea="artist">Artist</Panel>
-                <Panel gridArea="about">About</Panel>
             </main>
         </>
     );

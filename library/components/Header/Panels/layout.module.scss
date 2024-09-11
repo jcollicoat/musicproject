@@ -3,7 +3,6 @@
 .content {
     display: grid;
     gap: $space-xl;
-    padding: $space-xl 0;
 
     .details {
         display: grid;
@@ -81,7 +80,6 @@
     @media (min-width: $breakpoint-3) {
         grid-template-columns: auto 3fr 2fr;
         justify-items: start;
-        padding: $space-l 0;
 
         .sidebar {
             grid-column: span 1;
