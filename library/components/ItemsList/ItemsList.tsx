@@ -1,11 +1,12 @@
 'use client';
 
 import classNames from 'classnames';
-import { FC, useRef, useState } from 'react';
+import { FC } from 'react';
 import { music } from '@music/api';
 import { Album } from './Items/Album';
 import { Track } from './Items/Track';
 import styles from './ItemsList.module.scss';
+import { useOverflow } from './useOverflow';
 
 type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
 type Tracks =
@@ -16,34 +17,17 @@ interface Props {
     albums?: Albums;
     tracks?: Tracks;
     fallbackImage: string;
+    overflowScroll?: boolean;
 }
 
-export const ItemsList: FC<Props> = ({ albums, tracks, fallbackImage }) => {
-    const scrollerRef = useRef<HTMLDivElement>(null);
-    const [hasOverflowTop, setHasOverflowTop] = useState(false);
-    const [hasOverflowBottom, setHasOverflowBottom] = useState(false);
-
-    const calculate = () => {
-        const scrollerHeight = scrollerRef.current?.clientHeight;
-        const contentHeight = scrollerRef.current?.scrollHeight;
-        const scrollTop = scrollerRef.current?.scrollTop;
-
-        if (!scrollerHeight || !contentHeight || scrollTop === undefined) {
-            return;
-        }
-
-        if (scrollTop > 0) {
-            setHasOverflowTop(true);
-        } else {
-            setHasOverflowTop(false);
-        }
-
-        if (scrollerHeight + scrollTop < contentHeight) {
-            setHasOverflowBottom(true);
-        } else if (scrollerHeight + scrollTop === contentHeight) {
-            setHasOverflowBottom(false);
-        }
-    };
+export const ItemsList: FC<Props> = ({
+    albums,
+    tracks,
+    fallbackImage,
+    overflowScroll = true,
+}) => {
+    const { scrollerRef, calculate, hasOverflowTop, hasOverflowBottom } =
+        useOverflow(overflowScroll);
 
     const items = albums || tracks;
     if (!items) return null;
@@ -51,7 +35,8 @@ export const ItemsList: FC<Props> = ({ albums, tracks, fallbackImage }) => {
     return (
         <div
             className={classNames(
-                styles.scroller,
+                styles.wrapper,
+                overflowScroll && styles.scroller,
                 hasOverflowTop && styles.overflowTop,
                 hasOverflowBottom && styles.overflowBottom,
             )}

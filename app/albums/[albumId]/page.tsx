@@ -19,10 +19,14 @@ export default async function Page({
         <>
             <Header albumId={albumId} />
             <main className={styles.main}>
-                <Panel gridArea="tracks">
+                <Panel
+                    gridArea="tracks"
+                    heading={{ text: 'Tracks', icon: 'MusicNote2' }}
+                >
                     <ItemsList
                         tracks={album.tracks}
                         fallbackImage={album.images.medium}
+                        overflowScroll={false}
                     />
                 </Panel>
                 <Panel gridArea="related">Related</Panel>
