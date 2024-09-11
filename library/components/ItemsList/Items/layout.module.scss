@@ -31,7 +31,7 @@
     .content {
         align-items: center;
         display: grid;
-        grid-template-columns: 48px 1fr auto;
+        grid-template-columns: 60px 1fr auto;
         gap: $space-m;
         position: relative;
         width: 100%;
@@ -85,12 +85,6 @@
             display: flex;
             flex-direction: column;
             font-size: 0.9em;
-        }
-    }
-
-    @media (min-width: $breakpoint-3) {
-        .content {
-            grid-template-columns: 60px 1fr auto;
         }
     }
 }
