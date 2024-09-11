@@ -9,21 +9,25 @@ import { music } from '@music/api';
 import layout from './layout.module.scss';
 
 interface Props {
-    track: Awaited<ReturnType<typeof music.trackId>>;
+    track:
+        | Awaited<ReturnType<typeof music.trackId>>
+        | Awaited<ReturnType<typeof music.albums.id>>['tracks'][0];
+    fallbackImage: string;
 }
 
-export const Track: FC<Props> = ({ track }) => {
-    const { album, artists, durationMs, id, name } = track;
+export const Track: FC<Props> = ({ track, fallbackImage }) => {
+    const { artists, durationMs, id, name } = track;
+
+    const bg = 'album' in track ? track.album.images.large : fallbackImage;
+    const albumImage =
+        'album' in track ? track.album.images.medium : fallbackImage;
 
     return (
-        <div
-            className={layout.item}
-            style={{ backgroundImage: `url(${album.images.large})` }}
-        >
+        <div className={layout.item} style={{ backgroundImage: `url(${bg})` }}>
             <div className={layout.content}>
                 <Image
-                    src={album.images.medium}
-                    alt={album.name}
+                    src={albumImage}
+                    alt=""
                     height={60}
                     width={60}
                     className={layout.image}
@@ -36,10 +40,12 @@ export const Track: FC<Props> = ({ track }) => {
                         <Icon icon="User" />
                         <LinkedArtists artists={artists} />
                     </div>
-                    <div className={layout.section}>
-                        <Icon icon="Disc" />
-                        <LinkedAlbum album={album} />
-                    </div>
+                    {'album' in track && (
+                        <div className={layout.section}>
+                            <Icon icon="Disc" />
+                            <LinkedAlbum album={track.album} />
+                        </div>
+                    )}
                 </div>
                 <div className={layout.data}>
                     <TimeText durationMs={durationMs} title="Track length" />

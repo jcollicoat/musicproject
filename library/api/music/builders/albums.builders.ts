@@ -5,7 +5,7 @@ import { SpotifyAlbum, SpotifyAlbumSimple } from '@spotify/types/albums.types';
 const albumDuration = (tracks: SpotifyAlbum['tracks']['items']) => {
     let durationMs = 0;
     tracks.forEach((track) => {
-        durationMs = durationMs + track.duration_ms;
+        durationMs += track.duration_ms;
     });
     return durationMs;
 };
@@ -26,7 +26,7 @@ const album = (album: SpotifyAlbum) => {
             exact: album.release_date,
         },
         totalTracks: album.total_tracks,
-        tracks: album.tracks.items.map((track) => builders.idAndName(track)),
+        tracks: builders.tracks.simple(album.tracks.items),
     };
 };
 

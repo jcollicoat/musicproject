@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const AlbumPanel: FC<Props> = async ({ albumId }) => {
-    const album = await music.albumId(albumId);
+    const album = await music.albums.id(albumId);
 
     return (
         <Panel element="div" backgroundImage={album.images.large}>

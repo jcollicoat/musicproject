@@ -6,8 +6,10 @@ import { SpotifySearchGroup } from './types/search.types';
 import { SpotifyTrack } from './types/tracks.types';
 import { SpotifyUser } from './types/user.types';
 
-const albumId = async (albumId: string) => {
-    return await api.get<SpotifyAlbum>(`albums/${albumId}`);
+const albums = {
+    id: async (albumId: string) => {
+        return await api.get<SpotifyAlbum>(`albums/${albumId}`);
+    },
 };
 
 const artists = {
@@ -78,7 +80,7 @@ const user = async () => {
 };
 
 const spotify = {
-    albumId,
+    albums,
     artists,
     audioFeatures,
     following,

@@ -1,9 +1,11 @@
 import { spotify } from '@spotify/api';
 import { builders } from './builders';
 
-const albumId = async (albumId: string) => {
-    const album = await spotify.albumId(albumId);
-    return builders.album(album);
+const albums = {
+    id: async (albumId: string) => {
+        const album = await spotify.albums.id(albumId);
+        return builders.album(album);
+    },
 };
 
 const artists = {
@@ -33,7 +35,7 @@ const artists = {
         // eslint-disable-next-line no-use-before-define
         const region = (await user()).country;
         const response = await spotify.artists.topTracks(artistId, region);
-        return builders.tracks(response.tracks);
+        return builders.tracks.full(response.tracks);
     },
 };
 
@@ -51,7 +53,7 @@ const following = {
 
 const trackId = async (trackId: string) => {
     const track = await spotify.trackId(trackId);
-    return builders.track(track);
+    return builders.track.full(track);
 };
 
 const user = async () => {
@@ -60,7 +62,7 @@ const user = async () => {
 };
 
 const music = {
-    albumId,
+    albums,
     artists,
     audioFeatures,
     following,

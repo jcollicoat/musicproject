@@ -8,14 +8,17 @@ import { Track } from './Items/Track';
 import styles from './ItemsList.module.scss';
 
 type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
-type Tracks = Awaited<ReturnType<typeof music.trackId>>[];
+type Tracks =
+    | Awaited<ReturnType<typeof music.trackId>>[]
+    | Awaited<ReturnType<typeof music.albums.id>>['tracks'];
 
 interface Props {
     albums?: Albums;
     tracks?: Tracks;
+    fallbackImage: string;
 }
 
-export const ItemsList: FC<Props> = ({ albums, tracks }) => {
+export const ItemsList: FC<Props> = ({ albums, tracks, fallbackImage }) => {
     const scrollerRef = useRef<HTMLDivElement>(null);
     const [hasOverflowTop, setHasOverflowTop] = useState(false);
     const [hasOverflowBottom, setHasOverflowBottom] = useState(false);
@@ -56,7 +59,11 @@ export const ItemsList: FC<Props> = ({ albums, tracks }) => {
             <div className={styles.list} ref={scrollerRef} onScroll={calculate}>
                 {tracks &&
                     tracks.map((track) => (
-                        <Track key={track.id} track={track} />
+                        <Track
+                            key={track.id}
+                            track={track}
+                            fallbackImage={fallbackImage}
+                        />
                     ))}
                 {albums &&
                     albums.map((album) => (

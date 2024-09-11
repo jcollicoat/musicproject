@@ -51,3 +51,8 @@ export interface SpotifyTrack {
     type: string;
     uri: string;
 }
+
+export type SpotifyTrackSimple = Omit<
+    SpotifyTrack,
+    'album' | 'external_ids' | 'popularity'
+>;

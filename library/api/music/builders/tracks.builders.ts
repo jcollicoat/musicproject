@@ -1,6 +1,6 @@
 import { titleCase } from '@api/helpers';
 import { builders } from '@music/builders';
-import { SpotifyTrack } from '@spotify/types/tracks.types';
+import { SpotifyTrack, SpotifyTrackSimple } from '@spotify/types/tracks.types';
 
 const trackAlbum = (album: SpotifyTrack['album']) => {
     return {
@@ -18,18 +18,32 @@ const trackAlbum = (album: SpotifyTrack['album']) => {
     };
 };
 
-const track = (track: SpotifyTrack) => ({
-    album: trackAlbum(track.album),
-    artists: track.artists.map((artist) => builders.idAndName(artist)),
-    durationMs: track.duration_ms,
-    explicit: track.explicit,
-    id: track.id,
-    name: track.name,
-    popularity: track.popularity,
-    previewUrl: track.preview_url ?? undefined,
-});
+const track = {
+    full: (track: SpotifyTrack) => ({
+        album: trackAlbum(track.album),
+        artists: track.artists.map((artist) => builders.idAndName(artist)),
+        durationMs: track.duration_ms,
+        explicit: track.explicit,
+        id: track.id,
+        name: track.name,
+        popularity: track.popularity,
+        previewUrl: track.preview_url ?? undefined,
+    }),
+    simple: (track: SpotifyTrackSimple) => ({
+        artists: track.artists.map((artist) => builders.idAndName(artist)),
+        durationMs: track.duration_ms,
+        explicit: track.explicit,
+        id: track.id,
+        name: track.name,
+        popularity: 'popularity' in track ? track.popularity : undefined,
+    }),
+};
 
-const tracks = (tracks: SpotifyTrack[]) =>
-    tracks.map((trackObj) => track(trackObj));
+const tracks = {
+    full: (tracks: SpotifyTrack[]) =>
+        tracks.map((trackObj) => track.full(trackObj)),
+    simple: (tracks: SpotifyTrackSimple[]) =>
+        tracks.map((trackObj) => track.simple(trackObj)),
+};
 
 export { track, tracks };
