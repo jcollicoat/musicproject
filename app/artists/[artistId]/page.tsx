@@ -1,4 +1,3 @@
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { Header } from '@components/Header/Header';
 import { ItemsGrid } from '@components/ItemsGrid/ItemsGrid';
 import { ItemsList } from '@components/ItemsList/ItemsList';
@@ -25,7 +24,6 @@ export default async function Page({
         <>
             <Header artistId={artistId} />
             <main className={styles.main}>
-                <ClientLogger data={relatedArtists} />
                 <Panel
                     gridArea="tracks"
                     heading={{ text: 'Top Tracks', icon: 'MusicNote2' }}
@@ -36,7 +34,7 @@ export default async function Page({
                     gridArea="albums"
                     heading={{ text: 'Albums', icon: 'Disc' }}
                 >
-                    <ItemsList albums={albums} initialLimit={5} />
+                    <ItemsGrid albums={albums} initialLimit={12} />
                 </Panel>
                 <Panel
                     gridArea="related"

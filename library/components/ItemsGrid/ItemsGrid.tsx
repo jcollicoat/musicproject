@@ -1,58 +1,45 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { FC, useState } from 'react';
 import { Button } from '@components/Button/Button';
-import { Icon } from '@components/Icon/Icon';
 import { music } from '@music/api';
+import { Album } from './Items/Album';
+import { Artist } from './Items/Artist';
 import styles from './ItemsGrid.module.scss';
 
+type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
 type Artists = Awaited<ReturnType<typeof music.artists.relatedArtists>>;
 
 interface Props {
+    albums?: Albums;
     artists?: Artists;
     initialLimit: number;
 }
 
-export const ItemsGrid: FC<Props> = ({ artists, initialLimit }) => {
+export const ItemsGrid: FC<Props> = ({ albums, artists, initialLimit }) => {
     const [limit, setLimit] = useState(initialLimit);
     const isExpanded = limit !== initialLimit;
 
-    if (!artists) return null;
+    const items = albums || artists;
+    if (!items) return null;
 
     const toggle = () => {
-        setLimit(isExpanded ? initialLimit : 18);
+        setLimit(isExpanded ? initialLimit : items.length);
     };
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.grid}>
-                {artists.slice(0, limit).map((artist) => (
-                    <Link
-                        key={artist.id}
-                        className={styles.artist}
-                        href={`/artists/${artist.id}`}
-                    >
-                        <div className={styles.image}>
-                            <Image
-                                src={artist.images.medium}
-                                alt={`Image for ${artist.name}`}
-                                fill
-                            />
-                        </div>
-                        <span className={styles.name}>{artist.name}</span>
-                        <div className={styles.followers}>
-                            <Icon icon="Heart" />
-                            <span>
-                                {artist.followers.display}{' '}
-                                {artist.followers.total === 1
-                                    ? 'follower'
-                                    : 'followers'}
-                            </span>
-                        </div>
-                    </Link>
-                ))}
+                {albums &&
+                    albums
+                        .slice(0, limit)
+                        .map((album) => <Album key={album.id} album={album} />)}
+                {artists &&
+                    artists
+                        .slice(0, limit)
+                        .map((artist) => (
+                            <Artist key={artist.id} artist={artist} />
+                        ))}
             </div>
             <Button
                 text={isExpanded ? 'Show less' : 'Show more'}

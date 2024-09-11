@@ -1,0 +1,66 @@
+@import '@styles/constants.scss';
+
+.tile {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-m;
+    grid-column: span 6;
+    padding: $space-m $space-s;
+
+    $min-width: 115px;
+    $break-3: calc(($min-width * 3) + ($space-m * 2));
+    $break-4: calc(($min-width * 4) + ($space-m * 3));
+    $break-5: calc(($min-width * 6) + ($space-m * 5));
+    $break-6: calc(($min-width * 12) + ($space-m * 11));
+
+    @container (width >= #{$break-3}) {
+        grid-column: span 4;
+    }
+
+    @container (width >= #{$break-4}) {
+        grid-column: span 3;
+    }
+
+    @container (width >= #{$break-5}) {
+        grid-column: span 2;
+    }
+
+    @container (width >= #{$break-6}) {
+        grid-column: span 1;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        .name {
+            text-decoration: underline;
+        }
+    }
+
+    .image {
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    .name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .label {
+        align-items: center;
+        color: var(--theme-color-secondary);
+        display: flex;
+        font-size: 0.9em;
+        gap: 4px;
+        margin-top: auto;
+    }
+}
