@@ -13,8 +13,4 @@
             'tracks albums'
             'related related';
     }
-
-    @media (min-width: $breakpoint-3) {
-        grid-template-areas: 'tracks albums related';
-    }
 }

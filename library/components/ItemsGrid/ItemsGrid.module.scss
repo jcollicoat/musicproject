@@ -1,28 +1,11 @@
 @import '@styles/constants.scss';
 
-.container {
-    container-type: inline-size;
-
+.wrapper {
     .grid {
+        container-type: inline-size;
         display: grid;
         gap: $space-m;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        @container (width >= calc(360px + calc(#{$space-m} * 2))) {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        @container (width >= calc(480px + calc(#{$space-m} * 2))) {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        @container (width >= calc(720px + calc(#{$space-m} * 2))) {
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-        }
-
-        @container (width >= calc(1440px + calc(#{$space-m} * 2))) {
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-        }
+        grid-template-columns: repeat(12, minmax(0, 1fr));
 
         .artist {
             background-color: rgba(255, 255, 255, 0.05);
@@ -30,7 +13,30 @@
             display: flex;
             flex-direction: column;
             gap: $space-m;
+            grid-column: span 6;
             padding: $space-m $space-s;
+
+            $min-width: 115px;
+            $break-3: calc(($min-width * 3) + ($space-m * 2));
+            $break-4: calc(($min-width * 4) + ($space-m * 3));
+            $break-5: calc(($min-width * 6) + ($space-m * 5));
+            $break-6: calc(($min-width * 12) + ($space-m * 11));
+
+            @container (width >= #{$break-3}) {
+                grid-column: span 4;
+            }
+
+            @container (width >= #{$break-4}) {
+                grid-column: span 3;
+            }
+
+            @container (width >= #{$break-5}) {
+                grid-column: span 2;
+            }
+
+            @container (width >= #{$break-6}) {
+                grid-column: span 1;
+            }
 
             &:hover {
                 text-decoration: none;

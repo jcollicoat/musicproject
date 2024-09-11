@@ -26,7 +26,7 @@ export const ItemsGrid: FC<Props> = ({ artists, initialLimit }) => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.wrapper}>
             <div className={styles.grid}>
                 {artists.slice(0, limit).map((artist) => (
                     <Link
