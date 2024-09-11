@@ -2,6 +2,7 @@ import { SpotifyImage } from '@spotify/types';
 import { album, albumSimple } from './builders/albums.builders';
 import { artist } from './builders/artists.builders';
 import { audioFeatures } from './builders/audio.builders';
+import { playlist, playlists } from './builders/playlists.builders';
 import { track, tracks } from './builders/tracks.builders';
 import { user } from './builders/user.builders';
 
@@ -34,6 +35,8 @@ const builders = {
     audioFeatures,
     idAndName,
     images,
+    playlist,
+    playlists,
     track,
     tracks,
     user,

@@ -3,6 +3,7 @@ import { SpotifyAlbum, SpotifyAlbumSimple } from './types/albums.types';
 import { SpotifyArtist, SpotifyArtistTopTracks } from './types/artists.types';
 import { SpotifyAudioFeatures } from './types/audio.types';
 import { SpotifyRecentlyPlayed } from './types/player.types';
+import { SpotifyPlaylistSimple } from './types/playlists.types';
 import { SpotifySearchGroup } from './types/search.types';
 import { SpotifyTrack } from './types/tracks.types';
 import { SpotifyUser } from './types/user.types';
@@ -77,6 +78,12 @@ const trackId = async (trackId: string) => {
 };
 
 const user = {
+    playlists: async () => {
+        return await api.get<SpotifySearchGroup<SpotifyPlaylistSimple>>(
+            'me/playlists',
+            { params: { limit: '20' } },
+        );
+    },
     profile: async () => {
         return await api.get<SpotifyUser>('me');
     },

@@ -32,13 +32,23 @@ export interface SpotifyPlaylist {
     followers: SpotifyFollowers;
     href: string;
     id: string;
-    images: SpotifyImage[];
+    images: SpotifyImage[] | null;
     name: string;
     owner: SpotifyPlaylistOwner;
     primary_color: string | null;
     public: boolean | null;
     snapshot_id: string;
-    type: string;
     tracks: SpotifyPlaylistTracks;
+    type: string;
     uri: string;
 }
+
+export type SpotifyPlaylistSimple = Omit<
+    SpotifyPlaylist,
+    'followers' | 'primary_color' | 'tracks'
+> & {
+    tracks: {
+        href: string;
+        total: number;
+    };
+};

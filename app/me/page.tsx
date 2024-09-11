@@ -10,12 +10,13 @@ export const metadata = {
 };
 
 export default async function Page() {
+    const playlists = await music.user.playlists();
     const recentTracks = await music.user.recentTracks();
 
     return (
         <>
             <Header user />
-            <ClientLogger data={recentTracks} />
+            <ClientLogger data={playlists} />
             <main className={styles.main}>
                 <Panel
                     heading={{ text: 'Playlists', icon: 'Disc' }}

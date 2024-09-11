@@ -57,6 +57,10 @@ const trackId = async (trackId: string) => {
 };
 
 const user = {
+    playlists: async () => {
+        const playlists = await spotify.user.playlists();
+        return builders.playlists.simple(playlists.items);
+    },
     profile: async () => {
         const user = await spotify.user.profile();
         return builders.user(user);
