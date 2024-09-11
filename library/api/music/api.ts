@@ -46,6 +46,13 @@ const audio = {
     },
 };
 
+const playlists = {
+    id: async (playlistId: string) => {
+        const playlist = await spotify.playlists.id(playlistId);
+        return playlist;
+    },
+};
+
 const tracks = {
     id: async (trackId: string) => {
         const track = await spotify.tracks.id(trackId);
@@ -82,6 +89,7 @@ const music = {
     albums,
     artists,
     audio,
+    playlists,
     tracks,
     user,
 };
