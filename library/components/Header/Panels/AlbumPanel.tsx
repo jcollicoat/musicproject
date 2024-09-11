@@ -64,6 +64,7 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
                         name="Label"
                         value={album.label}
                         icon="MusicNote"
+                        smallText
                     />
                 </div>
             </div>

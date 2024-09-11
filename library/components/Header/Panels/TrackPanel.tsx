@@ -68,6 +68,7 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                         name="Label"
                         value={album.label}
                         icon="MusicNote"
+                        smallText
                     />
                 </div>
             </div>

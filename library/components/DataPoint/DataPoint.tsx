@@ -7,21 +7,42 @@ interface Props {
     name: string;
     value: string | number;
     icon?: ComponentProps<typeof Icon>['icon'];
+    hasBar?: boolean;
+    smallText?: boolean;
 }
 
-export const DataPoint: FC<Props> = ({ name, value, icon }) => (
+export const DataPoint: FC<Props> = ({
+    name,
+    value,
+    icon,
+    hasBar,
+    smallText,
+}) => (
     <div className={styles.wrapper}>
+        {hasBar && (
+            <>
+                <div className={styles.background}></div>
+                <div
+                    className={styles.bar}
+                    style={{ height: `${value}%` }}
+                ></div>
+            </>
+        )}
         <div className={styles.header}>
             {icon && <Icon icon={icon} />}
             <span>{name}</span>
         </div>
         <span
-            className={classNames(
-                styles.value,
-                typeof value === 'number' && styles.large,
-            )}
+            className={classNames(styles.value, smallText && styles.smallText)}
         >
-            {value}
+            {hasBar ? (
+                <>
+                    {value}
+                    <span>%</span>
+                </>
+            ) : (
+                value
+            )}
         </span>
     </div>
 );

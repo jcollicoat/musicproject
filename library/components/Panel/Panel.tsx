@@ -40,7 +40,7 @@ export const Panel: FC<Props> = ({
                     {heading.text}
                 </h2>
             )}
-            {children}
+            <div className={styles.container}>{children}</div>
         </Element>
     );
 };

@@ -1,6 +1,31 @@
 @import '@styles/constants.scss';
 
 .wrapper {
+    &:has(.background) {
+        padding-left: $space-m;
+        position: relative;
+
+        .background,
+        .bar {
+            border-radius: 3px;
+            left: 0;
+            position: absolute;
+            width: 3px;
+        }
+
+        .background {
+            background-color: rgba(var(--color-primary-2-rgb), 0.25);
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bar {
+            bottom: 0;
+            background-color: var(--color-primary-2);
+            z-index: 2;
+        }
+    }
+
     .header {
         color: var(--theme-color-secondary);
         display: flex;
@@ -9,11 +34,15 @@
     }
 
     .value {
-        font-size: 1.5em;
+        font-size: 2em;
         font-weight: 600;
 
-        &.large {
-            font-size: 2em;
+        &.smallText {
+            font-size: 1.5em;
+        }
+
+        span {
+            font-size: 0.7em;
         }
     }
 }

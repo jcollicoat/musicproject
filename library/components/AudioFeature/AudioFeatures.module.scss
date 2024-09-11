@@ -1,0 +1,20 @@
+@import '@styles/constants.scss';
+
+.grid {
+    $column-width: 140px;
+    $cell-width: calc($column-width - ($space-xl / 2));
+    $disallow-5: calc($column-width * 5 + $space-xl * 4);
+    $allow-6: calc($column-width * 6 + $space-xl * 5);
+
+    display: grid;
+    gap: $space-xl;
+    grid-template-columns: repeat(auto-fill, minmax($column-width, 1fr));
+
+    @container (width >= #{$disallow-5}) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @container (width >= #{$allow-6}) {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}
