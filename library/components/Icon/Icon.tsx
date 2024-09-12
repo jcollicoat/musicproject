@@ -8,8 +8,7 @@ import { Info } from './Glyphs/Info';
 import { Lock } from './Glyphs/Lock';
 import { Menu } from './Glyphs/Menu';
 import { Minus } from './Glyphs/Minus';
-import { MusicNote } from './Glyphs/MusicNote';
-import { MusicNote2 } from './Glyphs/MusicNote2';
+import { Playlist } from './Glyphs/Playlist';
 import { Plus } from './Glyphs/Plus';
 import { Pulse } from './Glyphs/Pulse';
 import { Recent } from './Glyphs/Recent';
@@ -17,6 +16,7 @@ import { Spark } from './Glyphs/Spark';
 import { Speaker } from './Glyphs/Speaker';
 import { Spotify } from './Glyphs/Spotify';
 import { Star } from './Glyphs/Star';
+import { Track } from './Glyphs/Track';
 import { User } from './Glyphs/User';
 import styles from './Icon.module.scss';
 
@@ -42,14 +42,14 @@ type Icons =
     | 'Lock'
     | 'Menu'
     | 'Minus'
-    | 'MusicNote'
-    | 'MusicNote2'
+    | 'Playlist'
     | 'Plus'
     | 'Pulse'
     | 'Recent'
     | 'Spark'
     | 'Speaker'
     | 'Spotify'
+    | 'Track'
     | 'Star'
     | 'User';
 
@@ -89,11 +89,8 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
         case 'Minus':
             Icon = Minus;
             break;
-        case 'MusicNote':
-            Icon = MusicNote;
-            break;
-        case 'MusicNote2':
-            Icon = MusicNote2;
+        case 'Playlist':
+            Icon = Playlist;
             break;
         case 'Plus':
             Icon = Plus;
@@ -115,6 +112,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'Star':
             Icon = Star;
+            break;
+        case 'Track':
+            Icon = Track;
             break;
         case 'User':
             Icon = User;

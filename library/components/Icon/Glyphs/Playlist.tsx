@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export const MusicNote: FC = () => (
+export const Playlist: FC = () => (
     <>
         <path d="M2.5 13.42a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
         <path d="M11.5 10.92a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
