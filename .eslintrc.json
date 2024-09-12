@@ -9,8 +9,7 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:import/errors",
         "plugin:jsx-a11y/recommended",
-        "plugin:prettier/recommended",
-        "plugin:storybook/recommended"
+        "plugin:prettier/recommended"
     ],
     "ignorePatterns": ["/*.js"],
     "parser": "@typescript-eslint/parser",
