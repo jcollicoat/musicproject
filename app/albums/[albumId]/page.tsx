@@ -21,7 +21,7 @@ export default async function Page({
             <main className={styles.main}>
                 <Panel
                     gridArea="tracks"
-                    heading={{ text: 'Tracks', icon: 'MusicNote2' }}
+                    heading={{ text: 'Tracks', icon: 'Track' }}
                 >
                     <ItemsList
                         tracks={album.tracks}

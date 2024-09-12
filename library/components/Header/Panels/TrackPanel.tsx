@@ -67,7 +67,7 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                     <DataPoint
                         name="Label"
                         value={album.label}
-                        icon="MusicNote"
+                        icon="Playlist"
                         smallText
                     />
                 </div>

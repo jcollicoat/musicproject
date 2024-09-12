@@ -7,7 +7,7 @@ import { UserMenu } from './UserMenu/UserMenu';
 const explore: ComponentProps<typeof Button> = {
     text: 'Explore',
     iconStart: {
-        icon: 'MusicNote',
+        icon: 'Track',
     },
     link: '/explore',
 };

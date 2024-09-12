@@ -24,7 +24,7 @@ export const Playlist: FC<Props> = ({ playlist }) => (
         <div className={layout.content}>
             <span className={layout.name}>{playlist.name}</span>
             <div className={layout.label}>
-                <Icon icon="MusicNote2" />
+                <Icon icon="Track" />
                 <span>
                     {playlist.totalTracks}{' '}
                     {playlist.totalTracks === 1 ? 'track' : 'tracks'}

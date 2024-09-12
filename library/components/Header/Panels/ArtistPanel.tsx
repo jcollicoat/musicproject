@@ -52,7 +52,8 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                             value={artist.genres
                                 .map((genre) => genre)
                                 .join(', ')}
-                            icon="MusicNote"
+                            icon="Track"
+                            smallText
                         />
                     )}
                 </div>

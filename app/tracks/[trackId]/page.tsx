@@ -19,13 +19,13 @@ export default function Page({
             <main className={styles.main}>
                 <Panel
                     gridArea="timeline"
-                    heading={{ text: 'Timeline', icon: 'MusicNote2' }}
+                    heading={{ text: 'Timeline', icon: 'Playlist' }}
                 >
                     <div className={styles.container}></div>
                 </Panel>
                 <Panel
                     gridArea="audio"
-                    heading={{ text: 'Audio Features', icon: 'MusicNote' }}
+                    heading={{ text: 'Audio Features', icon: 'Track' }}
                 >
                     <AudioFeatures trackId={trackId} />
                 </Panel>

@@ -27,7 +27,7 @@ export const Album: FC<Props> = ({ album }) => {
                         <Link href={`/albums/${id}`}>{name}</Link>
                     </div>
                     <div className={layout.section}>
-                        <Icon icon="MusicNote2" />
+                        <Icon icon="Playlist" />
                         <span>{albumType}</span>
                     </div>
                     <div className={layout.section}>
