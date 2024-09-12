@@ -24,7 +24,7 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                     alt={artist.name}
                     height={160}
                     width={160}
-                    className={classNames(layout.image, styles.image)}
+                    className={classNames(layout.image, layout.round)}
                 />
                 <div className={layout.details}>
                     <span className={layout.label}>Artist</span>

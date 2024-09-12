@@ -1,10 +1,10 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
 import { music } from '@music/api';
 import layout from './layout.module.scss';
-import styles from './UserPanel.module.scss';
 
 export const UserPanel: FC = async () => {
     const user = await music.user.profile();
@@ -17,7 +17,7 @@ export const UserPanel: FC = async () => {
                     alt={`${user.name}'s profile picture`}
                     height={140}
                     width={140}
-                    className={styles.image}
+                    className={classNames(layout.image, layout.round)}
                 />
                 <div className={layout.details}>
                     <span className={layout.label}>{user.name}</span>

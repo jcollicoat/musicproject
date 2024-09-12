@@ -74,6 +74,11 @@ const playlists = {
     id: async (playlistId: string) => {
         return await api.get<SpotifyPlaylist>(`playlists/${playlistId}`);
     },
+    tracks: async (playlistId: string) => {
+        return await api.get<SpotifySearchGroup<SpotifyPlaylist['tracks']>>(
+            `playlists/${playlistId}/tracks`,
+        );
+    },
 };
 
 const tracks = {

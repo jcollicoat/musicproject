@@ -51,6 +51,10 @@ const playlists = {
         const playlist = await spotify.playlists.id(playlistId);
         return builders.playlist.full(playlist);
     },
+    tracks: async (playlistId: string) => {
+        const tracks = await spotify.playlists.tracks(playlistId);
+        return tracks;
+    },
 };
 
 const tracks = {

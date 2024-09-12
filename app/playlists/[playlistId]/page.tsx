@@ -17,7 +17,7 @@ export default async function Page({
 
     return (
         <>
-            <Header />
+            <Header playlistId={playlistId} />
             <main className={styles.main}>
                 <Panel
                     gridArea="tracks"

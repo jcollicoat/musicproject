@@ -4,6 +4,14 @@
     display: grid;
     gap: $space-xl;
 
+    .image {
+        border-radius: 4px;
+
+        &.round {
+            border-radius: 50%;
+        }
+    }
+
     .details {
         display: grid;
         gap: $space-m;
