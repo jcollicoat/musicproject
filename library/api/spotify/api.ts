@@ -41,15 +41,33 @@ const artists = {
         return await api.get<SpotifyArtistTopTracks>(
             `artists/${artistId}/top-tracks`,
             {
-                params: { market },
+                params: { market: market },
             },
         );
     },
 };
 
 const audio = {
-    features: async (trackId: string) => {
-        return await api.get<SpotifyAudioFeatures>(`audio-features/${trackId}`);
+    features: {
+        id: async (trackId: string) => {
+            return await api.get<SpotifyAudioFeatures>(
+                `audio-features/${trackId}`,
+            );
+        },
+        ids: async (trackIds: string[]) => {
+            const response = await api.get<{
+                audio_features: SpotifyAudioFeatures[] | null[];
+            }>('audio-features', {
+                params: {
+                    ids: trackIds.join(','),
+                },
+            });
+            return {
+                audio_features: response.audio_features.filter(
+                    (feature) => feature !== null,
+                ),
+            };
+        },
     },
 };
 

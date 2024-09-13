@@ -40,9 +40,15 @@ const artists = {
 };
 
 const audio = {
-    features: async (trackId: string) => {
-        const audio = await spotify.audio.features(trackId);
-        return builders.audio(audio);
+    features: {
+        id: async (trackId: string) => {
+            const audio = await spotify.audio.features.id(trackId);
+            return builders.audio(audio);
+        },
+        ids: async (trackIds: string[]) => {
+            const response = await spotify.audio.features.ids(trackIds);
+            return builders.audios(response.audio_features);
+        },
     },
 };
 

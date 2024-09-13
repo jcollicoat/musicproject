@@ -29,10 +29,12 @@ export default async function Page({
                 </Panel>
                 <Panel
                     gridArea="audio"
-                    heading="Audio Features"
+                    heading="Audio Features (Average)"
                     icon="AudioFeatures"
                 >
-                    <AudioFeatures trackId={playlist.tracks[0].id} />
+                    <AudioFeatures
+                        trackIds={playlist.tracks.map((track) => track.id)}
+                    />
                 </Panel>
             </main>
         </>

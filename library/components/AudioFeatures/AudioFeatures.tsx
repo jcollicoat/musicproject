@@ -4,12 +4,20 @@ import { DataPoint } from '@components/DataPoint/DataPoint';
 import { music } from '@music/api';
 import styles from './AudioFeatures.module.scss';
 
-interface Props {
-    trackId: string;
-}
+type Props = {
+    trackId?: string;
+    trackIds?: string[];
+};
 
-export const AudioFeatures: FC<Props> = async ({ trackId }) => {
-    const audio = await music.audio.features(trackId);
+export const AudioFeatures: FC<Props> = async ({ trackId, trackIds }) => {
+    let audio;
+    if (trackId) {
+        audio = await music.audio.features.id(trackId);
+    } else if (trackIds) {
+        audio = await music.audio.features.ids(trackIds);
+    }
+
+    if (!audio) return null;
 
     return (
         <div className={styles.container}>

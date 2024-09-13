@@ -3,6 +3,18 @@ import { SpotifyAudioFeatures } from '@spotify/types/audio.types';
 
 const normalize = (features: number) => Math.floor(features * 100);
 
+const mean = (features: number[]) =>
+    features.reduce((previous, current) => (previous += current)) /
+    features.length;
+
+const mode = (features: number[]) =>
+    features.sort((a, b) => {
+        return (
+            features.filter((feature) => feature === a).length -
+            features.filter((feature) => feature === b).length
+        );
+    })[features.length - 1];
+
 const audio = (features: SpotifyAudioFeatures) => {
     const built = {
         acousticness: normalize(features.acousticness),
@@ -66,4 +78,32 @@ const audio = (features: SpotifyAudioFeatures) => {
     };
 };
 
-export { audio };
+const audios = (features: SpotifyAudioFeatures[]) => {
+    const combined: SpotifyAudioFeatures = {
+        acousticness: mean(features.map((feature) => feature.acousticness)),
+        danceability: mean(features.map((feature) => feature.danceability)),
+        energy: mean(features.map((feature) => feature.energy)),
+        instrumentalness: mean(
+            features.map((feature) => feature.instrumentalness),
+        ),
+        liveness: mean(features.map((feature) => feature.liveness)),
+        speechiness: mean(features.map((feature) => feature.speechiness)),
+        valence: mean(features.map((feature) => feature.valence)),
+        mode: mode(features.map((feature) => feature.mode)),
+        tempo: mean(features.map((feature) => feature.tempo)),
+        loudness: mean(features.map((feature) => feature.loudness)),
+        key: mode(features.map((feature) => feature.key)),
+        time_signature: mode(features.map((feature) => feature.time_signature)),
+        // TS
+        analysis_url: '',
+        duration_ms: 0,
+        id: '',
+        track_href: '',
+        type: '',
+        uri: '',
+    };
+
+    return audio(combined);
+};
+
+export { audio, audios };

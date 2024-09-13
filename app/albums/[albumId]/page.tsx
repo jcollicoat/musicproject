@@ -1,3 +1,4 @@
+import { AudioFeatures } from '@components/AudioFeatures/AudioFeatures';
 import { Header } from '@components/Header/Header';
 import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
@@ -24,6 +25,15 @@ export default async function Page({
                         tracks={album.tracks}
                         fallbackImage={album.images.medium}
                         overflowScroll={false}
+                    />
+                </Panel>
+                <Panel
+                    gridArea="audio"
+                    heading="Audio Features (Average)"
+                    icon="AudioFeatures"
+                >
+                    <AudioFeatures
+                        trackIds={album.tracks.map((track) => track.id)}
                     />
                 </Panel>
             </main>
