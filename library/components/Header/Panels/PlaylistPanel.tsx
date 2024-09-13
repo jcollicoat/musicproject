@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
 import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
@@ -17,7 +16,6 @@ export const PlaylistPanel: FC<Props> = async ({ playlistId }) => {
 
     return (
         <Panel element="div" backgroundImage={playlist.images?.large}>
-            <ClientLogger data={tracks} />
             <div className={layout.content}>
                 <Image
                     src={playlist.images?.large ?? ''}
