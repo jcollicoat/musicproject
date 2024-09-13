@@ -45,6 +45,7 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
                         name="Popularity"
                         value={artist.popularity}
                         icon="Heart"
+                        hasBar
                     />
                     {artist.genres && (
                         <DataPoint

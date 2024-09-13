@@ -63,6 +63,7 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
                         name="Popularity"
                         value={track.popularity}
                         icon="Heart"
+                        hasBar
                     />
                     <DataPoint
                         name="Label"

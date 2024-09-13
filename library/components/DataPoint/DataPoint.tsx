@@ -8,6 +8,7 @@ interface Props {
     value: string | number;
     icon?: ComponentProps<typeof Icon>['icon'];
     hasBar?: boolean;
+    hasPercent?: boolean;
     smallText?: boolean;
 }
 
@@ -16,6 +17,7 @@ export const DataPoint: FC<Props> = ({
     value,
     icon,
     hasBar,
+    hasPercent,
     smallText,
 }) => (
     <div className={styles.wrapper}>
@@ -35,14 +37,8 @@ export const DataPoint: FC<Props> = ({
         <span
             className={classNames(styles.value, smallText && styles.smallText)}
         >
-            {hasBar ? (
-                <>
-                    {value}
-                    <span>%</span>
-                </>
-            ) : (
-                value
-            )}
+            {value}
+            {hasPercent ? <span>%</span> : null}
         </span>
     </div>
 );

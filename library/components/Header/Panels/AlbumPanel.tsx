@@ -59,6 +59,7 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
                         name="Popularity"
                         value={album.popularity}
                         icon="Heart"
+                        hasBar
                     />
                     <DataPoint
                         name="Label"

@@ -1,4 +1,4 @@
-import { AudioFeatures } from '@components/AudioFeature/AudioFeatures';
+import { AudioFeatures } from '@components/AudioFeatures/AudioFeatures';
 
 import { Header } from '@components/Header/Header';
 import { Panel } from '@components/Panel/Panel';

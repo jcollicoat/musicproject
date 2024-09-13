@@ -19,7 +19,8 @@ export const AudioFeatures: FC<Props> = async ({ trackId }) => {
                         key={feature.name}
                         name={titleCase(feature.name)}
                         value={feature.value}
-                        hasBar={typeof feature.percent === 'number'}
+                        hasBar={Boolean(feature.percent)}
+                        hasPercent={Boolean(feature.percent)}
                     />
                 ))}
             </div>
