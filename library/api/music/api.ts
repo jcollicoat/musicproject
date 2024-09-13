@@ -95,7 +95,7 @@ const user = {
     },
 };
 
-const music = {
+export const music = {
     albums,
     artists,
     audio,
@@ -103,4 +103,3 @@ const music = {
     tracks,
     user,
 };
-export { music };

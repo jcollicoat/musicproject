@@ -28,7 +28,7 @@ const images = (images: SpotifyImage[]) => {
     };
 };
 
-const builders = {
+export const builders = {
     album,
     artist,
     audio,
@@ -40,4 +40,3 @@ const builders = {
     tracks,
     user,
 };
-export { builders };

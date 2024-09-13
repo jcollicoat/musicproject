@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, useState, useTransition } from 'react';
-import { follow, FollowAction } from '@music/actions';
+import { actions, FollowAction } from '@music/actions';
 import { Button } from '../Button';
 
 export const FollowButton: FC<FollowAction> = ({ action, type, id }) => {
@@ -10,7 +10,7 @@ export const FollowButton: FC<FollowAction> = ({ action, type, id }) => {
 
     const onClick = () => {
         startTransition(async () => {
-            const response = await follow({ action: state, type, id });
+            const response = await actions.follow({ action: state, type, id });
             if (response === 204) {
                 state === 'add' ? setState('remove') : setState('add');
             }

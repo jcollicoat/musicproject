@@ -80,5 +80,4 @@ const action = async (
     return response.status;
 };
 
-const api = { get, action };
-export { api };
+export const api = { get, action };

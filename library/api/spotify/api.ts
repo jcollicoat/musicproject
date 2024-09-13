@@ -1,3 +1,4 @@
+import { fallbacks } from './fallbacks';
 import { api } from './requests';
 import { SpotifyAlbum, SpotifyAlbumSimple } from './types/albums.types';
 import { SpotifyArtist } from './types/artists.types';
@@ -53,26 +54,7 @@ const audio = {
             return await api.get<SpotifyAudioFeatures>(
                 `audio-features/${trackId}`,
                 {
-                    returnOn404: {
-                        acousticness: 0,
-                        analysis_url: '',
-                        danceability: 0,
-                        duration_ms: 0,
-                        energy: 0,
-                        id: trackId,
-                        instrumentalness: 0,
-                        key: 12,
-                        liveness: 0,
-                        loudness: 0,
-                        mode: 2,
-                        speechiness: 0,
-                        tempo: 0,
-                        time_signature: 0,
-                        track_href: '',
-                        type: '',
-                        uri: '',
-                        valence: 0,
-                    },
+                    returnOn404: fallbacks.audio.features,
                 },
             );
         },
@@ -155,7 +137,7 @@ const user = {
     },
 };
 
-const spotify = {
+export const spotify = {
     albums,
     artists,
     audio,
@@ -164,4 +146,3 @@ const spotify = {
     tracks,
     user,
 };
-export { spotify };
