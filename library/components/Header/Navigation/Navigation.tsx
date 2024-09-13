@@ -15,7 +15,7 @@ const explore: ComponentProps<typeof Button> = {
 const myMusic: ComponentProps<typeof Button> = {
     text: 'My Music',
     iconStart: {
-        icon: 'Heart',
+        icon: 'Playlist',
     },
     link: '/me',
     style: 'tertiary',
