@@ -1,3 +1,4 @@
+import { AudioFeatures } from '@components/AudioFeatures/AudioFeatures';
 import { Header } from '@components/Header/Header';
 import { ItemsList } from '@components/ItemsList/ItemsList';
 import { Panel } from '@components/Panel/Panel';
@@ -19,10 +20,7 @@ export default async function Page({
         <>
             <Header playlistId={playlistId} />
             <main className={styles.main}>
-                <Panel
-                    gridArea="tracks"
-                    heading={{ text: 'Tracks', icon: 'Track' }}
-                >
+                <Panel gridArea="tracks" heading="Tracks" icon="Track">
                     <ItemsList
                         tracks={playlist.tracks}
                         fallbackImage={playlist.images?.medium ?? ''}
@@ -31,13 +29,10 @@ export default async function Page({
                 </Panel>
                 <Panel
                     gridArea="audio"
-                    heading={{ text: 'Audio Features', icon: 'AudioFeatures' }}
+                    heading="Audio Features"
+                    icon="AudioFeatures"
                 >
-                    <ItemsList
-                        tracks={playlist.tracks}
-                        fallbackImage={playlist.images?.medium ?? ''}
-                        overflowScroll={false}
-                    />
+                    <AudioFeatures trackId={playlist.tracks[0].id} />
                 </Panel>
             </main>
         </>

@@ -24,22 +24,13 @@ export default async function Page({
         <>
             <Header artistId={artistId} />
             <main className={styles.main}>
-                <Panel
-                    gridArea="tracks"
-                    heading={{ text: 'Top Tracks', icon: 'Track' }}
-                >
+                <Panel gridArea="tracks" heading="Top Tracks" icon="Track">
                     <ItemsList tracks={topTracks} fallbackImage="" />
                 </Panel>
-                <Panel
-                    gridArea="albums"
-                    heading={{ text: 'Albums', icon: 'Disc' }}
-                >
+                <Panel gridArea="albums" heading="Albums" icon="Disc">
                     <ItemsGrid albums={albums} />
                 </Panel>
-                <Panel
-                    gridArea="related"
-                    heading={{ text: 'Related Artists', icon: 'User' }}
-                >
+                <Panel gridArea="related" heading="Related Artists" icon="User">
                     <ItemsGrid artists={relatedArtists} />
                 </Panel>
             </main>

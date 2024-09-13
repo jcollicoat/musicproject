@@ -19,10 +19,7 @@ export default async function Page({
         <>
             <Header albumId={albumId} />
             <main className={styles.main}>
-                <Panel
-                    gridArea="tracks"
-                    heading={{ text: 'Tracks', icon: 'Track' }}
-                >
+                <Panel gridArea="tracks" heading="Tracks" icon="Track">
                     <ItemsList
                         tracks={album.tracks}
                         fallbackImage={album.images.medium}

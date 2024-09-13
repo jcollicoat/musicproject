@@ -6,10 +6,8 @@ import styles from './Panel.module.scss';
 interface Props {
     children: ReactNode;
     element?: keyof JSX.IntrinsicElements;
-    heading?: {
-        text: string;
-        icon?: IconProps['icon'];
-    };
+    heading?: string;
+    icon?: IconProps['icon'];
     backgroundImage?: CSSProperties['backgroundImage'];
     gridArea?: CSSProperties['gridArea'];
 }
@@ -18,6 +16,7 @@ export const Panel: FC<Props> = ({
     children,
     element: Element = 'section',
     heading,
+    icon,
     backgroundImage,
     gridArea,
 }) => {
@@ -36,8 +35,8 @@ export const Panel: FC<Props> = ({
         >
             {heading && (
                 <h2>
-                    {heading.icon && <Icon icon={heading.icon} />}
-                    {heading.text}
+                    {icon && <Icon icon={icon} />}
+                    {heading}
                 </h2>
             )}
             <div className={styles.container}>{children}</div>

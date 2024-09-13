@@ -17,16 +17,10 @@ export default async function Page() {
         <>
             <Header user />
             <main className={styles.main}>
-                <Panel
-                    heading={{ text: 'Playlists', icon: 'Disc' }}
-                    gridArea="playlists"
-                >
+                <Panel gridArea="playlists" heading="Playlists" icon="Disc">
                     <ItemsGrid playlists={playlists} />
                 </Panel>
-                <Panel
-                    heading={{ text: 'Recent Tracks', icon: 'Recent' }}
-                    gridArea="recent"
-                >
+                <Panel gridArea="recent" heading="Recent Tracks" icon="Recent">
                     <ItemsList tracks={recentTracks} fallbackImage="" />
                 </Panel>
             </main>
