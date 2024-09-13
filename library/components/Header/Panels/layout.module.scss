@@ -32,7 +32,7 @@
             flex-wrap: wrap;
             gap: $space-m;
 
-            &:not(:first-of-type) {
+            &:not(:has(a)) {
                 color: var(--theme-color-secondary);
             }
 
