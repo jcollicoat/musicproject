@@ -8,11 +8,9 @@ export interface FollowAction {
     id: string;
 }
 
-const follow = async ({ action, type, id }: FollowAction) => {
+export const follow = async ({ action, type, id }: FollowAction) => {
     if (type === 'artist') {
         const response = await spotify.follow[action].artistIds([id]);
         return response;
     }
 };
-
-export const actions = { follow };
