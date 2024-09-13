@@ -1,5 +1,11 @@
 @import '@styles/constants.scss';
 
 .main {
-    grid-template-areas: 'tracks';
+    grid-template-areas:
+        'tracks'
+        'audio';
+
+    @media (min-width: $breakpoint-3) {
+        grid-template-areas: 'tracks tracks audio';
+    }
 }

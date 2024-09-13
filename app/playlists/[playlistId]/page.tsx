@@ -29,6 +29,16 @@ export default async function Page({
                         overflowScroll={false}
                     />
                 </Panel>
+                <Panel
+                    gridArea="audio"
+                    heading={{ text: 'Audio Features', icon: 'AudioFeatures' }}
+                >
+                    <ItemsList
+                        tracks={playlist.tracks}
+                        fallbackImage={playlist.images?.medium ?? ''}
+                        overflowScroll={false}
+                    />
+                </Panel>
             </main>
         </>
     );

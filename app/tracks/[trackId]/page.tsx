@@ -25,7 +25,7 @@ export default function Page({
                 </Panel>
                 <Panel
                     gridArea="audio"
-                    heading={{ text: 'Audio Features', icon: 'Track' }}
+                    heading={{ text: 'Audio Features', icon: 'AudioFeatures' }}
                 >
                     <AudioFeatures trackId={trackId} />
                 </Panel>

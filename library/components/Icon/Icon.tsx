@@ -1,4 +1,5 @@
 import { CSSProperties, FC } from 'react';
+import { AudioFeatures } from './Glyphs/AudioFeatures';
 import { Calendar } from './Glyphs/Calendar';
 import { Clock } from './Glyphs/Clock';
 import { Disc } from './Glyphs/Disc';
@@ -32,6 +33,7 @@ const Fallback: FC = () => (
 );
 
 type Icons =
+    | 'AudioFeatures'
     | 'Calendar'
     | 'Clock'
     | 'Disc'
@@ -62,6 +64,9 @@ export interface IconProps {
 export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
     let Icon: FC<{ isAlternate?: boolean }> = Fallback;
     switch (icon) {
+        case 'AudioFeatures':
+            Icon = AudioFeatures;
+            break;
         case 'Calendar':
             Icon = Calendar;
             break;
