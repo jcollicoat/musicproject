@@ -14,15 +14,18 @@ export const AudioFeatures: FC<Props> = async ({ trackId }) => {
     return (
         <div className={styles.container}>
             <div className={styles.grid}>
-                {audio.features.map((feature) => (
-                    <DataPoint
-                        key={feature.name}
-                        name={titleCase(feature.name)}
-                        value={feature.value}
-                        hasBar={Boolean(feature.percent)}
-                        hasPercent={Boolean(feature.percent)}
-                    />
-                ))}
+                {audio.features.map((feature) => {
+                    const isPercentage = typeof feature.percent === 'number';
+                    return (
+                        <DataPoint
+                            key={feature.name}
+                            name={titleCase(feature.name)}
+                            value={feature.value}
+                            hasBar={isPercentage}
+                            hasPercent={isPercentage}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

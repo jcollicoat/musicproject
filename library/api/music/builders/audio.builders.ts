@@ -10,12 +10,12 @@ const audio = (features: SpotifyAudioFeatures) => {
         energy: normalize(features.energy),
         instrumentalness: normalize(features.instrumentalness),
         liveness: normalize(features.liveness),
-        loudness: normalize((features.loudness * -1) / 60), // loudness ranges from 0 - -60
         speechiness: normalize(features.speechiness),
         valence: normalize(features.valence),
         mode: `${MusicalModes[features.mode]} Key`,
-        key: MusicalKeys[features.key],
         tempo: Math.floor(features.tempo),
+        loudness: `${Math.round(features.loudness)}dB`,
+        key: MusicalKeys[features.key],
         timeSignature: features.time_signature,
     };
 
