@@ -1,4 +1,5 @@
 import { SpotifyImage, SpotifyObject } from '@spotify/types';
+import { SpotifyArtistSimple } from './artists.types';
 
 interface SpotifyTrackAlbum {
     album_type: string;
@@ -23,18 +24,9 @@ interface SpotifyTrackAlbum {
     uri: string;
 }
 
-interface SpotifyTrackArtist {
-    external_urls: SpotifyObject;
-    href: string;
-    id: string;
-    name: string;
-    type: string;
-    uri: string;
-}
-
 export interface SpotifyTrack {
     album: SpotifyTrackAlbum;
-    artists: SpotifyTrackArtist[];
+    artists: SpotifyArtistSimple[];
     available_markets: string[];
     disc_number: number;
     duration_ms: number;

@@ -1,6 +1,6 @@
 import { api } from './requests';
 import { SpotifyAlbum, SpotifyAlbumSimple } from './types/albums.types';
-import { SpotifyArtist, SpotifyArtistTopTracks } from './types/artists.types';
+import { SpotifyArtist } from './types/artists.types';
 import { SpotifyAudioFeatures } from './types/audio.types';
 import { SpotifyRecentlyPlayed } from './types/player.types';
 import {
@@ -38,7 +38,7 @@ const artists = {
         );
     },
     topTracks: async (artistId: string, market: string) => {
-        return await api.get<SpotifyArtistTopTracks>(
+        return await api.get<{ tracks: SpotifyTrack[] }>(
             `artists/${artistId}/top-tracks`,
             {
                 params: { market: market },

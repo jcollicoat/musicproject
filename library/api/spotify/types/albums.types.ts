@@ -1,19 +1,11 @@
 import { SpotifyCopyright, SpotifyImage, SpotifyObject } from '@spotify/types';
+import { SpotifyArtistSimple } from './artists.types';
 import { SpotifySearchGroup } from './search.types';
 import { SpotifyTrackSimple } from './tracks.types';
 
-interface SpotifyAlbumArtist {
-    external_urls: SpotifyObject;
-    href: string;
-    id: string;
-    name: string;
-    type: string;
-    uri: string;
-}
-
 export interface SpotifyAlbum {
     album_type: string;
-    artists: SpotifyAlbumArtist[];
+    artists: SpotifyArtistSimple[];
     available_markets: string[];
     copyrights: SpotifyCopyright[];
     external_ids: SpotifyObject;
