@@ -4,7 +4,7 @@ import { builders } from './builders';
 const albums = {
     id: async (albumId: string) => {
         const album = await spotify.albums.id(albumId);
-        return builders.album(album);
+        return builders.album.full(album);
     },
 };
 
@@ -21,7 +21,7 @@ const artists = {
                 }
                 return 0;
             })
-            .map((album) => builders.albumSimple(album));
+            .map((album) => builders.album.simple(album));
     },
     id: async (artistId: string) => {
         const artist = await spotify.artists.id(artistId);
@@ -43,11 +43,11 @@ const audio = {
     features: {
         id: async (trackId: string) => {
             const audio = await spotify.audio.features.id(trackId);
-            return builders.audio(audio);
+            return builders.audio.features.single(audio);
         },
         ids: async (trackIds: string[]) => {
             const response = await spotify.audio.features.ids(trackIds);
-            return builders.audios(response.audio_features);
+            return builders.audio.features.multiple(response.audio_features);
         },
     },
 };
