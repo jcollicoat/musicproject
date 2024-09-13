@@ -20,9 +20,11 @@ export enum MusicalKeys {
     'A',
     'A#',
     'B',
+    'Unknown',
 }
 
 export enum MusicalModes {
-    'Minor',
-    'Major',
+    'Minor Key',
+    'Major Key',
+    'Unknown',
 }

@@ -24,7 +24,7 @@ const audio = (features: SpotifyAudioFeatures) => {
         liveness: normalize(features.liveness),
         speechiness: normalize(features.speechiness),
         valence: normalize(features.valence),
-        mode: `${MusicalModes[features.mode]} Key`,
+        mode: MusicalModes[features.mode],
         tempo: Math.floor(features.tempo),
         loudness: `${Math.round(features.loudness)}dB`,
         key: MusicalKeys[features.key],

@@ -52,11 +52,33 @@ const audio = {
         id: async (trackId: string) => {
             return await api.get<SpotifyAudioFeatures>(
                 `audio-features/${trackId}`,
+                {
+                    returnOn404: {
+                        acousticness: 0,
+                        analysis_url: '',
+                        danceability: 0,
+                        duration_ms: 0,
+                        energy: 0,
+                        id: trackId,
+                        instrumentalness: 0,
+                        key: 12,
+                        liveness: 0,
+                        loudness: 0,
+                        mode: 2,
+                        speechiness: 0,
+                        tempo: 0,
+                        time_signature: 0,
+                        track_href: '',
+                        type: '',
+                        uri: '',
+                        valence: 0,
+                    },
+                },
             );
         },
         ids: async (trackIds: string[]) => {
             const response = await api.get<{
-                audio_features: SpotifyAudioFeatures[] | null[];
+                audio_features: (SpotifyAudioFeatures | null)[];
             }>('audio-features', {
                 params: {
                     ids: trackIds.join(','),

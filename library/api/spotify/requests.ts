@@ -27,6 +27,7 @@ const get = async <T>(
         params?: Record<string, string>;
         doNotCache?: boolean;
         cacheLifetime?: number; // seconds
+        returnOn404?: T;
     },
 ) => {
     const spotifyToken = getSpotifyToken();
@@ -41,7 +42,11 @@ const get = async <T>(
     });
 
     if (!response.ok) {
-        const message = `Bad response from Spotify API: ${endpoint} | ${response} | ${response.statusText}`;
+        if (response.status === 404 && config?.returnOn404) {
+            return config.returnOn404 as T;
+        }
+
+        const message = `Bad response from Spotify API: ${endpoint} | ${response.status} ${response.statusText}`;
         console.error(message, response);
         throw new Error(message);
     }
