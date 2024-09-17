@@ -6,6 +6,23 @@ import { music } from '@music/api';
 
 const ENV = process.env.NODE_ENV;
 
+const explore: ComponentProps<typeof Button> = {
+    text: 'Explore',
+    iconStart: {
+        icon: 'Track',
+    },
+    link: '/explore',
+};
+
+const myMusic: ComponentProps<typeof Button> = {
+    text: 'My Music',
+    iconStart: {
+        icon: 'Playlist',
+    },
+    link: '/me',
+    style: 'tertiary',
+};
+
 const theme: ComponentProps<typeof Button> = {
     text: 'Theme',
     iconStart: {
@@ -55,7 +72,12 @@ export const UserMenu: FC = async () => {
 
     const user = await music.user.profile();
 
-    const buttons: ComponentProps<typeof Button>[] = [theme, signout];
+    const buttons: ComponentProps<typeof Button>[] = [
+        explore,
+        myMusic,
+        theme,
+        signout,
+    ];
     if (ENV === 'development') {
         buttons.push(devTrack, devArtist, devAlbum);
     }
