@@ -50,6 +50,7 @@ export const PlaylistPanel: FC<Props> = async ({ playlistId }) => {
                         name="Creator"
                         value={playlist.owner.name ?? ''}
                         icon="User"
+                        smallText
                     />
                 </div>
             </div>
