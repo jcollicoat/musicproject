@@ -7,6 +7,7 @@ import { Heart } from './Glyphs/Heart';
 import { Home } from './Glyphs/Home';
 import { Info } from './Glyphs/Info';
 import { Lock } from './Glyphs/Lock';
+import { Logout } from './Glyphs/Logout';
 import { Menu } from './Glyphs/Menu';
 import { Minus } from './Glyphs/Minus';
 import { Playlist } from './Glyphs/Playlist';
@@ -17,6 +18,7 @@ import { Spark } from './Glyphs/Spark';
 import { Speaker } from './Glyphs/Speaker';
 import { Spotify } from './Glyphs/Spotify';
 import { Star } from './Glyphs/Star';
+import { Theme } from './Glyphs/Theme';
 import { Track } from './Glyphs/Track';
 import { User } from './Glyphs/User';
 import styles from './Icon.module.scss';
@@ -42,6 +44,7 @@ type Icons =
     | 'Info'
     | 'Loading'
     | 'Lock'
+    | 'Logout'
     | 'Menu'
     | 'Minus'
     | 'Playlist'
@@ -51,6 +54,7 @@ type Icons =
     | 'Spark'
     | 'Speaker'
     | 'Spotify'
+    | 'Theme'
     | 'Track'
     | 'Star'
     | 'User';
@@ -88,6 +92,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
         case 'Lock':
             Icon = Lock;
             break;
+        case 'Logout':
+            Icon = Logout;
+            break;
         case 'Menu':
             Icon = Menu;
             break;
@@ -117,6 +124,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'Star':
             Icon = Star;
+            break;
+        case 'Theme':
+            Icon = Theme;
             break;
         case 'Track':
             Icon = Track;
