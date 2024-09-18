@@ -82,6 +82,10 @@ const audio = {
             };
         },
         multiple: (features: SpotifyAudioFeatures[]) => {
+            if (features.length === 1) {
+                return audio.features.single(features[0]);
+            }
+
             const combined: SpotifyAudioFeatures = {
                 acousticness: getMean(
                     features.map((feature) => feature.acousticness),
