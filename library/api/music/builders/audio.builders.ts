@@ -30,7 +30,7 @@ const audio = {
                 tempo: Math.floor(features.tempo),
                 loudness: `${Math.round(features.loudness)}dB`,
                 key: MusicalKeys[features.key],
-                timeSignature: features.time_signature,
+                timeSignature: `${features.time_signature}/4`,
             };
 
             const array = Object.keys(built).map((name) => {
