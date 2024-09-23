@@ -1,5 +1,8 @@
 import { MusicalKeys, MusicalModes } from '@music/types';
-import { SpotifyAudioFeatures } from '@spotify/types/audio.types';
+import {
+    SpotifyAudioAnalysis,
+    SpotifyAudioFeatures,
+} from '@spotify/types/audio.types';
 
 const normalize = (features: number) => Math.floor(features * 100);
 
@@ -16,6 +19,11 @@ const getMode = (features: number[]) =>
     })[features.length - 1];
 
 const audio = {
+    analysis: {
+        single: (analysis: SpotifyAudioAnalysis) => {
+            return analysis;
+        },
+    },
     features: {
         single: (features: SpotifyAudioFeatures) => {
             const built = {

@@ -40,6 +40,12 @@ const artists = {
 };
 
 const audio = {
+    analysis: {
+        id: async (trackId: string) => {
+            const analysis = await spotify.audio.analysis.id(trackId);
+            return builders.audio.analysis.single(analysis);
+        },
+    },
     features: {
         id: async (trackId: string) => {
             const audio = await spotify.audio.features.id(trackId);

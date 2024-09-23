@@ -2,7 +2,10 @@ import { fallbacks } from './fallbacks';
 import { api } from './requests';
 import { SpotifyAlbum, SpotifyAlbumSimple } from './types/albums.types';
 import { SpotifyArtist } from './types/artists.types';
-import { SpotifyAudioFeatures } from './types/audio.types';
+import {
+    SpotifyAudioAnalysis,
+    SpotifyAudioFeatures,
+} from './types/audio.types';
 import { SpotifyRecentlyPlayed } from './types/player.types';
 import {
     SpotifyPlaylist,
@@ -49,6 +52,13 @@ const artists = {
 };
 
 const audio = {
+    analysis: {
+        id: async (trackId: string) => {
+            return await api.get<SpotifyAudioAnalysis>(
+                `audio-analysis/${trackId}`,
+            );
+        },
+    },
     features: {
         id: async (trackId: string) => {
             return await api.get<SpotifyAudioFeatures>(
