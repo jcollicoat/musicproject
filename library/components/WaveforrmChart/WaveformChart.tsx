@@ -9,28 +9,27 @@ interface Props {
 }
 
 export const WaveformChart: FC<Props> = ({ analysis }) => {
-    const data = analysis.waveform;
-    console.log(data);
+    const { waveform, min, max } = analysis;
 
     return (
         <ResponsiveContainer height="100%" width="100%">
-            <BarChart data={data}>
+            <BarChart data={waveform}>
                 <XAxis
                     dataKey="position"
                     type="number"
-                    domain={[-1, analysis.waveform.length]}
+                    domain={[0, waveform.length - 1]}
                     hide
                 />
                 <YAxis
                     dataKey="range"
-                    domain={[analysis.min, analysis.max]}
+                    domain={[min, max]}
                     allowDataOverflow
                     hide
                 />
                 <Bar
                     dataKey="range"
                     fill="var(--color-primary-2)"
-                    animationEasing="ease-in-out"
+                    animationDuration={1000}
                 />
             </BarChart>
         </ResponsiveContainer>

@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { WaveformChart } from '@components/ReChartsTest/WaveformChart';
 import { TimeText } from '@components/TimeText/TimeText';
+import { WaveformChart } from '@components/WaveforrmChart/WaveformChart';
 import { music } from '@music/api';
 import styles from './AudioAnalysis.module.scss';
 
