@@ -8,7 +8,7 @@ interface Props {
     value: string | number;
     icon?: ComponentProps<typeof Icon>['icon'];
     hasBar?: boolean;
-    hasPercent?: boolean;
+    isPercentage?: boolean;
     smallText?: boolean;
 }
 
@@ -17,11 +17,11 @@ export const DataPoint: FC<Props> = ({
     value,
     icon,
     hasBar,
-    hasPercent,
+    isPercentage,
     smallText,
 }) => (
     <div className={styles.wrapper}>
-        {hasBar && (
+        {(hasBar || isPercentage) && (
             <>
                 <div className={styles.background}></div>
                 <div
@@ -38,7 +38,7 @@ export const DataPoint: FC<Props> = ({
             className={classNames(styles.value, smallText && styles.smallText)}
         >
             {value}
-            {hasPercent ? <span>%</span> : null}
+            {isPercentage ? <span>%</span> : null}
         </span>
     </div>
 );
