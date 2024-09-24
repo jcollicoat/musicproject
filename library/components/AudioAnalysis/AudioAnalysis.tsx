@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { ClientLogger } from '@components/ClientLogger/ClientLogger';
-// import { ReactChartsTest } from '@components/ReactChartsTest/ReactChartsTest';
-import { ReChartsTest } from '@components/ReChartsTest/ReChartsTest';
+import { WaveformChart } from '@components/ReChartsTest/WaveformChart';
+import { TimeText } from '@components/TimeText/TimeText';
 import { music } from '@music/api';
 import styles from './AudioAnalysis.module.scss';
 
@@ -14,9 +13,14 @@ export const AudioAnalysis: FC<Props> = async ({ trackId }) => {
 
     return (
         <div className={styles.wrapper}>
-            <ClientLogger data={analysis} />
-            {/* <ReactChartsTest analysis={analysis} /> */}
-            <ReChartsTest analysis={analysis} />
+            <div className={styles.chart}>
+                <WaveformChart analysis={analysis} />
+            </div>
+            <div className={styles.timeline}>
+                <TimeText durationMs={0} />
+                <div className={styles.line}></div>
+                <TimeText durationMs={analysis.duration} />
+            </div>
         </div>
     );
 };

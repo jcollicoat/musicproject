@@ -18,10 +18,57 @@ const getMode = (features: number[]) =>
         );
     })[features.length - 1];
 
+const createChunks = function* (
+    itr: SpotifyAudioAnalysis['segments'],
+    size: number,
+) {
+    let chunk = [];
+    for (const v of itr) {
+        chunk.push(v);
+        if (chunk.length === size) {
+            yield chunk;
+            chunk = [];
+        }
+    }
+    if (chunk.length) yield chunk;
+};
+
 const audio = {
     analysis: {
         single: (analysis: SpotifyAudioAnalysis) => {
-            return analysis;
+            const target = 280;
+            const totalSegments = analysis.segments.length;
+            const chunkSize = Math.ceil(totalSegments / target);
+            const chunks = [...createChunks(analysis.segments, chunkSize)];
+            const waveform = chunks.map((segments, index) => ({
+                position: index,
+                range: [
+                    60 -
+                        Math.floor(
+                            Math.min(
+                                ...segments.map(
+                                    (segment) => segment.loudness_max,
+                                ),
+                            ),
+                        ) *
+                            -1,
+                    -60 -
+                        Math.floor(
+                            Math.min(
+                                ...segments.map(
+                                    (segment) => segment.loudness_max,
+                                ),
+                            ),
+                        ),
+                ],
+            }));
+
+            return {
+                duration: analysis.track.duration * 1000,
+                min: -60,
+                max: 60,
+                waveform,
+            };
         },
     },
     features: {
@@ -48,7 +95,6 @@ const audio = {
                     case 'energy':
                     case 'instrumentalness':
                     case 'liveness':
-                    case 'loudness':
                     case 'speechiness':
                     case 'valence':
                         return {

@@ -1,6 +1,26 @@
 @import '@styles/constants.scss';
 
 .wrapper {
+    display: flex;
+    flex-direction: column;
     height: 420px;
     width: 100%;
+
+    .chart {
+        flex-grow: 1;
+    }
+
+    .timeline {
+        align-items: center;
+        color: var(--theme-color-tertiary);
+        display: flex;
+        gap: $space-s;
+        justify-content: space-between;
+
+        .line {
+            border: 1px dashed var(--theme-color-tertiary);
+            flex-grow: 1;
+            height: 0px;
+        }
+    }
 }
