@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     height: $content-height;
+    min-width: calc($content-height * 1.5);
     width: 100%;
 
     .chart {

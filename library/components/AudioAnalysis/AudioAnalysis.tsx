@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Scroller } from '@components/Scroller/Scroller';
 import { TimeText } from '@components/TimeText/TimeText';
 import { WaveformChart } from '@components/WaveforrmChart/WaveformChart';
 import { music } from '@music/api';
@@ -12,15 +13,17 @@ export const AudioAnalysis: FC<Props> = async ({ trackId }) => {
     const analysis = await music.audio.analysis.id(trackId);
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.chart}>
-                <WaveformChart analysis={analysis} />
+        <Scroller direction="horizontal">
+            <div className={styles.wrapper}>
+                <div className={styles.chart}>
+                    <WaveformChart analysis={analysis} />
+                </div>
+                <div className={styles.timeline}>
+                    <TimeText durationMs={0} />
+                    <div className={styles.line}></div>
+                    <TimeText durationMs={analysis.duration} />
+                </div>
             </div>
-            <div className={styles.timeline}>
-                <TimeText durationMs={0} />
-                <div className={styles.line}></div>
-                <TimeText durationMs={analysis.duration} />
-            </div>
-        </div>
+        </Scroller>
     );
 };
