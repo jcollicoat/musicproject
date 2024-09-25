@@ -1,13 +1,10 @@
-'use client';
-
-import classNames from 'classnames';
 import { FC } from 'react';
+import { Scroller } from '@components/Scroller/Scroller';
 import { music } from '@music/api';
 import { Album } from './Items/Album';
 import { Artist } from './Items/Artist';
 import { Playlist } from './Items/Playlist';
 import styles from './ItemsGrid.module.scss';
-import { useOverflow } from './useOverflow';
 
 type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
 type Artists = Awaited<ReturnType<typeof music.artists.relatedArtists>>;
@@ -20,25 +17,12 @@ interface Props {
 }
 
 export const ItemsGrid: FC<Props> = ({ albums, artists, playlists }) => {
-    const { scrollerRef, calculate, hasOverflowLeft, hasOverflowRight } =
-        useOverflow();
-
     const items = albums || artists || playlists;
     if (!items) return null;
 
     return (
-        <div
-            className={classNames(
-                styles.scroller,
-                hasOverflowLeft && styles.overflowLeft,
-                hasOverflowRight && styles.overflowRight,
-            )}
-        >
-            <div
-                className={classNames(styles.grid)}
-                ref={scrollerRef}
-                onScroll={calculate}
-            >
+        <Scroller direction="horizontal">
+            <div className={styles.grid}>
                 {albums &&
                     albums.map((album) => (
                         <Album key={album.id} album={album} />
@@ -52,6 +36,6 @@ export const ItemsGrid: FC<Props> = ({ albums, artists, playlists }) => {
                         <Playlist key={playlist.id} playlist={playlist} />
                     ))}
             </div>
-        </div>
+        </Scroller>
     );
 };

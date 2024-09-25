@@ -1,69 +1,13 @@
 @import '@styles/constants.scss';
 
 $rows: 2;
-$row-height: 210px;
-$total-height: calc($row-height * $rows);
-$cell-height: calc($row-height - ($space-m / $rows));
+$row-height: $content-height / $rows;
+$cell-height: $row-height - ($space-m / $rows);
 
-.scroller {
-    max-height: $total-height;
-    position: relative;
-    width: 100%;
-
-    &::before,
-    &::after {
-        content: '';
-        height: 100%;
-        opacity: 0;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        transition: $transition opacity;
-        width: $space-xxl;
-        z-index: 1;
-    }
-
-    &::before {
-        background-image: linear-gradient(
-            to right,
-            rgba(var(--theme-shade-min-rgb), 1),
-            rgba(var(--theme-shade-min-rgb), 0)
-        );
-        left: 0;
-    }
-
-    &::after {
-        background-image: linear-gradient(
-            to left,
-            rgba(var(--theme-shade-min-rgb), 1),
-            rgba(var(--theme-shade-min-rgb), 0)
-        );
-        right: 0;
-    }
-
-    &.overflowLeft {
-        &::before {
-            opacity: 1;
-        }
-    }
-
-    &.overflowRight {
-        &::after {
-            opacity: 1;
-        }
-    }
-
-    .grid {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-rows: repeat($rows, minmax(0, $cell-height));
-        grid-auto-columns: 130px;
-        gap: $space-m;
-        overflow-x: scroll;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
+.grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat($rows, minmax(0, $cell-height));
+    grid-auto-columns: 130px;
+    gap: $space-m;
 }

@@ -1,72 +1,7 @@
 @import '@styles/constants.scss';
 
-$height: 420px;
-$rows: 5;
-$row-height: calc(($height / $rows) - ($space-xs * 2));
-
-.wrapper {
-    width: 100%;
-
-    &.scroller {
-        height: $height;
-        position: relative;
-
-        &::before,
-        &::after {
-            content: '';
-            height: $space-xxl;
-            left: 0;
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            transition: $transition opacity;
-            width: 100%;
-            z-index: 1;
-        }
-
-        &::before {
-            background-image: linear-gradient(
-                to bottom,
-                rgba(var(--theme-shade-min-rgb), 1),
-                rgba(var(--theme-shade-min-rgb), 0)
-            );
-            top: 0;
-        }
-
-        &::after {
-            background-image: linear-gradient(
-                to top,
-                rgba(var(--theme-shade-min-rgb), 1),
-                rgba(var(--theme-shade-min-rgb), 0)
-            );
-            bottom: 0;
-        }
-
-        &.overflowTop {
-            &::before {
-                opacity: 1;
-            }
-        }
-
-        &.overflowBottom {
-            &::after {
-                opacity: 1;
-            }
-        }
-    }
-
-    .list {
-        display: grid;
-        grid-auto-rows: $row-height;
-        grid-template-columns: 1fr;
-        height: 100%;
-        gap: $space-xs;
-        max-height: 100%;
-        overflow-y: scroll;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
 }

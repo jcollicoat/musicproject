@@ -5,6 +5,10 @@ $breakpoint-2: 822px;
 $breakpoint-3: 1124px;
 $breakpoint-4: 1680px;
 
+// Content
+
+$content-height: 420px;
+
 // Spacing
 
 $space-xs: 4px;
@@ -15,18 +19,18 @@ $space-xl: 24px;
 $space-xxl: 36px;
 $space-xxxl: 60px;
 
-// Stacking
-
-$z-normal: 1;
-$z-sticky: 10;
-$z-overlay: 20;
-
 // Transitions
 
 $transition-speed: 0.15s;
 $transition-speed-slow: calc($transition-speed * 2);
 $transition: $transition-speed ease-in-out;
 $transition-slow: $transition-speed-slow ease-in-out;
+
+// Z Indexes
+
+$z-normal: 1;
+$z-sticky: 10;
+$z-overlay: 20;
 
 // Functions
 

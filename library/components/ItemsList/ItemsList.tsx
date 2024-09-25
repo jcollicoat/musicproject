@@ -1,12 +1,9 @@
-'use client';
-
-import classNames from 'classnames';
 import { FC } from 'react';
+import { Scroller } from '@components/Scroller/Scroller';
 import { music } from '@music/api';
 import { Album } from './Items/Album';
 import { Track } from './Items/Track';
 import styles from './ItemsList.module.scss';
-import { useOverflow } from './useOverflow';
 
 type Albums = Awaited<ReturnType<typeof music.artists.albums>>;
 type Tracks =
@@ -26,22 +23,12 @@ export const ItemsList: FC<Props> = ({
     fallbackImage,
     overflowScroll = true,
 }) => {
-    const { scrollerRef, calculate, hasOverflowTop, hasOverflowBottom } =
-        useOverflow(overflowScroll);
-
     const items = albums || tracks;
     if (!items) return null;
 
     return (
-        <div
-            className={classNames(
-                styles.wrapper,
-                overflowScroll && styles.scroller,
-                hasOverflowTop && styles.overflowTop,
-                hasOverflowBottom && styles.overflowBottom,
-            )}
-        >
-            <div className={styles.list} ref={scrollerRef} onScroll={calculate}>
+        <Scroller direction="vertical" enabled={overflowScroll}>
+            <div className={styles.list}>
                 {tracks &&
                     tracks.map((track) => (
                         <Track
@@ -55,6 +42,6 @@ export const ItemsList: FC<Props> = ({
                         <Album key={album.id} album={album} />
                     ))}
             </div>
-        </div>
+        </Scroller>
     );
 };

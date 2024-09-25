@@ -1,0 +1,117 @@
+@import '@styles/constants.scss';
+
+.scroller {
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    &::before,
+    &::after {
+        content: '';
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        transition: $transition opacity;
+        z-index: 2;
+    }
+
+    .content {
+        position: relative;
+        scrollbar-width: none;
+        z-index: 1;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &.fixedHeight {
+            height: $content-height;
+        }
+    }
+
+    &.horizontal {
+        &::before,
+        &::after {
+            height: 100%;
+            top: 0;
+            width: $space-xxl;
+        }
+
+        &::before {
+            background-image: linear-gradient(
+                to right,
+                rgba(var(--theme-shade-min-rgb), 1),
+                rgba(var(--theme-shade-min-rgb), 0)
+            );
+            left: 0;
+        }
+
+        &.overflowStart {
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        &::after {
+            background-image: linear-gradient(
+                to left,
+                rgba(var(--theme-shade-min-rgb), 1),
+                rgba(var(--theme-shade-min-rgb), 0)
+            );
+            right: 0;
+        }
+
+        &.overflowEnd {
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        .content {
+            overflow-x: scroll;
+        }
+    }
+
+    &.vertical {
+        &::before,
+        &::after {
+            height: $space-xxl;
+            left: 0;
+            width: 100%;
+        }
+
+        &::before {
+            background-image: linear-gradient(
+                to bottom,
+                rgba(var(--theme-shade-min-rgb), 1),
+                rgba(var(--theme-shade-min-rgb), 0)
+            );
+            top: 0;
+        }
+
+        &.overflowStart {
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        &::after {
+            background-image: linear-gradient(
+                to top,
+                rgba(var(--theme-shade-min-rgb), 1),
+                rgba(var(--theme-shade-min-rgb), 0)
+            );
+            bottom: 0;
+        }
+
+        &.overflowEnd {
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        .content {
+            overflow-y: scroll;
+        }
+    }
+}
