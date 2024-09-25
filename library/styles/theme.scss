@@ -36,8 +36,8 @@
     --theme-tile-color-rgb: #{$color-grey-1-rgb};
 
     .theme-light {
-        --theme-background-color: var(--color-grey-9);
-        --theme-background-color-rgb: var(--color-grey-10-rgb);
+        --theme-background-color: #{$color-grey-9};
+        --theme-background-color-rgb: #{$color-grey-10-rgb};
 
         --theme-color-1: #{$color-grey-0};
         --theme-color-2: #{$color-grey-5};
