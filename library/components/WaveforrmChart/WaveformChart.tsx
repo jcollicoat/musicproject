@@ -68,7 +68,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                 <Area
                     name="Section Loudness"
                     dataKey="value"
-                    fill="url(#area)"
+                    fill="none"
                     stroke="var(--color-primary-2)"
                     strokeWidth={2}
                     animationDuration={1000}
@@ -83,7 +83,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                 <Area
                     name="Fake Section Loudness"
                     dataKey="fakeValue"
-                    fill="none"
+                    fill="url(#area)"
                     stroke="var(--color-primary-2)"
                     strokeWidth={2}
                     animationDuration={1000}
