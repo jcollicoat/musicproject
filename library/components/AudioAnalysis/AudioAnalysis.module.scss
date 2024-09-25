@@ -13,13 +13,13 @@
 
     .timeline {
         align-items: center;
-        color: var(--theme-color-tertiary);
+        color: var(--theme-color-3);
         display: flex;
         gap: $space-s;
         justify-content: space-between;
 
         .line {
-            border-top: 1px dashed var(--theme-color-tertiary);
+            border-top: 1px dashed var(--theme-color-3);
             flex-grow: 1;
             height: 0px;
         }

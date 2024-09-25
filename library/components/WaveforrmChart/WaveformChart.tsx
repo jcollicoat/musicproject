@@ -53,7 +53,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                 <Bar
                     name="Loudness"
                     dataKey="range"
-                    fill="var(--theme-color-tertiary)"
+                    fill="var(--theme-color-4)"
                     animationDuration={1000}
                     legendType="none"
                 />

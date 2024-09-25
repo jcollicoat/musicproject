@@ -21,9 +21,10 @@
     --theme-background-color: #{$color-grey-1};
     --theme-background-color-rgb: #{$color-grey-1-rgb};
 
-    --theme-color: #{$color-grey-9};
-    --theme-color-secondary: #{$color-grey-6};
-    --theme-color-tertiary: #{$color-grey-5};
+    --theme-color-1: #{$color-grey-9};
+    --theme-color-2: #{$color-grey-6};
+    --theme-color-3: #{$color-grey-5};
+    --theme-color-4: #{$color-grey-3};
 
     --theme-shade-min: rgb(0, 0, 0);
     --theme-shade-min-rgb: 0, 0, 0;
@@ -39,8 +40,9 @@
         --theme-background-color-rgb: var(--color-grey-10-rgb);
 
         --theme-color: #{$color-grey-0};
-        --theme-color-secondary: #{$color-grey-5};
-        --theme-color-tertiary: #{$color-grey-6};
+        --theme-color-2: #{$color-grey-5};
+        --theme-color-3: #{$color-grey-6};
+        --theme-color-4: #{$color-grey-7};
 
         --theme-shade-min: rgb(255, 255, 255);
         --theme-shade-min-rgb: 255, 255, 255;
