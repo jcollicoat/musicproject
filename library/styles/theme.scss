@@ -1,0 +1,54 @@
+@import './constants.scss';
+
+:root {
+    // Constants
+
+    --color-primary-0: #{$color-primary-0};
+    --color-primary-0-rgb: #{$color-primary-0-rgb};
+    --color-primary-1: #{$color-primary-1};
+    --color-primary-1-rgb: #{$color-primary-1-rgb};
+    --color-primary-2: #{$color-primary-2};
+    --color-primary-2-rgb: #{$color-primary-2-rgb};
+    --color-primary-3: #{$color-primary-3};
+    --color-primary-3-rgb: #{$color-primary-3-rgb};
+    --color-primary-4: #{$color-primary-4};
+    --color-primary-4-rgb: #{$color-primary-4-rgb};
+    --color-primary-5: #{$color-primary-5};
+    --color-primary-5-rgb: #{$color-primary-5-rgb};
+
+    // Theme Variables
+
+    --theme-background-color: #{$color-grey-1};
+    --theme-background-color-rgb: #{$color-grey-1-rgb};
+
+    --theme-color: #{$color-grey-9};
+    --theme-color-secondary: #{$color-grey-6};
+    --theme-color-tertiary: #{$color-grey-5};
+
+    --theme-shade-min: rgb(0, 0, 0);
+    --theme-shade-min-rgb: 0, 0, 0;
+    --theme-shade-max: rgb(255, 255, 255);
+    --theme-shade-max-rgb: 255, 255, 255;
+    --theme-shade-liftoff: rgba(var(--theme-shade-max-rgb), 0.075);
+
+    --theme-tile-color: #{$color-grey-1};
+    --theme-tile-color-rgb: #{$color-grey-1-rgb};
+
+    .theme-light {
+        --theme-background-color: var(--color-grey-9);
+        --theme-background-color-rgb: var(--color-grey-10-rgb);
+
+        --theme-color: #{$color-grey-0};
+        --theme-color-secondary: #{$color-grey-5};
+        --theme-color-tertiary: #{$color-grey-6};
+
+        --theme-shade-min: rgb(255, 255, 255);
+        --theme-shade-min-rgb: 255, 255, 255;
+        --theme-shade-max: rgb(0, 0, 0);
+        --theme-shade-max-rgb: 0, 0, 0;
+        --theme-shade-liftoff: rgba(var(--theme-shade-max-rgb), 0.05);
+
+        --theme-tile-color: #{$color-grey-9};
+        --theme-tile-color-rgb: #{$color-grey-9-rgb};
+    }
+}

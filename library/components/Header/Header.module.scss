@@ -37,7 +37,7 @@
             transition-property: color, outline-color;
 
             &:hover {
-                color: var(--color-primary-2);
+                color: $color-primary-2;
             }
 
             .title {

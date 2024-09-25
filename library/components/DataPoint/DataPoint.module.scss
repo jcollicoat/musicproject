@@ -14,14 +14,14 @@
         }
 
         .background {
-            background-color: rgba(var(--color-primary-2-rgb), 0.25);
+            background-color: rgba($color-primary-2, 0.25);
             height: 100%;
             z-index: 1;
         }
 
         .bar {
             bottom: 0;
-            background-color: var(--color-primary-2);
+            background-color: $color-primary-2;
             z-index: 2;
         }
     }

@@ -4,19 +4,19 @@ $trigger-size: 30px;
 $menu-offset: calc(100% + $space-m / 2);
 
 .wrapper {
-    --background-color: var(--color-grey-3);
+    --background-color: #{$color-grey-3};
     --box-shadow-color: rgb(0, 0, 0);
     --image-overlay-background-color: rgba(0, 0, 0, 0.8);
-    --trigger-color: var(--color-grey-6);
-    --trigger-hover-background-color: var(--color-grey-3);
+    --trigger-color: #{$color-grey-6};
+    --trigger-hover-background-color: #{$color-grey-3};
 }
 
 :global(.theme-light) .wrapper {
-    --background-color: var(--color-grey-9);
+    --background-color: #{$color-grey-9};
     --box-shadow-color: rgba(0, 0, 0, 0.35);
     --image-overlay-background-color: rgba(255, 255, 255, 0.8);
-    --trigger-color: var(--color-grey-4);
-    --trigger-hover-background-color: var(--color-grey-8);
+    --trigger-color: #{$color-grey-4};
+    --trigger-hover-background-color: #{$color-grey-8};
 }
 
 .wrapper {

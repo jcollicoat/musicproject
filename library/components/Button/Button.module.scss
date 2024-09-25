@@ -1,39 +1,39 @@
 @import '@styles/constants.scss';
 
 .button {
-    --primary-background-color: var(--color-grey-9);
-    --primary-color: var(--color-grey-0);
+    --primary-background-color: #{$color-grey-9};
+    --primary-color: #{$color-grey-0};
 
-    --secondary-background-color: var(--color-grey-4);
-    --secondary-color: var(--color-grey-9);
-    --secondary-hover-background-color: var(--color-grey-5);
+    --secondary-background-color: #{$color-grey-4};
+    --secondary-color: #{$color-grey-9};
+    --secondary-hover-background-color: #{$color-grey-5};
 
-    --tertiary-background-color: var(--color-grey-1);
-    --tertiary-border-color: var(--color-grey-2);
-    --tertiary-color: var(--color-grey-9);
-    --tertiary-hover-background-color: var(--color-grey-2);
+    --tertiary-background-color: #{$color-grey-1};
+    --tertiary-border-color: #{$color-grey-2};
+    --tertiary-color: #{$color-grey-9};
+    --tertiary-hover-background-color: #{$color-grey-2};
 
-    --inMenu-background-color: var(--color-grey-4);
-    --inMenu-color: var(--color-grey-9);
-    --inMenu-hover-background-color: var(--color-grey-5);
+    --inMenu-background-color: #{$color-grey-4};
+    --inMenu-color: #{$color-grey-9};
+    --inMenu-hover-background-color: #{$color-grey-5};
 }
 
 :global(.theme-light) .button {
-    --primary-background-color: var(--color-grey-0);
-    --primary-color: var(--color-grey-9);
+    --primary-background-color: #{$color-grey-0};
+    --primary-color: #{$color-grey-9};
 
-    --secondary-background-color: var(--color-grey-7);
-    --secondary-color: var(--color-grey-0);
-    --secondary-hover-background-color: var(--color-grey-8);
+    --secondary-background-color: #{$color-grey-7};
+    --secondary-color: #{$color-grey-0};
+    --secondary-hover-background-color: #{$color-grey-8};
 
-    --tertiary-background-color: var(--color-grey-9);
-    --tertiary-border-color: var(--color-grey-8);
-    --tertiary-color: var(--color-grey-1);
+    --tertiary-background-color: #{$color-grey-9};
+    --tertiary-border-color: #{$color-grey-8};
+    --tertiary-color: #{$color-grey-1};
     --tertiary-hover-background-color: rgb(255, 255, 255);
 
-    --inMenu-background-color: var(--color-grey-7);
-    --inMenu-color: var(--color-grey-0);
-    --inMenu-hover-background-color: var(--color-grey-9);
+    --inMenu-background-color: #{$color-grey-7};
+    --inMenu-color: #{$color-grey-0};
+    --inMenu-hover-background-color: #{$color-grey-9};
 }
 
 .button {
@@ -61,13 +61,13 @@
     }
 
     &.cta {
-        background-color: var(--color-primary-2);
+        background-color: $color-primary-2;
         color: rgb(255, 255, 255);
         transition-duration: $transition-speed-slow;
 
         &:hover {
-            background-color: var(--color-primary-3);
-            box-shadow: 0px 4px 12px -4px rgba(var(--color-primary-3), 0.5);
+            background-color: $color-primary-3;
+            box-shadow: 0px 4px 12px -4px rgba($color-primary-3, 0.5);
         }
     }
 
@@ -77,8 +77,8 @@
         transition-duration: $transition-speed-slow;
 
         &:hover {
-            background-color: var(--color-primary-2);
-            color: var(--color-primary-5);
+            background-color: $color-primary-2;
+            color: $color-primary-5;
         }
     }
 

@@ -1,11 +1,11 @@
 @import '@styles/constants.scss';
 
 .panel {
-    --border-color: var(--color-grey-2);
+    --border-color: #{$color-grey-2};
 }
 
 :global(.theme-light) .panel {
-    --border-color: var(--color-grey-8);
+    --border-color: #{$color-grey-8};
 }
 
 .panel {
