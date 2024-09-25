@@ -75,7 +75,7 @@ const audio = {
 
                 return {
                     position,
-                    value: 30 - Math.floor(section.loudness) * -1,
+                    value: Math.max(30 - Math.floor(section.loudness) * -1, 0),
                     startPosition,
                 };
             });
