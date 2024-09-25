@@ -51,6 +51,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                     hide
                 />
                 <Bar
+                    name="Loudness"
                     dataKey="range"
                     fill="var(--theme-color-tertiary)"
                     animationDuration={1000}
@@ -65,7 +66,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                     />
                 ))}
                 <Area
-                    name="Track Sections"
+                    name="Section Loudness"
                     dataKey="value"
                     fill="url(#area)"
                     stroke="var(--color-primary-2)"
