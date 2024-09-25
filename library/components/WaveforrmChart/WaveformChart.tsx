@@ -74,12 +74,21 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                     animationDuration={1000}
                     connectNulls
                     type="bump"
-                    id="sections"
                     dot={{
                         fill: 'var(--color-primary-2)',
                         fillOpacity: 1,
                         stroke: 'var(--color-primary-2)',
                     }}
+                />
+                <Area
+                    name="Fake Section Loudness"
+                    dataKey="fakeValue"
+                    fill="none"
+                    stroke="var(--color-primary-2)"
+                    strokeWidth={2}
+                    animationDuration={1000}
+                    connectNulls
+                    type="bump"
                 />
                 <Legend
                     verticalAlign="top"

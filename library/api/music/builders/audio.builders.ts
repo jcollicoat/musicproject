@@ -77,6 +77,10 @@ const audio = {
                     position,
                     value: Math.max(30 - Math.floor(section.loudness) * -1, 0),
                     startPosition,
+                    fakeValue: Math.max(
+                        30 - Math.floor(section.loudness) * -1,
+                        0,
+                    ),
                 };
             });
 
@@ -84,6 +88,17 @@ const audio = {
                 ...wave,
                 ...timeline.find((time) => time.position === wave.position),
             }));
+
+            merged.unshift(...[{ position: -1, range: [0, 0], fakeValue: 0 }]);
+            merged.push(
+                ...[
+                    {
+                        position: waveform.length + 1,
+                        range: [0, 0],
+                        fakeValue: 0,
+                    },
+                ],
+            );
 
             return {
                 duration: analysis.track.duration * 1000,
