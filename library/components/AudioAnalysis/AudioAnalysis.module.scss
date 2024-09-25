@@ -19,7 +19,7 @@
         justify-content: space-between;
 
         .line {
-            border: 1px dashed var(--theme-color-tertiary);
+            border-top: 1px dashed var(--theme-color-tertiary);
             flex-grow: 1;
             height: 0px;
         }
