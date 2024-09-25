@@ -28,7 +28,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                 />
                 <Bar
                     dataKey="range"
-                    fill="var(--color-primary-2)"
+                    fill="var(--color-primary-3)"
                     animationDuration={1000}
                 />
             </BarChart>
