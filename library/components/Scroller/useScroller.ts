@@ -41,6 +41,12 @@ export const useScroller = ({
 
     useEffect(() => {
         calculate();
+
+        window.addEventListener('resize', () => calculate());
+
+        return () => {
+            window.removeEventListener('resize', () => calculate());
+        };
     }, [calculate]);
 
     return { scrollerRef, calculate, hasOverflowStart, hasOverflowEnd };
