@@ -64,10 +64,10 @@ const audio = {
             }));
 
             const timeline = analysis.sections.map((section) => {
-                const startPosition = Math.ceil(
+                const startPosition = Math.floor(
                     (section.start / analysis.track.duration) * waveform.length,
                 );
-                const position = Math.ceil(
+                const position = Math.floor(
                     ((section.start + section.duration / 2) /
                         analysis.track.duration) *
                         waveform.length,
