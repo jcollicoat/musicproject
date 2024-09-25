@@ -58,8 +58,8 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                 />
                 {sections.map((section) => (
                     <ReferenceLine
-                        key={section.position}
-                        x={section.position}
+                        key={section.startPosition}
+                        x={section.startPosition}
                         stroke="var(--theme-shade-min)"
                         strokeWidth={3}
                     />
