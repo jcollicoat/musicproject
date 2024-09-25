@@ -10,7 +10,7 @@ export const UserPanel: FC = async () => {
     const user = await music.user.profile();
 
     return (
-        <Panel element="div">
+        <Panel element="div" backgroundColor="var(--theme-background-color)">
             <div className={layout.content}>
                 <Image
                     src={user.images.large}

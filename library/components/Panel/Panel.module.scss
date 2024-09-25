@@ -17,7 +17,7 @@
     padding: $space-l $space-m;
     width: 100%;
 
-    &.hasImage {
+    &.hasBackground {
         background-position: top center;
         background-repeat: no-repeat;
         background-size: clamp(0px, 100%, 1200px) auto;

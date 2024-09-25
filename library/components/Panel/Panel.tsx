@@ -8,6 +8,7 @@ interface Props {
     element?: keyof JSX.IntrinsicElements;
     heading?: string;
     icon?: IconProps['icon'];
+    backgroundColor?: CSSProperties['backgroundColor'];
     backgroundImage?: CSSProperties['backgroundImage'];
     gridArea?: CSSProperties['gridArea'];
 }
@@ -17,6 +18,7 @@ export const Panel: FC<Props> = ({
     element: Element = 'section',
     heading,
     icon,
+    backgroundColor,
     backgroundImage,
     gridArea,
 }) => {
@@ -24,9 +26,10 @@ export const Panel: FC<Props> = ({
         <Element
             className={classNames(
                 styles.panel,
-                backgroundImage && styles.hasImage,
+                (backgroundColor || backgroundImage) && styles.hasBackground,
             )}
             style={{
+                backgroundColor: backgroundColor ? backgroundColor : undefined,
                 backgroundImage: backgroundImage
                     ? `url(${backgroundImage})`
                     : undefined,
