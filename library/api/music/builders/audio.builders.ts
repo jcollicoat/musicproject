@@ -63,11 +63,39 @@ const audio = {
                 ],
             }));
 
+            const timeline = analysis.sections.map((section) => {
+                const position = Math.ceil(
+                    (section.start / analysis.track.duration) * waveform.length,
+                );
+
+                return {
+                    position,
+                    value: 60 - Math.floor(section.loudness) * -1,
+                };
+            });
+
+            const merged = waveform.map((wave, index) => {
+                if (index === waveform.length - 1) {
+                    const finalWaveValue = Math.max(...wave.range);
+                    const finalTimelineValue =
+                        timeline[timeline.length - 1].value;
+                    return {
+                        ...wave,
+                        value: (finalWaveValue + finalTimelineValue) / 2,
+                    };
+                }
+
+                return {
+                    ...wave,
+                    ...timeline.find((time) => time.position === wave.position),
+                };
+            });
+
             return {
                 duration: analysis.track.duration * 1000,
                 min: -60,
                 max: 60,
-                waveform,
+                merged,
             };
         },
     },
