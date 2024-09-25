@@ -6,6 +6,7 @@ import {
     Bar,
     ComposedChart,
     Legend,
+    ReferenceLine,
     ResponsiveContainer,
     XAxis,
     YAxis,
@@ -18,6 +19,7 @@ interface Props {
 
 export const WaveformChart: FC<Props> = ({ analysis }) => {
     const { merged, min, max } = analysis;
+    const sections = merged.filter((data) => data.value !== undefined);
 
     return (
         <ResponsiveContainer height="100%" width="100%">
@@ -27,7 +29,7 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                         <stop
                             offset="0%"
                             stopColor="var(--color-primary-2)"
-                            stopOpacity={0.75}
+                            stopOpacity={0.5}
                         />
                         <stop
                             offset="100%"
@@ -54,6 +56,14 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                     animationDuration={1000}
                     legendType="none"
                 />
+                {sections.map((section) => (
+                    <ReferenceLine
+                        key={section.position}
+                        x={section.position}
+                        stroke="var(--theme-shade-min)"
+                        strokeWidth={3}
+                    />
+                ))}
                 <Area
                     name="Track Sections"
                     dataKey="value"
@@ -64,9 +74,24 @@ export const WaveformChart: FC<Props> = ({ analysis }) => {
                     connectNulls
                     type="bump"
                     id="sections"
-                    dot
+                    dot={{
+                        fill: 'var(--color-primary-2)',
+                        fillOpacity: 1,
+                        stroke: 'var(--color-primary-2)',
+                    }}
                 />
-                <Legend verticalAlign="top" />
+                <Legend
+                    verticalAlign="top"
+                    iconSize={8}
+                    payload={[
+                        {
+                            value: 'Track Sections',
+                            type: 'circle',
+                            id: 'sections',
+                            color: 'var(--color-primary-2)',
+                        },
+                    ]}
+                />
             </ComposedChart>
         </ResponsiveContainer>
     );
