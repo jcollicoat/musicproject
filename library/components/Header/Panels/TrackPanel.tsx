@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import { FC } from 'react';
 import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Icon } from '@components/Icon/Icon';
@@ -22,8 +21,8 @@ export const TrackPanel: FC<Props> = async ({ trackId }) => {
     return (
         <Panel element="div" backgroundImage={track.album.images.large}>
             <div className={layout.content}>
-                <Image
-                    src={track.album.images.large}
+                <img
+                    src={track.album.images.medium}
                     alt={track.album.name}
                     height={160}
                     width={160}

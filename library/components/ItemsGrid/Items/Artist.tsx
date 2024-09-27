@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
@@ -14,11 +13,11 @@ interface Props {
 export const Artist: FC<Props> = ({ artist }) => (
     <Link className={layout.tile} href={`/artists/${artist.id}`}>
         <div className={classNames(layout.image, styles.image)}>
-            <Image
+            <img
                 src={artist.images.medium}
-                alt={`Image for ${artist.name}`}
-                fill
-                sizes="115px"
+                alt={artist.name}
+                height="100%"
+                width="100%"
             />
         </div>
         <div className={layout.content}>

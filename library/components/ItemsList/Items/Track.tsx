@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
@@ -23,9 +22,9 @@ export const Track: FC<Props> = ({ track, fallbackImage }) => {
     return (
         <div className={layout.item}>
             <div className={layout.content}>
-                <Image
+                <img
                     src={image}
-                    alt=""
+                    alt={name}
                     height={60}
                     width={60}
                     className={layout.image}

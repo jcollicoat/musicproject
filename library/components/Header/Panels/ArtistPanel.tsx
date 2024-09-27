@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import { FC } from 'react';
 import { FollowButton } from '@components/Button/Actions/FollowButton';
 import { DataPoint } from '@components/DataPoint/DataPoint';
@@ -19,7 +18,7 @@ export const ArtistPanel: FC<Props> = async ({ artistId }) => {
     return (
         <Panel element="div" backgroundImage={artist.images.large}>
             <div className={layout.content}>
-                <Image
+                <img
                     src={artist.images.medium}
                     alt={artist.name}
                     height={160}

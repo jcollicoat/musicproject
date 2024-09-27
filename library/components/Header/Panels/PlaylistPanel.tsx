@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { FC } from 'react';
 import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Icon } from '@components/Icon/Icon';
@@ -17,8 +16,8 @@ export const PlaylistPanel: FC<Props> = async ({ playlistId }) => {
     return (
         <Panel element="div" backgroundImage={playlist.images?.large}>
             <div className={layout.content}>
-                <Image
-                    src={playlist.images?.large ?? ''}
+                <img
+                    src={playlist.images?.medium ?? ''}
                     alt={playlist.name}
                     height={160}
                     width={160}

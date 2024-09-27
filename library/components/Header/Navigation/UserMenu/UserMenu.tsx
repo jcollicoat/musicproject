@@ -50,5 +50,5 @@ export const UserMenu: FC = async () => {
         signout,
     ];
 
-    return <Menu buttons={buttons} imageUrl={user.images.medium} side="left" />;
+    return <Menu buttons={buttons} imageUrl={user.images.small} side="left" />;
 };

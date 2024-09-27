@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import { FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
 import { Panel } from '@components/Panel/Panel';
@@ -12,9 +11,9 @@ export const UserPanel: FC = async () => {
     return (
         <Panel element="div" backgroundColor="var(--theme-background-color)">
             <div className={layout.content}>
-                <Image
-                    src={user.images.large}
-                    alt={`${user.name}'s profile picture`}
+                <img
+                    src={user.images.medium}
+                    alt={user.name}
                     height={140}
                     width={140}
                     className={classNames(layout.image, layout.round)}

@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import { FC } from 'react';
 import { DataPoint } from '@components/DataPoint/DataPoint';
 import { Icon } from '@components/Icon/Icon';
@@ -20,8 +19,8 @@ export const AlbumPanel: FC<Props> = async ({ albumId }) => {
     return (
         <Panel element="div" backgroundImage={album.images.large}>
             <div className={layout.content}>
-                <Image
-                    src={album.images.large}
+                <img
+                    src={album.images.medium}
                     alt={album.name}
                     height={160}
                     width={160}

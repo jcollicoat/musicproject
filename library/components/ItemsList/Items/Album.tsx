@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
@@ -15,7 +14,7 @@ export const Album: FC<Props> = ({ album }) => {
     return (
         <div className={layout.item}>
             <div className={layout.content}>
-                <Image
+                <img
                     src={images.medium}
                     alt={name}
                     height={60}

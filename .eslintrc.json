@@ -109,6 +109,7 @@
         ],
         "react/prefer-stateless-function": "error",
         "require-await": "error",
+        "@next/next/no-img-element": "off",
         "@typescript-eslint/no-unnecessary-condition": "error",
         "@typescript-eslint/no-unused-vars": "error"
     },
