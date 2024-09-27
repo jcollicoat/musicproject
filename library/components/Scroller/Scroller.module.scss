@@ -34,7 +34,7 @@
         &::after {
             height: 100%;
             top: 0;
-            width: $space-xxl;
+            width: $space-xl;
         }
 
         &::before {
@@ -75,7 +75,7 @@
     &.vertical {
         &::before,
         &::after {
-            height: $space-xxl;
+            height: $space-xl;
             left: 0;
             width: 100%;
         }
