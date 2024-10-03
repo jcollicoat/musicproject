@@ -14,11 +14,11 @@ import {
 import { music } from 'music/api';
 
 interface Props {
-    analysis: Awaited<ReturnType<typeof music.audio.analysis.id>>;
+    chart: Awaited<ReturnType<typeof music.audio.analysis.id>>['chart'];
 }
 
-export const WaveformChart: FC<Props> = ({ analysis }) => {
-    const { merged, min, max } = analysis;
+export const WaveformChart: FC<Props> = ({ chart }) => {
+    const { merged, min, max } = chart;
     const sections = merged.filter((data) => data.value !== undefined);
 
     return (

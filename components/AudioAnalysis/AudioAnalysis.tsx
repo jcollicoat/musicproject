@@ -17,19 +17,27 @@ export const AudioAnalysis: FC<Props> = async ({ trackId }) => {
         <Scroller direction="horizontal">
             <div className={styles.wrapper}>
                 <div className={styles.chart}>
-                    <WaveformChart analysis={analysis} />
+                    <WaveformChart chart={analysis.chart} />
                     <div className={styles.features}>
                         <DataPoint
                             name="Tempo"
-                            value={120}
-                            tempo={120}
+                            value={analysis.features.tempo}
+                            tempo={analysis.features.tempo}
                             suffix=" BPM"
                         />
-                        <DataPoint name="Key" value="B" suffix=" Minor" />
-                        <DataPoint name="Loudness" value="-10" suffix=" dB" />
+                        <DataPoint
+                            name="Key"
+                            value={analysis.features.key}
+                            suffix={` ${analysis.features.mode}`}
+                        />
+                        <DataPoint
+                            name="Loudness"
+                            value={analysis.features.loudness}
+                            suffix=" dB"
+                        />
                         <DataPoint
                             name="Time Signature"
-                            value="4"
+                            value={analysis.features.timeSignature}
                             suffix="/4"
                         />
                     </div>
@@ -37,7 +45,7 @@ export const AudioAnalysis: FC<Props> = async ({ trackId }) => {
                 <div className={styles.timeline}>
                     <TimeText durationMs={0} />
                     <div className={styles.line}></div>
-                    <TimeText durationMs={analysis.duration} />
+                    <TimeText durationMs={analysis.chart.duration} />
                 </div>
             </div>
         </Scroller>

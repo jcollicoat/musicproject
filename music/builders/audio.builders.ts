@@ -100,11 +100,28 @@ const audio = {
                 ],
             );
 
-            return {
+            const tempo = Math.round(analysis.track.tempo);
+            const key = MusicalKeys[analysis.track.key];
+            const mode = MusicalModes[analysis.track.mode];
+            const loudness = Math.round(analysis.track.loudness);
+            const timeSignature = analysis.track.time_signature;
+
+            const chart = {
                 duration: analysis.track.duration * 1000,
                 min: -60,
                 max: 60,
                 merged,
+            };
+
+            return {
+                chart,
+                features: {
+                    tempo,
+                    key,
+                    mode,
+                    loudness,
+                    timeSignature,
+                },
             };
         },
     },
@@ -119,7 +136,7 @@ const audio = {
                 speechiness: normalize(features.speechiness),
                 valence: normalize(features.valence),
                 mode: MusicalModes[features.mode],
-                tempo: Math.floor(features.tempo),
+                tempo: Math.round(features.tempo),
                 loudness: `${Math.round(features.loudness)}dB`,
                 key: MusicalKeys[features.key],
                 timeSignature: `${features.time_signature}/4`,

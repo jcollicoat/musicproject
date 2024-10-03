@@ -23,7 +23,7 @@ export const DataPoint: FC<Props> = ({
     smallText,
 }) => (
     <div className={styles.wrapper}>
-        {(hasBar || tempo) && (
+        {(hasBar || Boolean(tempo)) && (
             <div className={styles.background}>
                 {hasBar && (
                     <div
