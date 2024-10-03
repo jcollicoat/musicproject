@@ -27,6 +27,13 @@ export default function Page({
                 >
                     <AudioFeatures trackId={trackId} />
                 </Panel>
+                <Panel
+                    gridArea="audio2"
+                    heading="Audio Features"
+                    icon="AudioFeatures"
+                >
+                    <AudioFeatures trackId={trackId} />
+                </Panel>
             </main>
         </>
     );

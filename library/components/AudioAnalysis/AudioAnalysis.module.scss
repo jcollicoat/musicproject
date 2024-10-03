@@ -8,7 +8,19 @@
     width: 100%;
 
     .chart {
+        position: relative;
         flex-grow: 1;
+
+        .features {
+            background-color: rgba(var(--theme-shade-min-rgb), 0.75);
+            border-radius: 4px;
+            bottom: $space-xxl;
+            display: flex;
+            gap: $space-xxl;
+            left: 0;
+            padding: $space-m;
+            position: absolute;
+        }
     }
 
     .timeline {
