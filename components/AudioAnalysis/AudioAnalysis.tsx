@@ -19,10 +19,19 @@ export const AudioAnalysis: FC<Props> = async ({ trackId }) => {
                 <div className={styles.chart}>
                     <WaveformChart analysis={analysis} />
                     <div className={styles.features}>
-                        <DataPoint name="Tempo" value="120bpm" />
-                        <DataPoint name="Key" value="B Minor" />
-                        <DataPoint name="Loudness" value="-10dB" />
-                        <DataPoint name="Time Signature" value="4/4" />
+                        <DataPoint
+                            name="Tempo"
+                            value={120}
+                            tempo={120}
+                            suffix=" BPM"
+                        />
+                        <DataPoint name="Key" value="B" suffix=" Minor" />
+                        <DataPoint name="Loudness" value="-10" suffix=" dB" />
+                        <DataPoint
+                            name="Time Signature"
+                            value="4"
+                            suffix="/4"
+                        />
                     </div>
                 </div>
                 <div className={styles.timeline}>

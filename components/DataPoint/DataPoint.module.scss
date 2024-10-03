@@ -6,9 +6,11 @@
         position: relative;
 
         .background,
-        .bar {
+        .bar,
+        .tempo {
             border-radius: 3px;
             left: 0;
+            overflow: hidden;
             position: absolute;
             width: 3px;
         }
@@ -19,10 +21,35 @@
             z-index: 1;
         }
 
-        .bar {
+        .bar,
+        .tempo {
             bottom: 0;
-            background-color: $color-primary-2;
             z-index: 2;
+        }
+
+        .bar {
+            background-color: $color-primary-2;
+        }
+
+        @keyframes tempo {
+            from {
+                transform: translateY(-200%);
+            }
+
+            to {
+                transform: translateY(100%);
+            }
+        }
+
+        .tempo {
+            animation-iteration-count: infinite;
+            animation-name: tempo;
+            background: linear-gradient(
+                to top,
+                $color-primary-2,
+                rgba($color-primary-2, 0)
+            );
+            height: 50%;
         }
     }
 

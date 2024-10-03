@@ -16,8 +16,8 @@ export const CustomTooltip: FC<Props> = ({ active, payload, label }) => {
                 <DataPoint
                     name={label ? titleCase(label) : ''}
                     value={payload[0].value}
+                    suffix="%"
                     hasBar
-                    isPercentage
                 />
             </div>
         );
