@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { titleCase } from '@api/helpers';
 import { DataPoint } from 'components/DataPoint/DataPoint';
+import { titleCase } from 'utilities';
 import styles from './CustomTooltip.module.scss';
 
 interface Props {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
-import { errorResponse } from '@api/helpers';
 import { refreshSpotifyInJwt, spotifyTokenIsExpired } from 'spotify/refresh';
+import { errorResponse } from 'utilities';
 
 const secret = process.env.NEXTAUTH_SECRET;
 

@@ -1,8 +1,17 @@
 import { NextURL } from 'next/dist/server/web/next-url';
 import { NextResponse } from 'next/server';
-import { logVariables } from '@library/utilities';
 
 const ENV = process.env.NODE_ENV;
+
+export const logVariables = (name: string, variables: unknown[]) => {
+    console.log('------------');
+    console.log(name);
+    console.log('------------');
+    variables.forEach((variable, index) => {
+        console.log(`${index}:`, variable);
+    });
+    console.log('------------');
+};
 
 // Errors
 

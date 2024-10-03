@@ -1,6 +1,6 @@
-import { titleCase } from '@api/helpers';
 import { builders } from 'music/builders';
 import { SpotifyArtist } from 'spotify/types/artists.types';
+import { titleCase } from 'utilities';
 
 const artist = (artist: SpotifyArtist) => {
     let followersDisplay = artist.followers.total.toString();

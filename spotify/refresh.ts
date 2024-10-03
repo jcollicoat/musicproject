@@ -1,5 +1,5 @@
 import { JWT } from 'next-auth/jwt';
-import { logVariables } from '@library/utilities';
+import { logVariables } from 'utilities';
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
