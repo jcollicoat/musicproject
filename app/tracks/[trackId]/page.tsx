@@ -1,7 +1,7 @@
-import { AudioAnalysis } from '@components/AudioAnalysis/AudioAnalysis';
-import { AudioFeatures } from '@components/AudioFeatures/AudioFeatures';
-import { Header } from '@components/Header/Header';
-import { Panel } from '@components/Panel/Panel';
+import { AudioAnalysis } from 'components/AudioAnalysis/AudioAnalysis';
+import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
+import { Header } from 'components/Header/Header';
+import { Panel } from 'components/Panel/Panel';
 import styles from './page.module.scss';
 
 export const metadata = {
