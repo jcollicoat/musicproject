@@ -1,4 +1,4 @@
-import '@styles/layout.scss';
+import 'styles/layout.scss';
 import { ThemeBody } from '@components/ThemeBody/ThemeBody';
 import { AuthContextProvider } from '@context/AuthContextProvider';
 import { QueryContextProvider } from '@context/QueryContextProvider';

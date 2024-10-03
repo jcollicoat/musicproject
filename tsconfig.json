@@ -28,7 +28,6 @@
             "@components/*": ["library/components/*"],
             "@hooks/*": ["library/hooks/*"],
             "@context/*": ["library/context/*"],
-            "@styles/*": ["library/styles/*"],
             "@library/*": ["library/*"],
             "@app/*": ["app/*"]
         }
