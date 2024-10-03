@@ -4,6 +4,7 @@ import { FC } from 'react';
 import {
     PolarAngleAxis,
     PolarGrid,
+    PolarRadiusAxis,
     Radar,
     RadarChart,
     ResponsiveContainer,
@@ -62,6 +63,11 @@ export const FeaturesChart: FC<Props> = ({ audio }) => {
                     dataKey="name"
                     orientation="outer"
                     tick={iconTick}
+                />
+                <PolarRadiusAxis
+                    domain={[0, 100]}
+                    axisLine={false}
+                    tick={false}
                 />
                 <Radar
                     dataKey="percent"
