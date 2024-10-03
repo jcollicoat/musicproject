@@ -25,7 +25,6 @@
             "@spotify/*": ["library/api/spotify/*"],
             "@api/*": ["library/api/*"],
             "@auth/*": ["library/auth/*"],
-            "@hooks/*": ["library/hooks/*"],
             "@library/*": ["library/*"],
             "@app/*": ["app/*"]
         }
