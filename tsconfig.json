@@ -26,7 +26,6 @@
             "@api/*": ["library/api/*"],
             "@auth/*": ["library/auth/*"],
             "@hooks/*": ["library/hooks/*"],
-            "@context/*": ["library/context/*"],
             "@library/*": ["library/*"],
             "@app/*": ["app/*"]
         }
