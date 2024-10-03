@@ -11,7 +11,7 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
-import { music } from '@music/api';
+import { music } from 'music/api';
 
 interface Props {
     analysis: Awaited<ReturnType<typeof music.audio.analysis.id>>;

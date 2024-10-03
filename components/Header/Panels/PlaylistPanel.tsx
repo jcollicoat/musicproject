@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { DataPoint } from 'components/DataPoint/DataPoint';
 import { Icon } from 'components/Icon/Icon';
 import { Panel } from 'components/Panel/Panel';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import layout from './layout.module.scss';
 
 interface Props {

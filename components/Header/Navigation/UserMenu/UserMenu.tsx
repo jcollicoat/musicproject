@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 import { ComponentProps, FC } from 'react';
 import { Button } from 'components/Button/Button';
 import { Menu } from 'components/Menu/Menu';
-import { music } from '@music/api';
+import { music } from 'music/api';
 
 const explore: ComponentProps<typeof Button> = {
     text: 'Explore',

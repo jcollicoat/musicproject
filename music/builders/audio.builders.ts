@@ -1,4 +1,4 @@
-import { MusicalKeys, MusicalModes } from '@music/types';
+import { MusicalKeys, MusicalModes } from 'music/types';
 import {
     SpotifyAudioAnalysis,
     SpotifyAudioFeatures,

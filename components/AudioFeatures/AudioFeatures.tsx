@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { titleCase } from '@api/helpers';
 import { DataPoint } from 'components/DataPoint/DataPoint';
 import { FeaturesChart } from 'components/FeaturesChart/FeaturesChart';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import styles from './AudioFeatures.module.scss';
 
 type Props = {

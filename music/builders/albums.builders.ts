@@ -1,5 +1,5 @@
 import { titleCase } from '@api/helpers';
-import { builders } from '@music/builders';
+import { builders } from 'music/builders';
 import { SpotifyAlbum, SpotifyAlbumSimple } from '@spotify/types/albums.types';
 
 const albumDuration = (tracks: SpotifyAlbum['tracks']['items']) =>

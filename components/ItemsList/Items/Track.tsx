@@ -4,7 +4,7 @@ import { Icon } from 'components/Icon/Icon';
 import { LinkedAlbum } from 'components/Linked/LinkedAlbum';
 import { LinkedArtists } from 'components/Linked/LinkedArtists';
 import { TimeText } from 'components/TimeText/TimeText';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import layout from './layout.module.scss';
 
 interface Props {

@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, useState, useTransition } from 'react';
-import { follow, FollowAction } from '@music/actions';
+import { follow, FollowAction } from 'music/actions';
 import { Button } from '../Button';
 
 export const FollowButton: FC<FollowAction> = ({ action, type, id }) => {

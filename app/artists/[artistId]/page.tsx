@@ -2,7 +2,7 @@ import { Header } from 'components/Header/Header';
 import { ItemsGrid } from 'components/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import styles from './page.module.scss';
 
 export const metadata = {

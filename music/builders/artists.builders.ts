@@ -1,5 +1,5 @@
 import { titleCase } from '@api/helpers';
-import { builders } from '@music/builders';
+import { builders } from 'music/builders';
 import { SpotifyArtist } from '@spotify/types/artists.types';
 
 const artist = (artist: SpotifyArtist) => {

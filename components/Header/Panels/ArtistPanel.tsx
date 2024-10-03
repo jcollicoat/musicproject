@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { FollowButton } from 'components/Button/Actions/FollowButton';
 import { DataPoint } from 'components/DataPoint/DataPoint';
 import { Panel } from 'components/Panel/Panel';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import styles from './ArtistPanel.module.scss';
 import layout from './layout.module.scss';
 

@@ -3,7 +3,7 @@ import { DataPoint } from 'components/DataPoint/DataPoint';
 import { Scroller } from 'components/Scroller/Scroller';
 import { TimeText } from 'components/TimeText/TimeText';
 import { WaveformChart } from 'components/WaveforrmChart/WaveformChart';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import styles from './AudioAnalysis.module.scss';
 
 interface Props {

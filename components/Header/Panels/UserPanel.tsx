@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { FC } from 'react';
 import { Icon } from 'components/Icon/Icon';
 import { Panel } from 'components/Panel/Panel';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import layout from './layout.module.scss';
 
 export const UserPanel: FC = async () => {

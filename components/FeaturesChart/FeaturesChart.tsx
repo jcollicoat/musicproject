@@ -10,7 +10,7 @@ import {
     Tooltip,
 } from 'recharts';
 import { Icon } from 'components/Icon/Icon';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import { CustomTooltip } from './CustomTooltip';
 
 interface Props {

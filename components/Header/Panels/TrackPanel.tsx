@@ -6,7 +6,7 @@ import { LinkedAlbum } from 'components/Linked/LinkedAlbum';
 import { LinkedArtists } from 'components/Linked/LinkedArtists';
 import { Panel } from 'components/Panel/Panel';
 import { TimeText } from 'components/TimeText/TimeText';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import layout from './layout.module.scss';
 import styles from './TrackPanel.module.scss';
 

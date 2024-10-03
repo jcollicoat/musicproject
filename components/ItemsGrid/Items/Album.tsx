@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { FC } from 'react';
 import { Icon } from 'components/Icon/Icon';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import styles from './Album.module.scss';
 import layout from './layout.module.scss';
 

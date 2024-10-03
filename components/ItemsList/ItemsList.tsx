@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Scroller } from 'components/Scroller/Scroller';
-import { music } from '@music/api';
+import { music } from 'music/api';
 import { Album } from './Items/Album';
 import { Track } from './Items/Track';
 import styles from './ItemsList.module.scss';

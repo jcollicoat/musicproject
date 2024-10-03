@@ -1,4 +1,4 @@
-import { builders } from '@music/builders';
+import { builders } from 'music/builders';
 import {
     SpotifyPlaylist,
     SpotifyPlaylistSimple,
