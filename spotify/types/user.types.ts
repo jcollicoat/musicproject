@@ -3,7 +3,7 @@ import {
     SpotifyImage,
     SpotifyObject,
     SpotifyPagedList,
-} from '@spotify/types';
+} from 'spotify/types';
 import { SpotifyArtist } from './artists.types';
 
 export interface SpotifyUser {

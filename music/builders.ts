@@ -1,4 +1,4 @@
-import { SpotifyImage } from '@spotify/types';
+import { SpotifyImage } from 'spotify/types';
 import { album } from './builders/albums.builders';
 import { artist } from './builders/artists.builders';
 import { audio } from './builders/audio.builders';

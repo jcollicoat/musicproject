@@ -1,4 +1,4 @@
-import { SpotifyFollowers, SpotifyImage, SpotifyObject } from '@spotify/types';
+import { SpotifyFollowers, SpotifyImage, SpotifyObject } from 'spotify/types';
 import { SpotifySearchGroup } from './search.types';
 import { SpotifyTrack } from './tracks.types';
 

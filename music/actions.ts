@@ -1,6 +1,6 @@
 'use server';
 
-import { spotify } from '@spotify/api';
+import { spotify } from 'spotify/api';
 
 export interface FollowAction {
     action: 'add' | 'remove';

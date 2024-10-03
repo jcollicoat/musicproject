@@ -1,4 +1,4 @@
-import { spotify } from '@spotify/api';
+import { spotify } from 'spotify/api';
 import { builders } from './builders';
 
 const albums = {

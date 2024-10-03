@@ -1,4 +1,4 @@
-import { SpotifyImage, SpotifyObject } from '@spotify/types';
+import { SpotifyImage, SpotifyObject } from 'spotify/types';
 import { SpotifyArtistSimple } from './artists.types';
 
 interface SpotifyTrackAlbum {

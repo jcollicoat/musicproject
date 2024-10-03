@@ -1,5 +1,5 @@
 import { titleCase } from '@api/helpers';
-import { SpotifyUser } from '@spotify/types/user.types';
+import { SpotifyUser } from 'spotify/types/user.types';
 
 const user = (user: SpotifyUser) => ({
     country: user.country,

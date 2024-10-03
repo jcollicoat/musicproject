@@ -2,7 +2,7 @@ import { builders } from 'music/builders';
 import {
     SpotifyPlaylist,
     SpotifyPlaylistSimple,
-} from '@spotify/types/playlists.types';
+} from 'spotify/types/playlists.types';
 
 const playlist = {
     full: (playlist: SpotifyPlaylist) => ({

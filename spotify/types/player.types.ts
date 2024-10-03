@@ -1,4 +1,4 @@
-import { SpotifyObject, SpotifyPagedList } from '@spotify/types';
+import { SpotifyObject, SpotifyPagedList } from 'spotify/types';
 import { SpotifyTrack } from './tracks.types';
 
 interface RecentlyPlayedTrack {

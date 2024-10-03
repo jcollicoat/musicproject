@@ -2,7 +2,7 @@ import { MusicalKeys, MusicalModes } from 'music/types';
 import {
     SpotifyAudioAnalysis,
     SpotifyAudioFeatures,
-} from '@spotify/types/audio.types';
+} from 'spotify/types/audio.types';
 
 const normalize = (features: number) => Math.floor(features * 100);
 

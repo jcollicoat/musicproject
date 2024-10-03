@@ -1,6 +1,6 @@
 import { titleCase } from '@api/helpers';
 import { builders } from 'music/builders';
-import { SpotifyTrack, SpotifyTrackSimple } from '@spotify/types/tracks.types';
+import { SpotifyTrack, SpotifyTrackSimple } from 'spotify/types/tracks.types';
 
 const trackAlbum = (album: SpotifyTrack['album']) => {
     return {

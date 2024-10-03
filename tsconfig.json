@@ -21,7 +21,6 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@spotify/*": ["library/api/spotify/*"],
             "@api/*": ["library/api/*"],
             "@auth/*": ["library/auth/*"],
             "@library/*": ["library/*"],
