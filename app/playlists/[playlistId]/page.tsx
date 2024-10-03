@@ -34,6 +34,7 @@ export default async function Page({
                 >
                     <AudioFeatures
                         trackIds={playlist.tracks.map((track) => track.id)}
+                        display="chart"
                     />
                 </Panel>
             </main>

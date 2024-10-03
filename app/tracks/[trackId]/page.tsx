@@ -25,14 +25,14 @@ export default function Page({
                     heading="Audio Features"
                     icon="AudioFeatures"
                 >
-                    <AudioFeatures trackId={trackId} />
+                    <AudioFeatures trackId={trackId} display="chart" />
                 </Panel>
                 <Panel
                     gridArea="audio2"
                     heading="Audio Features"
                     icon="AudioFeatures"
                 >
-                    <AudioFeatures trackId={trackId} />
+                    <AudioFeatures trackId={trackId} display="grid" />
                 </Panel>
             </main>
         </>
