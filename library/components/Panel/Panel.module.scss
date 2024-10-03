@@ -10,6 +10,7 @@
 
 .panel {
     background-color: var(--theme-shade-min);
+    container-type: inline-size;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -27,19 +28,16 @@
         z-index: $z-normal;
 
         &::before {
-            aspect-ratio: 1 / 1;
             background-image: linear-gradient(
-                to top,
-                var(--theme-shade-min),
-                rgba(var(--theme-shade-min-rgb), 0.8)
+                to bottom,
+                rgba(var(--theme-shade-min-rgb), 0.8),
+                var(--theme-shade-min) 100cqw,
+                var(--theme-shade-min)
             );
-            bottom: 0;
             content: '';
-            left: 0;
+            inset: 0;
             pointer-events: none;
             position: absolute;
-            right: 0;
-            top: 0;
             z-index: 1;
         }
 
