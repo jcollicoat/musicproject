@@ -4,6 +4,23 @@ import { Button } from 'components/Button/Button';
 import styles from './Navigation.module.scss';
 import { UserMenu } from './UserMenu/UserMenu';
 
+const explore: ComponentProps<typeof Button> = {
+    text: 'Explore',
+    iconStart: {
+        icon: 'Track',
+    },
+    link: '/explore',
+};
+
+const compare: ComponentProps<typeof Button> = {
+    text: 'Compare',
+    iconStart: {
+        icon: 'Track',
+    },
+    link: '/compare',
+    style: 'tertiary',
+};
+
 const signIn: ComponentProps<typeof Button> = {
     text: 'Sign In',
     iconStart: {
@@ -18,7 +35,15 @@ export const Navigation: FC = async () => {
 
     return (
         <nav className={styles.navigation}>
-            {session ? <UserMenu /> : <Button {...signIn} />}
+            {session ? (
+                <>
+                    <Button {...explore} />
+                    <Button {...compare} />
+                    <UserMenu />
+                </>
+            ) : (
+                <Button {...signIn} />
+            )}
         </nav>
     );
 };

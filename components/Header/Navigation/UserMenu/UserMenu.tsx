@@ -4,14 +4,6 @@ import { Button } from 'components/Button/Button';
 import { Menu } from 'components/Menu/Menu';
 import { music } from 'music/api';
 
-const explore: ComponentProps<typeof Button> = {
-    text: 'Explore',
-    iconStart: {
-        icon: 'Track',
-    },
-    link: '/explore',
-};
-
 const myMusic: ComponentProps<typeof Button> = {
     text: 'My Music',
     iconStart: {
@@ -43,12 +35,11 @@ export const UserMenu: FC = async () => {
 
     const user = await music.user.profile();
 
-    const buttons: ComponentProps<typeof Button>[] = [
-        explore,
-        myMusic,
-        theme,
-        signout,
-    ];
-
-    return <Menu buttons={buttons} imageUrl={user.images.small} side="left" />;
+    return (
+        <Menu
+            buttons={[myMusic, theme, signout]}
+            imageUrl={user.images.small}
+            side="left"
+        />
+    );
 };
