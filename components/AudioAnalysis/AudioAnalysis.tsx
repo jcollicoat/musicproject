@@ -24,21 +24,25 @@ export const AudioAnalysis: FC<Props> = async ({ trackId }) => {
                             value={analysis.features.tempo}
                             tempo={analysis.features.tempo}
                             suffix=" BPM"
+                            smallText
                         />
                         <DataPoint
                             name="Key"
                             value={analysis.features.key}
                             suffix={` ${analysis.features.mode}`}
+                            smallText
                         />
                         <DataPoint
                             name="Loudness"
                             value={analysis.features.loudness}
                             suffix=" dB"
+                            smallText
                         />
                         <DataPoint
                             name="Time Signature"
                             value={analysis.features.timeSignature}
                             suffix="/4"
+                            smallText
                         />
                     </div>
                 </div>
