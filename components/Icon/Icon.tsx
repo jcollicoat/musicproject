@@ -2,6 +2,7 @@ import { CSSProperties, FC } from 'react';
 import { AudioFeatures } from './Glyphs/AudioFeatures';
 import { Calendar } from './Glyphs/Calendar';
 import { Clock } from './Glyphs/Clock';
+import { Compare } from './Glyphs/Compare';
 import { Disc } from './Glyphs/Disc';
 import { Heart } from './Glyphs/Heart';
 import { Home } from './Glyphs/Home';
@@ -40,6 +41,7 @@ type Icons =
     | 'AudioFeatures'
     | 'Calendar'
     | 'Clock'
+    | 'Compare'
     | 'Disc'
     | 'Heart'
     | 'Home'
@@ -80,6 +82,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'Clock':
             Icon = Clock;
+            break;
+        case 'Compare':
+            Icon = Compare;
             break;
         case 'Disc':
             Icon = Disc;
