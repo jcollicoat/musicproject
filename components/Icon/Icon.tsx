@@ -157,7 +157,6 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
     return (
         <div className={styles.container} style={{ fontSize: size }}>
             <svg
-                className={styles.container}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 14 14"
                 fill="none"
