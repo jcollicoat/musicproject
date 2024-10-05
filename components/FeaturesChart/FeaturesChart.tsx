@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { ComponentProps, FC } from 'react';
 import {
     PolarAngleAxis,
     PolarGrid,
@@ -27,6 +27,34 @@ function iconTick({
     x: number;
     y: number;
 }) {
+    let icon: ComponentProps<typeof Icon>['icon'] = 'Heart';
+
+    switch (payload.value) {
+        case 'instrumentalness':
+            icon = 'Info';
+            break;
+        case 'energy':
+            icon = 'Spark';
+            break;
+        case 'speechiness':
+            icon = 'Microphone';
+            break;
+        case 'acousticness':
+            icon = 'Playlist';
+            break;
+        case 'valence':
+            icon = 'Smile';
+            break;
+        case 'danceability':
+            icon = 'Pulse';
+            break;
+        case 'liveness':
+            icon = 'Recent';
+            break;
+        default:
+            icon = 'Heart';
+    }
+
     return (
         <g
             className="recharts-layer recharts-polar-angle-axis-tick"
@@ -36,15 +64,14 @@ function iconTick({
                 x={x}
                 y={y}
                 dy="0em"
-                width="1em"
-                height="1em"
-                style={{ transform: 'translate(-0.5em, -0.5em)' }}
+                width="1.25em"
+                height="1.25em"
+                style={{
+                    fontSize: '1.25em',
+                    transform: 'translate(-0.5em, -0.5em)',
+                }}
             >
-                {payload.value === 'energy' ? (
-                    <Icon icon="Spark" />
-                ) : (
-                    <Icon icon="Heart" />
-                )}
+                <Icon icon={icon} />
             </foreignObject>
         </g>
     );

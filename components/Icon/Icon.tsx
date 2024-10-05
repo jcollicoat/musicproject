@@ -9,11 +9,13 @@ import { Info } from './Glyphs/Info';
 import { Lock } from './Glyphs/Lock';
 import { Logout } from './Glyphs/Logout';
 import { Menu } from './Glyphs/Menu';
+import { Microphone } from './Glyphs/Microphone';
 import { Minus } from './Glyphs/Minus';
 import { Playlist } from './Glyphs/Playlist';
 import { Plus } from './Glyphs/Plus';
 import { Pulse } from './Glyphs/Pulse';
 import { Recent } from './Glyphs/Recent';
+import { Smile } from './Glyphs/Smile';
 import { Spark } from './Glyphs/Spark';
 import { Speaker } from './Glyphs/Speaker';
 import { Spotify } from './Glyphs/Spotify';
@@ -46,11 +48,13 @@ type Icons =
     | 'Lock'
     | 'Logout'
     | 'Menu'
+    | 'Microphone'
     | 'Minus'
     | 'Playlist'
     | 'Plus'
     | 'Pulse'
     | 'Recent'
+    | 'Smile'
     | 'Spark'
     | 'Speaker'
     | 'Spotify'
@@ -98,6 +102,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
         case 'Menu':
             Icon = Menu;
             break;
+        case 'Microphone':
+            Icon = Microphone;
+            break;
         case 'Minus':
             Icon = Minus;
             break;
@@ -112,6 +119,9 @@ export const Icon: FC<IconProps> = ({ icon, isAlternate, size }) => {
             break;
         case 'Recent':
             Icon = Recent;
+            break;
+        case 'Smile':
+            Icon = Smile;
             break;
         case 'Spark':
             Icon = Spark;
