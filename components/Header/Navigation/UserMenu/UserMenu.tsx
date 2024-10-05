@@ -4,15 +4,6 @@ import { Button } from 'components/Button/Button';
 import { Menu } from 'components/Menu/Menu';
 import { music } from 'music/api';
 
-const myMusic: ComponentProps<typeof Button> = {
-    text: 'My Music',
-    iconStart: {
-        icon: 'Playlist',
-    },
-    link: '/me',
-    style: 'tertiary',
-};
-
 const theme: ComponentProps<typeof Button> = {
     text: 'Theme',
     iconStart: {
@@ -37,7 +28,7 @@ export const UserMenu: FC = async () => {
 
     return (
         <Menu
-            buttons={[myMusic, theme, signout]}
+            buttons={[theme, signout]}
             imageUrl={user.images.small}
             side="left"
         />

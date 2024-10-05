@@ -4,20 +4,21 @@ import { Button } from 'components/Button/Button';
 import styles from './Navigation.module.scss';
 import { UserMenu } from './UserMenu/UserMenu';
 
-const explore: ComponentProps<typeof Button> = {
-    text: 'Explore',
-    iconStart: {
-        icon: 'Track',
-    },
-    link: '/explore',
-};
-
 const compare: ComponentProps<typeof Button> = {
     text: 'Compare',
     iconStart: {
-        icon: 'Track',
+        icon: 'Compare',
     },
     link: '/compare',
+    style: 'tertiary',
+};
+
+const myMusic: ComponentProps<typeof Button> = {
+    text: 'My Music',
+    iconStart: {
+        icon: 'Playlist',
+    },
+    link: '/me',
     style: 'tertiary',
 };
 
@@ -37,8 +38,8 @@ export const Navigation: FC = async () => {
         <nav className={styles.navigation}>
             {session ? (
                 <>
-                    <Button {...explore} />
                     <Button {...compare} />
+                    <Button {...myMusic} />
                     <UserMenu />
                 </>
             ) : (

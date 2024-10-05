@@ -20,7 +20,7 @@ export const UserPanel: FC = async () => {
                 />
                 <div className={layout.details}>
                     <span className={layout.label}>{user.name}</span>
-                    <h1>My Library</h1>
+                    <h1>My Music</h1>
                     <div className={layout.section}>
                         <div className={layout.item}>
                             <Icon icon="Heart" />
