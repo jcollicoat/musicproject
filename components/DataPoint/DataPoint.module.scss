@@ -33,7 +33,7 @@
 
         @keyframes tempo {
             from {
-                transform: translateY(-200%);
+                transform: translateY(-100%);
             }
 
             to {
@@ -47,9 +47,10 @@
             background: linear-gradient(
                 to top,
                 $color-primary-2,
-                rgba($color-primary-2, 0)
+                rgba($color-primary-2, 0.5) 80%,
+                rgba($color-primary-2, 0) 100%
             );
-            height: 50%;
+            height: 100%;
         }
     }
 
