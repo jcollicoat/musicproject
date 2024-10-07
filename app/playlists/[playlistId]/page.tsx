@@ -18,6 +18,12 @@ export default async function Page({
     return (
         <main className={styles.main}>
             <Playlist gridArea="header" playlistId={playlistId} />
+            <AudioFeatures
+                gridArea="audio"
+                heading="Audio Features"
+                icon="AudioFeatures"
+                trackIds={playlist.tracks.map((track) => track.id)}
+            />
             <ItemsList
                 gridArea="tracks"
                 heading="Tracks"
@@ -25,12 +31,6 @@ export default async function Page({
                 tracks={playlist.tracks}
                 fallbackImage={playlist.images?.medium ?? ''}
                 overflowScroll={false}
-            />
-            <AudioFeatures
-                gridArea="audio"
-                heading="Audio Features"
-                icon="AudioFeatures"
-                trackIds={playlist.tracks.map((track) => track.id)}
             />
         </main>
     );

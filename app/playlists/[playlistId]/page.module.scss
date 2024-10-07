@@ -3,12 +3,12 @@
 .main {
     grid-template-areas:
         'header'
-        'tracks'
-        'audio';
+        'audio'
+        'tracks';
 
     @media (min-width: $breakpoint-3) {
         grid-template-areas:
             'header header header'
-            'tracks tracks audio';
+            'audio tracks tracks';
     }
 }
