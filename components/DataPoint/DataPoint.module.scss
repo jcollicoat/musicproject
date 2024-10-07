@@ -52,6 +52,25 @@
             );
             height: 100%;
         }
+
+        &.secondary {
+            .background {
+                background-color: rgba($color-secondary-2, 0.25);
+            }
+
+            .bar {
+                background-color: $color-secondary-2;
+            }
+
+            .tempo {
+                background: linear-gradient(
+                    to top,
+                    $color-secondary-2,
+                    rgba($color-secondary-2, 0.5) 80%,
+                    rgba($color-secondary-2, 0) 100%
+                );
+            }
+        }
     }
 
     .header {

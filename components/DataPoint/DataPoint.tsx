@@ -6,6 +6,7 @@ import styles from './DataPoint.module.scss';
 interface Props {
     name: string;
     value: string | number;
+    color?: 'primary' | 'secondary';
     icon?: ComponentProps<typeof Icon>['icon'];
     hasBar?: boolean;
     tempo?: number;
@@ -16,13 +17,14 @@ interface Props {
 export const DataPoint: FC<Props> = ({
     name,
     value,
+    color = 'primary',
     icon,
     hasBar,
     suffix,
     tempo,
     smallText,
 }) => (
-    <div className={styles.wrapper}>
+    <div className={classNames(styles.wrapper, styles[color])}>
         {(hasBar || Boolean(tempo)) && (
             <div className={styles.background}>
                 {hasBar && (

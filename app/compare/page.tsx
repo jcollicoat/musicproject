@@ -1,6 +1,7 @@
-import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
 import { Header } from 'components/Header/Header';
-import { Panel } from 'components/Panel/Panel';
+import { AudioAnalysis } from 'Panels/AudioAnalysis/AudioAnalysis';
+import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
+import { Panel } from 'Panels/Panel';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -9,7 +10,7 @@ export const metadata = {
 
 export default function Page() {
     const trackId1 = '4a8P8qqreTbmxsd0Eais85';
-    // const trackId2 = '2AnLGd3dk55Z57VXMGLdmR';
+    const trackId2 = '0m902KgphfY1cKdWmxNGPX';
 
     return (
         <>
@@ -20,11 +21,17 @@ export default function Page() {
                     gridArea="features"
                     heading="Audio Features"
                     icon="AudioFeatures"
+                    loading={<AudioFeatures.Loading />}
                 >
-                    <AudioFeatures trackId={trackId1} display="chart" />
+                    <AudioFeatures.Component trackIds={[trackId1, trackId2]} />
                 </Panel>
-                <Panel gridArea="timeline" heading="Timeline" icon="Playlist">
-                    ANALYSIS
+                <Panel
+                    gridArea="timeline"
+                    heading="Timeline"
+                    icon="Playlist"
+                    loading={<AudioAnalysis.Loading />}
+                >
+                    <AudioAnalysis.Component trackId={trackId1} />
                 </Panel>
             </main>
         </>
