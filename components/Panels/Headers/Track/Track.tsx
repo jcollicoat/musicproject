@@ -7,19 +7,20 @@ import { LinkedArtists } from 'components/Linked/LinkedArtists';
 import { Panel } from 'components/Panel/Panel';
 import { TimeText } from 'components/TimeText/TimeText';
 import { music } from 'music/api';
-import layout from './layout.module.scss';
-import styles from './TrackPanel.module.scss';
+import { PanelProps } from 'Panels/Panel';
+import layout from '../layout.module.scss';
+import styles from './Track.module.scss';
 
-interface Props {
+interface Props extends PanelProps {
     trackId: string;
 }
 
-export const TrackPanel: FC<Props> = async ({ trackId }) => {
+export const Track: FC<Props> = async ({ trackId, ...props }) => {
     const track = await music.tracks.id(trackId);
     const album = await music.albums.id(track.album.id);
 
     return (
-        <Panel element="div" backgroundImage={track.album.images.large}>
+        <Panel backgroundImage={track.album.images.large} {...props}>
             <div className={layout.content}>
                 <img
                     src={track.album.images.medium}

@@ -2,12 +2,14 @@
 
 .main {
     grid-template-areas:
+        'header'
         'audio'
         'timeline'
         'audio2';
 
     @media (min-width: $breakpoint-3) {
         grid-template-areas:
+            'header header header'
             'audio timeline timeline'
             'audio2 audio2 audio2';
     }

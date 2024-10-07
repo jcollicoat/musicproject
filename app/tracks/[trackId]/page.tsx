@@ -1,6 +1,7 @@
 import { AudioAnalysis } from 'components/AudioAnalysis/AudioAnalysis';
 import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
 import { Panel } from 'components/Panel/Panel';
+import { Track } from 'Panels/Headers/Track/Track';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -14,6 +15,7 @@ export default function Page({
 }) {
     return (
         <main className={styles.main}>
+            <Track gridArea="header" trackId={trackId} />
             <Panel gridArea="timeline" heading="Timeline" icon="Playlist">
                 <AudioAnalysis trackId={trackId} />
             </Panel>
