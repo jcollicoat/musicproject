@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { builders } from 'builders';
 import { Panel, PanelProps } from 'Panels/Panel';
 import { spotify } from 'spotify/api';
 import { Chart } from './Chart/Chart';
@@ -17,13 +16,14 @@ export const AudioFeatures: FC<Props> = async ({
     ...props
 }) => {
     const { audio_features } = await spotify.audio.features.ids(trackIds);
-    const { data, datasets } = useAudioFeatures({ features: audio_features });
-
-    const audio = builders.audio.features.multiple(audio_features);
+    const { data, datasets, audio } = useAudioFeatures({
+        audio_features,
+        display,
+    });
 
     return (
         <Panel {...props}>
-            {display === 'grid' ? (
+            {audio ? (
                 <Grid audio={audio} />
             ) : (
                 <Chart data={data} datasets={datasets} />
