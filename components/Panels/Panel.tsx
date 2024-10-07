@@ -1,10 +1,15 @@
 import classNames from 'classnames';
-import { CSSProperties, FC, ReactNode, Suspense } from 'react';
+import {
+    CSSProperties,
+    FC,
+    PropsWithChildren,
+    ReactNode,
+    Suspense,
+} from 'react';
 import { Icon, IconProps } from 'components/Icon/Icon';
 import styles from './Panel.module.scss';
 
-interface Props {
-    children: ReactNode;
+export interface PanelProps {
     loading?: ReactNode;
     element?: keyof JSX.IntrinsicElements;
     heading?: string;
@@ -14,7 +19,7 @@ interface Props {
     gridArea?: CSSProperties['gridArea'];
 }
 
-export const Panel: FC<Props> = ({
+export const Panel: FC<PropsWithChildren<PanelProps>> = ({
     children,
     loading: Loading = 'Loading...',
     element: Element = 'section',

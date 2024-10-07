@@ -3,21 +3,22 @@ import { FC } from 'react';
 import { DataPoint } from 'components/DataPoint/DataPoint';
 import { Icon } from 'components/Icon/Icon';
 import { LinkedArtists } from 'components/Linked/LinkedArtists';
-import { Panel } from 'components/Panel/Panel';
 import { TimeText } from 'components/TimeText/TimeText';
 import { music } from 'music/api';
-import styles from './AlbumPanel.module.scss';
-import layout from './layout.module.scss';
+import { Panel } from 'Panels/Panel';
+import { PanelProps } from 'Panels/Panel';
+import layout from '../layout.module.scss';
+import styles from './Album.module.scss';
 
-interface Props {
+interface Props extends PanelProps {
     albumId: string;
 }
 
-export const AlbumPanel: FC<Props> = async ({ albumId }) => {
+export const Album: FC<Props> = async ({ albumId, ...props }) => {
     const album = await music.albums.id(albumId);
 
     return (
-        <Panel element="div" backgroundImage={album.images.large}>
+        <Panel backgroundImage={album.images.large} {...props}>
             <div className={layout.content}>
                 <img
                     src={album.images.medium}
