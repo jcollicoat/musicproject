@@ -1,6 +1,6 @@
 import { AudioAnalysis } from 'components/AudioAnalysis/AudioAnalysis';
-import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
 import { Panel } from 'components/Panel/Panel';
+import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
 import { Track } from 'Panels/Headers/Track/Track';
 import styles from './page.module.scss';
 
@@ -19,20 +19,19 @@ export default function Page({
             <Panel gridArea="timeline" heading="Timeline" icon="Playlist">
                 <AudioAnalysis trackId={trackId} />
             </Panel>
-            <Panel
+            <AudioFeatures
                 gridArea="audio"
                 heading="Audio Features"
                 icon="AudioFeatures"
-            >
-                <AudioFeatures trackId={trackId} display="chart" />
-            </Panel>
-            <Panel
+                trackIds={[trackId]}
+            />
+            <AudioFeatures
                 gridArea="audio2"
                 heading="Audio Features"
                 icon="AudioFeatures"
-            >
-                <AudioFeatures trackId={trackId} display="grid" />
-            </Panel>
+                trackIds={[trackId]}
+                display="grid"
+            />
         </main>
     );
 }

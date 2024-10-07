@@ -1,6 +1,5 @@
-import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
-import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
+import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
 import { Album } from 'Panels/Headers/Album/Album';
 import { ItemsList } from 'Panels/ItemsList/ItemsList';
 import styles from './page.module.scss';
@@ -27,16 +26,12 @@ export default async function Page({
                 fallbackImage={album.images.medium}
                 overflowScroll={false}
             />
-            <Panel
+            <AudioFeatures
                 gridArea="audio"
                 heading="Audio Features (Average)"
                 icon="AudioFeatures"
-            >
-                <AudioFeatures
-                    trackIds={album.tracks.map((track) => track.id)}
-                    display="chart"
-                />
-            </Panel>
+                trackIds={album.tracks.map((track) => track.id)}
+            />
         </main>
     );
 }
