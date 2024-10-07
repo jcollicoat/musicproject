@@ -1,7 +1,6 @@
-import { Panel } from 'components/Panel/Panel';
-import { ItemsGrid } from 'Generics/ItemsGrid/ItemsGrid';
 import { music } from 'music/api';
 import { Artist } from 'Panels/Headers/Artist/Artist';
+import { ItemsGrid } from 'Panels/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'Panels/ItemsList/ItemsList';
 import styles from './page.module.scss';
 
@@ -30,12 +29,18 @@ export default async function Page({
                 tracks={topTracks}
                 fallbackImage=""
             />
-            <Panel gridArea="albums" heading="Albums" icon="Disc">
-                <ItemsGrid albums={albums} />
-            </Panel>
-            <Panel gridArea="related" heading="Related Artists" icon="User">
-                <ItemsGrid artists={relatedArtists} />
-            </Panel>
+            <ItemsGrid
+                gridArea="albums"
+                heading="Albums"
+                icon="Disc"
+                albums={albums}
+            />
+            <ItemsGrid
+                gridArea="related"
+                heading="Related Artists"
+                icon="User"
+                artists={relatedArtists}
+            />
         </main>
     );
 }

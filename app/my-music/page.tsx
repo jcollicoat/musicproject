@@ -1,7 +1,6 @@
-import { Panel } from 'components/Panel/Panel';
-import { ItemsGrid } from 'Generics/ItemsGrid/ItemsGrid';
 import { music } from 'music/api';
 import { MyMusic } from 'Panels/Headers/MyMusic/MyMusic';
+import { ItemsGrid } from 'Panels/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'Panels/ItemsList/ItemsList';
 import styles from './page.module.scss';
 
@@ -16,9 +15,12 @@ export default async function Page() {
     return (
         <main className={styles.main}>
             <MyMusic gridArea="header" />
-            <Panel gridArea="playlists" heading="Playlists" icon="Disc">
-                <ItemsGrid playlists={playlists} />
-            </Panel>
+            <ItemsGrid
+                gridArea="playlists"
+                heading="Playlists"
+                icon="Disc"
+                playlists={playlists}
+            />
             <ItemsList
                 gridArea="recent"
                 heading="Recent Tracks"
