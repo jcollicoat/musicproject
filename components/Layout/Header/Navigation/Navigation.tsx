@@ -18,7 +18,7 @@ const myMusic: ComponentProps<typeof Button> = {
     iconStart: {
         icon: 'Playlist',
     },
-    link: '/me',
+    link: '/library',
     style: 'tertiary',
 };
 
