@@ -1,32 +1,20 @@
 import { FC } from 'react';
+import { Panel, PanelProps } from 'Panels/Panel';
 import { spotify } from 'spotify/api';
 import { Chart } from './Chart/Chart';
 import { useAudioFeatures } from './useAudioFeatures';
 
-const Loading: FC = () => {
-    return (
-        <Chart
-            data={[
-                { name: '', default: 50 },
-                { name: '', default: 50 },
-            ]}
-            datasets={[{ id: 'default', color: 'var(--color-primary-2)' }]}
-        />
-    );
-};
-
-interface Props {
+interface Props extends PanelProps {
     trackIds: string[];
 }
 
-const Component: FC<Props> = async ({ trackIds }) => {
+export const AudioFeatures: FC<Props> = async ({ trackIds, ...props }) => {
     const { audio_features } = await spotify.audio.features.ids(trackIds);
     const { data, datasets } = useAudioFeatures({ features: audio_features });
 
-    return <Chart data={data} datasets={datasets} />;
-};
-
-export const AudioFeatures = {
-    Loading,
-    Component,
+    return (
+        <Panel {...props}>
+            <Chart data={data} datasets={datasets} />
+        </Panel>
+    );
 };

@@ -14,14 +14,12 @@ export default function Page() {
     return (
         <main className={styles.main}>
             <Panel gridArea="selector">SELECTOR</Panel>
-            <Panel
+            <AudioFeatures
                 gridArea="features"
                 heading="Audio Features"
                 icon="AudioFeatures"
-                loading={<AudioFeatures.Loading />}
-            >
-                <AudioFeatures.Component trackIds={[trackId1, trackId2]} />
-            </Panel>
+                trackIds={[trackId1, trackId2]}
+            />
             <Panel
                 gridArea="timeline"
                 heading="Timeline"
