@@ -3,18 +3,19 @@ import { DataPoint } from 'components/DataPoint/DataPoint';
 import { Icon } from 'components/Icon/Icon';
 import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
-import layout from './layout.module.scss';
+import { PanelProps } from 'Panels/Panel';
+import layout from '../layout.module.scss';
 
-interface Props {
+interface Props extends PanelProps {
     playlistId: string;
 }
 
-export const PlaylistPanel: FC<Props> = async ({ playlistId }) => {
+export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
     const playlist = await music.playlists.id(playlistId);
     const tracks = await music.playlists.tracks(playlistId);
 
     return (
-        <Panel element="div" backgroundImage={playlist.images?.large}>
+        <Panel backgroundImage={playlist.images?.large} {...props}>
             <div className={layout.content}>
                 <img
                     src={playlist.images?.medium ?? ''}

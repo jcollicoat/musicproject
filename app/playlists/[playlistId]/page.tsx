@@ -2,6 +2,7 @@ import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
 import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
+import { Playlist } from 'Panels/Headers/Playlist/Playlist';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default async function Page({
 
     return (
         <main className={styles.main}>
+            <Playlist gridArea="header" playlistId={playlistId} />
             <Panel gridArea="tracks" heading="Tracks" icon="Track">
                 <ItemsList
                     tracks={playlist.tracks}
