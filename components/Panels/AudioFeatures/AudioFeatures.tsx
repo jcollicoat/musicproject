@@ -3,7 +3,6 @@ import { Panel, PanelProps } from 'Panels/Panel';
 import { spotify } from 'spotify/api';
 import { Chart } from './Chart/Chart';
 import { Grid } from './Grid/Grid';
-import { useAudioFeatures } from './useAudioFeatures';
 
 interface Props extends PanelProps {
     trackIds: string[];
@@ -16,17 +15,13 @@ export const AudioFeatures: FC<Props> = async ({
     ...props
 }) => {
     const { audio_features } = await spotify.audio.features.ids(trackIds);
-    const { data, datasets, audio } = useAudioFeatures({
-        audio_features,
-        display,
-    });
 
     return (
         <Panel {...props}>
-            {audio ? (
-                <Grid audio={audio} />
+            {display === 'grid' ? (
+                <Grid audio_features={audio_features} />
             ) : (
-                <Chart data={data} datasets={datasets} />
+                <Chart audio_features={audio_features} />
             )}
         </Panel>
     );

@@ -1,17 +1,20 @@
 import { FC } from 'react';
-import { builders } from 'builders';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
+import { SpotifyAudioFeatures } from 'spotify/types/audio.types';
 import { titleCase } from 'utilities';
 import styles from './Grid.module.scss';
+import { useGrid } from './useGrid';
 
 interface Props {
-    audio: ReturnType<typeof builders.audio.features.multiple>;
+    audio_features: SpotifyAudioFeatures[];
 }
 
-export const Grid: FC<Props> = ({ audio }) => {
+export const Grid: FC<Props> = ({ audio_features }) => {
+    const data = useGrid(audio_features);
+
     return (
         <div className={styles.grid}>
-            {audio.features.map((feature) => {
+            {data.features.map((feature) => {
                 const isPercentage = typeof feature.percent === 'number';
                 return (
                     <DataPoint

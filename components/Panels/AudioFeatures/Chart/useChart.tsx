@@ -1,18 +1,20 @@
-import { builders } from 'builders';
+import { ComponentProps, useCallback, useMemo } from 'react';
+import { Icon } from 'Generics/Icon/Icon';
 import { SpotifyAudioFeatures } from 'spotify/types/audio.types';
 
-interface Input {
-    audio_features: SpotifyAudioFeatures[];
-    display?: 'grid';
+interface TickInput {
+    payload: {
+        value: string;
+    };
+    x: number;
+    y: number;
 }
 
 const toPercentage = (value: number) => Math.round(value * 100);
 
-export const useAudioFeatures = ({ audio_features, display }: Input) => {
-    if (display === 'grid') {
-        return { audio: builders.audio.features.multiple(audio_features) };
-    } else {
-        const data = [
+export const useChart = (audio_features: SpotifyAudioFeatures[]) => {
+    const data = useMemo(
+        () => [
             {
                 name: 'Acousticness',
                 ...Object.fromEntries(
@@ -76,16 +78,50 @@ export const useAudioFeatures = ({ audio_features, display }: Input) => {
                     ]),
                 ),
             },
-        ];
+        ],
+        [audio_features],
+    );
 
-        const datasets = audio_features.map((track, index) => ({
-            id: track.id,
-            color:
-                index === 1
-                    ? 'var(--color-secondary-2)'
-                    : 'var(--color-primary-2)',
-        }));
+    const tracks = useMemo(
+        () =>
+            audio_features.map((track) => ({
+                id: track.id,
+            })),
+        [audio_features],
+    );
 
-        return { data, datasets };
-    }
+    const tick = useCallback(({ payload, x, y }: TickInput) => {
+        let icon: ComponentProps<typeof Icon>['icon'] = 'Heart';
+
+        switch (payload.value) {
+            case 'Acousticness':
+                icon = 'Playlist';
+                break;
+            case 'Danceability':
+                icon = 'Pulse';
+                break;
+            case 'Energy':
+                icon = 'Spark';
+                break;
+        }
+
+        return (
+            <foreignObject
+                x={x}
+                y={y}
+                dy="0em"
+                width="1.25em"
+                height="1.25em"
+                style={{
+                    fontSize: '1.25em',
+                    transform: 'scale(105%) translate(-0.5em, -0.5em)',
+                    transformOrigin: 'center',
+                }}
+            >
+                <Icon icon={icon} />
+            </foreignObject>
+        );
+    }, []);
+
+    return { data, tracks, tick };
 };

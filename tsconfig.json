@@ -21,7 +21,6 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "Charts/*": ["./components/Charts/*"],
             "Generics/*": ["./components/Generics/*"],
             "Layout/*": ["./components/Layout/*"],
             "Panels/*": ["./components/Panels/*"],
