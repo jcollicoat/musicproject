@@ -2,6 +2,7 @@ import { ItemsGrid } from 'components/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
+import { Artist } from 'Panels/Headers/Artist/Artist';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -21,6 +22,7 @@ export default async function Page({
 
     return (
         <main className={styles.main}>
+            <Artist gridArea="header" artistId={artistId} />
             <Panel gridArea="tracks" heading="Top Tracks" icon="Track">
                 <ItemsList tracks={topTracks} fallbackImage="" />
             </Panel>

@@ -2,12 +2,14 @@
 
 .main {
     grid-template-areas:
+        'header'
         'tracks'
         'albums'
         'related';
 
     @media (min-width: $breakpoint-2) {
         grid-template-areas:
+            'header header'
             'tracks albums'
             'related related';
     }

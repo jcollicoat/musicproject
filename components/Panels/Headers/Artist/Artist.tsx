@@ -4,19 +4,20 @@ import { FollowButton } from 'components/Button/Actions/FollowButton';
 import { DataPoint } from 'components/DataPoint/DataPoint';
 import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
-import styles from './ArtistPanel.module.scss';
-import layout from './layout.module.scss';
+import { PanelProps } from 'Panels/Panel';
+import layout from '../layout.module.scss';
+import styles from './Artist.module.scss';
 
-interface Props {
+interface Props extends PanelProps {
     artistId: string;
 }
 
-export const ArtistPanel: FC<Props> = async ({ artistId }) => {
+export const Artist: FC<Props> = async ({ artistId, ...props }) => {
     const artist = await music.artists.id(artistId);
     const isFollowing = await music.user.following.artist(artistId);
 
     return (
-        <Panel element="div" backgroundImage={artist.images.large}>
+        <Panel element="div" backgroundImage={artist.images.large} {...props}>
             <div className={layout.content}>
                 <img
                     src={artist.images.medium}
