@@ -3,13 +3,14 @@ import { FC } from 'react';
 import { Icon } from 'components/Icon/Icon';
 import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
-import layout from './layout.module.scss';
+import { PanelProps } from 'Panels/Panel';
+import layout from '../layout.module.scss';
 
-export const UserPanel: FC = async () => {
+export const MyMusic: FC<PanelProps> = async (props) => {
     const user = await music.user.profile();
 
     return (
-        <Panel element="div" backgroundColor="var(--theme-background-color)">
+        <Panel backgroundImage={user.images.large} {...props}>
             <div className={layout.content}>
                 <img
                     src={user.images.medium}

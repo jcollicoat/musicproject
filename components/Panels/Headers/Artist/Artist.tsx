@@ -17,7 +17,7 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
     const isFollowing = await music.user.following.artist(artistId);
 
     return (
-        <Panel element="div" backgroundImage={artist.images.large} {...props}>
+        <Panel backgroundImage={artist.images.large} {...props}>
             <div className={layout.content}>
                 <img
                     src={artist.images.medium}

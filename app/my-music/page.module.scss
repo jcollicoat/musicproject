@@ -2,10 +2,13 @@
 
 .main {
     grid-template-areas:
+        'header'
         'playlists'
         'recent';
 
     @media (min-width: $breakpoint-3) {
-        grid-template-areas: 'playlists playlists recent';
+        grid-template-areas:
+            'header header header'
+            'playlists playlists recent';
     }
 }
