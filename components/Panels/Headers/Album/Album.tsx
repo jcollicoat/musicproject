@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { DataPoint } from 'components/DataPoint/DataPoint';
-import { Icon } from 'components/Icon/Icon';
-import { LinkedArtists } from 'components/Linked/LinkedArtists';
-import { TimeText } from 'components/TimeText/TimeText';
+import { DataPoint } from 'Generics/DataPoint/DataPoint';
+import { Icon } from 'Generics/Icon/Icon';
+import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
+import { TimeText } from 'Generics/TimeText/TimeText';
 import { music } from 'music/api';
 import { Panel } from 'Panels/Panel';
 import { PanelProps } from 'Panels/Panel';

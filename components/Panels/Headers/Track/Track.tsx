@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { DataPoint } from 'components/DataPoint/DataPoint';
-import { Icon } from 'components/Icon/Icon';
-import { LinkedAlbum } from 'components/Linked/LinkedAlbum';
-import { LinkedArtists } from 'components/Linked/LinkedArtists';
 import { Panel } from 'components/Panel/Panel';
-import { TimeText } from 'components/TimeText/TimeText';
+import { DataPoint } from 'Generics/DataPoint/DataPoint';
+import { Icon } from 'Generics/Icon/Icon';
+import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
+import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
+import { TimeText } from 'Generics/TimeText/TimeText';
 import { music } from 'music/api';
 import { PanelProps } from 'Panels/Panel';
 import layout from '../layout.module.scss';

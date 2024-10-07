@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { signIn, signOut } from 'next-auth/react';
 import { FC } from 'react';
-import { Icon, IconProps } from 'components/Icon/Icon';
-import { Menu, MenuProps } from 'components/Menu/Menu';
+import { Icon, IconProps } from 'Generics/Icon/Icon';
+import { Menu, MenuProps } from 'Generics/Menu/Menu';
 import { useMediaMobile, useMediaTiny } from 'hooks/useMediaQueries';
 import styles from './Button.module.scss';
 

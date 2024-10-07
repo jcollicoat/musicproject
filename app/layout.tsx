@@ -1,8 +1,8 @@
 import 'styles/layout.scss';
-import { ThemeBody } from 'components/ThemeBody/ThemeBody';
 import { AuthContextProvider } from 'context/AuthContextProvider';
 import { QueryContextProvider } from 'context/QueryContextProvider';
 import { Header } from 'Layout/Header/Header';
+import { ThemeBody } from 'Layout/ThemeBody/ThemeBody';
 
 export const metadata = {
     title: 'Music Project',

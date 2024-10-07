@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { DataPoint } from 'components/DataPoint/DataPoint';
+import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import styles from './CustomTooltip.module.scss';
 
 interface Props {

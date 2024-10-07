@@ -4,8 +4,8 @@ import { useClickOutside } from '@react-hookz/web';
 import classNames from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import { FC, useRef, useState } from 'react';
-import { Button, ButtonProps } from 'components/Button/Button';
-import { Icon } from 'components/Icon/Icon';
+import { Button, ButtonProps } from 'Generics/Button/Button';
+import { Icon } from 'Generics/Icon/Icon';
 import styles from './Menu.module.scss';
 
 export interface MenuProps {

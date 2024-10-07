@@ -22,8 +22,10 @@
         "baseUrl": ".",
         "paths": {
             "Charts/*": ["./components/Charts/*"],
+            "Generics/*": ["./components/Generics/*"],
             "Layout/*": ["./components/Layout/*"],
-            "Panels/*": ["./components/Panels/*"]
+            "Panels/*": ["./components/Panels/*"],
+            "Utilities/*": ["./components/Utilities/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

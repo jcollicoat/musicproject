@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Icon } from 'components/Icon/Icon';
 import { Panel } from 'components/Panel/Panel';
+import { Icon } from 'Generics/Icon/Icon';
 import { music } from 'music/api';
 import { PanelProps } from 'Panels/Panel';
 import layout from '../layout.module.scss';

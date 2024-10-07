@@ -1,5 +1,5 @@
 import { ComponentProps, useCallback } from 'react';
-import { Icon } from 'components/Icon/Icon';
+import { Icon } from 'Generics/Icon/Icon';
 
 interface Input {
     payload: {

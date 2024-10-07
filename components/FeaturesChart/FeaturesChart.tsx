@@ -10,7 +10,7 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from 'recharts';
-import { Icon } from 'components/Icon/Icon';
+import { Icon } from 'Generics/Icon/Icon';
 import { music } from 'music/api';
 import { CustomTooltip } from './CustomTooltip';
 

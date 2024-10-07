@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { CSSProperties, FC, ReactNode } from 'react';
-import { Icon, IconProps } from 'components/Icon/Icon';
+import { Icon, IconProps } from 'Generics/Icon/Icon';
 import styles from './Panel.module.scss';
 
 interface Props {

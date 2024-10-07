@@ -1,6 +1,6 @@
-import { ItemsGrid } from 'components/ItemsGrid/ItemsGrid';
-import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
+import { ItemsGrid } from 'Generics/ItemsGrid/ItemsGrid';
+import { ItemsList } from 'Generics/ItemsList/ItemsList';
 import { music } from 'music/api';
 import { MyMusic } from 'Panels/Headers/MyMusic/MyMusic';
 import styles from './page.module.scss';

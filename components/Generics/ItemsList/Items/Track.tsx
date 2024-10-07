@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { Icon } from 'components/Icon/Icon';
-import { LinkedAlbum } from 'components/Linked/LinkedAlbum';
-import { LinkedArtists } from 'components/Linked/LinkedArtists';
-import { TimeText } from 'components/TimeText/TimeText';
+import { Icon } from 'Generics/Icon/Icon';
+import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
+import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
+import { TimeText } from 'Generics/TimeText/TimeText';
 import { music } from 'music/api';
 import layout from './layout.module.scss';
 

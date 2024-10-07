@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { ComponentProps, FC } from 'react';
-import { Button } from 'components/Button/Button';
-import { Menu } from 'components/Menu/Menu';
+import { Button } from 'Generics/Button/Button';
+import { Menu } from 'Generics/Menu/Menu';
 import { music } from 'music/api';
 
 const theme: ComponentProps<typeof Button> = {

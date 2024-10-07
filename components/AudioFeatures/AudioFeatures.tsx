@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { DataPoint } from 'components/DataPoint/DataPoint';
 import { FeaturesChart } from 'components/FeaturesChart/FeaturesChart';
+import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { music } from 'music/api';
 import { titleCase } from 'utilities';
 import styles from './AudioFeatures.module.scss';

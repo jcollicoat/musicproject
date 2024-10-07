@@ -11,6 +11,7 @@ interface Props {
 
 const Component: FC<Props> = async ({ trackId }) => {
     const analysis = await spotify.audio.analysis.id(trackId);
+    console.log(analysis);
 
     return 'Loaded!';
 };

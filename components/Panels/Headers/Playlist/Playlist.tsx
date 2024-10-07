@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { DataPoint } from 'components/DataPoint/DataPoint';
-import { Icon } from 'components/Icon/Icon';
 import { Panel } from 'components/Panel/Panel';
+import { DataPoint } from 'Generics/DataPoint/DataPoint';
+import { Icon } from 'Generics/Icon/Icon';
 import { music } from 'music/api';
 import { PanelProps } from 'Panels/Panel';
 import layout from '../layout.module.scss';

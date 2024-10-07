@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Icon } from 'components/Icon/Icon';
+import { Icon } from 'Generics/Icon/Icon';
 import styles from './RecentlyPlayed.module.scss';
 
 // const useBpm = (tracks: Props['items']) => {

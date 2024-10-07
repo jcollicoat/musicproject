@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ComponentProps, FC } from 'react';
-import { Icon } from 'components/Icon/Icon';
+import { Icon } from 'Generics/Icon/Icon';
 import styles from './DataPoint.module.scss';
 
 interface Props {
