@@ -1,5 +1,4 @@
 import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
-import { Header } from 'components/Header/Header';
 import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
 import { music } from 'music/api';
@@ -17,27 +16,24 @@ export default async function Page({
     const playlist = await music.playlists.id(playlistId);
 
     return (
-        <>
-            <Header playlistId={playlistId} />
-            <main className={styles.main}>
-                <Panel gridArea="tracks" heading="Tracks" icon="Track">
-                    <ItemsList
-                        tracks={playlist.tracks}
-                        fallbackImage={playlist.images?.medium ?? ''}
-                        overflowScroll={false}
-                    />
-                </Panel>
-                <Panel
-                    gridArea="audio"
-                    heading="Audio Features (Average)"
-                    icon="AudioFeatures"
-                >
-                    <AudioFeatures
-                        trackIds={playlist.tracks.map((track) => track.id)}
-                        display="chart"
-                    />
-                </Panel>
-            </main>
-        </>
+        <main className={styles.main}>
+            <Panel gridArea="tracks" heading="Tracks" icon="Track">
+                <ItemsList
+                    tracks={playlist.tracks}
+                    fallbackImage={playlist.images?.medium ?? ''}
+                    overflowScroll={false}
+                />
+            </Panel>
+            <Panel
+                gridArea="audio"
+                heading="Audio Features (Average)"
+                icon="AudioFeatures"
+            >
+                <AudioFeatures
+                    trackIds={playlist.tracks.map((track) => track.id)}
+                    display="chart"
+                />
+            </Panel>
+        </main>
     );
 }

@@ -2,6 +2,7 @@ import 'styles/layout.scss';
 import { ThemeBody } from 'components/ThemeBody/ThemeBody';
 import { AuthContextProvider } from 'context/AuthContextProvider';
 import { QueryContextProvider } from 'context/QueryContextProvider';
+import { Header } from 'Layout/Header/Header';
 
 export const metadata = {
     title: 'Music Project',
@@ -17,7 +18,10 @@ export default function RootLayout({
         <html lang="en">
             <ThemeBody>
                 <AuthContextProvider>
-                    <QueryContextProvider>{children}</QueryContextProvider>
+                    <QueryContextProvider>
+                        <Header />
+                        {children}
+                    </QueryContextProvider>
                 </AuthContextProvider>
             </ThemeBody>
         </html>

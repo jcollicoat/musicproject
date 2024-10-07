@@ -1,4 +1,3 @@
-import { Header } from 'components/Header/Header';
 import { ItemsGrid } from 'components/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
@@ -21,19 +20,16 @@ export default async function Page({
     const relatedArtists = await music.artists.relatedArtists(artistId);
 
     return (
-        <>
-            <Header artistId={artistId} />
-            <main className={styles.main}>
-                <Panel gridArea="tracks" heading="Top Tracks" icon="Track">
-                    <ItemsList tracks={topTracks} fallbackImage="" />
-                </Panel>
-                <Panel gridArea="albums" heading="Albums" icon="Disc">
-                    <ItemsGrid albums={albums} />
-                </Panel>
-                <Panel gridArea="related" heading="Related Artists" icon="User">
-                    <ItemsGrid artists={relatedArtists} />
-                </Panel>
-            </main>
-        </>
+        <main className={styles.main}>
+            <Panel gridArea="tracks" heading="Top Tracks" icon="Track">
+                <ItemsList tracks={topTracks} fallbackImage="" />
+            </Panel>
+            <Panel gridArea="albums" heading="Albums" icon="Disc">
+                <ItemsGrid albums={albums} />
+            </Panel>
+            <Panel gridArea="related" heading="Related Artists" icon="User">
+                <ItemsGrid artists={relatedArtists} />
+            </Panel>
+        </main>
     );
 }

@@ -1,4 +1,3 @@
-import { Header } from 'components/Header/Header';
 import { ItemsGrid } from 'components/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'components/ItemsList/ItemsList';
 import { Panel } from 'components/Panel/Panel';
@@ -14,16 +13,13 @@ export default async function Page() {
     const recentTracks = await music.user.recentTracks();
 
     return (
-        <>
-            <Header user />
-            <main className={styles.main}>
-                <Panel gridArea="playlists" heading="Playlists" icon="Disc">
-                    <ItemsGrid playlists={playlists} />
-                </Panel>
-                <Panel gridArea="recent" heading="Recent Tracks" icon="Recent">
-                    <ItemsList tracks={recentTracks} fallbackImage="" />
-                </Panel>
-            </main>
-        </>
+        <main className={styles.main}>
+            <Panel gridArea="playlists" heading="Playlists" icon="Disc">
+                <ItemsGrid playlists={playlists} />
+            </Panel>
+            <Panel gridArea="recent" heading="Recent Tracks" icon="Recent">
+                <ItemsList tracks={recentTracks} fallbackImage="" />
+            </Panel>
+        </main>
     );
 }
