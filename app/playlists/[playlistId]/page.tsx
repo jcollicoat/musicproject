@@ -1,8 +1,8 @@
 import { AudioFeatures } from 'components/AudioFeatures/AudioFeatures';
 import { Panel } from 'components/Panel/Panel';
-import { ItemsList } from 'Generics/ItemsList/ItemsList';
 import { music } from 'music/api';
 import { Playlist } from 'Panels/Headers/Playlist/Playlist';
+import { ItemsList } from 'Panels/ItemsList/ItemsList';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -19,13 +19,14 @@ export default async function Page({
     return (
         <main className={styles.main}>
             <Playlist gridArea="header" playlistId={playlistId} />
-            <Panel gridArea="tracks" heading="Tracks" icon="Track">
-                <ItemsList
-                    tracks={playlist.tracks}
-                    fallbackImage={playlist.images?.medium ?? ''}
-                    overflowScroll={false}
-                />
-            </Panel>
+            <ItemsList
+                gridArea="tracks"
+                heading="Tracks"
+                icon="Track"
+                tracks={playlist.tracks}
+                fallbackImage={playlist.images?.medium ?? ''}
+                overflowScroll={false}
+            />
             <Panel
                 gridArea="audio"
                 heading="Audio Features (Average)"
