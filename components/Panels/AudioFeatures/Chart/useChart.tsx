@@ -1,5 +1,15 @@
-import { ComponentProps, useCallback, useMemo } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { useCallback, useMemo } from 'react';
+import { IconType } from 'react-icons';
+import {
+    PiGuitar,
+    PiHeart,
+    PiLightning,
+    PiMicrophone,
+    PiMicrophoneStage,
+    PiPersonSimpleTaiChi,
+    PiPianoKeys,
+    PiSmiley,
+} from 'react-icons/pi';
 import { SpotifyAudioFeatures } from 'spotify/types/audio.types';
 
 interface TickInput {
@@ -91,17 +101,29 @@ export const useChart = (audio_features: SpotifyAudioFeatures[]) => {
     );
 
     const tick = useCallback(({ payload, x, y }: TickInput) => {
-        let icon: ComponentProps<typeof Icon>['icon'] = 'Heart';
+        let Icon: IconType = PiHeart;
 
         switch (payload.value) {
             case 'Acousticness':
-                icon = 'Playlist';
+                Icon = PiGuitar;
                 break;
             case 'Danceability':
-                icon = 'Pulse';
+                Icon = PiPersonSimpleTaiChi;
                 break;
             case 'Energy':
-                icon = 'Spark';
+                Icon = PiLightning;
+                break;
+            case 'Instrumentalness':
+                Icon = PiPianoKeys;
+                break;
+            case 'Liveness':
+                Icon = PiMicrophoneStage;
+                break;
+            case 'Speechiness':
+                Icon = PiMicrophone;
+                break;
+            case 'Valence':
+                Icon = PiSmiley;
                 break;
         }
 
@@ -118,7 +140,7 @@ export const useChart = (audio_features: SpotifyAudioFeatures[]) => {
                     transformOrigin: 'center',
                 }}
             >
-                <Icon icon={icon} />
+                <Icon />
             </foreignObject>
         );
     }, []);
