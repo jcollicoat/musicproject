@@ -1,18 +1,17 @@
-import { getServerSession } from 'next-auth';
 import { FC } from 'react';
 import { PiSignOut, PiSun } from 'react-icons/pi';
 import { Button } from 'Generics/Button/Button';
 import { Menu } from 'Generics/Menu/Menu';
-import { music } from 'music/api';
+import { useImages } from 'hooks/useImages';
+import { spotify } from 'spotify/api';
 
 export const UserMenu: FC = async () => {
-    const session = await getServerSession();
-    if (!session) return null;
+    const user = await spotify.user.profile();
 
-    const user = await music.user.profile();
+    const images = useImages(user.images);
 
     return (
-        <Menu imageUrl={user.images.small} side="left">
+        <Menu imageUrl={images.small} side="left">
             <Button ariaLabel="Toggle Theme" onClick="theme" style="inMenu">
                 <PiSun />
                 Theme
