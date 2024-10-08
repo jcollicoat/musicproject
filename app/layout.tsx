@@ -1,6 +1,5 @@
 import 'styles/layout.scss';
 import { AuthContextProvider } from 'context/AuthContextProvider';
-import { QueryContextProvider } from 'context/QueryContextProvider';
 import { Header } from 'Layout/Header/Header';
 import { ThemeBody } from 'Layout/ThemeBody/ThemeBody';
 
@@ -18,10 +17,8 @@ export default function RootLayout({
         <html lang="en">
             <ThemeBody>
                 <AuthContextProvider>
-                    <QueryContextProvider>
-                        <Header />
-                        {children}
-                    </QueryContextProvider>
+                    <Header />
+                    {children}
                 </AuthContextProvider>
             </ThemeBody>
         </html>
