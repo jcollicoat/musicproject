@@ -55,7 +55,7 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
                         icon={PiHeart}
                         hasBar
                     />
-                    {genres.length && (
+                    {genres.length > 0 && (
                         <DataPoint
                             name="Genres"
                             value={genres.map((genre) => genre).join(', ')}
