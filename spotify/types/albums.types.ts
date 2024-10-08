@@ -13,7 +13,7 @@ export interface SpotifyAlbum {
     genres: string[];
     href: string;
     id: string;
-    images: SpotifyImage[];
+    images: SpotifyImage[] | null;
     label: string;
     name: string;
     popularity: number;

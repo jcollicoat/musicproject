@@ -2,8 +2,9 @@ import { FC } from 'react';
 import { PiUser } from 'react-icons/pi';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { Icon } from 'Generics/Icon/Icon';
-import { music } from 'music/api';
+import { useImages } from 'hooks/useImages';
 import { Panel, PanelProps } from 'Panels/Panel';
+import { spotify } from 'spotify/api';
 import layout from '../layout.module.scss';
 
 interface Props extends PanelProps {
@@ -11,14 +12,15 @@ interface Props extends PanelProps {
 }
 
 export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
-    const playlist = await music.playlists.id(playlistId);
-    const tracks = await music.playlists.tracks(playlistId);
+    const playlist = await spotify.playlists.id(playlistId);
+    // const tracks = await music.playlists.tracks(playlistId);
+    const images = useImages(playlist.images);
 
     return (
-        <Panel backgroundImage={playlist.images?.large} {...props}>
+        <Panel backgroundImage={images.large} {...props}>
             <div className={layout.content}>
                 <img
-                    src={playlist.images?.medium ?? ''}
+                    src={images.medium}
                     alt={playlist.name}
                     height={160}
                     width={160}
@@ -31,8 +33,10 @@ export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
                         <div className={layout.item}>
                             <Icon icon="Playlist" />
                             <span>
-                                {tracks.total}{' '}
-                                {tracks.total === 1 ? 'track' : 'tracks'}
+                                {playlist.tracks.total}{' '}
+                                {playlist.tracks.total === 1
+                                    ? 'track'
+                                    : 'tracks'}
                             </span>
                         </div>
                     </div>
@@ -48,7 +52,7 @@ export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
                 <div className={layout.sidebar}>
                     <DataPoint
                         name="Creator"
-                        value={playlist.owner.name ?? ''}
+                        value={playlist.owner.display_name ?? 'Unknown'}
                         icon={PiUser}
                         smallText
                     />

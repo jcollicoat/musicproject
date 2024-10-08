@@ -6,8 +6,9 @@ import { Icon } from 'Generics/Icon/Icon';
 import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
 import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
 import { TimeText } from 'Generics/TimeText/TimeText';
-import { music } from 'music/api';
+import { useImages } from 'hooks/useImages';
 import { Panel, PanelProps } from 'Panels/Panel';
+import { spotify } from 'spotify/api';
 import layout from '../layout.module.scss';
 import styles from './Track.module.scss';
 
@@ -16,14 +17,16 @@ interface Props extends PanelProps {
 }
 
 export const Track: FC<Props> = async ({ trackId, ...props }) => {
-    const track = await music.tracks.id(trackId);
-    const album = await music.albums.id(track.album.id);
+    const track = await spotify.tracks.id(trackId);
+    const album = await spotify.albums.id(track.album.id);
+
+    const images = useImages(album.images);
 
     return (
-        <Panel backgroundImage={track.album.images.large} {...props}>
+        <Panel backgroundImage={images.large} {...props}>
             <div className={layout.content}>
                 <img
-                    src={track.album.images.medium}
+                    src={images.medium}
                     alt={track.album.name}
                     height={160}
                     width={160}
@@ -45,12 +48,15 @@ export const Track: FC<Props> = async ({ trackId, ...props }) => {
                     <div className={layout.section}>
                         <div className={layout.item}>
                             <Icon icon="Clock" />
-                            <TimeText durationMs={track.durationMs} />
+                            <TimeText durationMs={track.duration_ms} />
                         </div>
                         <div className={layout.item}>
                             <Icon icon="Calendar" />
                             <span>
-                                Released on {track.album.releaseDate.display}
+                                Released on{' '}
+                                {new Date(
+                                    track.album.release_date,
+                                ).toDateString()}
                             </span>
                         </div>
                         {track.explicit && (

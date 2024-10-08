@@ -3,8 +3,11 @@ import { FC } from 'react';
 import { PiHeart, PiMusicNotesSimple } from 'react-icons/pi';
 import { FollowButton } from 'Generics/Button/Actions/FollowButton';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
-import { music } from 'music/api';
+import { useGenres } from 'hooks/useGenres';
+import { useImages } from 'hooks/useImages';
+import { useLargeNumber } from 'hooks/useLargeNumbers';
 import { Panel, PanelProps } from 'Panels/Panel';
+import { spotify } from 'spotify/api';
 import layout from '../layout.module.scss';
 import styles from './Artist.module.scss';
 
@@ -13,14 +16,18 @@ interface Props extends PanelProps {
 }
 
 export const Artist: FC<Props> = async ({ artistId, ...props }) => {
-    const artist = await music.artists.id(artistId);
-    const isFollowing = await music.user.following.artist(artistId);
+    const artist = await spotify.artists.id(artistId);
+    const [isFollowing] = await spotify.user.following.artists([artistId]);
+
+    const images = useImages(artist.images);
+    const followers = useLargeNumber(artist.followers.total);
+    const genres = useGenres(artist.genres);
 
     return (
-        <Panel backgroundImage={artist.images.large} {...props}>
+        <Panel backgroundImage={images.large} {...props}>
             <div className={layout.content}>
                 <img
-                    src={artist.images.medium}
+                    src={images.medium}
                     alt={artist.name}
                     height={160}
                     width={160}
@@ -36,7 +43,8 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
                             id={artistId}
                         />
                         <span>
-                            <em>{artist.followers.display}</em> followers
+                            <em>{followers}</em>{' '}
+                            {followers === '1' ? 'follower' : 'followers'}
                         </span>
                     </div>
                 </div>
@@ -47,12 +55,10 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
                         icon={PiHeart}
                         hasBar
                     />
-                    {artist.genres && (
+                    {genres.length && (
                         <DataPoint
                             name="Genres"
-                            value={artist.genres
-                                .map((genre) => genre)
-                                .join(', ')}
+                            value={genres.map((genre) => genre).join(', ')}
                             icon={PiMusicNotesSimple}
                             smallText
                         />

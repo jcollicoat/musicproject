@@ -18,7 +18,7 @@ export interface SpotifyUser {
     followers: SpotifyFollowers;
     href: string;
     id: string;
-    images: SpotifyImage[];
+    images: SpotifyImage[] | null;
     product: string;
     type: string;
     uri: string;

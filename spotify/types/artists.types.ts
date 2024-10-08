@@ -6,7 +6,7 @@ export interface SpotifyArtist {
     genres: string[];
     href: string;
     id: string;
-    images: SpotifyImage[];
+    images: SpotifyImage[] | null;
     name: string;
     type: string;
     uri: string;
