@@ -1,24 +1,9 @@
 import { getServerSession } from 'next-auth';
-import { ComponentProps, FC } from 'react';
+import { FC } from 'react';
+import { PiSignOut, PiSun } from 'react-icons/pi';
 import { Button } from 'Generics/Button/Button';
 import { Menu } from 'Generics/Menu/Menu';
 import { music } from 'music/api';
-
-const theme: ComponentProps<typeof Button> = {
-    text: 'Theme',
-    iconStart: {
-        icon: 'Theme',
-    },
-    onClick: 'theme',
-};
-
-const signout: ComponentProps<typeof Button> = {
-    text: 'Logout',
-    iconStart: {
-        icon: 'Logout',
-    },
-    onClick: 'signout',
-};
 
 export const UserMenu: FC = async () => {
     const session = await getServerSession();
@@ -27,10 +12,15 @@ export const UserMenu: FC = async () => {
     const user = await music.user.profile();
 
     return (
-        <Menu
-            buttons={[theme, signout]}
-            imageUrl={user.images.small}
-            side="left"
-        />
+        <Menu imageUrl={user.images.small} side="left">
+            <Button ariaLabel="Toggle Theme" onClick="theme" style="inMenu">
+                <PiSun />
+                Theme
+            </Button>
+            <Button ariaLabel="Sign Out" onClick="signout" style="inMenu">
+                <PiSignOut />
+                Sign Out
+            </Button>
+        </Menu>
     );
 };

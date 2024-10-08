@@ -1,35 +1,13 @@
 import { getServerSession } from 'next-auth';
-import { ComponentProps, FC } from 'react';
+import { FC } from 'react';
+import {
+    PiArrowsCounterClockwise,
+    PiMusicNotes,
+    PiSpotifyLogo,
+} from 'react-icons/pi';
 import { Button } from 'Generics/Button/Button';
 import styles from './Navigation.module.scss';
 import { UserMenu } from './UserMenu/UserMenu';
-
-const compare: ComponentProps<typeof Button> = {
-    text: 'Compare',
-    iconStart: {
-        icon: 'Compare',
-    },
-    link: '/compare',
-    style: 'tertiary',
-};
-
-const myMusic: ComponentProps<typeof Button> = {
-    text: 'My Music',
-    iconStart: {
-        icon: 'Playlist',
-    },
-    link: '/my-music',
-    style: 'tertiary',
-};
-
-const signIn: ComponentProps<typeof Button> = {
-    text: 'Sign In',
-    iconStart: {
-        icon: 'Spotify',
-    },
-    onClick: 'signin',
-    style: 'cta',
-};
 
 export const Navigation: FC = async () => {
     const session = await getServerSession();
@@ -38,12 +16,33 @@ export const Navigation: FC = async () => {
         <nav className={styles.navigation}>
             {session ? (
                 <>
-                    <Button {...compare} />
-                    <Button {...myMusic} />
+                    <Button
+                        ariaLabel="Compare Tracks"
+                        link="/compare"
+                        style="tertiary"
+                    >
+                        <PiArrowsCounterClockwise />
+                        Compare
+                    </Button>
+                    <Button
+                        ariaLabel="My Music"
+                        link="/my-music"
+                        style="tertiary"
+                    >
+                        <PiMusicNotes />
+                        My Music
+                    </Button>
                     <UserMenu />
                 </>
             ) : (
-                <Button {...signIn} />
+                <Button
+                    ariaLabel="Sign in with Spotify"
+                    onClick="signin"
+                    style="cta"
+                >
+                    <PiSpotifyLogo />
+                    Sign In
+                </Button>
             )}
         </nav>
     );

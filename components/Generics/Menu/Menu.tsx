@@ -3,18 +3,20 @@
 import { useClickOutside } from '@react-hookz/web';
 import classNames from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import { FC, useRef, useState } from 'react';
-import { Button, ButtonProps } from 'Generics/Button/Button';
+import { FC, PropsWithChildren, useRef, useState } from 'react';
 import { Icon } from 'Generics/Icon/Icon';
 import styles from './Menu.module.scss';
 
 export interface MenuProps {
-    buttons: ButtonProps[];
     imageUrl?: string;
     side?: 'left' | 'right';
 }
 
-export const Menu: FC<MenuProps> = ({ buttons, imageUrl, side }) => {
+export const Menu: FC<PropsWithChildren<MenuProps>> = ({
+    children,
+    imageUrl,
+    side,
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const wrapperRef = useRef(null);
     useClickOutside(wrapperRef, () => {
@@ -46,15 +48,7 @@ export const Menu: FC<MenuProps> = ({ buttons, imageUrl, side }) => {
                         side && styles[side],
                     )}
                 >
-                    {buttons.map((props) => (
-                        <li key={props.text}>
-                            <Button
-                                {...props}
-                                style="inMenu"
-                                tabIndex={isOpen ? 0 : -1}
-                            />
-                        </li>
-                    ))}
+                    {children}
                 </menu>
             </div>
         </FocusTrap>
