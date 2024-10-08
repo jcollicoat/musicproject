@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import { ComponentProps, FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { FC } from 'react';
+import { IconType } from 'react-icons';
 import styles from './DataPoint.module.scss';
 
 interface Props {
     name: string;
     value: string | number;
     color?: 'primary' | 'secondary';
-    icon?: ComponentProps<typeof Icon>['icon'];
+    icon?: IconType;
     hasBar?: boolean;
     tempo?: number;
     suffix?: string;
@@ -18,7 +18,7 @@ export const DataPoint: FC<Props> = ({
     name,
     value,
     color = 'primary',
-    icon,
+    icon: Icon,
     hasBar,
     suffix,
     tempo,
@@ -42,7 +42,7 @@ export const DataPoint: FC<Props> = ({
             </div>
         )}
         <div className={styles.header}>
-            {icon && <Icon icon={icon} />}
+            {Icon && <Icon />}
             <span>{name}</span>
         </div>
         <span

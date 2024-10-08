@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { FC } from 'react';
+import { PiHeart, PiMusicNotesSimple } from 'react-icons/pi';
 import { FollowButton } from 'Generics/Button/Actions/FollowButton';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { music } from 'music/api';
@@ -43,7 +44,7 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
                     <DataPoint
                         name="Popularity"
                         value={artist.popularity}
-                        icon="Heart"
+                        icon={PiHeart}
                         hasBar
                     />
                     {artist.genres && (
@@ -52,7 +53,7 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
                             value={artist.genres
                                 .map((genre) => genre)
                                 .join(', ')}
-                            icon="Track"
+                            icon={PiMusicNotesSimple}
                             smallText
                         />
                     )}

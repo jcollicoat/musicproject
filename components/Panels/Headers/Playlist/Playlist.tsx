@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { PiUser } from 'react-icons/pi';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { Icon } from 'Generics/Icon/Icon';
 import { music } from 'music/api';
@@ -48,7 +49,7 @@ export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
                     <DataPoint
                         name="Creator"
                         value={playlist.owner.name ?? ''}
-                        icon="User"
+                        icon={PiUser}
                         smallText
                     />
                 </div>

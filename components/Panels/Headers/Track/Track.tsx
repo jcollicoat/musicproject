@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { FC } from 'react';
+import { PiHeart, PiVinylRecord } from 'react-icons/pi';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { Icon } from 'Generics/Icon/Icon';
 import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
@@ -61,13 +62,13 @@ export const Track: FC<Props> = async ({ trackId, ...props }) => {
                     <DataPoint
                         name="Popularity"
                         value={track.popularity}
-                        icon="Heart"
+                        icon={PiHeart}
                         hasBar
                     />
                     <DataPoint
                         name="Label"
                         value={album.label}
-                        icon="Playlist"
+                        icon={PiVinylRecord}
                         smallText
                     />
                 </div>
