@@ -74,6 +74,7 @@ export const Chart: FC<Props> = ({ audio_features }) => {
                             fill="var(--color-primary-2)"
                             fillOpacity={0.25}
                             animationDuration={1000}
+                            activeDot={false}
                         />
                     ))
                 )}
