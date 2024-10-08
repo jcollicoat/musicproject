@@ -3,8 +3,13 @@ import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import styles from './CustomTooltip.module.scss';
 
 interface Props {
+    primaryIds: string[];
+    secondaryIds?: string[];
     active?: boolean;
-    payload?: { value: number }[];
+    payload?: {
+        dataKey: string;
+        value: number;
+    }[];
     label?: string;
 }
 
@@ -14,38 +19,43 @@ const getMean = (values: number[]) =>
             values.length,
     );
 
-export const CustomTooltip: FC<Props> = ({ active, payload, label }) => {
+export const CustomTooltip: FC<Props> = ({
+    primaryIds,
+    secondaryIds,
+    active,
+    payload,
+    label,
+}) => {
     if (active && payload && payload.length) {
-        if (payload.length <= 2) {
-            return (
-                <div className={styles.tooltip}>
-                    <DataPoint
-                        name={label ?? ''}
-                        value={payload[0].value}
-                        suffix="%"
-                        hasBar
-                    />
-                    {payload[1] && (
-                        <DataPoint
-                            name={label ?? ''}
-                            value={payload[1].value}
-                            suffix="%"
-                            hasBar
-                            color="secondary"
-                        />
-                    )}
-                </div>
-            );
-        }
-
         return (
             <div className={styles.tooltip}>
                 <DataPoint
-                    name={`${label} (average)`}
-                    value={getMean(payload.map((track) => track.value))}
+                    name={label ?? ''}
+                    value={getMean(
+                        payload
+                            .filter((track) =>
+                                primaryIds.includes(track.dataKey),
+                            )
+                            .map((track) => track.value),
+                    )}
                     suffix="%"
                     hasBar
                 />
+                {secondaryIds && (
+                    <DataPoint
+                        name={label ?? ''}
+                        value={getMean(
+                            payload
+                                .filter((track) =>
+                                    secondaryIds.includes(track.dataKey),
+                                )
+                                .map((track) => track.value),
+                        )}
+                        suffix="%"
+                        hasBar
+                        color="secondary"
+                    />
+                )}
             </div>
         );
     }

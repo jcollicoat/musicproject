@@ -15,11 +15,12 @@ import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 import { useChart } from './useChart';
 
 interface Props {
-    audio_features: SpotifyAudioFeatures[];
+    primary: SpotifyAudioFeatures[];
+    secondary?: SpotifyAudioFeatures[];
 }
 
-export const Chart: FC<Props> = ({ audio_features }) => {
-    const { data, tracks, tick } = useChart(audio_features);
+export const Chart: FC<Props> = ({ primary, secondary }) => {
+    const { data, tracks, tick } = useChart(primary, secondary);
 
     return (
         <ResponsiveContainer height={420} width="100%">
@@ -35,50 +36,63 @@ export const Chart: FC<Props> = ({ audio_features }) => {
                     axisLine={false}
                     tick={false}
                 />
-                {tracks.length <= 2 ? (
-                    <>
-                        <Radar
-                            key={tracks[0].id}
-                            dataKey={tracks[0].id}
-                            stroke="var(--color-primary-2)"
-                            fill="var(--color-primary-2)"
-                            fillOpacity={0.25}
-                            animationDuration={1000}
-                            dot={{
-                                fill: 'var(--color-primary-2)',
-                                fillOpacity: 1,
-                                stroke: 'var(--color-primary-2)',
-                            }}
+                {tracks.primary.map((track) => (
+                    <Radar
+                        key={track.id}
+                        dataKey={track.id}
+                        stroke={
+                            tracks.primary.length === 1
+                                ? 'var(--color-primary-2)'
+                                : undefined
+                        }
+                        fill="var(--color-primary-2)"
+                        fillOpacity={0.25}
+                        animationDuration={1000}
+                        dot={
+                            tracks.primary.length === 1
+                                ? {
+                                      fill: 'var(--color-primary-2)',
+                                      fillOpacity: 1,
+                                      stroke: 'var(--color-primary-2)',
+                                  }
+                                : undefined
+                        }
+                        activeDot={tracks.primary.length === 1}
+                    />
+                ))}
+                {tracks.secondary?.map((track) => (
+                    <Radar
+                        key={track.id}
+                        dataKey={track.id}
+                        stroke={
+                            tracks.secondary?.length === 1
+                                ? 'var(--color-secondary-2)'
+                                : undefined
+                        }
+                        fill="var(--color-secondary-2)"
+                        fillOpacity={0.25}
+                        animationDuration={1000}
+                        dot={
+                            tracks.secondary?.length === 1
+                                ? {
+                                      fill: 'var(--color-secondary-2)',
+                                      fillOpacity: 1,
+                                      stroke: 'var(--color-secondary-2)',
+                                  }
+                                : undefined
+                        }
+                    />
+                ))}
+                <Tooltip
+                    content={
+                        <CustomTooltip
+                            primaryIds={tracks.primary.map((track) => track.id)}
+                            secondaryIds={tracks.secondary?.map(
+                                (track) => track.id,
+                            )}
                         />
-                        {tracks[1] && (
-                            <Radar
-                                key={tracks[1].id}
-                                dataKey={tracks[1].id}
-                                stroke="var(--color-secondary-2)"
-                                fill="var(--color-secondary-2)"
-                                fillOpacity={0.25}
-                                animationDuration={1000}
-                                dot={{
-                                    fill: 'var(--color-secondary-2)',
-                                    fillOpacity: 1,
-                                    stroke: 'var(--color-secondary-2)',
-                                }}
-                            />
-                        )}
-                    </>
-                ) : (
-                    tracks.map((track) => (
-                        <Radar
-                            key={track.id}
-                            dataKey={track.id}
-                            fill="var(--color-primary-2)"
-                            fillOpacity={0.25}
-                            animationDuration={1000}
-                            activeDot={false}
-                        />
-                    ))
-                )}
-                <Tooltip content={<CustomTooltip />} />
+                    }
+                />
             </RadarChart>
         </ResponsiveContainer>
     );

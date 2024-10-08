@@ -18,7 +18,8 @@ export default function Page() {
                 gridArea="features"
                 heading="Audio Features"
                 icon="AudioFeatures"
-                trackIds={[trackId1, trackId2]}
+                trackIds={[trackId1]}
+                secondaryTrackIds={[trackId2]}
             />
             <AudioAnalysis
                 gridArea="timeline"

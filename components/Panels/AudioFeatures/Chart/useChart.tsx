@@ -22,82 +22,138 @@ interface TickInput {
 
 const toPercentage = (value: number) => Math.round(value * 100);
 
-export const useChart = (audio_features: SpotifyAudioFeatures[]) => {
+export const useChart = (
+    primary: SpotifyAudioFeatures[],
+    secondary?: SpotifyAudioFeatures[],
+) => {
     const data = useMemo(
         () => [
             {
                 name: 'Acousticness',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.acousticness),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.acousticness),
+                        ]),
+                    )),
             },
             {
                 name: 'Danceability',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.danceability),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.danceability),
+                        ]),
+                    )),
             },
             {
                 name: 'Energy',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.energy),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.energy),
+                        ]),
+                    )),
             },
             {
                 name: 'Instrumentalness',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.instrumentalness),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.instrumentalness),
+                        ]),
+                    )),
             },
             {
                 name: 'Liveness',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.liveness),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.liveness),
+                        ]),
+                    )),
             },
             {
                 name: 'Speechiness',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.speechiness),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.speechiness),
+                        ]),
+                    )),
             },
             {
                 name: 'Valence',
                 ...Object.fromEntries(
-                    audio_features.map((track) => [
+                    primary.map((track) => [
                         track.id,
                         toPercentage(track.valence),
                     ]),
                 ),
+                ...(secondary &&
+                    Object.fromEntries(
+                        secondary.map((track) => [
+                            track.id,
+                            toPercentage(track.valence),
+                        ]),
+                    )),
             },
         ],
-        [audio_features],
+        [primary, secondary],
     );
 
     const tracks = useMemo(
-        () =>
-            audio_features.map((track) => ({
+        () => ({
+            primary: primary.map((track) => ({
                 id: track.id,
             })),
-        [audio_features],
+            secondary: secondary?.map((track) => ({
+                id: track.id,
+            })),
+        }),
+        [primary, secondary],
     );
 
     const tick = useCallback(({ payload, x, y }: TickInput) => {
