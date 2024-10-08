@@ -30,7 +30,9 @@ export const CustomTooltip: FC<Props> = ({
         return (
             <div className={styles.tooltip}>
                 <DataPoint
-                    name={`${label} ${primaryIds.length !== 1 ? '(avg)' : ''}`}
+                    name={`${
+                        primaryIds.length !== 1 ? 'Average ' : ''
+                    }${label}`}
                     value={getMean(
                         payload
                             .filter((track) =>
@@ -43,9 +45,9 @@ export const CustomTooltip: FC<Props> = ({
                 />
                 {secondaryIds && (
                     <DataPoint
-                        name={`${label} ${
-                            secondaryIds.length !== 1 ? '(avg)' : ''
-                        }`}
+                        name={`${
+                            secondaryIds.length !== 1 ? 'Average ' : ''
+                        }${label}`}
                         value={getMean(
                             payload
                                 .filter((track) =>

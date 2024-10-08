@@ -28,7 +28,7 @@ export default async function Page({
             />
             <AudioFeatures
                 gridArea="audio"
-                heading="Audio Features (Average)"
+                heading="Audio Features"
                 icon="AudioFeatures"
                 trackIds={album.tracks.map((track) => track.id)}
             />
