@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Panel } from 'components/Panel/Panel';
 import { FollowButton } from 'Generics/Button/Actions/FollowButton';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { music } from 'music/api';
-import { PanelProps } from 'Panels/Panel';
+import { Panel, PanelProps } from 'Panels/Panel';
 import layout from '../layout.module.scss';
 import styles from './Artist.module.scss';
 

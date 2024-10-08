@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Panel } from 'components/Panel/Panel';
 import { Icon } from 'Generics/Icon/Icon';
 import { music } from 'music/api';
-import { PanelProps } from 'Panels/Panel';
+import { Panel, PanelProps } from 'Panels/Panel';
 import layout from '../layout.module.scss';
 
 export const MyMusic: FC<PanelProps> = async (props) => {

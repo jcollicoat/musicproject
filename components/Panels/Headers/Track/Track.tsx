@@ -1,13 +1,12 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Panel } from 'components/Panel/Panel';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { Icon } from 'Generics/Icon/Icon';
 import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
 import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
 import { TimeText } from 'Generics/TimeText/TimeText';
 import { music } from 'music/api';
-import { PanelProps } from 'Panels/Panel';
+import { Panel, PanelProps } from 'Panels/Panel';
 import layout from '../layout.module.scss';
 import styles from './Track.module.scss';
 
