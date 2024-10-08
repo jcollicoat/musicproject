@@ -17,7 +17,7 @@ interface Props {
     chart: Awaited<ReturnType<typeof music.audio.analysis.id>>['chart'];
 }
 
-export const WaveformChart: FC<Props> = ({ chart }) => {
+export const Chart: FC<Props> = ({ chart }) => {
     const { merged, min, max } = chart;
     const sections = merged.filter((data) => data.value !== undefined);
 

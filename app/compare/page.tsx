@@ -20,14 +20,12 @@ export default function Page() {
                 icon="AudioFeatures"
                 trackIds={[trackId1, trackId2]}
             />
-            <Panel
+            <AudioAnalysis
                 gridArea="timeline"
                 heading="Timeline"
                 icon="Playlist"
-                loading={<AudioAnalysis.Loading />}
-            >
-                <AudioAnalysis.Component trackId={trackId1} />
-            </Panel>
+                trackId={trackId1}
+            />
         </main>
     );
 }
