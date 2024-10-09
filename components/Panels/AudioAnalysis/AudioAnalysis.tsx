@@ -23,12 +23,15 @@ export const AudioAnalysis: FC<Props> = async ({
         ? await spotify.audio.analysis.id(secondaryTrackId)
         : undefined;
 
+    const duration =
+        Math.max(primary.track.duration, secondary?.track.duration ?? 0) * 1000;
+
     return (
         <Panel {...props}>
             <Scroller direction="horizontal">
                 <div className={styles.wrapper}>
                     <div className={styles.chart}>
-                        <Chart analysis={primary} />
+                        <Chart primary={primary} secondary={secondary} />
                         <div className={styles.features}>
                             <DataPoint
                                 name="Tempo"
@@ -101,7 +104,7 @@ export const AudioAnalysis: FC<Props> = async ({
                     <div className={styles.timeline}>
                         <TimeText durationMs={0} />
                         <div className={styles.line}></div>
-                        <TimeText durationMs={primary.track.duration * 1000} />
+                        <TimeText durationMs={duration} />
                     </div>
                 </div>
             </Scroller>

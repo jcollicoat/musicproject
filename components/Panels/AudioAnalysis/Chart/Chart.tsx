@@ -5,7 +5,6 @@ import {
     Area,
     Bar,
     ComposedChart,
-    Legend,
     ReferenceLine,
     ResponsiveContainer,
     XAxis,
@@ -15,17 +14,18 @@ import { SpotifyAudioAnalysis } from 'spotify/types/audio.types';
 import { useChart } from './useChart';
 
 interface Props {
-    analysis: SpotifyAudioAnalysis;
+    primary: SpotifyAudioAnalysis;
+    secondary?: SpotifyAudioAnalysis;
 }
 
-export const Chart: FC<Props> = ({ analysis }) => {
-    const { data, sections } = useChart(analysis);
+export const Chart: FC<Props> = ({ primary, secondary }) => {
+    const data = useChart(primary, secondary);
 
     return (
         <ResponsiveContainer height="100%" width="100%">
-            <ComposedChart data={data.merged}>
+            <ComposedChart data={data}>
                 <defs>
-                    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient id="primary" x1="0" y1="0" x2="0" y2="1">
                         <stop
                             offset="0%"
                             stopColor="var(--color-primary-2)"
@@ -37,38 +37,76 @@ export const Chart: FC<Props> = ({ analysis }) => {
                             stopOpacity={0}
                         />
                     </linearGradient>
+                    <linearGradient id="secondary" x1="0" y1="0" x2="0" y2="1">
+                        <stop
+                            offset="0%"
+                            stopColor="var(--color-secondary-2)"
+                            stopOpacity={0.5}
+                        />
+                        <stop
+                            offset="100%"
+                            stopColor="var(--color-secondary-2)"
+                            stopOpacity={0}
+                        />
+                    </linearGradient>
                 </defs>
                 <XAxis
                     dataKey="position"
+                    xAxisId="primary"
                     type="number"
-                    domain={[0, data.merged.length - 1]}
+                    domain={[data[0].position, data[data.length - 1].position]}
                     hide
                 />
-                <YAxis
-                    dataKey="range"
-                    domain={[data.min, data.max]}
-                    allowDataOverflow
+                <XAxis
+                    dataKey="position"
+                    xAxisId="secondary"
+                    type="number"
+                    domain={[data[0].position, data[data.length - 1].position]}
                     hide
                 />
+                <YAxis domain={[0, 60]} allowDataOverflow hide />
                 <Bar
-                    name="Loudness"
-                    dataKey="range"
-                    fill="var(--theme-color-4)"
+                    name="Primary Waveform"
+                    dataKey="primary"
+                    xAxisId="primary"
+                    barSize={2}
+                    fill={
+                        secondary
+                            ? 'rgba(var(--color-primary-2-rgb), 0.25)'
+                            : 'var(--theme-color-4)'
+                    }
                     animationDuration={1000}
                     legendType="none"
                 />
-                {sections.map((section) => (
-                    <ReferenceLine
-                        key={section.startPosition}
-                        x={section.startPosition}
-                        stroke="var(--theme-shade-min)"
-                        strokeWidth={3}
-                    />
-                ))}
+                <Bar
+                    name="Secondary Waveform"
+                    dataKey="secondary"
+                    xAxisId="secondary"
+                    barSize={2}
+                    fill="rgba(var(--color-secondary-2-rgb), 0.25)"
+                    animationDuration={1000}
+                    legendType="none"
+                />
+                {data
+                    .filter((section) => section.startPosition !== null)
+                    .map((section) => (
+                        <ReferenceLine
+                            key={section.startPosition}
+                            x={section.startPosition}
+                            xAxisId="primary"
+                            stroke={
+                                secondary
+                                    ? 'none'
+                                    : 'rgba(var(--theme-shade-min-rgb), 0.75)'
+                            }
+                            strokeWidth={2}
+                        />
+                    ))}
                 <Area
-                    name="Section Loudness"
-                    dataKey="value"
-                    fill="none"
+                    name="Primary Sections"
+                    dataKey="primaryValue"
+                    xAxisId="primary"
+                    fill="url(#primary)"
                     stroke="var(--color-primary-2)"
                     strokeWidth={2}
                     animationDuration={1000}
@@ -81,26 +119,20 @@ export const Chart: FC<Props> = ({ analysis }) => {
                     }}
                 />
                 <Area
-                    name="Fake Section Loudness"
-                    dataKey="fakeValue"
-                    fill="url(#area)"
-                    stroke="var(--color-primary-2)"
+                    name="Secondary Sections"
+                    dataKey="secondaryValue"
+                    xAxisId="secondary"
+                    fill="url(#secondary)"
+                    stroke="var(--color-secondary-2)"
                     strokeWidth={2}
                     animationDuration={1000}
                     connectNulls
                     type="bump"
-                />
-                <Legend
-                    verticalAlign="top"
-                    iconSize={8}
-                    payload={[
-                        {
-                            value: 'Track Sections',
-                            type: 'circle',
-                            id: 'sections',
-                            color: 'var(--color-primary-2)',
-                        },
-                    ]}
+                    dot={{
+                        fill: 'var(--color-secondary-2)',
+                        fillOpacity: 1,
+                        stroke: 'var(--color-secondary-2)',
+                    }}
                 />
             </ComposedChart>
         </ResponsiveContainer>
