@@ -24,27 +24,37 @@ export const AudioAnalysis: FC<Props> = async ({ trackId, ...props }) => {
                         <div className={styles.features}>
                             <DataPoint
                                 name="Tempo"
-                                value={Math.round(analysis.track.tempo)}
-                                tempo={Math.round(analysis.track.tempo)}
-                                suffix=" BPM"
+                                primary={{
+                                    value: Math.round(analysis.track.tempo),
+                                    isTempo: true,
+                                    suffix: ' BPM',
+                                }}
                                 smallText
                             />
                             <DataPoint
                                 name="Key"
-                                value={MusicalKeys[analysis.track.key]}
-                                suffix={` ${MusicalModes[analysis.track.mode]}`}
+                                primary={{
+                                    value: MusicalKeys[analysis.track.key],
+                                    suffix: ` ${
+                                        MusicalModes[analysis.track.mode]
+                                    }`,
+                                }}
                                 smallText
                             />
                             <DataPoint
                                 name="Loudness"
-                                value={Math.round(analysis.track.loudness)}
-                                suffix=" dB"
+                                primary={{
+                                    value: Math.round(analysis.track.loudness),
+                                    suffix: ' dB',
+                                }}
                                 smallText
                             />
                             <DataPoint
                                 name="Time Signature"
-                                value={analysis.track.time_signature}
-                                suffix="/4"
+                                primary={{
+                                    value: analysis.track.time_signature,
+                                    suffix: '/4',
+                                }}
                                 smallText
                             />
                         </div>

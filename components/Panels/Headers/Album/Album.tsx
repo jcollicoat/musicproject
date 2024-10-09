@@ -69,13 +69,17 @@ export const Album: FC<Props> = async ({ albumId, ...props }) => {
                 <div className={layout.sidebar}>
                     <DataPoint
                         name="Popularity"
-                        value={album.popularity}
+                        primary={{
+                            value: album.popularity,
+                            isPercent: true,
+                        }}
                         icon={PiHeart}
-                        hasBar
                     />
                     <DataPoint
                         name="Label"
-                        value={album.label}
+                        primary={{
+                            value: album.label,
+                        }}
                         icon={PiVinylRecord}
                         smallText
                     />

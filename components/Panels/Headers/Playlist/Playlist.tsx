@@ -52,7 +52,9 @@ export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
                 <div className={layout.sidebar}>
                     <DataPoint
                         name="Creator"
-                        value={playlist.owner.display_name ?? 'Unknown'}
+                        primary={{
+                            value: playlist.owner.display_name ?? 'Unknown',
+                        }}
                         icon={PiUser}
                         smallText
                     />

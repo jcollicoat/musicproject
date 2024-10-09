@@ -15,19 +15,17 @@ export const Grid: FC<Props> = ({ audio_features }) => {
     return (
         <div className={styles.grid}>
             {data.features.map((feature) => {
-                const isPercentage = typeof feature.percent === 'number';
+                const isPercent = typeof feature.percent === 'number';
                 return (
                     <DataPoint
                         key={feature.name}
                         name={titleCase(feature.name)}
-                        value={feature.value}
-                        hasBar={isPercentage}
-                        tempo={
-                            feature.name === 'tempo'
-                                ? (feature.value as number)
-                                : undefined
-                        }
-                        suffix={isPercentage ? '%' : undefined}
+                        primary={{
+                            value: feature.value,
+                            isPercent: isPercent,
+                            isTempo: feature.name === 'tempo',
+                            suffix: isPercent ? '%' : undefined,
+                        }}
                     />
                 );
             })}

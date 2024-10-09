@@ -33,33 +33,31 @@ export const CustomTooltip: FC<Props> = ({
                     name={`${
                         primaryIds.length !== 1 ? 'Average ' : ''
                     }${label}`}
-                    value={getMean(
-                        payload
-                            .filter((track) =>
-                                primaryIds.includes(track.dataKey),
-                            )
-                            .map((track) => track.value),
-                    )}
-                    suffix="%"
-                    hasBar
-                />
-                {secondaryIds && (
-                    <DataPoint
-                        name={`${
-                            secondaryIds.length !== 1 ? 'Average ' : ''
-                        }${label}`}
-                        value={getMean(
+                    primary={{
+                        value: getMean(
                             payload
                                 .filter((track) =>
-                                    secondaryIds.includes(track.dataKey),
+                                    primaryIds.includes(track.dataKey),
                                 )
                                 .map((track) => track.value),
-                        )}
-                        suffix="%"
-                        hasBar
-                        color="secondary"
-                    />
-                )}
+                        ),
+                        isPercent: true,
+                        suffix: '%',
+                    }}
+                    secondary={
+                        secondaryIds && {
+                            value: getMean(
+                                payload
+                                    .filter((track) =>
+                                        secondaryIds.includes(track.dataKey),
+                                    )
+                                    .map((track) => track.value),
+                            ),
+                            isPercent: true,
+                            suffix: '%',
+                        }
+                    }
+                />
             </div>
         );
     }

@@ -51,14 +51,18 @@ export const Artist: FC<Props> = async ({ artistId, ...props }) => {
                 <div className={layout.sidebar}>
                     <DataPoint
                         name="Popularity"
-                        value={artist.popularity}
+                        primary={{
+                            value: artist.popularity,
+                            isPercent: true,
+                        }}
                         icon={PiHeart}
-                        hasBar
                     />
                     {genres.length > 0 && (
                         <DataPoint
                             name="Genres"
-                            value={genres.map((genre) => genre).join(', ')}
+                            primary={{
+                                value: genres.map((genre) => genre).join(', '),
+                            }}
                             icon={PiMusicNotesSimple}
                             smallText
                         />
