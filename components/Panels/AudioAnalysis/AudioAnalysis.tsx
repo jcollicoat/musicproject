@@ -10,51 +10,90 @@ import { Chart } from './Chart/Chart';
 
 interface Props extends PanelProps {
     trackId: string;
+    secondaryTrackId?: string;
 }
 
-export const AudioAnalysis: FC<Props> = async ({ trackId, ...props }) => {
-    const analysis = await spotify.audio.analysis.id(trackId);
+export const AudioAnalysis: FC<Props> = async ({
+    trackId,
+    secondaryTrackId,
+    ...props
+}) => {
+    const primary = await spotify.audio.analysis.id(trackId);
+    const secondary = secondaryTrackId
+        ? await spotify.audio.analysis.id(secondaryTrackId)
+        : undefined;
 
     return (
         <Panel {...props}>
             <Scroller direction="horizontal">
                 <div className={styles.wrapper}>
                     <div className={styles.chart}>
-                        <Chart analysis={analysis} />
+                        <Chart analysis={primary} />
                         <div className={styles.features}>
                             <DataPoint
                                 name="Tempo"
                                 primary={{
-                                    value: Math.round(analysis.track.tempo),
+                                    value: Math.round(primary.track.tempo),
                                     isTempo: true,
                                     suffix: ' BPM',
                                 }}
+                                secondary={
+                                    secondary && {
+                                        value: Math.round(
+                                            secondary.track.tempo,
+                                        ),
+                                        isTempo: true,
+                                        suffix: ' BPM',
+                                    }
+                                }
                                 smallText
                             />
                             <DataPoint
                                 name="Key"
                                 primary={{
-                                    value: MusicalKeys[analysis.track.key],
+                                    value: MusicalKeys[primary.track.key],
                                     suffix: ` ${
-                                        MusicalModes[analysis.track.mode]
+                                        MusicalModes[primary.track.mode]
                                     }`,
                                 }}
+                                secondary={
+                                    secondary && {
+                                        value: MusicalKeys[secondary.track.key],
+                                        suffix: ` ${
+                                            MusicalModes[secondary.track.mode]
+                                        }`,
+                                    }
+                                }
                                 smallText
                             />
                             <DataPoint
                                 name="Loudness"
                                 primary={{
-                                    value: Math.round(analysis.track.loudness),
+                                    value: Math.round(primary.track.loudness),
                                     suffix: ' dB',
                                 }}
+                                secondary={
+                                    secondary && {
+                                        value: Math.round(
+                                            secondary.track.loudness,
+                                        ),
+                                        suffix: ' dB',
+                                    }
+                                }
                                 smallText
                             />
                             <DataPoint
                                 name="Time Signature"
                                 primary={{
-                                    value: analysis.track.time_signature,
+                                    value: primary.track.time_signature,
                                     suffix: '/4',
                                 }}
+                                secondary={
+                                    secondary && {
+                                        value: secondary.track.time_signature,
+                                        suffix: '/4',
+                                    }
+                                }
                                 smallText
                             />
                         </div>
@@ -62,7 +101,7 @@ export const AudioAnalysis: FC<Props> = async ({ trackId, ...props }) => {
                     <div className={styles.timeline}>
                         <TimeText durationMs={0} />
                         <div className={styles.line}></div>
-                        <TimeText durationMs={analysis.track.duration * 1000} />
+                        <TimeText durationMs={primary.track.duration * 1000} />
                     </div>
                 </div>
             </Scroller>

@@ -26,6 +26,7 @@ export default function Page() {
                 heading="Timeline"
                 icon="Playlist"
                 trackId={trackId1}
+                secondaryTrackId={trackId2}
             />
         </main>
     );

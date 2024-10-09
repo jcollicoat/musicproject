@@ -83,7 +83,6 @@
         .values {
             display: flex;
             gap: $space-m;
-            justify-content: space-between;
 
             .value {
                 font-size: 2em;
@@ -104,6 +103,14 @@
                 span {
                     font-size: 0.7em;
                 }
+            }
+        }
+    }
+
+    &:has(.bar.secondary) {
+        .content {
+            .values {
+                justify-content: space-between;
             }
         }
     }
