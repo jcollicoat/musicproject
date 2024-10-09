@@ -45,6 +45,7 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                                 ? 'var(--color-primary-2)'
                                 : undefined
                         }
+                        strokeWidth={2}
                         fill="var(--color-primary-2)"
                         fillOpacity={0.25}
                         animationDuration={1000}
@@ -69,6 +70,7 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                                 ? 'var(--color-secondary-2)'
                                 : undefined
                         }
+                        strokeWidth={2}
                         fill="var(--color-secondary-2)"
                         fillOpacity={0.25}
                         animationDuration={1000}
