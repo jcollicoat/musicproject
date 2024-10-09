@@ -108,7 +108,7 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                     xAxisId="primary"
                     fill="url(#primary)"
                     stroke="var(--color-primary-2)"
-                    strokeWidth={2}
+                    strokeWidth={1.5}
                     animationDuration={1000}
                     connectNulls
                     type="bump"
@@ -124,7 +124,7 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                     xAxisId="secondary"
                     fill="url(#secondary)"
                     stroke="var(--color-secondary-2)"
-                    strokeWidth={2}
+                    strokeWidth={1.5}
                     animationDuration={1000}
                     connectNulls
                     type="bump"
