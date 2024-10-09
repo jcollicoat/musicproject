@@ -2,8 +2,9 @@ import { FC } from 'react';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { Scroller } from 'Generics/Scroller/Scroller';
 import { TimeText } from 'Generics/TimeText/TimeText';
-import { music } from 'music/api';
+import { MusicalKeys, MusicalModes } from 'music/types';
 import { Panel, PanelProps } from 'Panels/Panel';
+import { spotify } from 'spotify/api';
 import styles from './AudioAnalysis.module.scss';
 import { Chart } from './Chart/Chart';
 
@@ -12,37 +13,37 @@ interface Props extends PanelProps {
 }
 
 export const AudioAnalysis: FC<Props> = async ({ trackId, ...props }) => {
-    const analysis = await music.audio.analysis.id(trackId);
+    const analysis = await spotify.audio.analysis.id(trackId);
 
     return (
         <Panel {...props}>
             <Scroller direction="horizontal">
                 <div className={styles.wrapper}>
                     <div className={styles.chart}>
-                        <Chart chart={analysis.chart} />
+                        <Chart analysis={analysis} />
                         <div className={styles.features}>
                             <DataPoint
                                 name="Tempo"
-                                value={analysis.features.tempo}
-                                tempo={analysis.features.tempo}
+                                value={Math.round(analysis.track.tempo)}
+                                tempo={Math.round(analysis.track.tempo)}
                                 suffix=" BPM"
                                 smallText
                             />
                             <DataPoint
                                 name="Key"
-                                value={analysis.features.key}
-                                suffix={` ${analysis.features.mode}`}
+                                value={MusicalKeys[analysis.track.key]}
+                                suffix={` ${MusicalModes[analysis.track.mode]}`}
                                 smallText
                             />
                             <DataPoint
                                 name="Loudness"
-                                value={analysis.features.loudness}
+                                value={Math.round(analysis.track.loudness)}
                                 suffix=" dB"
                                 smallText
                             />
                             <DataPoint
                                 name="Time Signature"
-                                value={analysis.features.timeSignature}
+                                value={analysis.track.time_signature}
                                 suffix="/4"
                                 smallText
                             />
@@ -51,7 +52,7 @@ export const AudioAnalysis: FC<Props> = async ({ trackId, ...props }) => {
                     <div className={styles.timeline}>
                         <TimeText durationMs={0} />
                         <div className={styles.line}></div>
-                        <TimeText durationMs={analysis.chart.duration} />
+                        <TimeText durationMs={analysis.track.duration * 1000} />
                     </div>
                 </div>
             </Scroller>

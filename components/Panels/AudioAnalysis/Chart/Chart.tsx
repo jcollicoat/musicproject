@@ -11,19 +11,19 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
-import { music } from 'music/api';
+import { SpotifyAudioAnalysis } from 'spotify/types/audio.types';
+import { useChart } from './useChart';
 
 interface Props {
-    chart: Awaited<ReturnType<typeof music.audio.analysis.id>>['chart'];
+    analysis: SpotifyAudioAnalysis;
 }
 
-export const Chart: FC<Props> = ({ chart }) => {
-    const { merged, min, max } = chart;
-    const sections = merged.filter((data) => data.value !== undefined);
+export const Chart: FC<Props> = ({ analysis }) => {
+    const { data, sections } = useChart(analysis);
 
     return (
         <ResponsiveContainer height="100%" width="100%">
-            <ComposedChart data={merged}>
+            <ComposedChart data={data.merged}>
                 <defs>
                     <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
                         <stop
@@ -41,12 +41,12 @@ export const Chart: FC<Props> = ({ chart }) => {
                 <XAxis
                     dataKey="position"
                     type="number"
-                    domain={[0, merged.length - 1]}
+                    domain={[0, data.merged.length - 1]}
                     hide
                 />
                 <YAxis
                     dataKey="range"
-                    domain={[min, max]}
+                    domain={[data.min, data.max]}
                     allowDataOverflow
                     hide
                 />
