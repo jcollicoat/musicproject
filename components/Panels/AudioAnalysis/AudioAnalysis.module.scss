@@ -5,6 +5,7 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    gap: $space-s;
     height: 100%;
     min-width: calc($content-height * 1.5);
     width: 100%;
@@ -16,7 +17,7 @@
         .features {
             background-color: rgba(var(--theme-shade-min-rgb), 0.75);
             border-radius: 4px;
-            bottom: 0;
+            bottom: $space-m;
             display: flex;
             gap: $space-xl;
             left: 0;

@@ -56,7 +56,7 @@ const createTimeline = (
                     waveformLength,
             ),
             [`${set}Value`]: Math.max(
-                45 - Math.floor(section.loudness) * -1,
+                40 - Math.floor(section.loudness) * -1,
                 0,
             ),
         })),
