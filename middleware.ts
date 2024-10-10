@@ -36,7 +36,9 @@ export async function middleware(request: NextRequest) {
             }
         } else {
             if (spotifyTokenIsExpired(jwt.spotifyTokenExpiresAt)) {
-                console.log('Refreshing spotifyToken in middleware');
+                console.log(
+                    `Refreshing spotifyToken in middleware for route: ${request.url}`,
+                );
                 jwt = await refreshSpotifyInJwt(jwt);
             }
 
