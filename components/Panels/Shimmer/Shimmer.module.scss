@@ -1,0 +1,30 @@
+@import 'styles/constants.scss';
+
+@keyframes shimmer {
+    from {
+        background-position: 100%;
+    }
+
+    to {
+        background-position: -100%;
+    }
+}
+
+.shimmer {
+    animation: 1s linear infinite shimmer;
+    background-image: linear-gradient(
+        to right,
+        var(--theme-tile-color),
+        var(--theme-shade-min),
+        var(--theme-tile-color)
+    );
+    background-size: 200% 100%;
+    border-radius: 4px;
+    height: $content-height;
+
+    &.circle {
+        aspect-ratio: 1 / 1;
+        border-radius: 10000px;
+        margin: 0 auto;
+    }
+}
