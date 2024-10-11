@@ -1,6 +1,7 @@
+import { SelectorContextProvider } from 'context/SelectorContext';
 import { AudioAnalysis } from 'Panels/AudioAnalysis/AudioAnalysis';
 import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
-import { Panel } from 'Panels/Panel';
+import { Selector } from 'Panels/Selector/Selector';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -13,21 +14,27 @@ export default function Page() {
 
     return (
         <main className={styles.main}>
-            <Panel gridArea="selector">SELECTOR</Panel>
-            <AudioFeatures
-                gridArea="features"
-                heading="Audio Features"
-                icon="AudioFeatures"
-                trackIds={[trackId1]}
-                secondaryTrackIds={[trackId2]}
-            />
-            <AudioAnalysis
-                gridArea="timeline"
-                heading="Timeline"
-                icon="Playlist"
-                trackId={trackId1}
-                secondaryTrackId={trackId2}
-            />
+            <SelectorContextProvider>
+                <Selector
+                    gridArea="selector"
+                    heading="Select Tracks"
+                    icon="Compare"
+                />
+                <AudioFeatures
+                    gridArea="features"
+                    heading="Audio Features"
+                    icon="AudioFeatures"
+                    trackIds={[trackId1]}
+                    secondaryTrackIds={[trackId2]}
+                />
+                <AudioAnalysis
+                    gridArea="timeline"
+                    heading="Timeline"
+                    icon="Playlist"
+                    trackId={trackId1}
+                    secondaryTrackId={trackId2}
+                />
+            </SelectorContextProvider>
         </main>
     );
 }

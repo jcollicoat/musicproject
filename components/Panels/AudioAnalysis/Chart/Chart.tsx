@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import {
     Area,
     Bar,
@@ -10,6 +10,7 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
+import { SelectorContext } from 'context/SelectorContext';
 import { SpotifyAudioAnalysis } from 'spotify/types/audio.types';
 import { useChart } from './useChart';
 
@@ -19,7 +20,20 @@ interface Props {
 }
 
 export const Chart: FC<Props> = ({ primary, secondary }) => {
-    const data = useChart(primary, secondary);
+    const {
+        state: { secondary: secondaryFromState },
+    } = useContext(SelectorContext);
+
+    console.log(secondaryFromState);
+
+    // TODO: First track data should be pre-built
+
+    // TODO: Should only be building second track data here
+    const data = useChart(
+        primary,
+        secondary,
+        // secondaryFromState ?? secondary,
+    );
 
     return (
         <ResponsiveContainer height="100%" width="100%">
@@ -72,7 +86,7 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                     barSize={2}
                     fill={
                         secondary
-                            ? 'rgba(var(--color-primary-2-rgb), 0.25)'
+                            ? 'rgba(var(--color-primary-2-rgb), 0.4)'
                             : 'var(--theme-color-4)'
                     }
                     animationDuration={1000}
@@ -83,7 +97,7 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                     dataKey="secondary"
                     xAxisId="secondary"
                     barSize={2}
-                    fill="rgba(var(--color-secondary-2-rgb), 0.25)"
+                    fill="rgba(var(--color-secondary-2-rgb), 0.4)"
                     animationDuration={1000}
                     legendType="none"
                 />

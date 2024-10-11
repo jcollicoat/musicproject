@@ -117,6 +117,7 @@ export const useChart = (
         timeline = timeline.concat(secondaryTimeline);
     }
 
+    // TODO: Memoization here doesn't really help, as references may be different. Need to use value equality (primitive)
     const data = useMemo(
         () => [...waveform, ...timeline],
         [timeline, waveform],

@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import {
     RadarChart,
     PolarAngleAxis,
@@ -10,6 +10,7 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from 'recharts';
+import { SelectorContext } from 'context/SelectorContext';
 import { SpotifyAudioFeatures } from 'spotify/types/audio.types';
 import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 import { useChart } from './useChart';
@@ -20,7 +21,17 @@ interface Props {
 }
 
 export const Chart: FC<Props> = ({ primary, secondary }) => {
-    const { data, tracks, tick } = useChart(primary, secondary);
+    const {
+        state: { secondary: secondaryFromState },
+    } = useContext(SelectorContext);
+
+    console.log(secondaryFromState);
+
+    const { data, tracks, tick } = useChart(
+        primary,
+        secondary,
+        // secondaryFromState ?? secondary,
+    );
 
     return (
         <ResponsiveContainer height={420} width="100%">

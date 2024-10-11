@@ -23,6 +23,8 @@ export const AudioAnalysis: FC<Props> = async ({
         ? await spotify.audio.analysis.id(secondaryTrackId)
         : undefined;
 
+    // TODO: Build first track chart data here and pass to Chart
+
     const duration =
         Math.max(primary.track.duration, secondary?.track.duration ?? 0) * 1000;
 
