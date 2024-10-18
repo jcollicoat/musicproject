@@ -5,7 +5,15 @@ import { errorResponse } from 'utilities';
 
 const secret = process.env.NEXTAUTH_SECRET;
 
-const authRoutes = ['/albums', '/artists', '/my-music', '/tracks'];
+const authRoutes = [
+    '/albums',
+    '/artists',
+    'compare',
+    'explore',
+    '/my-music',
+    '/tracks',
+    'years',
+];
 
 export async function middleware(request: NextRequest) {
     // Stop strange requests to /undefined
