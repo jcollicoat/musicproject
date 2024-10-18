@@ -53,6 +53,7 @@ export const AudioAnalysis: FC<Props> = async ({
                                 }
                                 smallText
                             />
+                            <div className={styles.divider}></div>
                             <DataPoint
                                 name="Key"
                                 primary={{
@@ -71,6 +72,7 @@ export const AudioAnalysis: FC<Props> = async ({
                                 }
                                 smallText
                             />
+                            <div className={styles.divider}></div>
                             <DataPoint
                                 name="Loudness"
                                 primary={{
@@ -87,6 +89,7 @@ export const AudioAnalysis: FC<Props> = async ({
                                 }
                                 smallText
                             />
+                            <div className={styles.divider}></div>
                             <DataPoint
                                 name="Time Signature"
                                 primary={{

@@ -7,7 +7,7 @@
     flex-direction: column;
     gap: $space-s;
     height: 100%;
-    min-width: calc($content-height * 1.5);
+    min-width: calc($content-height * 1.75);
     width: 100%;
 
     .chart {
@@ -15,28 +15,33 @@
         flex-grow: 1;
 
         .features {
-            background-color: rgba(var(--theme-shade-min-rgb), 0.75);
-            border-radius: 4px;
+            background-color: rgba(var(--theme-shade-min-rgb), 0.9);
+            border-radius: 8px;
             bottom: $space-m;
             display: flex;
-            gap: $space-xl;
+            gap: $space-l;
             left: 0;
-            padding: $space-m;
+            padding: $space-l;
             position: absolute;
+
+            .divider {
+                background-color: var(--theme-color-4);
+                width: 2px;
+            }
         }
     }
 
     .timeline {
         align-items: center;
-        color: var(--theme-color-3);
+        color: var(--theme-color-4);
         display: flex;
         gap: $space-s;
         justify-content: space-between;
 
         .line {
-            border-top: 1px dashed var(--theme-color-3);
+            background-color: var(--theme-color-4);
             flex-grow: 1;
-            height: 0px;
+            height: 1px;
         }
     }
 }
