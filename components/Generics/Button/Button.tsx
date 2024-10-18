@@ -52,7 +52,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     if (onClick) {
         let click;
         if (onClick === 'signin') {
-            click = () => signIn('spotify');
+            click = () => signIn('spotify', { callbackUrl: '/my-music' });
         } else if (onClick === 'signout') {
             click = () => signOut();
         } else if (onClick === 'theme') {
