@@ -1,3 +1,4 @@
+import { PiMusicNote, PiUser, PiVinylRecord } from 'react-icons/pi';
 import { music } from 'music/api';
 import { Artist } from 'Panels/Heroes/Artist/Artist';
 import { ItemsGrid } from 'Panels/ItemsGrid/ItemsGrid';
@@ -25,20 +26,20 @@ export default async function Page({
             <ItemsList
                 gridArea="tracks"
                 heading="Top Tracks"
-                icon="Track"
+                icon={PiMusicNote}
                 tracks={topTracks}
                 fallbackImage=""
             />
             <ItemsGrid
                 gridArea="albums"
                 heading="Albums"
-                icon="Disc"
+                icon={PiVinylRecord}
                 albums={albums}
             />
             <ItemsGrid
                 gridArea="related"
                 heading="Related Artists"
-                icon="User"
+                icon={PiUser}
                 artists={relatedArtists}
             />
         </main>

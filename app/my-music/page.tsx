@@ -1,3 +1,4 @@
+import { PiClockCounterClockwise, PiMusicNotes } from 'react-icons/pi';
 import { music } from 'music/api';
 import { MyMusic } from 'Panels/Heroes/MyMusic/MyMusic';
 import { ItemsGrid } from 'Panels/ItemsGrid/ItemsGrid';
@@ -18,13 +19,13 @@ export default async function Page() {
             <ItemsGrid
                 gridArea="playlists"
                 heading="Playlists"
-                icon="Disc"
+                icon={PiMusicNotes}
                 playlists={playlists}
             />
             <ItemsList
                 gridArea="recent"
                 heading="Recent Tracks"
-                icon="Recent"
+                icon={PiClockCounterClockwise}
                 tracks={recentTracks}
                 fallbackImage=""
             />

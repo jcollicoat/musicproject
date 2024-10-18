@@ -1,6 +1,7 @@
 'use client';
 
 import { FC, useContext } from 'react';
+import { PiFadersHorizontal } from 'react-icons/pi';
 import { SelectorContext } from 'context/SelectorContext';
 import { Panel, PanelProps } from 'Panels/Panel';
 import styles from './Selector.module.scss';
@@ -13,7 +14,7 @@ export const Selector: FC<PanelProps> = (props) => {
     console.log(primary, secondary);
 
     return (
-        <Panel {...props}>
+        <Panel {...props} icon={props.icon ?? PiFadersHorizontal}>
             <div className={styles.wrapper}>
                 <Panel>
                     <select

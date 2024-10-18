@@ -6,14 +6,14 @@ import {
     ReactNode,
     Suspense,
 } from 'react';
-import { Icon, IconProps } from 'Generics/Icon/Icon';
+import { IconType } from 'react-icons';
 import styles from './Panel.module.scss';
 
 export interface PanelProps {
     loading?: ReactNode;
     element?: keyof JSX.IntrinsicElements;
     heading?: string;
-    icon?: IconProps['icon'];
+    icon?: IconType;
     backgroundColor?: CSSProperties['backgroundColor'];
     backgroundImage?: CSSProperties['backgroundImage'];
     gridArea?: CSSProperties['gridArea'];
@@ -24,7 +24,7 @@ export const Panel: FC<PropsWithChildren<PanelProps>> = ({
     loading: Loading = 'Loading...',
     element: Element = 'section',
     heading,
-    icon,
+    icon: Icon,
     backgroundColor,
     backgroundImage,
     gridArea,
@@ -45,7 +45,7 @@ export const Panel: FC<PropsWithChildren<PanelProps>> = ({
         >
             {heading && (
                 <h2>
-                    {icon && <Icon icon={icon} />}
+                    {Icon && <Icon />}
                     {heading}
                 </h2>
             )}

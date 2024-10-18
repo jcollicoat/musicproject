@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { PiWaveform } from 'react-icons/pi';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
 import { Scroller } from 'Generics/Scroller/Scroller';
 import { TimeText } from 'Generics/TimeText/TimeText';
@@ -29,7 +30,7 @@ export const AudioAnalysis: FC<Props> = async ({
         Math.max(primary.track.duration, secondary?.track.duration ?? 0) * 1000;
 
     return (
-        <Panel {...props}>
+        <Panel {...props} icon={props.icon ?? PiWaveform}>
             <Scroller direction="horizontal">
                 <div className={styles.wrapper}>
                     <div className={styles.chart}>

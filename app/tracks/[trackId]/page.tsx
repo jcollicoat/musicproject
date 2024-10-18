@@ -18,19 +18,16 @@ export default function Page({
             <AudioAnalysis
                 gridArea="timeline"
                 heading="Timeline"
-                icon="Playlist"
                 trackId={trackId}
             />
             <AudioFeatures
                 gridArea="audio"
                 heading="Audio Features"
-                icon="AudioFeatures"
                 trackIds={[trackId]}
             />
             <AudioFeatures
                 gridArea="audio2"
                 heading="Audio Features"
-                icon="AudioFeatures"
                 trackIds={[trackId]}
                 display="grid"
             />

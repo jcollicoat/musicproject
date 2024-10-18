@@ -1,3 +1,4 @@
+import { PiMusicNote } from 'react-icons/pi';
 import { music } from 'music/api';
 import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
 import { Playlist } from 'Panels/Heroes/Playlist/Playlist';
@@ -21,13 +22,12 @@ export default async function Page({
             <AudioFeatures
                 gridArea="audio"
                 heading="Audio Features"
-                icon="AudioFeatures"
                 trackIds={playlist.tracks.map((track) => track.id)}
             />
             <ItemsList
                 gridArea="tracks"
                 heading="Tracks"
-                icon="Track"
+                icon={PiMusicNote}
                 tracks={playlist.tracks}
                 fallbackImage={playlist.images?.medium ?? ''}
                 overflowScroll={false}

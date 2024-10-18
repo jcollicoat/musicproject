@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { PiFaders } from 'react-icons/pi';
 import { Panel, PanelProps } from 'Panels/Panel';
 import { spotify } from 'spotify/api';
 import { Chart } from './Chart/Chart';
@@ -23,7 +24,7 @@ export const AudioFeatures: FC<Props> = async ({
         : { audio_features: undefined };
 
     return (
-        <Panel {...props}>
+        <Panel {...props} icon={props.icon ?? PiFaders}>
             {display === 'grid' ? (
                 <Grid audio_features={primary} />
             ) : (

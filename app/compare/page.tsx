@@ -15,22 +15,16 @@ export default function Page() {
     return (
         <main className={styles.main}>
             <SelectorContextProvider>
-                <Selector
-                    gridArea="selector"
-                    heading="Select Tracks"
-                    icon="Compare"
-                />
+                <Selector gridArea="selector" heading="Select Tracks" />
                 <AudioFeatures
                     gridArea="features"
                     heading="Audio Features"
-                    icon="AudioFeatures"
                     trackIds={[trackId1]}
                     secondaryTrackIds={[trackId2]}
                 />
                 <AudioAnalysis
                     gridArea="timeline"
                     heading="Timeline"
-                    icon="Playlist"
                     trackId={trackId1}
                     secondaryTrackId={trackId2}
                 />
