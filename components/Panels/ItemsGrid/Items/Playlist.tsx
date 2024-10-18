@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { PiMusicNote } from 'react-icons/pi';
 import { music } from 'music/api';
 import layout from './layout.module.scss';
 import styles from './Playlist.module.scss';
@@ -23,7 +23,7 @@ export const Playlist: FC<Props> = ({ playlist }) => (
         <div className={layout.content}>
             <span className={layout.name}>{playlist.name}</span>
             <div className={layout.label}>
-                <Icon icon="Track" />
+                <PiMusicNote />
                 <span>
                     {playlist.totalTracks}{' '}
                     {playlist.totalTracks === 1 ? 'track' : 'tracks'}

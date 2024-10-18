@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { PiHeart } from 'react-icons/pi';
 import { music } from 'music/api';
 import styles from './Artist.module.scss';
 import layout from './layout.module.scss';
@@ -23,7 +23,7 @@ export const Artist: FC<Props> = ({ artist }) => (
         <div className={layout.content}>
             <span className={layout.name}>{artist.name}</span>
             <div className={layout.label}>
-                <Icon icon="Heart" />
+                <PiHeart />
                 <span>
                     {artist.followers.display}{' '}
                     {artist.followers.total === 1 ? 'follower' : 'followers'}

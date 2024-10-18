@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { PiCalendarBlank, PiVinylRecord } from 'react-icons/pi';
 import { music } from 'music/api';
 import layout from './layout.module.scss';
 
@@ -26,11 +26,11 @@ export const Album: FC<Props> = ({ album }) => {
                         <Link href={`/albums/${id}`}>{name}</Link>
                     </div>
                     <div className={layout.section}>
-                        <Icon icon="Playlist" />
+                        <PiVinylRecord />
                         <span>{albumType}</span>
                     </div>
                     <div className={layout.section}>
-                        <Icon icon="Calendar" />
+                        <PiCalendarBlank />
                         <span>Released on {releaseDate.display}</span>
                     </div>
                 </div>

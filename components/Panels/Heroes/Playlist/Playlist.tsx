@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { PiUser } from 'react-icons/pi';
+import { PiInfo, PiMusicNotes, PiUser } from 'react-icons/pi';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
-import { Icon } from 'Generics/Icon/Icon';
 import { useImages } from 'hooks/useImages';
 import { Panel, PanelProps } from 'Panels/Panel';
 import { spotify } from 'spotify/api';
@@ -31,7 +30,7 @@ export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
                     <h1>{playlist.name}</h1>
                     <div className={layout.section}>
                         <div className={layout.item}>
-                            <Icon icon="Playlist" />
+                            <PiMusicNotes />
                             <span>
                                 {playlist.tracks.total}{' '}
                                 {playlist.tracks.total === 1
@@ -43,7 +42,7 @@ export const Playlist: FC<Props> = async ({ playlistId, ...props }) => {
                     {playlist.public && (
                         <div className={layout.section}>
                             <div className={layout.item}>
-                                <Icon icon="Info" />
+                                <PiInfo />
                                 <span>Public Playlist</span>
                             </div>
                         </div>

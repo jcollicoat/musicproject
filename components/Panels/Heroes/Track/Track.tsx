@@ -1,8 +1,13 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { PiHeart, PiVinylRecord } from 'react-icons/pi';
+import {
+    PiCalendarBlank,
+    PiClock,
+    PiHeart,
+    PiUser,
+    PiVinylRecord,
+} from 'react-icons/pi';
 import { DataPoint } from 'Generics/DataPoint/DataPoint';
-import { Icon } from 'Generics/Icon/Icon';
 import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
 import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
 import { TimeText } from 'Generics/TimeText/TimeText';
@@ -37,21 +42,21 @@ export const Track: FC<Props> = async ({ trackId, ...props }) => {
                     <h1>{track.name}</h1>
                     <div className={layout.section}>
                         <div className={layout.item}>
-                            <Icon icon="User" />
+                            <PiUser />
                             <LinkedArtists artists={track.artists} />
                         </div>
                         <div className={layout.item}>
-                            <Icon icon="Disc" />
+                            <PiVinylRecord />
                             <LinkedAlbum album={track.album} />
                         </div>
                     </div>
                     <div className={layout.section}>
                         <div className={layout.item}>
-                            <Icon icon="Clock" />
+                            <PiClock />
                             <TimeText durationMs={track.duration_ms} />
                         </div>
                         <div className={layout.item}>
-                            <Icon icon="Calendar" />
+                            <PiCalendarBlank />
                             <span>
                                 Released on{' '}
                                 {new Date(

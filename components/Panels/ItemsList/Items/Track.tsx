@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { PiUser, PiVinylRecord } from 'react-icons/pi';
 import { LinkedAlbum } from 'Generics/Linked/LinkedAlbum';
 import { LinkedArtists } from 'Generics/Linked/LinkedArtists';
 import { TimeText } from 'Generics/TimeText/TimeText';
@@ -34,12 +34,12 @@ export const Track: FC<Props> = ({ track, fallbackImage }) => {
                         <Link href={`/tracks/${id}`}>{name}</Link>
                     </div>
                     <div className={layout.section}>
-                        <Icon icon="User" />
+                        <PiUser />
                         <LinkedArtists artists={artists} />
                     </div>
                     {'album' in track && (
                         <div className={layout.section}>
-                            <Icon icon="Disc" />
+                            <PiVinylRecord />
                             <LinkedAlbum album={track.album} />
                         </div>
                     )}

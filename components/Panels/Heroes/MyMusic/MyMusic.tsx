@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import { FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { PiHeart, PiInfo } from 'react-icons/pi';
 import { useImages } from 'hooks/useImages';
 import { Panel, PanelProps } from 'Panels/Panel';
 import { spotify } from 'spotify/api';
+import { titleCase } from 'utilities';
 import layout from '../layout.module.scss';
 
 export const MyMusic: FC<PanelProps> = async (props) => {
@@ -26,7 +27,7 @@ export const MyMusic: FC<PanelProps> = async (props) => {
                     <h1>My Music</h1>
                     <div className={layout.section}>
                         <div className={layout.item}>
-                            <Icon icon="Heart" />
+                            <PiHeart />
                             <span>
                                 {user.followers.total}{' '}
                                 {user.followers.total === 1
@@ -37,8 +38,8 @@ export const MyMusic: FC<PanelProps> = async (props) => {
                     </div>
                     <div className={layout.section}>
                         <div className={layout.item}>
-                            <Icon icon="Info" />
-                            <span>{user.product} User</span>
+                            <PiInfo />
+                            <span>{titleCase(user.product)} User</span>
                         </div>
                     </div>
                 </div>

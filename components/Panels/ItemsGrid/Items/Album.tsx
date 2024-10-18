@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FC } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { PiCalendarBlank, PiMusicNote } from 'react-icons/pi';
 import { music } from 'music/api';
 import styles from './Album.module.scss';
 import layout from './layout.module.scss';
@@ -23,14 +23,14 @@ export const Album: FC<Props> = ({ album }) => (
         <div className={layout.content}>
             <span className={layout.name}>{album.name}</span>
             <div className={layout.label}>
-                <Icon icon="Disc" />
+                <PiMusicNote />
                 <span>
                     {album.totalTracks}{' '}
                     {album.totalTracks === 1 ? 'track' : 'tracks'}
                 </span>
             </div>
             <div className={layout.label}>
-                <Icon icon="Calendar" />
+                <PiCalendarBlank />
                 <span>{album.releaseDate.exact.split('-')[0]}</span>
             </div>
         </div>
