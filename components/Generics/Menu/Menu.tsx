@@ -4,7 +4,7 @@ import { useClickOutside } from '@react-hookz/web';
 import classNames from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import { FC, PropsWithChildren, useRef, useState } from 'react';
-import { Icon } from 'Generics/Icon/Icon';
+import { Icon } from './Icon/Icon';
 import styles from './Menu.module.scss';
 
 export interface MenuProps {
@@ -38,7 +38,7 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
                     {imageUrl && (
                         <img alt="" src={imageUrl} height={30} width={30} />
                     )}
-                    <Icon icon="Menu" isAlternate={isOpen} size="30px" />
+                    <Icon isAlternate={isOpen} />
                 </button>
                 <menu
                     aria-hidden={!isOpen}

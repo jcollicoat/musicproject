@@ -1,0 +1,13 @@
+@import 'styles/constants.scss';
+
+.container {
+    display: flex;
+    height: 1em;
+    width: 1em;
+
+    svg {
+        height: 1em;
+        margin: auto;
+        width: 1em;
+    }
+}
