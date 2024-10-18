@@ -16,8 +16,8 @@
 
         .features {
             background-color: rgba(var(--theme-shade-min-rgb), 0.9);
-            border-radius: 8px;
-            bottom: $space-m;
+            border-top-right-radius: 8px;
+            bottom: 0;
             display: flex;
             gap: $space-l;
             left: 0;
