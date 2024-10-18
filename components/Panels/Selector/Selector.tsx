@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { FC, useContext } from 'react';
 import { SelectorContext } from 'context/SelectorContext';
 import { Panel, PanelProps } from 'Panels/Panel';
@@ -12,8 +11,6 @@ export const Selector: FC<PanelProps> = (props) => {
         dispatch,
     } = useContext(SelectorContext);
     console.log(primary, secondary);
-
-    const router = useRouter();
 
     return (
         <Panel {...props}>
