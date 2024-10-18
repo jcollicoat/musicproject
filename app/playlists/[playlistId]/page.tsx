@@ -1,6 +1,6 @@
 import { music } from 'music/api';
 import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
-import { Playlist } from 'Panels/Headers/Playlist/Playlist';
+import { Playlist } from 'Panels/Heroes/Playlist/Playlist';
 import { ItemsList } from 'Panels/ItemsList/ItemsList';
 import styles from './page.module.scss';
 

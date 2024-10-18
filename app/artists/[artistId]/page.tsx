@@ -1,5 +1,5 @@
 import { music } from 'music/api';
-import { Artist } from 'Panels/Headers/Artist/Artist';
+import { Artist } from 'Panels/Heroes/Artist/Artist';
 import { ItemsGrid } from 'Panels/ItemsGrid/ItemsGrid';
 import { ItemsList } from 'Panels/ItemsList/ItemsList';
 import styles from './page.module.scss';

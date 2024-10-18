@@ -1,6 +1,6 @@
 import { AudioAnalysis } from 'Panels/AudioAnalysis/AudioAnalysis';
 import { AudioFeatures } from 'Panels/AudioFeatures/AudioFeatures';
-import { Track } from 'Panels/Headers/Track/Track';
+import { Track } from 'Panels/Heroes/Track/Track';
 import styles from './page.module.scss';
 
 export const metadata = {
