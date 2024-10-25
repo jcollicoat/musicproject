@@ -51,18 +51,26 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                             stopOpacity={0}
                         />
                     </linearGradient>
-                    <linearGradient id="secondary" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                            offset="0%"
-                            stopColor="var(--color-secondary-2)"
-                            stopOpacity={0.5}
-                        />
-                        <stop
-                            offset="100%"
-                            stopColor="var(--color-secondary-2)"
-                            stopOpacity={0}
-                        />
-                    </linearGradient>
+                    {secondary && (
+                        <linearGradient
+                            id="secondary"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                        >
+                            <stop
+                                offset="0%"
+                                stopColor="var(--color-secondary-2)"
+                                stopOpacity={0.5}
+                            />
+                            <stop
+                                offset="100%"
+                                stopColor="var(--color-secondary-2)"
+                                stopOpacity={0}
+                            />
+                        </linearGradient>
+                    )}
                 </defs>
                 <XAxis
                     dataKey="position"
@@ -71,13 +79,18 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                     domain={[data[0].position, data[data.length - 1].position]}
                     hide
                 />
-                <XAxis
-                    dataKey="position"
-                    xAxisId="secondary"
-                    type="number"
-                    domain={[data[0].position, data[data.length - 1].position]}
-                    hide
-                />
+                {secondary && (
+                    <XAxis
+                        dataKey="position"
+                        xAxisId="secondary"
+                        type="number"
+                        domain={[
+                            data[0].position,
+                            data[data.length - 1].position,
+                        ]}
+                        hide
+                    />
+                )}
                 <YAxis domain={[0, 60]} allowDataOverflow hide />
                 <Bar
                     name="Primary Waveform"
@@ -92,30 +105,29 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                     animationDuration={1000}
                     legendType="none"
                 />
-                <Bar
-                    name="Secondary Waveform"
-                    dataKey="secondary"
-                    xAxisId="secondary"
-                    barSize={2}
-                    fill="rgba(var(--color-secondary-2-rgb), 0.4)"
-                    animationDuration={1000}
-                    legendType="none"
-                />
-                {data
-                    .filter((section) => section.startPosition !== null)
-                    .map((section) => (
-                        <ReferenceLine
-                            key={section.startPosition}
-                            x={section.startPosition}
-                            xAxisId="primary"
-                            stroke={
-                                secondary
-                                    ? 'none'
-                                    : 'rgba(var(--theme-shade-min-rgb), 0.75)'
-                            }
-                            strokeWidth={2}
-                        />
-                    ))}
+                {secondary && (
+                    <Bar
+                        name="Secondary Waveform"
+                        dataKey="secondary"
+                        xAxisId="secondary"
+                        barSize={2}
+                        fill="rgba(var(--color-secondary-2-rgb), 0.4)"
+                        animationDuration={1000}
+                        legendType="none"
+                    />
+                )}
+                {!secondary &&
+                    data
+                        .filter((section) => section.startPosition !== null)
+                        .map((section) => (
+                            <ReferenceLine
+                                key={section.startPosition}
+                                x={section.startPosition}
+                                xAxisId="primary"
+                                stroke="rgba(var(--theme-shade-min-rgb), 0.75)"
+                                strokeWidth={2}
+                            />
+                        ))}
                 <Area
                     name="Primary Sections"
                     dataKey="primaryValue"
@@ -132,22 +144,24 @@ export const Chart: FC<Props> = ({ primary, secondary }) => {
                         stroke: 'var(--color-primary-2)',
                     }}
                 />
-                <Area
-                    name="Secondary Sections"
-                    dataKey="secondaryValue"
-                    xAxisId="secondary"
-                    fill="url(#secondary)"
-                    stroke="var(--color-secondary-2)"
-                    strokeWidth={1.5}
-                    animationDuration={1000}
-                    connectNulls
-                    type="bump"
-                    dot={{
-                        fill: 'var(--color-secondary-2)',
-                        fillOpacity: 1,
-                        stroke: 'var(--color-secondary-2)',
-                    }}
-                />
+                {secondary && (
+                    <Area
+                        name="Secondary Sections"
+                        dataKey="secondaryValue"
+                        xAxisId="secondary"
+                        fill="url(#secondary)"
+                        stroke="var(--color-secondary-2)"
+                        strokeWidth={1.5}
+                        animationDuration={1000}
+                        connectNulls
+                        type="bump"
+                        dot={{
+                            fill: 'var(--color-secondary-2)',
+                            fillOpacity: 1,
+                            stroke: 'var(--color-secondary-2)',
+                        }}
+                    />
+                )}
             </ComposedChart>
         </ResponsiveContainer>
     );
