@@ -1,5 +1,6 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
 import { FC, useContext } from 'react';
 import {
     Area,
@@ -16,24 +17,25 @@ import { useChart } from './useChart';
 
 interface Props {
     primary: SpotifyAudioAnalysis;
-    secondary?: SpotifyAudioAnalysis;
 }
 
-export const Chart: FC<Props> = ({ primary, secondary }) => {
+const getAnalysis = async (trackId: string | null) => {
+    const analysis = await fetch(`/api/audio/analysis/${trackId}`);
+    return analysis.json();
+};
+
+export const Chart: FC<Props> = ({ primary }) => {
     const {
-        state: { secondary: secondaryFromState },
+        state: { secondary: secondaryTrackId },
     } = useContext(SelectorContext);
 
-    console.log(secondaryFromState);
+    const { data: secondary } = useQuery<SpotifyAudioAnalysis>({
+        queryKey: ['analysis', secondaryTrackId],
+        queryFn: () => getAnalysis(secondaryTrackId),
+        enabled: Boolean(secondaryTrackId),
+    });
 
-    // TODO: First track data should be pre-built
-
-    // TODO: Should only be building second track data here
-    const data = useChart(
-        primary,
-        secondary,
-        // secondaryFromState ?? secondary,
-    );
+    const data = useChart(primary, secondary);
 
     return (
         <ResponsiveContainer height="100%" width="100%">

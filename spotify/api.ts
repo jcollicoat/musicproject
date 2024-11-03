@@ -53,7 +53,9 @@ const artists = {
 
 const audio = {
     analysis: {
-        id: async (trackId: string) => {
+        id: async (trackId: string | null) => {
+            if (!trackId) return null;
+
             return await api.get<SpotifyAudioAnalysis>(
                 `audio-analysis/${trackId}`,
             );

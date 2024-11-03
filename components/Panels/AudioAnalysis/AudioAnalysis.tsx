@@ -24,8 +24,6 @@ export const AudioAnalysis: FC<Props> = async ({
         ? await spotify.audio.analysis.id(secondaryTrackId)
         : undefined;
 
-    // TODO: Build first track chart data here and pass to Chart
-
     const duration =
         Math.max(primary.track.duration, secondary?.track.duration ?? 0) * 1000;
 
@@ -34,7 +32,7 @@ export const AudioAnalysis: FC<Props> = async ({
             <Scroller direction="horizontal">
                 <div className={styles.wrapper}>
                     <div className={styles.chart}>
-                        <Chart primary={primary} secondary={secondary} />
+                        <Chart primary={primary} />
                         <div className={styles.features}>
                             <DataPoint
                                 name="Tempo"
