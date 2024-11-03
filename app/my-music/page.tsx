@@ -18,13 +18,13 @@ export default async function Page() {
             <MyMusic gridArea="header" />
             <ItemsGrid
                 gridArea="playlists"
-                heading="Playlists"
+                heading="My Playlists"
                 icon={PiMusicNotes}
                 playlists={playlists}
             />
             <ItemsList
                 gridArea="recent"
-                heading="Recent Tracks"
+                heading="Recently Played"
                 icon={PiClockCounterClockwise}
                 tracks={recentTracks}
                 fallbackImage=""
